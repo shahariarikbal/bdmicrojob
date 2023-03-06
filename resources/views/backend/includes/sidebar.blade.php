@@ -5,6 +5,18 @@
        <span>Home</span>
        </a>
     </li>
+    <li class="nav-item {{ Request::url() == url('admin/jobs') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('/admin/jobs') }}">
+        <i class="fa fa-tasks"></i>
+        <span>Jobs</span>
+        </a>
+     </li>
+     <li class="nav-item {{ Request::url() == url('admin/advertisements') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('/admin/advertisements') }}">
+        <i class="fa fa-tasks"></i>
+        <span>Advertisements</span>
+        </a>
+     </li>
     <li class="nav-item {{ Request::url() == url('admin/link') ? 'active' : '' }} ">
        <a class="nav-link" href="{{ url('/admin/users') }}">
           <i class="fas fa-solid fa-dollar-sign"></i>
@@ -29,6 +41,12 @@
        <span>Payments request</span>
        </a>
     </li>
+    <li class="nav-item {{ Request::url() == url('admin/help-support') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('/admin/help-support') }}">
+         <i class="fas fa-money-bill"></i>
+        <span>Help & Support</span>
+        </a>
+     </li>
     <li class="nav-item {{ Request::url() == url('admin/link') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('/admin/settings') }}">
          <i class="fas fa-cog"></i>
