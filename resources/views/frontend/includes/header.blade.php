@@ -2,7 +2,8 @@
     <nav class="nav-main">
         <!-- logo start -->
         <a href="{{ url('/') }}" class="header-main-logo">
-            <img src="{{ asset('/frontend/') }}/assets/logo/GLOBAL.png">
+            {{-- <img src="{{ asset('/frontend/') }}/assets/logo/GLOBAL.png"> --}}
+            BD<span>Microjobs</span>
         </a>
         <!-- logo End -->
         <!-- Small Device btn start -->

@@ -3,6 +3,9 @@
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\MembershipController;
 use App\Http\Controllers\Backend\VideoController;
+use App\Http\Controllers\Backend\JobController;
+use App\Http\Controllers\Backend\AdvertisementController;
+use App\Http\Controllers\Backend\HelpSupportController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -77,6 +80,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
    Route::get('/membership/edit/{id}', [MembershipController::class, 'edit']);
    Route::post('/membership/update/{id}', [MembershipController::class, 'update']);
    Route::post('/membership/delete/{id}', [MembershipController::class, 'delete']);
+
+   //Jobs....
+   Route::get('/jobs', [JobController::class,'showJob']);
+
+   //Advertisements....
+   Route::get('/advertisements', [AdvertisementController::class,'showAdvertisement']);
+
+   //Advertisements....
+   Route::get('/help-support', [HelpSupportController::class,'showHelpSupport']);
+
 
 
 });

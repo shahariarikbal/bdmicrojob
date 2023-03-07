@@ -4,6 +4,4 @@
 
 {{-- enter main section here --}}
 
-
-
 @endsection
