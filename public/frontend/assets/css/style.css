@@ -7,6 +7,7 @@
 button, a{
     transition: all .3s ease;
     -webkit-transition: all .3s ease;
+    text-decoration: none;
 }
 ul li{
     list-style: none;
@@ -58,11 +59,22 @@ body{
 }
 .header-main-logo {
     display: inline-flex;
+    font-size: 28px;
+    font-weight: 700;
+    color: #545454;
 }
-.header-main-logo img {
+
+.header-main-logo span {
+    color: #7e41c2;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+
+/* .header-main-logo img {
     width: 130px;
     height: 85px;
-}
+} */
 .nav-items-wrapper {
     display: flex;
     align-items: center;
@@ -298,7 +310,6 @@ button:hover {
 }
 /* MODAL */
 .sign-in-modal {
-  cursor: url("https://png.icons8.com/ios/30/000000/multiply.png"), auto;
   z-index: 999999999999;
   opacity: 0;
   position: fixed;
@@ -890,6 +901,103 @@ button:hover {
     margin-right: 0;
 }
 /*Footer bottom section css End*/
+
+/* Recent Activity section css start */
+.recent-activitis-section {
+    background: #7e41c2;
+    padding: 60px 0;
+}
+
+.section-title-outer .subtitle {
+    margin-bottom: 5px;
+    font-size: 20px;
+    font-weight: 600;
+    position: relative;
+    padding-left: 10px;
+    color: #fff;
+}
+
+.section-title-outer .title {
+    font-size: 45px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.section-title-outer .subtitle:before {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 25px;
+    background: #fff;
+    margin-right: 10px;
+    left: 0;
+    top: 0;
+}
+
+.recent-activity-items-wrapper {
+    background: #FFF;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.recent-activity-item-outer {
+    background: #f3ebeb;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.recent-activity-item-outer .item-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.text-right.text-blue {
+    text-align: right;
+    color: #000;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.recent-activity-item-outer .item-title span {
+    color: #7e41c2;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.item-left-content span {
+    font-size: 17px;
+    font-weight: 600;
+    color: #000;
+}
+
+.recent-activity-item-outer .item-content .item-center-content {
+    width: 33.33%;
+}
+
+.item-center-content .progress-label {
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+}
+
+.item-center-content .progress {
+    background-color: #fff;
+}
+
+.item-center-content .progress .progress-bar {
+    background-color: #7e41c2;
+}
+
+.item-right-content .totla-earning {
+    font-size: 18px;
+    font-weight: 600;
+    color: #7e41c2;
+}
+/* Recent Activity section css End */
 
 /*Responsive start*/
 @media screen and (max-width: 1200px){
