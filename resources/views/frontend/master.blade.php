@@ -4,7 +4,7 @@
 	<title></title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Money</title>
+    <title>BD Micro Jobs</title>
 	@include('frontend.includes.style')
 </head>
 <body>

@@ -89,12 +89,130 @@
             </div>
         </div>
     </section>
+    <section class="recent-activitis-section">
+        <div class="container">
+            <div class="section-title-outer">
+                <h5 class="subtitle">
+                    BDMicrojobs
+                </h5>
+                <h1 class="title">
+                    Recent Activity
+                </h1>
+            </div>
+            <div class="recent-activity-items-wrapper">
+                <div class="recent-activity-item-outer">
+                    <div class="text-right text-blue">6 minutes ago</div>
+                    <div class="item-title">
+                        <span>Install and Register App </span>
+                    </div>
+                    <div class="item-content">
+                        <div class="item-left-content">
+                            <span>
+                                Rasel
+                            </span>
+                        </div>
+                        <div class="item-center-content">
+                            <div class="progress-label">
+                                20 OF 24
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="item-right-content">
+                            <div class="totla-earning">
+                                $ <b>0.0200</b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="recent-activity-item-outer">
+                    <div class="text-right text-blue">6 minutes ago</div>
+                    <div class="item-title">
+                        <span>Install and Register App </span>
+                    </div>
+                    <div class="item-content">
+                        <div class="item-left-content">
+                            <span>
+                                Rasel
+                            </span>
+                        </div>
+                        <div class="item-center-content">
+                            <div class="progress-label">
+                                20 OF 24
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="item-right-content">
+                            <div class="totla-earning">
+                                $ <b>0.0200</b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="recent-activity-item-outer">
+                    <div class="text-right text-blue">6 minutes ago</div>
+                    <div class="item-title">
+                        <span>Install and Register App </span>
+                    </div>
+                    <div class="item-content">
+                        <div class="item-left-content">
+                            <span>
+                                Rasel
+                            </span>
+                        </div>
+                        <div class="item-center-content">
+                            <div class="progress-label">
+                                20 OF 24
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 35%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="item-right-content">
+                            <div class="totla-earning">
+                                $ <b>0.0200</b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="recent-activity-item-outer">
+                    <div class="text-right text-blue">6 minutes ago</div>
+                    <div class="item-title">
+                        <span>Install and Register App </span>
+                    </div>
+                    <div class="item-content">
+                        <div class="item-left-content">
+                            <span>
+                                Rasel
+                            </span>
+                        </div>
+                        <div class="item-center-content">
+                            <div class="progress-label">
+                                20 OF 24
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 40%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="item-right-content">
+                            <div class="totla-earning">
+                                $ <b>0.0200</b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="video-section-wrapper">
         <div class="container">
             <div class="col-md-8 m-auto">
                 <div class="video-section-top-content">
                     <h3 class="video-section-top-title">
-                        How <span class="extra-color">Tarded24</span> Works ? And How You Can <span>Get Paid ?</span>
+                        How <span class="extra-color">BD Micro Jobs</span> Works ? And How You Can <span>Get Paid ?</span>
                     </h3>
                     <div class="video-section-top-des-outer">
                         <p class="video-section-top-des">

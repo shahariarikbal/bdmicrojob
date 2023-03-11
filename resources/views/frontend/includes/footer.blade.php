@@ -28,9 +28,13 @@
         </div>
     </div>
     <div class="footer-bottom-section">
-        <div class="footer-bottom-logo">
+        {{-- <div class="footer-bottom-logo">
             <img src="{{ asset('/frontend/') }}/assets/logo/GLOBAL.png">
-        </div>
+        </div> --}}
+        <a href="{{ url('/') }}" class="header-main-logo">
+            {{-- <img src="{{ asset('/frontend/') }}/assets/logo/GLOBAL.png"> --}}
+            BD<span>Microjobs</span>
+        </a>
         <div class="footer-condition-link">
             <ul class="privacy-terms-list">
                 <li class="privacy-terms-list-item">

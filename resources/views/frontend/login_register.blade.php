@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta name="description" content="Askbootstrap">
       <meta name="author" content="Askbootstrap">
-      <title>Global Earn Money</title>
+      <title>BD Micro Jobs</title>
       <link rel="icon" type="image/png" href="img/favicon.png">
       <link href="{{ asset('/backend/') }}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
       <link href="{{ asset('/backend/') }}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
