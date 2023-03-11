@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '9eae8168a407d5cf44c918184367203d11260b88',
+        'reference' => '9ecf6b2dd006d7fa97806cdf7bf234f654e91693',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -176,12 +176,12 @@
             'dev_requirement' => false,
         ),
         'guzzlehttp/psr7' => array(
-            'pretty_version' => '2.4.3',
-            'version' => '2.4.3.0',
+            'pretty_version' => '2.4.4',
+            'version' => '2.4.4.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../guzzlehttp/psr7',
             'aliases' => array(),
-            'reference' => '67c26b443f348a51926030c83481b85718457d3d',
+            'reference' => '3cf1b6d4f0c820a2cf8bcaec39fc698f3443b5cf',
             'dev_requirement' => false,
         ),
         'hamcrest/hamcrest-php' => array(
@@ -400,7 +400,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '9eae8168a407d5cf44c918184367203d11260b88',
+            'reference' => '9ecf6b2dd006d7fa97806cdf7bf234f654e91693',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
@@ -739,8 +739,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0.0 || 2.0.0 || 3.0.0',
-                1 => '1.0|2.0',
+                0 => '1.0|2.0',
+                1 => '1.0.0 || 2.0.0 || 3.0.0',
             ),
         ),
         'psr/simple-cache' => array(
