@@ -16,7 +16,7 @@
 @section('content')
 
 {{-- container-fluid pb-0 here --}}
-<div class="container-fluid pb-0">
+<!-- <div class="container-fluid pb-0">
     <div class="top-mobile-search">
        <div class="row">
           <div class="col-md-12">
@@ -323,7 +323,10 @@
            @endforeach
        </div>
     </div>
- </div>
+ </div> -->
+<div class="dashboard-section">
+   <marquee>Please buy a plane and safe your money !</marquee>
+</div>
 @endsection
 
 @push('page-scripts')
