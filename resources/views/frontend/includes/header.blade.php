@@ -3,7 +3,7 @@
         <!-- logo start -->
         <a href="{{ url('/') }}" class="header-main-logo">
             {{-- <img src="{{ asset('/frontend/') }}/assets/logo/GLOBAL.png"> --}}
-            BD<span>Microjobs</span>
+            BD<span>Microjob</span>
         </a>
         <!-- logo End -->
         <!-- Small Device btn start -->
@@ -27,13 +27,13 @@
                 </a>
             </li>
             <li class="nav-item-main">
-                <a class="nav-item-main-link" href="#">FAQs</a>
+                <a class="nav-item-main-link" href="#">FAQ</a>
             </li>
             <li class="nav-item-main">
                 @if(!Auth::check())
 
 
-                  <a class="nav-item-main-link hide-item" href="{{ url('/login') }}" style="cursor: pointer;">Login / Register</a>
+                  <a class="nav-item-main-link hide-item" href="{{ url('/user/register/form') }}" style="cursor: pointer;">Login / Register</a>
 
                 @else
 
@@ -63,7 +63,7 @@
         <div class="login-register-btn-outer">
             @if(!Auth::check())
 
-              <button onclick="location.href='{{ url('login') }}'" class="login-register-btn" name="button" type="button" style="cursor: pointer;">Login / Register</button>
+              <button onclick="location.href='{{ url('user/register/form') }}'" class="login-register-btn" name="button" type="button" style="cursor: pointer;">Login / Register</button>
 
             @else
 
@@ -76,7 +76,7 @@
 
 <form action="{{ url('logout') }}" method="post" class="d-none" id="logout">
   @csrf
-  
+
 </form>
 
 <div class="sign-in-modal">

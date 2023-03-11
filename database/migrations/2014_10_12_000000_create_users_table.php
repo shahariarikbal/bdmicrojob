@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('avatar')->nullable();
             $table->boolean('status')->default(1);
-            $table->string('refer_code')->unique();
+            $table->string('refer_code')->unique()->nullable();
             $table->float('total_income', 10,2)->nullable()->default(0);
             $table->float('total_withdraw', 10,2)->nullable()->default(0);
             $table->timestamp('email_verified_at')->nullable();
