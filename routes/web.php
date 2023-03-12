@@ -39,6 +39,9 @@ Route::get('flush', function() {
 
 Route::get('/', [FrontendController::class, 'index']);
 
+Route::get('/user/register/form', [\App\Http\Controllers\UserController::class, 'userRegister']);
+Route::post('/user/register', [\App\Http\Controllers\UserController::class, 'userRegisterStore']);
+
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'home'])->name('home');

@@ -2249,3 +2249,48 @@ footer.sticky-footer {
     color: white;
     border-radius: 3px;
 }
+
+/*Coustom css start*/
+
+/*Header css start*/
+.toggled-btn-outer {
+    text-align: center;
+}
+
+.header-left-side {
+    display: inline-flex;
+    align-items: center;
+}
+
+.sidebar-toggled .toggled-btn-outer {
+    text-align: start;
+    padding-left: 10px;
+}
+
+.header-left-side button i {
+    font-size: 25px;
+    color: #000;
+}
+
+.user-navbar-items-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3%;
+}
+
+.user-navbar-items-wrap .navbar-brand {
+    display: inline-block;
+}
+
+.user-navbar-items-wrap .navbar-brand img {
+    width: 100%;
+    max-width: 90px;
+}
+.earning-btn-outer span:first-child {
+    margin-bottom: 5px;
+}
+/*Header css End*/
+
+
+/*Coustom css End*/
