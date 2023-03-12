@@ -7,8 +7,8 @@
    </li>
    <li class="nav-item">
        <a class="nav-link" href="#">
-          <i class="fas fa-solid fa-dollar-sign"></i>
-       <span>Earnings</span>
+          <i class="fas fa-check"></i>
+       <span>Verify Now</span>
        </a>
    </li>
    <li class="nav-item {{ Request::url() == url('/video-ads') ? 'active' : '' }}">

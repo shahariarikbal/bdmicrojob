@@ -324,8 +324,91 @@
        </div>
     </div>
  </div> -->
-<div class="dashboard-section">
-   <marquee>Please buy a plane and safe your money !</marquee>
+<div class="dashboard-section container-fluid pt-5">
+   <div class="row">
+      <div class="col-md-10 m-auto">
+         <marquee>Please buy a plane and safe your money !</marquee>   
+         <div class="job-items-wrapper">
+            <form action="" method="" class="select-category-outer">
+               <select name="category">
+                  <option selected disabled>--- Select Category ---</option>
+                  <option value="Youtube">Youtube</option>
+                  <option value="Youtube">Youtube</option>
+                  <option value="Youtube">Youtube</option>
+                  <option value="Youtube">Youtube</option>
+                  <option value="Youtube">Youtube</option>
+               </select>
+            </form>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+              Select Category
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Select Category</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="" method="" class="select-category-form">
+                        <div class="category-items-wrap">
+                           <div class="category-item-outer">
+                              <input type="radio" id="youtube" name="category" class="category-item-radio">
+                              <label for="youtube" class="category-item-label">Youtube</label>
+                           </div>
+                           <div class="category-item-outer">
+                              <input type="radio" id="youtube" name="category" class="category-item-radio">
+                              <label for="youtube" class="category-item-label">Youtube</label>
+                           </div>
+                           <div class="category-item-outer">
+                              <input type="radio" id="youtube" name="category" class="category-item-radio">
+                              <label for="youtube" class="category-item-label">Youtube</label>
+                           </div>
+                           <div class="category-item-outer">
+                              <input type="radio" id="youtube" name="category" class="category-item-radio">
+                              <label for="youtube" class="category-item-label">Youtube</label>
+                           </div>
+                           <div class="category-item-outer">
+                              <input type="radio" id="youtube" name="category" class="category-item-radio">
+                              <label for="youtube" class="category-item-label">Youtube</label>
+                           </div>                           
+                        </div>
+                        <div class="submit-btn-outer">
+                           <button type="submit" class="submit-btn-inner">Apply</button>
+                        </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a href="#" class="job-item-outer">
+               <div class="job-item-left">
+                  <h5 class="job-title">
+                     Game of 11 
+                  </h5>
+               </div>
+               <div class="job-item-center">
+                  <div class="progress-label">
+                     20 OF 24
+                  </div>
+                  <div class="progress">
+                     <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+               </div>
+               <div class="job-item-right">
+                  <h4 class="totla-earning">
+                     $ 0.0200
+                  </h4>
+               </div>
+            </a>
+         </div>
+      </div>
+   </div>   
 </div>
 @endsection
 
