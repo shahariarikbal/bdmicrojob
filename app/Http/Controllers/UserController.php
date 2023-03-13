@@ -33,4 +33,9 @@ class UserController extends Controller
     {
         return view('user.dashboard');
     }
+
+    public function showPostJob()
+    {
+        return view('frontend.auth.user.job.post-job');
+    }
 }

@@ -12,9 +12,9 @@
        </a>
    </li>
    <li class="nav-item {{ Request::url() == url('/video-ads') ? 'active' : '' }}">
-       <a class="nav-link" href="{{ url('video-ads') }}">
-          <i class="fab fa-youtube"></i>
-       <span>Video ads</span>
+       <a class="nav-link" href="{{ url('/post/job') }}">
+          <i class="fas fa-plus-circle"></i>
+       <span>Post Job</span>
        </a>
    </li>
    <li class="nav-item {{ Request::url() == url('/my-code') ? 'active' : '' }}">

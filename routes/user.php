@@ -14,3 +14,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/user/register/form', [\App\Http\Controllers\UserController::class, 'userRegister']);
 Route::post('/user/register', [\App\Http\Controllers\UserController::class, 'userRegisterStore']);
+
+Route::get('/post/job', [\App\Http\Controllers\UserController::class, 'showPostJob']);
