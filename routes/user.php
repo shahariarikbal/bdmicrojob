@@ -16,3 +16,7 @@ Route::get('/user/register/form', [\App\Http\Controllers\UserController::class, 
 Route::post('/user/register', [\App\Http\Controllers\UserController::class, 'userRegisterStore']);
 
 Route::get('/post/job', [\App\Http\Controllers\UserController::class, 'showPostJob']);
+Route::get('/account/varify', [\App\Http\Controllers\UserController::class, 'showAccountVarify']);
+Route::get('/my/task', [\App\Http\Controllers\UserController::class, 'showMyTask']);
+Route::get('/accepted/task', [\App\Http\Controllers\UserController::class, 'showAcceptedTask']);
+Route::get('/deposit', [\App\Http\Controllers\UserController::class, 'showDeposit']);

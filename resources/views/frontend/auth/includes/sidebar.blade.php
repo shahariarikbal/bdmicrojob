@@ -5,34 +5,34 @@
        <span>Dashboard</span>
        </a>
    </li>
-   <li class="nav-item">
-       <a class="nav-link" href="#">
+   <li class="nav-item {{ Request::url() == url('/account/varify') ? 'active' : '' }}">
+       <a class="nav-link" href="{{ url('/account/varify') }}">
           <i class="fas fa-check"></i>
        <span>Verify Now</span>
        </a>
    </li>
-   <li class="nav-item {{ Request::url() == url('/video-ads') ? 'active' : '' }}">
+   <li class="nav-item {{ Request::url() == url('/post/job') ? 'active' : '' }}">
        <a class="nav-link" href="{{ url('/post/job') }}">
           <i class="fas fa-plus-circle"></i>
        <span>Post Job</span>
        </a>
    </li>
-   <li class="nav-item {{ Request::url() == url('/my-code') ? 'active' : '' }}">
-       <a class="nav-link" href="{{ url('my-code') }}">
-          <i class="fas fa-qrcode"></i>
-       <span>My Code</span>
+   <li class="nav-item {{ Request::url() == url('/my/task') ? 'active' : '' }}">
+       <a class="nav-link" href="{{ url('/my/task') }}">
+        <i class="fas fa-tasks"></i>
+       <span>My Task</span>
        </a>
    </li>
-   <li class="nav-item {{ Request::url() == url('/link') ? 'active' : '' }}">
-       <a class="nav-link" href="{{ url('/user/membership') }}">
-        <i class="fas fa-desktop"></i>
-       <span>Membership</span>
+   <li class="nav-item {{ Request::url() == url('/accepted/task') ? 'active' : '' }}">
+       <a class="nav-link" href="{{ url('/accepted/task') }}">
+        <i class="fas fa-check-double"></i>
+       <span>Accepted Task</span>
        </a>
    </li>
-   <li class="nav-item {{ Request::url() == url('/link') ? 'active' : '' }}">
-       <a class="nav-link" href="{{ url('/user/settings') }}">
-        <i class="fas fa-cog"></i>
-       <span>Settings</span>
+   <li class="nav-item {{ Request::url() == url('/deposit') ? 'active' : '' }}">
+       <a class="nav-link" href="{{ url('/deposit') }}">
+        <i class="far fa-credit-card"></i>
+       <span>Deposit</span>
        </a>
    </li>
    <li class="nav-item {{ Request::url() == url('/link') ? 'active' : '' }}">

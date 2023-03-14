@@ -38,4 +38,24 @@ class UserController extends Controller
     {
         return view('frontend.auth.user.job.post-job');
     }
+
+    public function showAccountVarify()
+    {
+        return view('frontend.auth.user.account-varify');
+    }
+
+    public function showMyTask()
+    {
+        return view('frontend.auth.user.my-task');
+    }
+
+    public function showAcceptedTask()
+    {
+        return view('frontend.auth.user.accepted-task');
+    }
+
+    public function showDeposit()
+    {
+        return view('frontend.auth.user.deposit');
+    }
 }
