@@ -3,15 +3,10 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-dev',
         'version' => 'dev-dev',
-        'reference' => '9ecf6b2dd006d7fa97806cdf7bf234f654e91693',
+        'reference' => 'e8435c80553d32329e4ab067912806dfd578a3fd',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-<<<<<<< HEAD
-=======
-        'reference' => '9ecf6b2dd006d7fa97806cdf7bf234f654e91693',
-        'name' => 'laravel/laravel',
->>>>>>> 8b8e6666efe06c5173ea8d732e1c64d3335cbccb
         'dev' => true,
     ),
     'versions' => array(
@@ -183,17 +178,10 @@
         'guzzlehttp/psr7' => array(
             'pretty_version' => '2.4.4',
             'version' => '2.4.4.0',
-<<<<<<< HEAD
             'reference' => '3cf1b6d4f0c820a2cf8bcaec39fc698f3443b5cf',
             'type' => 'library',
             'install_path' => __DIR__ . '/../guzzlehttp/psr7',
             'aliases' => array(),
-=======
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../guzzlehttp/psr7',
-            'aliases' => array(),
-            'reference' => '3cf1b6d4f0c820a2cf8bcaec39fc698f3443b5cf',
->>>>>>> 8b8e6666efe06c5173ea8d732e1c64d3335cbccb
             'dev_requirement' => false,
         ),
         'hamcrest/hamcrest-php' => array(
@@ -409,14 +397,10 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-dev',
             'version' => 'dev-dev',
-            'reference' => '9ecf6b2dd006d7fa97806cdf7bf234f654e91693',
+            'reference' => 'e8435c80553d32329e4ab067912806dfd578a3fd',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-<<<<<<< HEAD
-=======
-            'reference' => '9ecf6b2dd006d7fa97806cdf7bf234f654e91693',
->>>>>>> 8b8e6666efe06c5173ea8d732e1c64d3335cbccb
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
