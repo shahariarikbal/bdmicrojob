@@ -63,5 +63,9 @@ class DatabaseSeeder extends Seeder
                 'per_month_charge' => 800,
                 'per_video_cost' => 8.00,
         ]);
+
+        $this->call([
+            CategorySeeder::class,
+        ]);
     }
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\MembershipController;
 use App\Http\Controllers\Backend\VideoController;
 use App\Http\Controllers\Backend\JobController;
 use App\Http\Controllers\Backend\AdvertisementController;
+use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\HelpSupportController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\HomeController;
@@ -82,6 +83,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
    Route::post('/membership/update/{id}', [MembershipController::class, 'update']);
    Route::post('/membership/delete/{id}', [MembershipController::class, 'delete']);
 
+   //Categories....
+   Route::get('/categories', [CategoryController::class,'showCategory']);
+   Route::get('/category/create', [CategoryController::class,'createCategory']);
+   Route::post('/category/store', [CategoryController::class,'storeCategory']);
    //Jobs....
    Route::get('/jobs', [JobController::class,'showJob']);
 
