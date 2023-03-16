@@ -321,8 +321,8 @@ class ComposerStaticInit163af229efdde53ab25b84f3ca0ffae4
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -520,6 +520,7 @@ class ComposerStaticInit163af229efdde53ab25b84f3ca0ffae4
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Backend\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/AdminController.php',
         'App\\Http\\Controllers\\Backend\\AdvertisementController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/AdvertisementController.php',
+        'App\\Http\\Controllers\\Backend\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/CategoryController.php',
         'App\\Http\\Controllers\\Backend\\HelpSupportController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/HelpSupportController.php',
         'App\\Http\\Controllers\\Backend\\JobController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/JobController.php',
         'App\\Http\\Controllers\\Backend\\MembershipController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/MembershipController.php',
@@ -539,6 +540,7 @@ class ComposerStaticInit163af229efdde53ab25b84f3ca0ffae4
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Models\\Admin' => __DIR__ . '/../..' . '/app/Models/Admin.php',
+        'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
         'App\\Models\\Membership' => __DIR__ . '/../..' . '/app/Models/Membership.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\UserVideo' => __DIR__ . '/../..' . '/app/Models/UserVideo.php',

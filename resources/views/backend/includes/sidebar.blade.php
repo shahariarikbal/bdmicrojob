@@ -5,6 +5,12 @@
        <span>Home</span>
        </a>
     </li>
+    <li class="nav-item {{ Request::url() == url('admin/categories') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('/admin/categories') }}">
+        <i class="fa fa-tasks"></i>
+        <span>Categories</span>
+        </a>
+     </li>
     <li class="nav-item {{ Request::url() == url('admin/jobs') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('/admin/jobs') }}">
         <i class="fa fa-tasks"></i>

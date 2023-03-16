@@ -2287,10 +2287,490 @@ footer.sticky-footer {
     width: 100%;
     max-width: 90px;
 }
-.earning-btn-outer span:first-child {
-    margin-bottom: 5px;
-}
 /*Header css End*/
 
+/*User dashboard css start*/
+.dashboard-section marquee {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #833dbf;
+}
 
+.job-items-wrapper {
+    background: #d6ebf1;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.select-category-outer {
+    margin-bottom: 20px;
+}
+
+.select-category-outer select {
+    width: 270px;
+    height: 50px;
+    background: #1da1f2;
+    box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%);
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+}
+
+.select-category-outer select:focus-visible {
+    outline: none;
+}
+
+.job-item-outer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.job-item-outer:hover {
+    border-left: 2px solid #2d40d0;
+}
+
+.job-item-left .job-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 0;
+}
+
+.job-item-center {
+    width: 33.33%;
+}
+
+.job-item-center .progress-label {
+    text-align: center;
+    font-size: 14px;
+    color: #000;
+    font-weight: 500;
+}
+
+.job-item-center .progress {
+    height: 10px;
+}
+
+.job-item-right .totla-earning {
+    font-size: 18px;
+    margin-bottom: 0;
+    font-weight: 700;
+    color: #2d3fd0;
+}
+
+.category-item-outer {
+    position: relative;
+    background: #ddd;
+    margin-right: 10px;
+    width: 100px;
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+}
+
+.category-item-label,
+.category-item-radio {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.category-item-radio {
+  opacity: 0.011;
+  z-index: 100;
+}
+
+.category-item-radio:checked + .category-item-label {
+  background: #7E41C2;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.category-item-label {
+    cursor: pointer;
+    z-index: 90;
+    line-height: 1.8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.category-items-wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.submit-btn-outer {
+    margin-top: 20px;
+    padding-top: 10px;
+    text-align: center;
+    border-top: 1px solid #ddd;
+}
+
+.submit-btn-outer .submit-btn-inner {
+    border: none;
+    background: linear-gradient(135deg, #6908ac 0%, #1755de 100%);
+    padding: 8px 26px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 5px;
+}
+/*User dashboard css End*/
+
+/*Admission Form Css Start*/
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    color: lightgrey;
+    padding-left: 0;
+}
+
+#progressbar .active {
+    color: #7E41C2;
+}
+
+#progressbar li {
+    list-style-type: none;
+    font-size: 15px;
+    width: 33.33%;
+    float: left;
+    position: relative;
+    font-weight: 400;
+    text-align: center;
+}
+
+#progressbar #professional:before {
+    font-family: FontAwesome;
+    content: "2"
+}
+
+#progressbar #personal:before {
+    font-family: FontAwesome;
+    content: "1"
+}
+
+#progressbar #address:before {
+    font-family: FontAwesome;
+    content: "3"
+}
+
+#progressbar #payment:before {
+    font-family: FontAwesome;
+    content: "4"
+}
+
+#progressbar #image:before {
+    font-family: FontAwesome;
+    content: "5"
+}
+
+#progressbar #confirm:before {
+    font-family: FontAwesome;
+    content: "\f00c"
+}
+
+#progressbar li:before {
+    width: 50px;
+    height: 50px;
+    line-height: 45px;
+    display: block;
+    font-size: 20px;
+    color: #ffffff;
+    background: lightgray;
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+    padding: 2px
+}
+
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: lightgray;
+    position: absolute;
+    left: 0;
+    top: 25px;
+    z-index: -1
+}
+
+#progressbar li.finish:before,
+#progressbar li.finish:after {
+    background: #7e41c2;
+}
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+    background: #7E41C2;
+}
+
+.fs-title {
+    font-size: 20px;
+    color: #7E41C2;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: left;
+}
+
+.steps {
+    font-size: 20px;
+    color: gray;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: right;
+}
+
+#postJob label {
+    font-size: 15px;
+    font-weight: 500;
+    color: #000;
+}
+
+#postJob input.form-control {
+    padding: 8px 15px 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    margin-bottom: 20px;
+    margin-top: 2px;
+    width: 100%;
+    height: 50px;
+    box-sizing: border-box;
+    font-family: montserrat;
+    color: #2C3E50;
+    font-size: 16px;
+    letter-spacing: 1px;
+    border-radius: 5px;
+}
+
+#postJob textarea.form-control {
+    padding: 8px 15px 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    margin-bottom: 20px;
+    margin-top: 2px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: montserrat;
+    color: #2C3E50;
+    font-size: 16px;
+    letter-spacing: 1px;
+    border-radius: 5px;
+}
+
+#postJob input:focus,
+#postJob textarea:focus {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #7E41C2;
+}
+
+#postJob input.invalid {
+  background-color: #7e41c233;
+}
+
+#postJob .tab {
+  display: none;
+  margin-bottom: 20px;
+}
+
+#postJob button {
+    background-color: #7E41C2;
+    color: #ffffff;
+    border: none;
+    padding: 8px 20px;
+    font-size: 18px;
+    font-family: Raleway;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#postJob button:focus {
+    outline: none;
+}
+
+button#prevBtn {
+    opacity: 0.7;
+}
+
+#postJob button:hover {
+  opacity: 0.8;
+}
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+.step.finish {
+  color: #7e41c2;
+}
+
+.post-job-form-wrapper {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.post-job-form-wrapper .right-content {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.right-content input#estimatedJobCost {
+    border-radius: initial;
+}
+/*Admission Form Css End*/
+/* Account varifications css start */
+.account-varify-section {
+    padding: 40px 0;
+}
+
+.account-varify-form {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.account-varify-form .title {
+    font-size: 20px;
+    font-weight: 500;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+    color: #7E41C2;
+}
+
+.account-varify-form .form-control-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 5px;
+}
+
+.account-varify-form select,.account-varify-form input {
+    width: 100%;
+    height: 50px;
+    font-size: 14px;
+    color: #000;
+    font-weight: 500;
+}
+
+.account-varify-form select:focus, .account-varify-form input:focus {
+    border: 1px solid #7E41C2;
+    box-shadow: none;
+}
+
+.account-varify-form p.text-blue {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 5px;
+}
+
+.account-varify-form .custom-file-label-drop {
+    background: #eceff0;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 15px;
+}
+
+.account-varify-form img#cardPreview {
+    margin-bottom: 20px;
+}
+
+.account-varify-btn-outer {
+    margin-top: 20px;
+}
+
+.account-varify-btn-inner {
+    background: #7E41C2;
+    border: 1px solid #7E41C2;
+    padding: 8px 25px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 5px;
+    transition: all .3s ease;
+}
+
+button.account-varify-btn-inner:hover {
+    background: transparent;
+    color: #7E41C2;
+}
+/* Account varifications css End */
+
+/* My task css start */
+.my-task-th-outer th {
+    font-size: 15px;
+}
+.my-task-valued td h6 {
+    font-size: 14px;
+}
+.accepted-task-proves-image {
+    width: 100%;
+    max-width: 150px;
+}
+/* My task css End */
+
+/* Deposit page css start */
+.deposit-sec-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #7E41C2;
+}
+
+.deposit-sec-notice {
+    font-size: 16px;
+    text-align: center;
+    border: 1px solid red;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.deposit-form-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+.deposit-form-input {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 15px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #000;
+}
+
+.deposit-form-input:focus {
+    border: 1px solid #7E41C2;
+    box-shadow: none;
+    border-radius: 4px;
+}
+/* Deposit page css End */
+
+@media screen and ( max-width: 560px ){
+    .earning-btn-outer span:first-child {
+        margin-bottom: 5px;
+    }
+}
 /*Coustom css End*/
