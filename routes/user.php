@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\JobController;
 use App\Http\Controllers\Backend\AdvertisementController;
 use App\Http\Controllers\Backend\HelpSupportController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Payment\DepositController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,4 +20,7 @@ Route::get('/post/job', [\App\Http\Controllers\UserController::class, 'showPostJ
 Route::get('/account/varify', [\App\Http\Controllers\UserController::class, 'showAccountVarify']);
 Route::get('/my/task', [\App\Http\Controllers\UserController::class, 'showMyTask']);
 Route::get('/accepted/task', [\App\Http\Controllers\UserController::class, 'showAcceptedTask']);
-Route::get('/deposit', [\App\Http\Controllers\UserController::class, 'showDeposit']);
+
+//Deposit...
+Route::get('/instant/deposit', [App\Http\Controllers\Payment\DepositController::class, 'showDeposit']);
+Route::post('/store/deposit', [App\Http\Controllers\Payment\DepositController::class, 'storeDeposit']);

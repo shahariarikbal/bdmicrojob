@@ -54,8 +54,8 @@ class UserController extends Controller
         return view('frontend.auth.user.accepted-task');
     }
 
-    public function showDeposit()
-    {
-        return view('frontend.auth.user.deposit');
-    }
+    // public function showDeposit()
+    // {
+    //     return view('frontend.auth.user.deposit');
+    // }
 }

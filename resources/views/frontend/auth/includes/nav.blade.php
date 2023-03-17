@@ -1,16 +1,16 @@
-<nav class="navbar-expand navbar-light bg-white static-top osahan-nav sticky-top">           
+<nav class="navbar-expand navbar-light bg-white static-top osahan-nav sticky-top">
     <div class="user-navbar-items-wrap">
         <div class="header-left-side">
             <button class="btn btn-link btn-sm text-secondary order-1 order-sm-0" id="sidebarToggle">
                <i class="fas fa-bars"></i>
-            </button> 
+            </button>
             <a class="navbar-brand mr-1" href="#">
                 <img class="img-fluid" alt="" src="{{asset('backend')}}/img/logo.png">
             </a>
         </div>
         <div class="text-center earning-btn-outer" style="display: inline-block">
             <span class="btn btn-sm text-white" style="background:#000066">Earning: $0.0006</span>
-            <span class="btn btn-sm text-white" style="background:#008000">Deposit: $0.0000</span>
+            <span class="btn btn-sm text-white" style="background:#008000">Deposit: {{ $total_deposit->total_deposit }}tk</span>
         </div>
         <ul class="navbar-nav ml-auto ml-md-0 osahan-right-navbar">
             <li class="nav-item dropdown no-arrow mx-1">

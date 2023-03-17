@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\VideoController;
 use App\Http\Controllers\Backend\JobController;
 use App\Http\Controllers\Backend\AdvertisementController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\PaymentController;
 use App\Http\Controllers\Backend\HelpSupportController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\HomeController;
@@ -95,6 +96,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
 
    //Advertisements....
    Route::get('/help-support', [HelpSupportController::class,'showHelpSupport']);
+
+   //Deposit Requests....
+   Route::get('/deposit/request', [PaymentController::class,'showDepositRequest']);
+   Route::get('/deposit/approve/{id}', [PaymentController::class,'approveDeposit']);
 
 
 
