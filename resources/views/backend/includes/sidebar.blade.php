@@ -41,10 +41,10 @@
        <span>Memberships</span>
        </a>
     </li>
-    <li class="nav-item {{ Request::url() == url('admin/link') ? 'active' : '' }}">
-       <a class="nav-link" href="{{ url('/admin/withdraw/request') }}">
+    <li class="nav-item {{ Request::url() == url('admin/deposit/request') ? 'active' : '' }}">
+       <a class="nav-link" href="{{ url('admin/deposit/request') }}">
         <i class="fas fa-money-bill"></i>
-       <span>Payments request</span>
+       <span>Deposit Requests</span>
        </a>
     </li>
     <li class="nav-item {{ Request::url() == url('admin/help-support') ? 'active' : '' }}">
