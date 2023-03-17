@@ -54,12 +54,13 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ url('admin/deposit/approve' , $deposit->id) }}" onclick="return confirm('Are you sure??')" class="btn btn-sm btn-danger">Approve</a>
+                                    <a href="{{ url('admin/deposit/approve/'.$deposit->id) }}" onclick="return confirm('Are you sure??')" class="btn btn-sm btn-danger">Approve</a>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                       </table>
+                      {{ $deposits->links() }}
                 </div>
             </div>
         </div>
