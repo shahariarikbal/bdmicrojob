@@ -44,6 +44,11 @@ class DepositController extends Controller
             $deposit->transaction_id = $request->transaction_id;
             $deposit->deposit_amount = $request->deposit_amount;
             $deposit->save();
+
+            //Email
+               //Deposit Mail to Admin...
+            //Email
+
             return redirect()->back()->with('Success','Deposit will be approved soon!!');
         }
 
