@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit163af229efdde53ab25b84f3ca0ffae4
+class ComposerStaticIniteb20c68a029fa31f697a5422c0eb8222
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -321,8 +321,8 @@ class ComposerStaticInit163af229efdde53ab25b84f3ca0ffae4
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-factory/src',
-            1 => __DIR__ . '/..' . '/psr/http-message/src',
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+            1 => __DIR__ . '/..' . '/psr/http-factory/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -539,6 +539,7 @@ class ComposerStaticInit163af229efdde53ab25b84f3ca0ffae4
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Requests\\CategoryRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CategoryRequest.php',
         'App\\Models\\Admin' => __DIR__ . '/../..' . '/app/Models/Admin.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
         'App\\Models\\Membership' => __DIR__ . '/../..' . '/app/Models/Membership.php',
@@ -664,6 +665,7 @@ class ComposerStaticInit163af229efdde53ab25b84f3ca0ffae4
         'Cron\\MinutesField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MinutesField.php',
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
+        'Database\\Seeders\\CategorySeeder' => __DIR__ . '/../..' . '/database/seeders/CategorySeeder.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
@@ -5519,10 +5521,10 @@ class ComposerStaticInit163af229efdde53ab25b84f3ca0ffae4
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit163af229efdde53ab25b84f3ca0ffae4::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit163af229efdde53ab25b84f3ca0ffae4::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit163af229efdde53ab25b84f3ca0ffae4::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit163af229efdde53ab25b84f3ca0ffae4::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticIniteb20c68a029fa31f697a5422c0eb8222::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticIniteb20c68a029fa31f697a5422c0eb8222::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticIniteb20c68a029fa31f697a5422c0eb8222::$prefixesPsr0;
+            $loader->classMap = ComposerStaticIniteb20c68a029fa31f697a5422c0eb8222::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -18,15 +18,15 @@ class DatabaseSeeder extends Seeder
     	DB::statement("DELETE FROM admins");
         DB::table('admins')->insert([
                 'name' => 'Admin',
-                'email' => 'admin@globalearnmoney.com',
+                'email' => 'admin@admin.com',
                 'password' => bcrypt('11'),
         ]);
         DB::statement("DELETE FROM users");
         DB::table('users')->insert([
                 'name' => 'User',
-                'email' => 'theahmedsabbir@gmail.com',
+                'email' => 'user@info.com',
                 'phone' => '0143435435435',
-                'password' => Hash::make('11111111'),
+                'password' => Hash::make('11'),
                 'avatar' => 'default.jpg',
                 'refer_code' => 'USER101',
         ]);
