@@ -11,7 +11,7 @@ class PaymentController extends Controller
 {
     public function showDepositRequest ()
     {
-        $deposits = Deposit::Paginate(10);
+        $deposits = Deposit::orderBy('created_at','desc')->Paginate(10);
         return view('backend.payment.show-deposit', compact('deposits'));
     }
 
