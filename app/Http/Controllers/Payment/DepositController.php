@@ -44,7 +44,7 @@ class DepositController extends Controller
             $deposit->transaction_id = $request->transaction_id;
             $deposit->deposit_amount = $request->deposit_amount;
             $deposit->save();
-            return redirect('/dashboard')->with('Success','Deposit will be approved soon!!');
+            return redirect()->back()->with('Success','Deposit will be approved soon!!');
         }
 
         else{
