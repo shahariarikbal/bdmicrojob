@@ -29,8 +29,8 @@
        <span>Accepted Task</span>
        </a>
    </li>
-   <li class="nav-item {{ Request::url() == url('/deposit') ? 'active' : '' }}">
-       <a class="nav-link" href="{{ url('/deposit') }}">
+   <li class="nav-item {{ Request::url() == url('/instant/deposit') ? 'active' : '' }}">
+       <a class="nav-link" href="{{ url('/instant/deposit') }}">
         <i class="far fa-credit-card"></i>
        <span>Deposit</span>
        </a>
