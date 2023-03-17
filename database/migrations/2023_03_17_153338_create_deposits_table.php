@@ -24,7 +24,7 @@ class CreateDepositsTable extends Migration
             $table->string('post_code');
             $table->string('payment_gateway');
             $table->string('transaction_id')->unique();
-            $table->string('deposit_amount');
+            $table->float('deposit_amount');
             $table->string('screenshot')->nullable();
             $table->boolean('is_approved')->default(false);
             $table->timestamps();
