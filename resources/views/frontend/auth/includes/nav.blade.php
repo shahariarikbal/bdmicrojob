@@ -5,12 +5,12 @@
                <i class="fas fa-bars"></i>
             </button>
             <a class="navbar-brand mr-1" href="#">
-                <img class="img-fluid" alt="" src="{{asset('backend')}}/img/logo.png">
+                <img src="{{ asset('/frontend/') }}/assets/logo/bd jobs.png" />
             </a>
         </div>
-        <div class="text-center earning-btn-outer" style="display: inline-block">
-            <span class="user-dashb-earning-btn">Earning: $0.0006</span>
-            <span class="user-dashb-deposit-btn">Deposit: {{ $total_deposit->total_deposit }}tk</span>
+        <div class="text-center earning-btn-outer">
+            <h4 class="user-dashb-earning-btn">Earning: $0.0006</h4>
+            <h4 class="user-dashb-deposit-btn">Deposit: {{ $total_deposit->total_deposit }}tk</h4>
         </div>
         <ul class="navbar-nav ml-auto ml-md-0 osahan-right-navbar">
             <li class="nav-item dropdown no-arrow mx-1">

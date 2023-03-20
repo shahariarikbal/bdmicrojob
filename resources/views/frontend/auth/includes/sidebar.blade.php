@@ -14,7 +14,7 @@
    <li class="nav-item {{ Request::url() == url('/post/job') ? 'active' : '' }}">
        <a class="nav-link" href="{{ url('/post/job') }}">
           <i class="fas fa-plus-circle"></i>
-       <span>Post Job</span>
+       <span>Job Post</span>
        </a>
    </li>
    <li class="nav-item {{ Request::url() == url('/my/task') ? 'active' : '' }}">

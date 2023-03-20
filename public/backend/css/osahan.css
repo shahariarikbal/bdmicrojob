@@ -12,19 +12,6 @@ body {
     height: 100%;
 }
 
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {}
-
 #wrapper {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -37,11 +24,11 @@ h6 {}
 }
 
 #wrapper #content-wrapper .container-fluid {
-    padding: 30px 30px 30px 255px;
+    padding: 30px 30px 30px 30px;
 }
 
 .sidebar-toggled #wrapper #content-wrapper .container-fluid {
-    padding: 30px 30px 30px 121px;
+    padding: 30px 30px 30px 30px;
 }
 
 .single-channel-page {
@@ -1451,17 +1438,8 @@ h6 {
     .top-mobile-search {
         display: block;
     }
-    #wrapper #content-wrapper .container-fluid {
-        padding-bottom: 15px !important;
-        padding-left: 108px;
-        padding-right: 15px !important;
-        padding-top: 1rem !important;
-    }
     .sidebar .nav-item .nav-link {
         padding: 8px 14px !important;
-    }
-    .sidebar-toggled #wrapper #content-wrapper .container-fluid {
-        padding-left: 15px;
     }
     .single-channel-page {
         padding: 0 0 0 90px !important;
@@ -1584,17 +1562,8 @@ h6 {
     .top-mobile-search {
         display: block;
     }
-    #wrapper #content-wrapper .container-fluid {
-        padding-bottom: 15px !important;
-        padding-left: 108px;
-        padding-right: 15px !important;
-        padding-top: 1rem !important;
-    }
     .sidebar .nav-item .nav-link {
         padding: 8px 14px !important;
-    }
-    .sidebar-toggled #wrapper #content-wrapper .container-fluid {
-        padding-left: 15px;
     }
     .single-channel-page {
         padding: 0 0 0 90px !important;
@@ -1706,17 +1675,8 @@ h6 {
 /* Medium devices (tablets, 768px and up) */
 
 @media (min-width: 768px) and (max-width: 991.98px) {
-    #wrapper #content-wrapper .container-fluid {
-        padding-bottom: 15px !important;
-        padding-left: 243px;
-        padding-right: 15px !important;
-        padding-top: 1rem !important;
-    }
     .sidebar .nav-item .nav-link {
         padding: 8px 14px !important;
-    }
-    .sidebar-toggled #wrapper #content-wrapper .container-fluid {
-        padding-left: 105px;
     }
     .single-channel-page {
         padding: 0 0 0 225px !important;
@@ -1785,17 +1745,8 @@ h6 {
 /* Large devices (desktops, 992px and up) */
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
-    #wrapper #content-wrapper .container-fluid {
-        padding-bottom: 15px !important;
-        padding-left: 243px;
-        padding-right: 15px !important;
-        padding-top: 1rem !important;
-    }
     .sidebar .nav-item .nav-link {
         padding: 8px 14px !important;
-    }
-    .sidebar-toggled #wrapper #content-wrapper .container-fluid {
-        padding-left: 105px;
     }
     .single-channel-page {
         padding: 0 0 0 225px !important;
@@ -1999,17 +1950,8 @@ footer.sticky-footer {
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
-    #wrapper #content-wrapper .container-fluid {
-        padding-bottom: 15px !important;
-        padding-left: 243px;
-        padding-right: 15px !important;
-        padding-top: 1rem !important;
-    }
     .sidebar .nav-item .nav-link {
         padding: 8px 14px !important;
-    }
-    .sidebar-toggled #wrapper #content-wrapper .container-fluid {
-        padding-left: 105px;
     }
     .single-channel-page {
         padding: 0 0 0 225px !important;
@@ -2076,17 +2018,9 @@ footer.sticky-footer {
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-    #wrapper #content-wrapper .container-fluid {
-        padding-bottom: 15px !important;
-        padding-left: 243px;
-        padding-right: 15px !important;
-        padding-top: 1rem !important;
-    }
+
     .sidebar .nav-item .nav-link {
         padding: 8px 14px !important;
-    }
-    .sidebar-toggled #wrapper #content-wrapper .container-fluid {
-        padding-left: 105px;
     }
     .single-channel-page {
         padding: 0 0 0 225px !important;
@@ -2286,6 +2220,31 @@ footer.sticky-footer {
 .user-navbar-items-wrap .navbar-brand img {
     width: 100%;
     max-width: 90px;
+}
+
+.earning-btn-outer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-dashb-earning-btn {
+    background: #6908ac;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 30px;
+    margin-right: 5px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.user-dashb-deposit-btn {
+    background: #ff4242;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 500;
 }
 /*Header css End*/
 
@@ -2768,11 +2727,46 @@ button.account-varify-btn-inner:hover {
     box-shadow: none;
     border-radius: 4px;
 }
+
+.deposit-checkbox-outer {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.deposit-checkbox-outer input {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.deposit-checkbox-outer label {
+    margin-bottom: 0;
+}
+
+.deposit-form-btn {
+    width: 100%;
+    border: none;
+    background: #6908ac;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: capitalize;
+    padding: 10px 0;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    transition: all .3s ease;
+}
+
+.deposit-form-btn:hover {
+    transform: translateY(-5px);
+}
 /* Deposit page css End */
 
-@media screen and ( max-width: 560px ){
-    .earning-btn-outer span:first-child {
-        margin-bottom: 5px;
+@media screen and ( max-width: 520px ){
+    .earning-btn-outer {
+        display: inline-block;
     }
 }
 /*Coustom css End*/

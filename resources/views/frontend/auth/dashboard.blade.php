@@ -7,7 +7,7 @@
 @push('page-css')
     <style>
     #wrapper #content-wrapper .container-fluid {
-        padding: 30px 30px 30px 120px !important;
+        padding: 30px 30px 30px 30px !important;
     }
 
     </style>
@@ -339,7 +339,7 @@
                      <option value="Youtube">Youtube</option>
                      <option value="Youtube">Youtube</option>
                   </select>
-                  <button type="button" class="btn btn-lg btn-info">Apply</button>
+                  <button type="button" class="btn btn-lg btn-info">Search</button>
                </div>
             </form>
 
