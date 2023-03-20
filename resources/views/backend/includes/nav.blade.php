@@ -5,7 +5,8 @@
     <i class="fas fa-bars"></i>
     </button> &nbsp;&nbsp;
     <a class="navbar-brand mr-1" href="{{ url('/admin/dashboard') }}">
-        <img class="img-fluid" alt="" src="{{asset('backend')}}/img/logo.png" style="height: 95px;">
+{{--        <img class="img-fluid" alt="" src="{{asset('backend')}}/img/logo.png" style="height: 95px;">--}}
+        <img src="{{ asset('/frontend/') }}/assets/logo/bd jobs.png" style="height: 70px;" />
     </a>
     <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-5 my-2 my-md-0 osahan-navbar-search">
         <div class="input-group">
@@ -48,9 +49,9 @@
             {{Session::get('admin_name')}}
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="account.html"><i class="fas fa-fw fa-user-circle"></i> &nbsp; My Account</a>
-            <a class="dropdown-item" href="subscriptions.html"><i class="fas fa-fw fa-video"></i> &nbsp; Subscriptions</a>
-            <a class="dropdown-item" href="settings.html"><i class="fas fa-fw fa-cog"></i> &nbsp; Settings</a>
+            <a class="dropdown-item" href="#"><i class="fas fa-fw fa-user-circle"></i> &nbsp; My Account</a>
+            <a class="dropdown-item" href="#"><i class="fas fa-fw fa-video"></i> &nbsp; Subscriptions</a>
+            <a class="dropdown-item" href="#"><i class="fas fa-fw fa-cog"></i> &nbsp; Settings</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"><i class="fas fa-fw fa-sign-out-alt"></i> &nbsp; Logout</a>
 

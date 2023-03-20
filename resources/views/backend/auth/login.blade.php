@@ -22,9 +22,9 @@
                   <div class="login-main-left">
                      <div class="text-center mb-5 login-main-left-header pt-4">
                         <a href="{{ url('/') }}">
-                            <img src="{{ asset('/frontend/') }}/assets/logo/GLOBAL.png" style="height: 80px;"/>
+                            <img src="{{ asset('/frontend/') }}/assets/logo/bd jobs.png" style="height: 80px;"/>
                         </a>
-                        <h5 class="mt-3 mb-3">Welcome to Tereded24</h5>
+                        <h5 class="mt-3 mb-3">Welcome to BDMicrojob</h5>
                         <p>It is a long established fact that a reader <br> will be distracted by the readable.</p>
                      </div>
                      <form action="https://askbootstrap.com/preview/vidoe-v2-3/theme-two/index.html">
