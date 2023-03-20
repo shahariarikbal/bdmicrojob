@@ -92,11 +92,13 @@
                                             @endif
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="checkbox" name="agree" class="deposit-form-check-input" placeholder="Deposit Amount">
-                                            <label for="agree" class="deposit-form-check-label">I agree to all Terms of Service and all Policy.</label>
-                                            @if ($errors->has('agree'))
-                                            <div class="text-danger">{{ $errors->first('agree') }}</div>
-                                            @endif
+                                            <div class="deposit-checkbox-outer">
+                                                <input type="checkbox" name="agree" class="deposit-form-check-input" placeholder="Deposit Amount">
+                                                <label for="agree" class="deposit-form-check-label">I agree to all Terms of Service and all Policy.</label>
+                                                @if ($errors->has('agree'))
+                                                <div class="text-danger">{{ $errors->first('agree') }}</div>
+                                                @endif
+                                            </div>
                                         </div>
                                         <div class="col-md-12">
                                             <label for="screenshot" class="deposit-form-label">Payment Sucesfull Screenshot (Optional)</label>

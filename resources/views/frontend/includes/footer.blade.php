@@ -32,8 +32,8 @@
             <img src="{{ asset('/frontend/') }}/assets/logo/GLOBAL.png">
         </div> --}}
         <a href="{{ url('/') }}" class="header-main-logo">
-            {{-- <img src="{{ asset('/frontend/') }}/assets/logo/GLOBAL.png"> --}}
-            BD<span>Microjobs</span>
+            <img src="{{ asset('/frontend/') }}/assets/logo/bd jobs.png" style="height: 70px;" />
+{{--            BD<span>Microjobs</span>--}}
         </a>
         <div class="footer-condition-link">
             <ul class="privacy-terms-list">

@@ -23,14 +23,14 @@
                   <div class="login-main-left">
                      <div class="text-center mb-5 login-main-left-header pt-4">
                         <a href="{{ url('/') }}">
-                            <img src="{{ asset('/frontend/') }}/assets/logo/GLOBAL.png" style="height: 80px;"/>
+                            <img src="{{ asset('/frontend/') }}/assets/logo/bd jobs.png" style="height: 80px;"/>
                         </a>
                         <h5 class="mt-3 mb-3">Admin Panel</h5>
                         <p>Admin panel to manage to all your contents <br> Login with admin email and password</p>
                      </div>
                      <form action="{{ url('admin/login') }}" method="POST">
                      	@csrf
-                     	
+
 
                         <div class="form-group">
                            <label>Email Address</label>
@@ -89,6 +89,6 @@
       data-cf-settings="d2e5d5ec9e690d3951a1c613-|49" defer=""></script>
       <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"6e1902b6ab83880e","version":"2021.12.0","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}' crossorigin="anonymous"></script>
    </body>
-   
+
    	{{-- @dd($errors) --}}
 </html>
