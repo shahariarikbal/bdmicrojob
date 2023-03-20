@@ -243,7 +243,7 @@
              <div class="custom-earn1">
                 <div class="row">
                    <div class="col-md-12">
-                    <p class="earn-box-one" style="text-align: center; margin-top: 35px; font-size: 20px;">Your Total Earning : BDT {{ $user->total_income }}</p>
+                    <p class="earn-box-one" style="text-align: center; margin-top: 35px; font-size: 20px;">Your Total Earning : BDT </p>
                    </div>
                </div>
              </div>
@@ -252,7 +252,7 @@
              <div class="custom-earn2">
                 <div class="row">
                    <div class="col-md-12">
-                    <p class="earn-box-one" style="text-align: center; margin-top: 35px; font-size: 20px;">Your Refer Code Is: {{ $user->refer_code }}</p>
+                    <p class="earn-box-one" style="text-align: center; margin-top: 35px; font-size: 20px;">Your Refer Code Is: </p>
                    </div>
                </div>
              </div>
@@ -282,7 +282,7 @@
              <div class="custom-earn2">
                 <div class="row">
                    <div class="col-md-12">
-                    <p class="earn-box-one" style="text-align: center; margin-top: 35px; font-size: 20px;">Membership Status : <b>{{ $user->membership ? $user->membership->name : 'No Membership' }}</b></p>
+                    <p class="earn-box-one" style="text-align: center; margin-top: 35px; font-size: 20px;">Membership Status : <b></b></p>
                    </div>
                </div>
              </div>
@@ -294,50 +294,48 @@
     <div class="video-block section-padding">
        <div class="row">
         {{-- @dd($memeberships) --}}
-           @foreach ($memeberships as $key => $memebership)
+{{--           @foreach ($memeberships as $key => $memebership)--}}
 
-            @php
-              $color_class = 'one';
-              if($key % 4 == 0) $color_class = 'one';
-              if($key % 4 == 1) $color_class = 'two';
-              if($key % 4 == 2) $color_class = 'three';
-              if($key % 4 == 3) $color_class = 'four';
-            @endphp
+{{--            @php--}}
+{{--              $color_class = 'one';--}}
+{{--              if($key % 4 == 0) $color_class = 'one';--}}
+{{--              if($key % 4 == 1) $color_class = 'two';--}}
+{{--              if($key % 4 == 2) $color_class = 'three';--}}
+{{--              if($key % 4 == 3) $color_class = 'four';--}}
+{{--            @endphp--}}
 
             <div class="col-xl-3 col-sm-6 mb-3">
-                <div class="custom-card-{{ $color_class }}" style="height: 300px;">
-                    <a href="{{ url('/user/subscription/'.$memebership->id) }}">
+                <div class="custom-card-" style="height: 300px;">
+                    <a href="">
                         <div class="row">
                             <div class="col-md-12">
-                            <p class="earn-box-one" style="margin-left: 50px;">{{ $memebership->name }} Subscriber</p>
-                            <p class="earn-box-one" style="margin-left: 65px;"><span style="font-size: 24px;">{{ $memebership->per_month_charge }}</span>/Month</p>
-                            @foreach (json_decode($memebership->facilities) as $facilities)
-                            <p class="" style="margin-top: -12px; text-align: center; color: white;">{{ $facilities }}</p>
-                            @endforeach
+                            <p class="earn-box-one" style="margin-left: 50px;"> Subscriber</p>
+                            <p class="earn-box-one" style="margin-left: 65px;"><span style="font-size: 24px;"></span>/Month</p>
+{{--                            @foreach (json_decode($memebership->facilities) as $facilities)--}}
+                            <p class="" style="margin-top: -12px; text-align: center; color: white;"></p>
+{{--                            @endforeach--}}
                             <p class="" style="margin-top: -18px; text-align: center; color: white;">Fast Withdrawal</p>
                             </div>
                         </div>
                     </a>
                 </div>
             </div>
-           @endforeach
+{{--           @endforeach--}}
        </div>
     </div>
  </div> -->
 <div class="dashboard-section container-fluid pt-5">
    <div class="row">
       <div class="col-md-10 m-auto">
-         <marquee>Please buy a plane and safe your money !</marquee>   
+         <marquee>Please buy a plane and safe your money !</marquee>
          <div class="job-items-wrapper">
-            <form action="" method="" class="select-category-outer">
+            <form action="" method="get" class="select-category-outer">
                <div class="input-group">
                   <select name="category">
                      <option selected disabled>--- Select Category ---</option>
-                     <option value="Youtube">Youtube</option>
-                     <option value="Youtube">Youtube</option>
-                     <option value="Youtube">Youtube</option>
-                     <option value="Youtube">Youtube</option>
-                     <option value="Youtube">Youtube</option>
+                      @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ ucfirst($category->name) }}</option>
+                      @endforeach
                   </select>
                   <button type="button" class="btn btn-lg btn-info">Search</button>
                </div>
@@ -346,7 +344,7 @@
             <a href="#" class="job-item-outer">
                <div class="job-item-left">
                   <h5 class="job-title">
-                     Game of 11 
+                     Game of 11
                   </h5>
                </div>
                <div class="job-item-center">
@@ -365,7 +363,7 @@
             </a>
          </div>
       </div>
-   </div>   
+   </div>
 </div>
 @endsection
 
