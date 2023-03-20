@@ -9,8 +9,8 @@
             </a>
         </div>
         <div class="text-center earning-btn-outer" style="display: inline-block">
-            <span class="btn btn-sm text-white" style="background:#000066">Earning: $0.0006</span>
-            <span class="btn btn-sm text-white" style="background:#008000">Deposit: {{ $total_deposit->total_deposit }}tk</span>
+            <span class="user-dashb-earning-btn">Earning: $0.0006</span>
+            <span class="user-dashb-deposit-btn">Deposit: {{ $total_deposit->total_deposit }}tk</span>
         </div>
         <ul class="navbar-nav ml-auto ml-md-0 osahan-right-navbar">
             <li class="nav-item dropdown no-arrow mx-1">
@@ -19,18 +19,6 @@
                 <span class="badge badge-danger">9+</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-                    <a class="dropdown-item" href="#"><i class="fas fa-fw fa-edit "></i> &nbsp; Action</a>
-                    <a class="dropdown-item" href="#"><i class="fas fa-fw fa-headphones-alt "></i> &nbsp; Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#"><i class="fas fa-fw fa-star "></i> &nbsp; Something else here</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown no-arrow mx-1">
-                <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-envelope fa-fw"></i>
-                <span class="badge badge-success">7</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
                     <a class="dropdown-item" href="#"><i class="fas fa-fw fa-edit "></i> &nbsp; Action</a>
                     <a class="dropdown-item" href="#"><i class="fas fa-fw fa-headphones-alt "></i> &nbsp; Another action</a>
                     <div class="dropdown-divider"></div>

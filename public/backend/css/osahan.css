@@ -2308,14 +2308,16 @@ footer.sticky-footer {
 }
 
 .select-category-outer select {
-    width: 270px;
+    width: 100%;
+    max-width: 270px;
     height: 50px;
-    background: #1da1f2;
-    box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%);
-    color: #fff;
     font-size: 16px;
     border: none;
-    border-radius: 5px;
+    border-radius: 5px 0px 0px 5px;
+}
+
+.select-category-outer button{
+    background: #6908ac;
 }
 
 .select-category-outer select:focus-visible {

@@ -330,62 +330,19 @@
          <marquee>Please buy a plane and safe your money !</marquee>   
          <div class="job-items-wrapper">
             <form action="" method="" class="select-category-outer">
-               <select name="category">
-                  <option selected disabled>--- Select Category ---</option>
-                  <option value="Youtube">Youtube</option>
-                  <option value="Youtube">Youtube</option>
-                  <option value="Youtube">Youtube</option>
-                  <option value="Youtube">Youtube</option>
-                  <option value="Youtube">Youtube</option>
-               </select>
+               <div class="input-group">
+                  <select name="category">
+                     <option selected disabled>--- Select Category ---</option>
+                     <option value="Youtube">Youtube</option>
+                     <option value="Youtube">Youtube</option>
+                     <option value="Youtube">Youtube</option>
+                     <option value="Youtube">Youtube</option>
+                     <option value="Youtube">Youtube</option>
+                  </select>
+                  <button type="button" class="btn btn-lg btn-info">Apply</button>
+               </div>
             </form>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-              Select Category
-            </button>
 
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Select Category</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <form action="" method="" class="select-category-form">
-                        <div class="category-items-wrap">
-                           <div class="category-item-outer">
-                              <input type="radio" id="youtube" name="category" class="category-item-radio">
-                              <label for="youtube" class="category-item-label">Youtube</label>
-                           </div>
-                           <div class="category-item-outer">
-                              <input type="radio" id="youtube" name="category" class="category-item-radio">
-                              <label for="youtube" class="category-item-label">Youtube</label>
-                           </div>
-                           <div class="category-item-outer">
-                              <input type="radio" id="youtube" name="category" class="category-item-radio">
-                              <label for="youtube" class="category-item-label">Youtube</label>
-                           </div>
-                           <div class="category-item-outer">
-                              <input type="radio" id="youtube" name="category" class="category-item-radio">
-                              <label for="youtube" class="category-item-label">Youtube</label>
-                           </div>
-                           <div class="category-item-outer">
-                              <input type="radio" id="youtube" name="category" class="category-item-radio">
-                              <label for="youtube" class="category-item-label">Youtube</label>
-                           </div>                           
-                        </div>
-                        <div class="submit-btn-outer">
-                           <button type="submit" class="submit-btn-inner">Apply</button>
-                        </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
             <a href="#" class="job-item-outer">
                <div class="job-item-left">
                   <h5 class="job-title">
