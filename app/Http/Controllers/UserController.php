@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -31,12 +32,14 @@ class UserController extends Controller
 
     public function index()
     {
-        return view('user.dashboard');
+        $categories = Category::select(['id', 'name', 'status', 'price'])->orderBy('created_at', 'desc')->where('status', 1)->get();
+        return view('user.dashboard', compact('categories'));
     }
 
     public function showPostJob()
     {
-        return view('frontend.auth.user.job.post-job');
+        $categories = Category::select(['id', 'name', 'status', 'price'])->orderBy('created_at', 'desc')->where('status', 1)->get();
+        return view('frontend.auth.user.job.post-job', compact('categories'));
     }
 
     public function showAccountVarify()

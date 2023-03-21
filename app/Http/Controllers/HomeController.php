@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Membership;
 use App\Models\User;
 use App\Models\UserVideo;
@@ -35,9 +36,8 @@ class HomeController extends Controller
     }
     public function dashboard()
     {
-        $memeberships = Membership::orderBy('created_at', 'desc')->get();
-        $user = User::with('membership')->where('id', auth()->user()->id)->first();
-        return view('frontend.auth.dashboard', compact('memeberships', 'user'));
+        $categories = Category::select(['id', 'name', 'status', 'price'])->orderBy('created_at', 'desc')->where('status', 1)->get();
+        return view('frontend.auth.dashboard', compact('categories'));
     }
 
     public function membership()

@@ -14,11 +14,11 @@
                         <i class="fa fa-spinner fa-pulse fa-5x fa-fw" aria-hidden="true"></i>
                     </div>
                     <ul id="progressbar">
-                        <li class="step active" id="personal"><strong>Select Category</strong></li>                                
-                        <li class="step" id="professional"><strong>Job Information</strong></li>                                
+                        <li class="step active" id="personal"><strong>Select Category</strong></li>
+                        <li class="step" id="professional"><strong>Job Information</strong></li>
                         <li class="step" id="address"><strong>Budget & Setting</strong></li>
                     </ul>
-                    <form id="postJob" method="" enctype="multipart/form-data">                      
+                    <form id="postJob" method="" enctype="multipart/form-data">
                         <div class="tab">
                             <div class="row">
                                 <div class="col-7">
@@ -30,10 +30,12 @@
                             </div>
                             <hr>
                             <div class="category-items-wrap">
-                                <div class="category-item-outer">
-                                    <input type="radio" id="youtube" name="category" class="category-item-radio">
-                                    <label for="youtube" class="category-item-label">Youtube</label>
-                                </div>
+                                @foreach($categories as $category)
+                                    <div class="category-item-outer">
+                                        <input type="radio" id="{{ 'cat'. $category->id }}" name="category" value="{{ $category->id }}" onclick="categoryPrice(this)" class="category-item-radio">
+                                        <label for="{{ 'car'. $category->name }}" class="category-item-label">{{ ucfirst($category->name) }}</label>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                         <div class="tab">
@@ -124,7 +126,7 @@
                               <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
                               <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
                             </div>
-                        </div>                          
+                        </div>
                     </form>
                 </div>
             </div>
@@ -135,8 +137,11 @@
 
 @push('page-scripts')
     <script type="text/javascript">
+        function categoryPrice(data){
+            console.log(data.value);
+        }
         //Admission Form Js
-        var currentTab = 0; 
+        var currentTab = 0;
         showTab(currentTab);
 
         function showTab(n) {
@@ -198,7 +203,7 @@
         }
         function deleteELement(e, item) {
             e.preventDefault();
-            $(item).parent().fadeOut('200', function() { 
+            $(item).parent().fadeOut('200', function() {
                 $(item).parent().remove();
             });
         }
@@ -207,10 +212,10 @@
                 e.preventDefault();
                 addElement()
             });
-            
+
             //EVENT DELEGATION
             $("#moreTask").on('click', '.removeItemElement', function(e){
-                var item = this; 
+                var item = this;
                 deleteELement(e, item)
             })
         });
