@@ -18,7 +18,7 @@
             </li>
             <li class="nav-item-main">
                 <a class="nav-item-main-link" href="#">
-                    Features
+                    About us
                 </a>
             </li>
             <li class="nav-item-main">
@@ -28,6 +28,12 @@
             </li>
             <li class="nav-item-main">
                 <a class="nav-item-main-link" href="#">FAQ</a>
+            </li>
+            </li>
+            <li class="nav-item-main">
+                <a class="nav-item-main-link" href="#">
+                  Contact Us
+                </a>
             </li>
             <li class="nav-item-main">
                 @if(!Auth::check())
