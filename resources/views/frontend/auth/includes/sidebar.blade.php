@@ -1,4 +1,4 @@
-<ul class="sidebar navbar-nav toggled">
+<ul class="sidebar navbar-nav">
    <li class="nav-item {{ Request::url() == url('/dashboard') ? 'active' : '' }}">
        <a class="nav-link" href="{{ url('/dashboard') }}">
        <i class="fas fa-fw fa-home"></i>

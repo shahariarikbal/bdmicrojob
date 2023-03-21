@@ -6,9 +6,9 @@
 
 @push('page-css')
     <style>
-    #wrapper #content-wrapper .container-fluid {
+    /* #wrapper #content-wrapper .container-fluid {
         padding: 30px 30px 30px 30px !important;
-    }
+    } */
 
     </style>
 @endpush
@@ -324,7 +324,7 @@
        </div>
     </div>
  </div> -->
-<div class="dashboard-section container-fluid pt-5">
+<div class="dashboard-section container-fluid pb-0">
    <div class="row">
       <div class="col-md-10 m-auto">
          <marquee>Please buy a plane and safe your money !</marquee>   
