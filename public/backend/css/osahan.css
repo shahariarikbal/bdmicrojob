@@ -2808,6 +2808,229 @@ button.account-varify-btn-inner:hover {
 }
 /* Deposit page css End */
 
+/*Job Details page css start*/
+.done-job-outer {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-bottom: 20px;
+    padding: 15px 20px;
+    border-radius: 5px;
+    height: 100px;
+}
+
+.done-job-left {
+    width: 90%;
+}
+
+.done-job-left .title {
+    color: #8898aa;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.done-job-left .number {
+    font-size: 18px;
+    font-weight: 600;
+    color: #111;
+}
+
+.done-job-right .icon-outer i {
+    font-size: 40px;
+    color: #6908ac;
+}
+
+.earn-money-outer {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-bottom: 20px;
+    padding: 15px 20px;
+    height: 100px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.earn-money-outer h3 {
+    font-size: 20px;
+    color: #000;
+    font-weight: 600;
+}
+
+.earn-money-outer h3 strong {
+    margin-left: 10px;
+    color: #6908ac;
+}
+
+.job-details-form-item {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-bottom: 25px;
+    padding: 15px 20px;
+    border-radius: 5px;
+}
+
+.job-details-form-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.job-details-form-top .left .title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.hide-btn-inner {
+    border: 1px solid #6908ac;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    background: #6908ac;
+    color: #fff;
+    transition: all .3s ease;
+}
+
+.hide-btn-inner:hover {
+    background: transparent;
+    color: #000;
+}
+
+.job-details-form-item .top-image {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.job-details-text-title {
+    color: #32325d;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.report-btn-outer {
+    text-align: end;
+    margin-top: 20px;
+}
+
+.report-btn-outer .report-btn-inner {
+    border: 1px solid #6908ac;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    background: #6908ac;
+    color: #fff;
+    transition: all .3s ease;
+}
+
+.report-btn-inner:hover {
+    background: transparent;
+    color: #000;
+}
+
+.job-details-text {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 26px;
+}
+
+.job-details-form-item textarea {
+    background: #fff;
+    font-size: 16px;
+    border: 1px solid #6908ac;
+    border-radius: 5px;
+}
+
+.job-details-form-item textarea:focus {
+    border-color: #6908ac;
+    box-shadow: none;
+}
+
+.job-details-form-item input {
+    background: #fff;
+    font-size: 16px;
+    border: 1px solid #6908ac;
+    border-radius: 5px;
+    height: 47px;
+}
+
+.job-details-form-sub-btn {
+    width: 100%;
+    border: none;
+    background: #6908ac;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+    padding: 10px 0;
+    border-radius: 30px;
+}
+/*Job Details page css End*/
+
+/* Job Report page css start */
+.job-report-wrapper {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.job-report-title {
+    font-size: 20px;
+    font-weight: 500;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.job-report-form-text {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+label.job-report-form-label {
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.job-report-form #report_message {
+    background: #fff;
+    font-size: 16px;
+    border: 1px solid #6908ac;
+    border-radius: 5px;
+}
+
+.job-report-form #report_message:focus {
+    border-color: #6908ac;
+    box-shadow: none;
+}
+
+.report-form-btn-outer {
+    text-align: center;
+}
+
+.report-form-btn-inner {
+    border: 1px solid #6908ac;
+    background: #6908ac;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 17px;
+    font-weight: 500;
+    border-radius: 5px;
+    transition: all .3s ease;
+}
+
+.report-form-btn-inner:hover {
+    background: transparent;
+    color: #000;
+}
+/* Job Report page css End */
+
 @media screen and ( max-width: 520px ){
     .earning-btn-outer {
         display: inline-block;

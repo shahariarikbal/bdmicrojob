@@ -57,6 +57,16 @@ class UserController extends Controller
         return view('frontend.auth.user.accepted-task');
     }
 
+    public function showJobDetails()
+    {
+        return view('frontend.auth.user.job.job-details');
+    }
+
+    public function showJobReport()
+    {
+        return view('frontend.auth.user.job.job-report');
+    }
+
     // public function showDeposit()
     // {
     //     return view('frontend.auth.user.deposit');

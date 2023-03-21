@@ -1,7 +1,7 @@
 @extends('frontend.auth.master')
 
 @section('title')
-	My Task
+	Deposit
 @endsection
 
 @section('content')

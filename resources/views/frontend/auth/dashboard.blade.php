@@ -341,7 +341,7 @@
                </div>
             </form>
 
-            <a href="#" class="job-item-outer">
+            <a href="{{ url('/job/details') }}" class="job-item-outer">
                <div class="job-item-left">
                   <h5 class="job-title">
                      Game of 11
