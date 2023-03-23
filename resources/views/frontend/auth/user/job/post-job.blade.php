@@ -18,7 +18,8 @@
                         <li class="step" id="professional"><strong>Job Information</strong></li>
                         <li class="step" id="address"><strong>Budget & Setting</strong></li>
                     </ul>
-                    <form id="postJob" method="" enctype="multipart/form-data">
+                    <form id="postJob" action="{{ url('/post/store') }}" method="post" enctype="multipart/form-data">
+                        @csrf
                         <div class="tab">
                             <div class="row">
                                 <div class="col-7">
@@ -32,7 +33,7 @@
                             <div class="category-items-wrap">
                                 @foreach($categories as $category)
                                     <div class="category-item-outer">
-                                        <input type="radio" id="{{ 'cat'. $category->id }}" name="cat_id" value="{{ $category->id }}" onclick="categoryPrice(this)" class="category-item-radio">
+                                        <input type="radio" id="{{ 'cat'. $category->id }}" name="cat_id" value="{{ $category->id }}" class="category-item-radio">
                                         <label for="{{ 'cat'. $category->id }}" class="category-item-label">{{ ucfirst($category->name) }}</label>
                                     </div>
                                 @endforeach
@@ -72,7 +73,7 @@
                                 <div class="col-md-12">
                                      <div class="task-outer">
                                         <label for="task">Thumbnail Image(optional)</label>
-                                        <input type="file" name="avater" class="form-control">
+                                        <input type="file" name="avatar" class="form-control">
                                      </div>
                                 </div>
                             </div>
@@ -97,7 +98,7 @@
                                         <label for="work_num">Require Screenshots</label><span style="color: red; font-size: 16px;"> *</span><br>
                                         <input type="number" name="required_screenshot" placeholder="0" min="1" max="2" class="form-control">
                                         <label for="work_num">Estimated Day</label><span style="color: red; font-size: 16px;"> *</span><br>
-                                        <input type="number" name="estimated_date" placeholder="7 day" min="1" max="7" class="form-control">
+                                        <input type="number" name="estimated_date" id="estimated_date" placeholder="7 day" min="1" max="7" class="form-control">
 {{--                                        <label for="work_num">Have you need:Extend Period (optional)</label>--}}
 {{--                                        <select name="jobExtendPeriod" id="jobExtendPeriod" class="form-control">--}}
 {{--                                            <option value="0">None</option>--}}
@@ -143,14 +144,16 @@
 
         function showTab(n) {
           var x = document.getElementsByClassName("tab");
+          var y = document.getElementById("estimated_date");
           x[n].style.display = "block";
           if (n == 0) {
             document.getElementById("prevBtn").style.display = "none";
           } else {
             document.getElementById("prevBtn").style.display = "inline";
           }
-          if (n == (x.length - 1)) {
+          if (n == (y.length - 1)) {
             document.getElementById("nextBtn").innerHTML = "Submit";
+            document.getElementById("nextBtn").setAttribute('type', 'submit');
           } else {
             document.getElementById("nextBtn").innerHTML = "Next";
           }
