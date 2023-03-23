@@ -3,11 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-<<<<<<< HEAD
 use App\Models\Post;
 use App\Models\SpecificTask;
-=======
->>>>>>> 6dd5d474db8f6bc609689756f926541030880e95
 use Illuminate\Http\Request;
 
 class JobController extends Controller
@@ -16,7 +13,6 @@ class JobController extends Controller
     {
         return view ('backend.job.show-jobs');
     }
-<<<<<<< HEAD
 
     public function postStore(Request $request)
     {
@@ -35,14 +31,14 @@ class JobController extends Controller
             $post->save();
 
             if ($post->save()){
-                $specificTask = new SpecificTask();
-                $specificTask->post_id = $post->id;
-                $specificTask->specific_task = $request->specific_task;
-                $specificTask->save();
+                foreach($request->specific_task as $k => $task){
+                    $specificTask = new SpecificTask();
+                    $specificTask->post_id = $post->id;
+                    $specificTask->specific_task = $request->specific_task[$k];
+                    $specificTask->save();
+                }
             }
 
             return redirect()->back()->withSuccess('Your post has been submitted');
     }
-=======
->>>>>>> 6dd5d474db8f6bc609689756f926541030880e95
 }
