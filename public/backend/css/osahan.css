@@ -2474,6 +2474,7 @@ footer.sticky-footer {
     content: "3"
 }
 
+<<<<<<< HEAD
 #progressbar #payment:before {
     font-family: FontAwesome;
     content: "4"
@@ -2484,6 +2485,8 @@ footer.sticky-footer {
     content: "5"
 }
 
+=======
+>>>>>>> 6dd5d474db8f6bc609689756f926541030880e95
 #progressbar #confirm:before {
     font-family: FontAwesome;
     content: "\f00c"
@@ -2587,11 +2590,14 @@ footer.sticky-footer {
   background-color: #7e41c233;
 }
 
+<<<<<<< HEAD
 #postJob .tab {
   display: none;
   margin-bottom: 20px;
 }
 
+=======
+>>>>>>> 6dd5d474db8f6bc609689756f926541030880e95
 #postJob button {
     background-color: #7E41C2;
     color: #ffffff;
@@ -2603,10 +2609,19 @@ footer.sticky-footer {
     border-radius: 5px;
 }
 
+<<<<<<< HEAD
+=======
+.job-post-sub-btn-outer {
+    text-align: end;
+    margin-top: 20px;
+}
+
+>>>>>>> 6dd5d474db8f6bc609689756f926541030880e95
 #postJob button:focus {
     outline: none;
 }
 
+<<<<<<< HEAD
 button#prevBtn {
     opacity: 0.7;
 }
@@ -2622,6 +2637,8 @@ button#prevBtn {
 .step.finish {
   color: #7e41c2;
 }
+=======
+>>>>>>> 6dd5d474db8f6bc609689756f926541030880e95
 
 .post-job-form-wrapper {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;

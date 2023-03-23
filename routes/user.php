@@ -17,7 +17,10 @@ Route::get('/user/register/form', [\App\Http\Controllers\UserController::class, 
 Route::post('/user/register', [\App\Http\Controllers\UserController::class, 'userRegisterStore']);
 
 Route::get('/post/job', [\App\Http\Controllers\UserController::class, 'showPostJob']);
+<<<<<<< HEAD
 Route::post('/post/store', [\App\Http\Controllers\Backend\JobController::class, 'postStore']);
+=======
+>>>>>>> 6dd5d474db8f6bc609689756f926541030880e95
 Route::get('/account/varify', [\App\Http\Controllers\UserController::class, 'showAccountVarify']);
 Route::get('/my/task', [\App\Http\Controllers\UserController::class, 'showMyTask']);
 Route::get('/accepted/task', [\App\Http\Controllers\UserController::class, 'showAcceptedTask']);

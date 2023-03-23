@@ -256,6 +256,17 @@
             background: #9a9a9a;
             padding: 5px 20px;
             border-radius: 30px;
+<<<<<<< HEAD
+=======
+            transition: all .3s ease;
+        }
+        .sign-in-link:hover {
+            background: #7e3bc9c2;
+            color: #fff;
+        }
+        .login-section {
+            overflow-x: hidden;
+>>>>>>> 6dd5d474db8f6bc609689756f926541030880e95
         }
 
         @media screen and (max-width: 1050px){

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+<<<<<<< HEAD
 use App\Models\Post;
 use App\Models\SpecificTask;
+=======
+>>>>>>> 6dd5d474db8f6bc609689756f926541030880e95
 use Illuminate\Http\Request;
 
 class JobController extends Controller
@@ -13,6 +16,7 @@ class JobController extends Controller
     {
         return view ('backend.job.show-jobs');
     }
+<<<<<<< HEAD
 
     public function postStore(Request $request)
     {
@@ -39,4 +43,6 @@ class JobController extends Controller
 
             return redirect()->back()->withSuccess('Your post has been submitted');
     }
+=======
+>>>>>>> 6dd5d474db8f6bc609689756f926541030880e95
 }
