@@ -61,9 +61,7 @@
                                     <textarea name="task" id="tasks" rows="5" cols="50" class="form-control"></textarea>
                                     <a href="#" id="add-todo-item" class="btn btn-primary mb-3">Add Element</a>
                                  </div>
-                                 <div class="more-task" id="moreTask">
-
-                                 </div>
+                                 <div class="more-task" id="moreTask"></div>
                             </div>
                             <div class="col-md-12">
                                  <div class="task-outer">
@@ -138,69 +136,9 @@
 
 @push('page-scripts')
     <script type="text/javascript">
-        function categoryPrice(data){
-            console.log(data.value);
-        }
-        //Admission Form Js
-        var currentTab = 0;
-        showTab(currentTab);
-
-        function showTab(n) {
-          var x = document.getElementsByClassName("tab");
-          x[n].style.display = "block";
-          if (n == 0) {
-            document.getElementById("prevBtn").style.display = "none";
-          } else {
-            document.getElementById("prevBtn").style.display = "inline";
-          }
-          if (n == (x.length - 1)) {
-            document.getElementById("nextBtn").innerHTML = "Submit";
-          } else {
-            document.getElementById("nextBtn").innerHTML = "Next";
-          }
-          fixStepIndicator(n)
-        }
-
-        function nextPrev(n) {
-          var x = document.getElementsByClassName("tab");
-          if (n == 1 && !validateForm()) return false;
-          x[currentTab].style.display = "none";
-          currentTab = currentTab + n;
-          if (currentTab >= x.length) {
-            document.getElementById("admissionForm").submit();
-            return false;
-          }
-          showTab(currentTab);
-        }
-
-        function validateForm() {
-          var x, y, i, valid = true;
-          x = document.getElementsByClassName("tab");
-          y = x[currentTab].getElementsByTagName("input");
-          for (i = 0; i < y.length; i++) {
-            if (y[i].value == "") {
-              y[i].className += " invalid";
-              valid = false;
-            }
-          }
-          if (valid) {
-            document.getElementsByClassName("step")[currentTab].className += " finish";
-          }
-          return valid;
-        }
-
-        function fixStepIndicator(n) {
-          var i, x = document.getElementsByClassName("step");
-          for (i = 0; i < x.length; i++) {
-            x[i].className = x[i].className.replace(" active", "");
-          }
-          x[n].className += " active";
-        }
-
         //Add Task Js
         function addElement() {
             $("#moreTask").append("<div class='mb-3'><label>[ Max 150 character ]</label><textarea name='task' rows='5' cols='50' class='form-control mb-2'></textarea><button type='button' id='remove' class='btn btn-sm btn-danger removeItemElement'>Remove</button></div>");
-
         }
         function deleteELement(e, item) {
             e.preventDefault();
