@@ -22,7 +22,7 @@ class CreatePostsTable extends Migration
             $table->string('worker_earn');
             $table->string('required_screenshot');
             $table->string('estimated_date');
-            $table->string('avater');
+            $table->string('avatar');
             $table->timestamps();
         });
     }
