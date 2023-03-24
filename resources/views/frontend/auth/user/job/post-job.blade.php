@@ -58,7 +58,7 @@
                             </div>
                             <div class="col-md-12">
                                  <div class="task-outer">
-                                    <label for="task">Thumbnail Image(optional)</label>
+                                    <label for="task">Thumbnail Image</label><span style="color: red; font-size: 16px;"> *</span>
                                     <input type="file" name="avatar" class="form-control">
                                  </div>
                             </div>

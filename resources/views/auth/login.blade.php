@@ -256,17 +256,6 @@
             background: #9a9a9a;
             padding: 5px 20px;
             border-radius: 30px;
-<<<<<<< HEAD
-=======
-            transition: all .3s ease;
-        }
-        .sign-in-link:hover {
-            background: #7e3bc9c2;
-            color: #fff;
-        }
-        .login-section {
-            overflow-x: hidden;
->>>>>>> 6dd5d474db8f6bc609689756f926541030880e95
         }
 
         @media screen and (max-width: 1050px){
@@ -329,10 +318,10 @@
                                 <strong>{{ $message }}</strong>
                             </h6>
                         @enderror
-                    </div>                    
-                </div>            
+                    </div>
+                </div>
                 <div class="login-form-outer">
-                    <div class="icon"> 
+                    <div class="icon">
                         <i class="fas fa-lock"></i>
                     </div>
                     <div class="login-form-input">
@@ -347,9 +336,9 @@
                 </div>
                 <button type="submit" class="login-form-submit">Sign in</button>
                 <a href="{{ url('user/register') }}" class="sign-in-link">Sign Up</a>
-            </form>            
+            </form>
         </div>
-    </div> 
+    </div>
 </section>
 
 
