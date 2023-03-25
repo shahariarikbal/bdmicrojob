@@ -94,10 +94,14 @@
                                         @endif
                                     </div>
                                 </div>
-                                @if ($user_nid_verification==1)
+                                @if ($user_nid_verification==1 && $total_income>=100)
                                 <button type="submit" class="deposit-form-btn">Continue to payment</button>
-                                @else
+                                @elseif ($user_nid_verification!=1 && $total_income>=100)
                                 <div><h1 class="text-danger">Your NID/Birth Certificate is not verified yet!!</h1></div>
+                                @elseif ($user_nid_verification==1 && $total_income<100)
+                                <div><h1 class="text-danger">Insufficient Earning Balance!!</h1></div>
+                                @elseif ($user_nid_verification!=1 && $total_income<100)
+                                <div><h1 class="text-danger">NID is not Verified & Insufficient Earning Balance!!</h1></div>
                                 @endif
                             </div>
                         </form>

@@ -67,7 +67,8 @@ class DepositController extends Controller
             $user_name = $user->name;
             $user_phone = $user->phone;
             $user_nid_verification = $user->nid_verified;
-            return view('frontend.auth.user.withdraw', compact('user_email','user_name','user_phone','user_nid_verification'));
+            $total_income = $user->total_income;
+            return view('frontend.auth.user.withdraw', compact('user_email','user_name','user_phone','user_nid_verification','total_income'));
         }
         return redirect('/login');
     }
