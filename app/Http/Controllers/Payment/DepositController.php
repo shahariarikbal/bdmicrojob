@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Payment;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DepositRequest;
+use App\Http\Requests\WithdrawRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Deposit;
+use App\Models\Withdraw;
 use Auth;
 
 class DepositController extends Controller
@@ -50,6 +52,49 @@ class DepositController extends Controller
             //Email
 
             return redirect()->back()->with('Success','Deposit will be approved soon!!');
+        }
+
+        else{
+            return redirect('/login');
+        }
+    }
+
+    public function showWithdraw()
+    {
+        if(Auth::check()){
+            $user = Auth::user();
+            $user_email = $user->email;
+            $user_name = $user->name;
+            $user_phone = $user->phone;
+            $user_nid_verification = $user->nid_verified;
+            return view('frontend.auth.user.withdraw', compact('user_email','user_name','user_phone','user_nid_verification'));
+        }
+        return redirect('/login');
+    }
+
+    public function withdrawEarning (WithdrawRequest $request)
+    {
+        if(Auth::check()){
+            $user = Auth::user();
+            $withdraw = new Withdraw();
+
+            $withdraw->user_id = $user->id;
+            $withdraw->user_name = $request->user_name;
+            $withdraw->user_phone = $request->user_phone;
+            $withdraw->user_email = $request->user_email;
+            $withdraw->user_address = $request->user_address;
+            $withdraw->post_code = $request->post_code;
+            $withdraw->city = $request->city;
+            $withdraw->payment_gateway = $request->payment_gateway;
+            $withdraw->payment_gateway_number = $request->payment_gateway_number;
+            $withdraw->withdraw_amount = $request->withdraw_amount;
+            $withdraw->save();
+
+            //Email
+               //withdraw Mail to Admin...
+            //Email
+
+            return redirect()->back()->with('Success','withdraw will be approved soon!!');
         }
 
         else{

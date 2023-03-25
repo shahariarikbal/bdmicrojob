@@ -35,6 +35,12 @@
        <span>Deposit</span>
        </a>
    </li>
+   <li class="nav-item {{ Request::url() == url('/instant/withdraw') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ url('/instant/withdraw') }}">
+     <i class="far fa-credit-card"></i>
+    <span>Withdraw</span>
+    </a>
+</li>
    <li class="nav-item {{ Request::url() == url('/link') ? 'active' : '' }}">
        <a class="nav-link" href="history-page.html">
         <i class="fas fa-money-bill"></i>
