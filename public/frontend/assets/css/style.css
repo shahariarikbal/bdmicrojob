@@ -1,34 +1,45 @@
 /*common css start*/
 
-*{
+* {
     padding: 0;
     margin: 0;
 }
-button, a{
+
+button,
+a {
     transition: all .3s ease;
     -webkit-transition: all .3s ease;
     text-decoration: none;
 }
-ul li{
+
+ul li {
     list-style: none;
 }
-p{
+
+p {
     font-size: 14px;
     line-height: 1.4;
 }
-img{
+
+img {
     width: 100%;
 }
-a:hover{
+
+a:hover {
     text-decoration: none;
 }
-body{
+
+body {
     overflow-x: hidden;
     font-family: 'Poppins', sans-serif;
 }
+
+
 /*common css End*/
 
+
 /*Header secton Nav css start*/
+
 .nav-main {
     padding: 0% 5%;
     display: flex;
@@ -38,17 +49,21 @@ body{
     background: #fff;
     position: relative;
 }
-    /*fixed header*/
+
+
+/*fixed header*/
+
 .fixed-header .nav-main {
     position: fixed;
     background: #fff;
     width: 100%;
     top: 0;
     left: 0;
-    z-index: 99;    
+    z-index: 99;
     box-shadow: 0px 11px 10px -11px #000;
     animation: smoothScroll 1s forwards;
 }
+
 @keyframes smoothScroll {
     0% {
         transform: translateY(-40px);
@@ -57,6 +72,7 @@ body{
         transform: translateY(0px);
     }
 }
+
 .header-main-logo {
     display: inline-flex;
     font-size: 28px;
@@ -71,10 +87,12 @@ body{
     align-items: center;
 }
 
+
 /* .header-main-logo img {
     width: 130px;
     height: 85px;
 } */
+
 .nav-items-wrapper {
     display: flex;
     align-items: center;
@@ -82,6 +100,7 @@ body{
     padding: 0;
     height: 100%;
 }
+
 .nav-item-main {
     margin: 0 20px;
     height: 100%;
@@ -89,21 +108,27 @@ body{
     align-items: center;
     justify-content: center;
 }
+
 .nav-item-main-link {
     color: #000;
     font-size: 16px;
-    font-weight: 400;  
+    font-weight: 400;
 }
+
 .nav-item-main-link:hover {
     color: #7E41C2;
 }
-    /*small btn css*/
+
+
+/*small btn css*/
+
 .nav-toggle-btn .btn-inner {
     width: 26px;
     border-bottom: 1px solid #000;
     position: relative;
     transition: all .4s ease;
 }
+
 .nav-toggle-btn {
     height: 30px;
     width: 40px;
@@ -117,6 +142,7 @@ body{
     position: relative;
     z-index: 99;
 }
+
 .nav-toggle-btn .btn-inner:before {
     content: "";
     height: 1px;
@@ -125,6 +151,7 @@ body{
     background: #000;
     top: -7px;
 }
+
 .nav-toggle-btn .btn-inner:after {
     content: "";
     height: 1px;
@@ -133,6 +160,7 @@ body{
     background: #000;
     top: 7px;
 }
+
 .social-icon-list {
     margin-bottom: 0;
     display: flex;
@@ -140,20 +168,25 @@ body{
     justify-content: center;
     padding-left: 0;
 }
+
 .social-icon-item-link i {
     font-size: 16px;
     color: #9546DE;
 }
+
 .social-icon-item-link {
     display: block;
     font-size: 16px;
 }
+
 .social-icon-list-item {
     margin-right: 30px;
 }
+
 .social-icon-list-item:last-child {
     margin-right: 0;
 }
+
 .login-register-btn {
     border: none;
     background: #7E41C2;
@@ -162,490 +195,570 @@ body{
     font-size: 13px;
     border-radius: 10px;
 }
+
 .nav-item-main-link.active {
     color: #7E41C2;
 }
+
 .nav-item-main-link.hide-item {
     display: none;
 }
 
+
 /*Login Register Modal section css start*/
-button, button:hover, button:active, button:visited, button:focus {
-  outline: 0;
+
+button,
+button:hover,
+button:active,
+button:visited,
+button:focus {
+    outline: 0;
 }
+
 button {
-  height: 45px;
-  width: auto;
-  padding: 0 35px;
-  border-radius: 4px;
-  color: #6c6c6c;
-  border: 1px solid #c6c6c6;
-  text-transform: uppercase;
-  font-family: 'Montserrat';
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 22px;
-  text-align: center;
-  transition: 0.3s cubic-bezier(0.25, 0.8, 0.95, 1);
-  transition: padding 0s;
-  background: transparent;
+    height: 45px;
+    width: auto;
+    padding: 0 35px;
+    border-radius: 4px;
+    color: #6c6c6c;
+    border: 1px solid #c6c6c6;
+    text-transform: uppercase;
+    font-family: 'Montserrat';
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 22px;
+    text-align: center;
+    transition: 0.3s cubic-bezier(0.25, 0.8, 0.95, 1);
+    transition: padding 0s;
+    background: transparent;
 }
+
 button:hover {
-  background: linear-gradient(216.73deg, #7B00B9 0%, #7323DC 100%);
-  color: #fff;
-  border: 1px solid #7B00B9;
+    background: linear-gradient(216.73deg, #7B00B9 0%, #7323DC 100%);
+    color: #fff;
+    border: 1px solid #7B00B9;
 }
+
 @media (min-width: 320px) and (max-width: 768px) {
-  button:hover {
+    button:hover {
+        background: transparent;
+        color: #6c6c6c;
+        border: 1px solid #c6c6c6;
+    }
+}
+
+
+/* MODAL */
+
+.modal-sde {
+    height: 50px;
+    width: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #333;
+    color: #fff;
+    border-radius: 4px;
+    margin: 45px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.modal-sde:hover {
+    background: rgba(0, 0, 0, 0.75);
+    transition: 0.3s;
+}
+
+.val-success-overlay {
+    z-index: 999999999999;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.48);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+.val-success-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.val-success-overlay .val-success {
+    transform: translateZ(121px);
+    width: 620px;
+    height: auto;
+    padding: 60px 25px;
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), url('../img/modal/popup.jpg') no-repeat center/cover;
+    box-shadow: 1px 2px 18px rgba(0, 0, 0, 0.68);
+    border-radius: 4px;
+    transform: translateY(60%);
+    opacity: 0;
+    transition: 0.25s;
+    transition-delay: 0s;
+    position: relative;
+}
+
+.val-success-overlay .val-success.active {
+    transform: translateY(0);
+    opacity: 1;
+    transition: 0.3s;
+    transition-delay: 0.3s;
+}
+
+.val-success-overlay .val-success .close-modal {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    height: 44px;
+    width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.val-success-overlay .val-success .close-modal .close-ic span {
+    width: 22px;
+    height: 2px;
+    background: #fff;
+    display: block;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+}
+
+.val-success-overlay .val-success .close-modal .close-ic span:nth-child(1) {
+    transform: rotate(45deg);
+}
+
+.val-success-overlay .val-success .close-modal .close-ic span:nth-child(2) {
+    transform: rotate(-45deg);
+}
+
+.val-success-overlay .val-success .val-info {
+    width: 100%;
+}
+
+.val-success-overlay .val-success .val-info .info {
+    color: #fff;
+    font-family: 'Montserrat';
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+    text-align: center;
+    width: 80%;
+    margin: auto;
+}
+
+.val-success-overlay .val-success .form {
+    width: 100%;
+    text-align: center;
+    margin-top: 45px;
+}
+
+@media (min-width: 320px) and (max-width: 600px) {
+    .val-success-overlay .val-success {
+        width: 80%;
+    }
+}
+
+
+/* MODAL */
+
+.sign-in-modal {
+    z-index: 999999999999;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.48);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+.sign-in-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.sign-in-modal .inner--sign-in-modal {
+    transform: translateZ(121px);
+    min-width: 480px;
+    height: auto;
+    background: #fff;
+    box-shadow: 1px 2px 18px rgba(0, 0, 0, 0.68);
+    border-radius: 4px;
+    transform: translateY(60%);
+    opacity: 0;
+    transition: 0.25s;
+    transition-delay: 0s;
+    position: relative;
+}
+
+.sign-in-modal .inner--sign-in-modal.active {
+    transform: translateY(0);
+    opacity: 1;
+    transition: 0.3s;
+    transition-delay: 0.3s;
+}
+
+.sign-in-modal .inner--sign-in-modal .val-info {
+    border-radius: 4px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.sign-in-modal .inner--sign-in-modal .val-info .overlay {
+    z-index: -1;
+    display: block;
+    position: absolute;
+    background: -webkit-linear-gradient(left, #7323DC, #7B00B9);
+    box-shadow: 0px 1px 10px rgba(57, 14, 110, 0.8);
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+
+.sign-in-modal .inner--sign-in-modal .val-info .overlay.sign-in-side {
+    width: 50%;
+    margin-right: 50%;
+    border-radius: 4px 0 0 0;
+    transition: 0.6s;
+}
+
+.sign-in-modal .inner--sign-in-modal .val-info .overlay.sign-up-side {
+    width: 50%;
+    margin-left: 50%;
+    border-radius: 0 4px 0 0;
+    transition: 0.6s;
+}
+
+.sign-in-modal .inner--sign-in-modal .val-info .tab {
+    box-shadow: 1px 2px 18px rgba(0, 0, 0, 0.18);
+    width: 50%;
+    height: 55px;
+    background: #f1f1f1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #c8c8c8;
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 600;
+    transition: 0.5s;
+    font-family: 'Montserrat';
+}
+
+.sign-in-modal .inner--sign-in-modal .val-info .tab.active {
+    background: transparent;
+    color: #fff;
+}
+
+.sign-in-modal .inner--sign-in-modal .val-info .tab-sign-in {
+    cursor: pointer;
+}
+
+.sign-in-modal .inner--sign-in-modal .val-info .tab-sign-up {
+    cursor: pointer;
+}
+
+.sign-in-modal .inner--sign-in-modal .content-info {
+    min-height: 500px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.sign-in-modal .inner--sign-in-modal .content-info .content-sign-in {
+    cursor: default;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    transition: 0.6s;
+    padding: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.sign-in-modal .inner--sign-in-modal .content-info .content-sign-in.active {
+    transition: 0.6s;
+    left: 0;
+}
+
+.sign-in-modal .inner--sign-in-modal .content-info .content-sign-in .wrap--content-sign-in {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.sign-in-modal .inner--sign-in-modal .content-info .content-sign-in .wrap--content-sign-in .greetings {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 400;
+    font-family: 'Lato';
+}
+
+.sign-in-modal .inner--sign-in-modal .content-info .content-sign-in .wrap--content-sign-in form {
+    width: 90%;
+}
+
+.sign-in-modal .inner--sign-in-modal .content-info .content-sign-in .wrap--content-sign-in form .input-control {
+    width: 100%;
+    margin: auto auto 20px auto;
+}
+
+.sign-in-modal .inner--sign-in-modal .content-info .content-sign-in .wrap--content-sign-in form .input-control input {
+    width: 100%;
+    height: 45px;
+    border: 1px solid #ccc;
+    box-shadow: none;
+    background: transparent;
+    border-radius: 4px;
+    padding-left: 12px;
+}
+
+.sign-in-modal .inner--sign-in-modal .content-info .content-sign-in .wrap--content-sign-in form button {
+    width: 100%;
+    transition: 0.45s;
+    height: 50px;
+    color: #fff;
+    border: 1px solid #7B00B9;
+    text-transform: uppercase;
+    font-family: 'Montserrat';
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 22px;
+    text-align: center;
+    transition: 0.3s cubic-bezier(0.25, 0.8, 0.95, 1);
+    transition: padding 0s;
+    background: linear-gradient(216.73deg, #7B00B9 0%, #7323DC 100%);
+}
+
+.sign-in-modal .inner--sign-in-modal .content-info .content-sign-in .wrap--content-sign-in form button:hover {
     background: transparent;
     color: #6c6c6c;
     border: 1px solid #c6c6c6;
-  }
 }
-/* MODAL */
-.modal-sde {
-  height: 50px;
-  width: 220px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #333;
-  color: #fff;
-  border-radius: 4px;
-  margin: 45px;
-  cursor: pointer;
-  transition: 0.25s;
-}
-.modal-sde:hover {
-  background: rgba(0, 0, 0, 0.75);
-  transition: 0.3s;
-}
-.val-success-overlay {
-  z-index: 999999999999;
-  opacity: 0;
-  position: fixed;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.48);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.3s;
-  pointer-events: none;
-}
-.val-success-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-.val-success-overlay .val-success {
-  transform: translateZ(121px);
-  width: 620px;
-  height: auto;
-  padding: 60px 25px;
-  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), url('../img/modal/popup.jpg') no-repeat center/cover;
-  box-shadow: 1px 2px 18px rgba(0, 0, 0, 0.68);
-  border-radius: 4px;
-  transform: translateY(60%);
-  opacity: 0;
-  transition: 0.25s;
-  transition-delay: 0s;
-  position: relative;
-}
-.val-success-overlay .val-success.active {
-  transform: translateY(0);
-  opacity: 1;
-  transition: 0.3s;
-  transition-delay: 0.3s;
-}
-.val-success-overlay .val-success .close-modal {
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  height: 44px;
-  width: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-.val-success-overlay .val-success .close-modal .close-ic span {
-  width: 22px;
-  height: 2px;
-  background: #fff;
-  display: block;
-  position: absolute;
-  margin: auto;
-  left: 0;
-  right: 0;
-}
-.val-success-overlay .val-success .close-modal .close-ic span:nth-child(1) {
-  transform: rotate(45deg);
-}
-.val-success-overlay .val-success .close-modal .close-ic span:nth-child(2) {
-  transform: rotate(-45deg);
-}
-.val-success-overlay .val-success .val-info {
-  width: 100%;
-}
-.val-success-overlay .val-success .val-info .info {
-  color: #fff;
-  font-family: 'Montserrat';
-  font-size: 24px;
-  font-weight: 600;
-  line-height: 32px;
-  text-align: center;
-  width: 80%;
-  margin: auto;
-}
-.val-success-overlay .val-success .form {
-  width: 100%;
-  text-align: center;
-  margin-top: 45px;
-}
-@media (min-width: 320px) and (max-width: 600px) {
-  .val-success-overlay .val-success {
-    width: 80%;
-  }
-}
-/* MODAL */
-.sign-in-modal {
-  z-index: 999999999999;
-  opacity: 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.48);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.3s;
-  pointer-events: none;
-}
-.sign-in-modal.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-.sign-in-modal .inner--sign-in-modal {
-  transform: translateZ(121px);
-  min-width: 480px;
-  height: auto;
-  background: #fff;
-  box-shadow: 1px 2px 18px rgba(0, 0, 0, 0.68);
-  border-radius: 4px;
-  transform: translateY(60%);
-  opacity: 0;
-  transition: 0.25s;
-  transition-delay: 0s;
-  position: relative;
-}
-.sign-in-modal .inner--sign-in-modal.active {
-  transform: translateY(0);
-  opacity: 1;
-  transition: 0.3s;
-  transition-delay: 0.3s;
-}
-.sign-in-modal .inner--sign-in-modal .val-info {
-  border-radius: 4px;
-  width: 100%;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
-}
-.sign-in-modal .inner--sign-in-modal .val-info .overlay {
-  z-index: -1;
-  display: block;
-  position: absolute;
-  background: -webkit-linear-gradient(left, #7323DC, #7B00B9);
-  box-shadow: 0px 1px 10px rgba(57, 14, 110, 0.8);
-  top: 0;
-  left: 0;
-  height: 100%;
-}
-.sign-in-modal .inner--sign-in-modal .val-info .overlay.sign-in-side {
-  width: 50%;
-  margin-right: 50%;
-  border-radius: 4px 0 0 0;
-  transition: 0.6s;
-}
-.sign-in-modal .inner--sign-in-modal .val-info .overlay.sign-up-side {
-  width: 50%;
-  margin-left: 50%;
-  border-radius: 0 4px 0 0;
-  transition: 0.6s;
-}
-.sign-in-modal .inner--sign-in-modal .val-info .tab {
-  box-shadow: 1px 2px 18px rgba(0, 0, 0, 0.18);
-  width: 50%;
-  height: 55px;
-  background: #f1f1f1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #c8c8c8;
-  font-size: 18px;
-  line-height: 26px;
-  font-weight: 600;
-  transition: 0.5s;
-  font-family: 'Montserrat';
-}
-.sign-in-modal .inner--sign-in-modal .val-info .tab.active {
-  background: transparent;
-  color: #fff;
-}
-.sign-in-modal .inner--sign-in-modal .val-info .tab-sign-in {
-  cursor: pointer;
-}
-.sign-in-modal .inner--sign-in-modal .val-info .tab-sign-up {
-  cursor: pointer;
-}
-.sign-in-modal .inner--sign-in-modal .content-info {
-  min-height: 500px;
-  position: relative;
-  overflow-x: hidden;
-}
-.sign-in-modal .inner--sign-in-modal .content-info .content-sign-in {
-  cursor: default;
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  transition: 0.6s;
-  padding: 30px;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.sign-in-modal .inner--sign-in-modal .content-info .content-sign-in.active {
-  transition: 0.6s;
-  left: 0;
-}
-.sign-in-modal .inner--sign-in-modal .content-info .content-sign-in .wrap--content-sign-in {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-.sign-in-modal .inner--sign-in-modal .content-info .content-sign-in .wrap--content-sign-in .greetings {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 20px;
-  line-height: 30px;
-  font-weight: 400;
-  font-family: 'Lato';
-}
-.sign-in-modal .inner--sign-in-modal .content-info .content-sign-in .wrap--content-sign-in form {
-  width: 90%;
-}
-.sign-in-modal .inner--sign-in-modal .content-info .content-sign-in .wrap--content-sign-in form .input-control {
-  width: 100%;
-  margin: auto auto 20px auto;
-}
-.sign-in-modal .inner--sign-in-modal .content-info .content-sign-in .wrap--content-sign-in form .input-control input {
-  width: 100%;
-  height: 45px;
-  border: 1px solid #ccc;
-  box-shadow: none;
-  background: transparent;
-  border-radius: 4px;
-  padding-left: 12px;
-}
-.sign-in-modal .inner--sign-in-modal .content-info .content-sign-in .wrap--content-sign-in form button {
-  width: 100%;
-  transition: 0.45s;
-  height: 50px;
-  color: #fff;
-  border: 1px solid #7B00B9;
-  text-transform: uppercase;
-  font-family: 'Montserrat';
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 22px;
-  text-align: center;
-  transition: 0.3s cubic-bezier(0.25, 0.8, 0.95, 1);
-  transition: padding 0s;
-  background: linear-gradient(216.73deg, #7B00B9 0%, #7323DC 100%);
-}
-.sign-in-modal .inner--sign-in-modal .content-info .content-sign-in .wrap--content-sign-in form button:hover {
-  background: transparent;
-  color: #6c6c6c;
-  border: 1px solid #c6c6c6;
-}
+
 .sign-in-modal .inner--sign-in-modal .content-info .content-sign-in .wrap--content-sign-in .close-login {
-  cursor: pointer;
-  width: auto;
-  padding: 12px;
-  text-align: center;
-  margin-top: 20px;
-  position: absolute;
-  bottom: 8px;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  font-size: 16px;
-  color: #333;
+    cursor: pointer;
+    width: auto;
+    padding: 12px;
+    text-align: center;
+    margin-top: 20px;
+    position: absolute;
+    bottom: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    font-size: 16px;
+    color: #333;
 }
+
 .sign-in-modal .inner--sign-in-modal .content-info .content-sign-in .wrap--content-sign-in .close-login span {
-  font-size: 14px;
-  display: inline-block;
-  color: #666;
-  font-weight: 700;
-  letter-spacing: 1px;
+    font-size: 14px;
+    display: inline-block;
+    color: #666;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
+
 .sign-in-modal .inner--sign-in-modal .content-info .content-sign-in .wrap--content-sign-in .close-login span:first-child {
-  margin-left: 2px;
+    margin-left: 2px;
 }
+
 .sign-in-modal .inner--sign-in-modal .content-info .content-sign-up {
-  cursor: default;
-  position: absolute;
-  top: 0;
-  left: 100%;
-  width: 100%;
-  height: 100%;
-  transition: 0.6s;
-  padding: 45px;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
+    cursor: default;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    transition: 0.6s;
+    padding: 45px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
+
 .sign-in-modal .inner--sign-in-modal .content-info .content-sign-up.active {
-  transition: 0.6s;
-  left: 0;
+    transition: 0.6s;
+    left: 0;
 }
+
 .sign-in-modal .inner--sign-in-modal .content-info .content-sign-up .wrap--content-sign-up {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
+
 .sign-in-modal .inner--sign-in-modal .content-info .content-sign-up .wrap--content-sign-up .greetings {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 20px;
-  line-height: 30px;
-  font-weight: 400;
-  font-family: 'Lato';
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 400;
+    font-family: 'Lato';
 }
+
 .sign-in-modal .inner--sign-in-modal .content-info .content-sign-up .wrap--content-sign-up .greetings span {
-  text-transform: capitalize;
-  display: inline-block;
-  background: -webkit-linear-gradient(left, #7323DC, #7B00B9);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+    text-transform: capitalize;
+    display: inline-block;
+    background: -webkit-linear-gradient(left, #7323DC, #7B00B9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
+
 .sign-in-modal .inner--sign-in-modal .content-info .content-sign-up .wrap--content-sign-up form {
-  width: 90%;
-}
-.sign-in-modal .inner--sign-in-modal .content-info .content-sign-up .wrap--content-sign-up form .input-control {
-  width: 100%;
-  margin: auto auto 20px auto;
-}
-.sign-in-modal .inner--sign-in-modal .content-info .content-sign-up .wrap--content-sign-up form .input-control input {
-  width: 100%;
-  height: 45px;
-  border: 1px solid #ccc;
-  box-shadow: none;
-  background: transparent;
-  border-radius: 4px;
-  padding-left: 12px;
-}
-.sign-in-modal .inner--sign-in-modal .content-info .content-sign-up .wrap--content-sign-up form button {
-  width: 100%;
-  transition: 0.45s;
-  height: 50px;
-  color: #fff;
-  border: 1px solid #7B00B9;
-  text-transform: uppercase;
-  font-family: 'Montserrat';
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 22px;
-  text-align: center;
-  transition: 0.3s cubic-bezier(0.25, 0.8, 0.95, 1);
-  transition: padding 0s;
-  background: linear-gradient(216.73deg, #7B00B9 0%, #7323DC 100%);
-}
-.sign-in-modal .inner--sign-in-modal .content-info .content-sign-up .wrap--content-sign-up form button:hover {
-  background: transparent;
-  color: #6c6c6c;
-  border: 1px solid #c6c6c6;
-}
-.sign-in-modal .inner--sign-in-modal .content-info .close-login {
-  cursor: pointer;
-  width: auto;
-  padding: 12px;
-  text-align: center;
-  margin-top: 20px;
-  position: absolute;
-  bottom: 8px;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  font-size: 16px;
-  color: #333;
-}
-.sign-in-modal .inner--sign-in-modal .content-info .close-login span {
-  font-size: 14px;
-  display: inline-block;
-  color: #666;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-.sign-in-modal .inner--sign-in-modal .content-info .close-login span:first-child {
-  margin-left: 2px;
-}
-@media (min-width: 320px) and (max-width: 600px) {
-  .sign-in-modal .inner--sign-in-modal {
-    min-width: auto;
     width: 90%;
-  }
 }
+
+.sign-in-modal .inner--sign-in-modal .content-info .content-sign-up .wrap--content-sign-up form .input-control {
+    width: 100%;
+    margin: auto auto 20px auto;
+}
+
+.sign-in-modal .inner--sign-in-modal .content-info .content-sign-up .wrap--content-sign-up form .input-control input {
+    width: 100%;
+    height: 45px;
+    border: 1px solid #ccc;
+    box-shadow: none;
+    background: transparent;
+    border-radius: 4px;
+    padding-left: 12px;
+}
+
+.sign-in-modal .inner--sign-in-modal .content-info .content-sign-up .wrap--content-sign-up form button {
+    width: 100%;
+    transition: 0.45s;
+    height: 50px;
+    color: #fff;
+    border: 1px solid #7B00B9;
+    text-transform: uppercase;
+    font-family: 'Montserrat';
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 22px;
+    text-align: center;
+    transition: 0.3s cubic-bezier(0.25, 0.8, 0.95, 1);
+    transition: padding 0s;
+    background: linear-gradient(216.73deg, #7B00B9 0%, #7323DC 100%);
+}
+
+.sign-in-modal .inner--sign-in-modal .content-info .content-sign-up .wrap--content-sign-up form button:hover {
+    background: transparent;
+    color: #6c6c6c;
+    border: 1px solid #c6c6c6;
+}
+
+.sign-in-modal .inner--sign-in-modal .content-info .close-login {
+    cursor: pointer;
+    width: auto;
+    padding: 12px;
+    text-align: center;
+    margin-top: 20px;
+    position: absolute;
+    bottom: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.sign-in-modal .inner--sign-in-modal .content-info .close-login span {
+    font-size: 14px;
+    display: inline-block;
+    color: #666;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.sign-in-modal .inner--sign-in-modal .content-info .close-login span:first-child {
+    margin-left: 2px;
+}
+
+@media (min-width: 320px) and (max-width: 600px) {
+    .sign-in-modal .inner--sign-in-modal {
+        min-width: auto;
+        width: 90%;
+    }
+}
+
+
 /*Login Register Modal section css End*/
 
 
 /*Header secton Nav css End*/
 
+
 /*Home Banner section css start*/
+
 .home-banner-section-wrapper {
     position: relative;
 }
+
 .home-banner-content {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50% , -50%);
+    transform: translate(-50%, -50%);
 }
+
 .banner-content {
     font-size: 55px;
     color: #ffff;
     text-align: center;
     font-weight: 500;
 }
+
 .banner-content span {
     font-weight: 600;
 }
+
+
 /*Home Banner section css End*/
 
+
 /*Extra Earning section css start*/
+
 .extra-earning-section-wrapper {
     padding: 50px 0;
 }
+
 .right-content-title {
     font-size: 50px;
     margin-top: 10px;
@@ -653,18 +766,22 @@ button:hover {
     font-weight: 500;
     margin-bottom: 30px;
 }
+
 .right-content-title .extra-color {
     color: #2448D6;
 }
+
 .right-content-title span {
     color: #7E41C2;
 }
+
 .section-right-content p {
     color: #545454;
     font-size: 16px;
     line-height: 28px;
     margin-bottom: 25px;
 }
+
 .learn-more-btn-inner {
     border: none;
     background: #7E41C2;
@@ -675,12 +792,17 @@ button:hover {
     font-weight: 500;
     border-radius: 10px;
 }
+
+
 /*Extra Earning section css End*/
 
+
 /*Features section css start*/
-.feature-section-wrapper{
+
+.feature-section-wrapper {
     padding: 30px 0;
 }
+
 .left-content-title {
     font-size: 43px;
     margin-top: 10px;
@@ -688,73 +810,94 @@ button:hover {
     font-weight: 500;
     margin-bottom: 30px;
 }
+
 .left-content-title .extra-color {
     color: #2448D6;
 }
+
 .left-content-title span {
     color: #7E41C2;
 }
+
 .feature-section-list {
     padding-left: 0;
     margin-bottom: 30px;
 }
+
 .feature-section-list-item {
     color: #545454;
     font-size: 18px;
     line-height: 40px;
 }
+
 .feature-section-list-item img {
     width: 14px;
     height: 14px;
     margin-right: 5px;
 }
+
+
 /*Features section css End*/
 
+
 /*Video section css start*/
+
 .video-section-wrapper {
     padding: 40px 0;
 }
+
 .video-section-top-title {
     font-size: 40px;
     color: #545454;
     font-weight: 500;
     text-align: center;
 }
+
 .video-section-top-title .extra-color {
     color: #2448D6;
     font-weight: 600;
 }
+
 .video-section-top-title span {
     color: #7E41C2;
     font-weight: 600;
 }
+
 .video-section-top-des-outer {
     margin-top: 30px;
     text-align: center;
 }
+
 .video-section-top-des {
     font-size: 16px;
     color: #545454;
     line-height: 26px;
     margin-bottom: 10px;
 }
+
 .video-icon-outer {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
 .video-section-outer {
     position: relative;
     margin-top: 20px;
 }
+
 .video-icon-outer i {
     font-size: 90px;
     color: #fff;
 }
+
+
 /*Video section css End*/
 
+
 /*Sign up now section css start*/
+
 .signup-now-section-title {
     font-size: 43px;
     margin-top: 10px;
@@ -763,23 +906,28 @@ button:hover {
     margin-bottom: 30px;
     text-align: center;
 }
+
 .signup-now-section-title .extra-color {
     color: #2448D6;
     font-weight: 600;
 }
+
 .signup-now-section-title span {
     color: #7E41C2;
     font-weight: 600;
 }
+
 .signup-now-section-des {
     text-align: center;
     font-size: 16px;
     line-height: 30px;
     margin-bottom: 30px;
 }
+
 .section-btn-outer {
     text-align: center;
 }
+
 .section-btn-inner {
     border: none;
     background: #7E41C2;
@@ -788,16 +936,22 @@ button:hover {
     padding: 10px 30px;
     border-radius: 10px;
 }
+
+
 /*Sign up now section css End*/
 
+
 /*FAQ section css start*/
+
 .faq-section-wrapper {
     padding-top: 40px;
 }
+
 .faq-section-wrapper .container {
     padding-bottom: 40px;
     border-bottom: 1px solid #000;
 }
+
 .faq-section-title {
     font-size: 43px;
     margin-top: 10px;
@@ -806,23 +960,28 @@ button:hover {
     margin-bottom: 30px;
     text-align: center;
 }
+
 .faq-section-title .extra-color {
     color: #2448D6;
     font-weight: 600;
 }
+
 .faq-section-title span {
     color: #7E41C2;
     font-weight: 600;
 }
+
 .faq-section-des {
     text-align: center;
     font-size: 16px;
     line-height: 30px;
     margin-bottom: 30px;
 }
+
 .faq-section-btn-outer {
     text-align: center;
 }
+
 .faq-section-btn-inner {
     border: none;
     background: #7E41C2;
@@ -831,9 +990,13 @@ button:hover {
     padding: 10px 70px;
     border-radius: 10px;
 }
+
+
 /*FAQ section css End*/
 
+
 /*Footer Top social icon section css start*/
+
 .footer-social-icon-title {
     font-size: 43px;
     margin-top: 10px;
@@ -842,46 +1005,59 @@ button:hover {
     margin-bottom: 30px;
     text-align: center;
 }
+
 .footer-social-icon-title .extra-color {
     color: #2448D6;
     font-weight: 600;
 }
+
 .footer-social-icon-title span {
     color: #7E41C2;
     font-weight: 600;
 }
+
 .footer-social-icon-list {
     display: flex;
     align-items: center;
     justify-content: center;
     padding-left: 0;
 }
+
 .footer-social-icon-item-link i {
     color: #545454;
     font-size: 40px;
 }
+
 .footer-social-icon-item-link {
     display: block;
 }
+
 .footer-social-icon-list-item {
     margin-right: 50px;
 }
+
 .footer-social-icon-list-item:last-child {
     margin-right: 0;
 }
+
+
 /*Footer Top social icon section css End*/
 
+
 /*Footer bottom section css start*/
+
 .footer-bottom-section {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 5%;
 }
+
 .footer-bottom-logo img {
     width: 220px;
     height: 150px;
 }
+
 .privacy-terms-list {
     display: flex;
     align-items: center;
@@ -889,20 +1065,27 @@ button:hover {
     padding-left: 0;
     margin-bottom: 0;
 }
+
 .privacy-terms-list-item-link {
     display: block;
     color: #545454;
     font-size: 16px;
 }
+
 .privacy-terms-list-item {
     margin-right: 30px;
 }
+
 .privacy-terms-list-item:last-child {
     margin-right: 0;
 }
+
+
 /*Footer bottom section css End*/
 
+
 /* Recent Activity section css start */
+
 .recent-activitis-section {
     background: #7e41c2;
     padding: 60px 0;
@@ -997,10 +1180,263 @@ button:hover {
     font-weight: 600;
     color: #7e41c2;
 }
+
+
 /* Recent Activity section css End */
 
+
+/*Banner section css start*/
+
+.banner-section {
+    background: url(../images/home-bg.png);
+    padding: 70px 0px;
+    text-align: center;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+}
+
+.banner-section:after {
+    content: "";
+    position: absolute;
+    background: #000;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+}
+
+.banner-content-wrapper .banner-title {
+    font-size: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.banner-content-wrapper .banner-item {
+    display: inline-block;
+    background: transparent;
+    margin: 0;
+    padding: 10px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.banner-content-wrapper .banner-item li {
+    display: inline-block;
+    font-weight: 600;
+}
+
+.banner-content-wrapper .banner-item li a {
+    color: #ffffff;
+}
+
+.banner-content-wrapper .banner-item:after {
+    content: "";
+    background: #000000;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    border-radius: 5px;
+    z-index: -1;
+    opacity: 0.6;
+}
+
+.banner-content-wrapper .banner-item li:before {
+    content: "\f111";
+    font-size: 10px;
+    font-weight: 500;
+    color: #7E41C2;
+    font-family: "Font Awesome 5 Free";
+    padding: 0 10px;
+    position: relative;
+    top: -2px;
+}
+
+.banner-content-wrapper .banner-item li:first-child::before {
+    content: '';
+    padding: 0;
+}
+
+.banner-content-wrapper .banner-item li a i {
+    color: #7E41C2;
+    margin-right: 5px;
+}
+
+.banner-content-wrapper .banner-item li.active a {
+    color: #ccc;
+}
+
+
+/*Banner section css End*/
+
+
+/* Terms and condition css start */
+
+.terms-condition-section {
+    padding: 40px 0;
+}
+
+.terms-condition-content-wrapper {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.terms-condition-content-wrapper .content-title {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.terms-condition-content-wrapper .content-title i {
+    font-size: 16px;
+    margin-right: 5px;
+    color: #7E41C2;
+}
+
+.terms-condition-content-wrapper .content-text {
+    font-size: 16px;
+    color: #000;
+    line-height: 25px;
+    margin-bottom: 25px;
+}
+
+
+/* Terms and condition css end */
+
+
+/*Contact section css start*/
+
+.contact-section-wrapper {
+    padding: 50px 0;
+}
+
+.contact-info-item {
+    text-align: center;
+    position: relative;
+    z-index: 0;
+    padding: 30px 0;
+    transition: all .3s ease;
+    margin-bottom: 20px;
+    height: 230px;
+}
+
+.contact-info-item:hover {
+    transform: translateY(-10px);
+}
+
+.contact-info-item:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    left: 0;
+    top: 0;
+    opacity: 0.4;
+    border-radius: 10px;
+    z-index: -1;
+    box-shadow: rgb(0 0 0 / 38%) 0px 3px 8px;
+}
+
+.contact-info-icon {
+    display: inline-block;
+    padding: 20px 30px;
+    background: #7E41C2;
+    margin-bottom: 20px;
+}
+
+.contact-info-icon i {
+    font-size: 20px;
+    color: #fff;
+}
+
+.contact-info-item .title {
+    font-size: 20px;
+    text-transform: capitalize;
+    color: #000;
+    font-weight: 500;
+}
+
+.contact-info-item a {
+    color: #222;
+    font-size: 16px;
+    display: inline-block;
+}
+
+.contact-info-item a:hover,
+.contact-info-item p:hover {
+    color: #7E41C2;
+}
+
+.contact-info-item p {
+    color: #222;
+    font-size: 16px;
+    margin-bottom: 0;
+}
+
+.contact-form-wrapper {
+    margin-top: 30px;
+}
+
+.contact-form {
+    box-shadow: rgb(0 0 0 / 38%) 0px 3px 8px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.contact-form label {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+
+.contact-form input {
+    margin-bottom: 20px;
+    height: 50px;
+}
+
+.contact-form input:focus {
+    box-shadow: none;
+    border-color: #ddd;
+}
+
+.contact-submit-btn-outer {
+    margin-top: 20px;
+}
+
+.contact-submit-btn-inner {
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    background: #7E41C2;
+    color: #FFF;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: capitalize;
+    border-radius: 5px;
+}
+
+.custom-title:hover {
+    color: black;
+}
+
+
+/*Contact section css End*/
+
+
 /*Responsive start*/
-@media screen and (max-width: 1200px){
+
+@media screen and (max-width: 1200px) {
     .banner-content {
         font-size: 45px;
     }
@@ -1025,21 +1461,21 @@ button:hover {
     }
 }
 
-@media screen and (max-width: 1024px){
+@media screen and (max-width: 1024px) {
     .nav-item-main-link.hide-item {
         display: block;
     }
     .nav-items-wrapper {
         flex-direction: column;
-        position: absolute;
-        right: -50%;
-        top: 0;
-        padding-top: 100px;
-        width: 50%;
+        position: fixed;
+        right: -400px;
+        top: 80px;
+        padding-top: 10px;
+        width: 300px;
         height: 100vh;
         background: #fff;
         align-items: flex-start;
-        padding-left: 5%;
+        padding-left: 3%;
         overflow: hidden;
         transition: all .4s ease;
     }
@@ -1081,7 +1517,8 @@ button:hover {
         display: none;
     }
 }
-@media screen and (max-width: 991px){
+
+@media screen and (max-width: 991px) {
     .banner-content {
         font-size: 35px;
     }
@@ -1124,7 +1561,8 @@ button:hover {
         line-height: inherit;
     }
 }
-@media screen and (max-width: 767px){
+
+@media screen and (max-width: 767px) {
     .banner-content {
         font-size: 30px;
     }
@@ -1146,17 +1584,19 @@ button:hover {
     .learn-more-btn-outer {
         text-align: center;
     }
-    .section-left-content {
-    }
+    .section-left-content {}
     .left-content-title {
         text-align: center;
     }
 }
-@media screen and (max-width: 600px){
+
+@media screen and (max-width: 600px) {
     .banner-content {
         font-size: 15px;
     }
-    .feature-section-wrapper {padding: 0;}
+    .feature-section-wrapper {
+        padding: 0;
+    }
     .footer-social-icon-title {
         font-size: 30px;
         margin-bottom: 20px;
@@ -1178,7 +1618,8 @@ button:hover {
         height: 120px;
     }
 }
-@media screen and (max-width: 480px){
+
+@media screen and (max-width: 480px) {
     .footer-bottom-section {
         display: block;
         text-align: center;
@@ -1203,4 +1644,6 @@ button:hover {
         line-height: inherit;
     }
 }
+
+
 /*Responsive End

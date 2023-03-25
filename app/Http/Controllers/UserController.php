@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\NidVerificationRequest;
@@ -98,14 +99,21 @@ class UserController extends Controller
         return view('frontend.auth.user.accepted-task');
     }
 
-    public function showJobDetails()
+    public function showJobDetails($id)
     {
-        return view('frontend.auth.user.job.job-details');
+        $postDetail = Post::with('specificTasks')->find($id);
+        return view('frontend.auth.user.job.job-details', compact('postDetail'));
     }
 
-    public function showJobReport()
+    public function showJobReport($id)
     {
-        return view('frontend.auth.user.job.job-report');
+        $postDetail = Post::with('specificTasks')->find($id);
+        return view('frontend.auth.user.job.job-report', compact('postDetail'));
+    }
+
+    public function showMyPost()
+    {
+        return view('frontend.auth.user.my-post');
     }
 
     // public function showDeposit()

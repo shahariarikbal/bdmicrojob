@@ -11,4 +11,12 @@ class FrontendController extends Controller
     {
         return view('frontend.home.index');
     }
+
+    public function aboutUs(){
+        return view('frontend.setting.about-us');
+    }
+
+    public function contactUs(){
+        return view('frontend.setting.contact-us');
+    }
 }

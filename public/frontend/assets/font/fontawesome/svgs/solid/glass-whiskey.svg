@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M358.59,195.6,504.2,313.8a63.4,63.4,0,0,1,22.21,37.91H624a16.05,16.05,0,0,0,16-16V143.91A16,16,0,0,0,624,128H512L457.41,73.41A32,32,0,0,0,434.8,64H348.91a32,32,0,0,0-21.61,8.41l-88.12,80.6
+=======
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M480 32H32C12.5 32-2.4 49.2.3 68.5l56 356.5c4.5 31.5 31.5 54.9 63.4 54.9h273c31.8 0 58.9-23.4 63.4-54.9l55.6-356.5C514.4 49.2 499.5 32 480 32zm-37.4 64l-30 192h-313L69.4 96h373.2z"/></svg>
+>>>>>>> 6dd5d474db8f6bc609689756f926541030880e95

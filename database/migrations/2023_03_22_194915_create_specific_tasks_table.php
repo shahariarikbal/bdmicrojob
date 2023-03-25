@@ -17,6 +17,9 @@ class CreateSpecificTasksTable extends Migration
             $table->id();
             $table->unsignedBigInteger('post_id');
             $table->longText('specific_task');
+            $table->foreign('post_id')
+                ->references('id')->on('posts')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

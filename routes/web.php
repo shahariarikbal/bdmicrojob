@@ -41,6 +41,9 @@ Route::get('flush', function() {
 
 Route::get('/', [FrontendController::class, 'index']);
 
+// ======================== Static Routes ===================================== //
+Route::get('/about', [FrontendController::class, 'aboutUs']);
+Route::get('/contact', [FrontendController::class, 'contactUs']);
 
 Auth::routes();
 

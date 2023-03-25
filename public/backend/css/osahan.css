@@ -1913,9 +1913,6 @@ h6 {
     border-radius: 10px;
 }
 
-padding: 22px 5px !important;
-
-}
 .osahan-right-navbar .nav-link .fas {
     font-size: 12px;
 }
@@ -1982,7 +1979,7 @@ footer.sticky-footer {
     display: none;
 }
 
-}
+
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
@@ -2397,7 +2394,7 @@ footer.sticky-footer {
 
 .category-item-radio:checked + .category-item-label {
   background: #7E41C2;
-  color: #fff;
+  color: #fff!important;
   border-radius: 4px;
 }
 
@@ -2417,6 +2414,7 @@ footer.sticky-footer {
 .category-items-wrap {
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 20px;
 }
 
 .submit-btn-outer {
@@ -2438,6 +2436,12 @@ footer.sticky-footer {
 /*User dashboard css End*/
 
 /*Admission Form Css Start*/
+.post-job-form-wrapper {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
 #progressbar {
     margin-bottom: 30px;
     overflow: hidden;
@@ -2472,16 +2476,6 @@ footer.sticky-footer {
 #progressbar #address:before {
     font-family: FontAwesome;
     content: "3"
-}
-
-#progressbar #payment:before {
-    font-family: FontAwesome;
-    content: "4"
-}
-
-#progressbar #image:before {
-    font-family: FontAwesome;
-    content: "5"
 }
 
 #progressbar #confirm:before {
@@ -2587,11 +2581,6 @@ footer.sticky-footer {
   background-color: #7e41c233;
 }
 
-#postJob .tab {
-  display: none;
-  margin-bottom: 20px;
-}
-
 #postJob button {
     background-color: #7E41C2;
     color: #ffffff;
@@ -2603,25 +2592,15 @@ footer.sticky-footer {
     border-radius: 5px;
 }
 
+.job-post-sub-btn-outer {
+    text-align: end;
+    margin-top: 20px;
+}
+
 #postJob button:focus {
     outline: none;
 }
 
-button#prevBtn {
-    opacity: 0.7;
-}
-
-#postJob button:hover {
-  opacity: 0.8;
-}
-
-#prevBtn {
-  background-color: #bbbbbb;
-}
-
-.step.finish {
-  color: #7e41c2;
-}
 
 .post-job-form-wrapper {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;

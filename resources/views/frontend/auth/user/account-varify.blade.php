@@ -6,7 +6,7 @@ Account Varify
 
 @section('content')
 <section class="account-varify-section">
-    <div class="container">
+    <div class="container-fluid pt-5">
         <div class="row">
             <div class="col-md-10 m-auto">
                 <form action="{{ url('/account/varify/store') }}" method="post" class="account-varify-form" enctype="multipart/form-data">
