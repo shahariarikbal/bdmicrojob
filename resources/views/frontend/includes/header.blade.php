@@ -14,10 +14,10 @@
         <!-- Nav items start -->
         <ul class="nav-items-wrapper">
             <li class="nav-item-main">
-                <a class="nav-item-main-link active" href="#">Home</a>
+                <a class="nav-item-main-link active" href="{{ url('/') }}">Home</a>
             </li>
             <li class="nav-item-main">
-                <a class="nav-item-main-link" href="#">
+                <a class="nav-item-main-link" href="{{ url('/about') }}">
                     About us
                 </a>
             </li>
@@ -31,7 +31,7 @@
             </li>
             </li>
             <li class="nav-item-main">
-                <a class="nav-item-main-link" href="#">
+                <a class="nav-item-main-link" href="{{ url('/contact') }}">
                   Contact Us
                 </a>
             </li>
