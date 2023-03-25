@@ -73,7 +73,11 @@ Account Varify
                     </div>
                     <img id="userPreview" class="imgPreview" src="" width="250px">
                     <div class="account-varify-btn-outer">
+                        @if ($nid_verified !=1)
                         <button type="submit" class="account-varify-btn-inner">Submit</button>
+                        @else
+                        <div><h1 class="text-danger">Already Verified!!</h1></div>
+                        @endif
                     </div>
                 </form>
             </div>

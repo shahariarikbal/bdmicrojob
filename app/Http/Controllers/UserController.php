@@ -48,7 +48,9 @@ class UserController extends Controller
     public function showAccountVarify()
     {
         if(Auth::check()){
-            return view('frontend.auth.user.account-varify');
+            $auth_user = Auth::user();
+            $nid_verified = $auth_user->nid_verified;
+            return view('frontend.auth.user.account-varify', compact('nid_verified'));
         }
 
         else{
@@ -63,14 +65,14 @@ class UserController extends Controller
             $nid_verification = new NidVerification();
 
             if($request->hasFile('card_image')){
-                $name = time() . '.' . $request->card_image->getClientOriginalExtension();
+                $name = time() . '-' . '.' . $request->card_image->getClientOriginalExtension();
                 $request->card_image->move('card_verification/', $name);
                 $nid_verification->card_image = $name;
             }
             if($request->hasFile('user_image')){
-                $name = time() . '.' . $request->user_image->getClientOriginalExtension();
-                $request->user_image->move('card_verification/', $name);
-                $nid_verification->user_image = $name;
+                $user_image_name = time() . '.' . $request->user_image->getClientOriginalExtension();
+                $request->user_image->move('card_verification/', $user_image_name);
+                $nid_verification->user_image = $user_image_name;
             }
             $nid_verification->user_id = $auth_user->id;
             $nid_verification->card_type = $request->card_type;

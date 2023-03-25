@@ -7,6 +7,7 @@ use App\Models\Admin;
 use App\Models\User;
 use App\Models\UserVideo;
 use App\Models\Video;
+use App\Models\NidVerification;
 use Hash;
 use Illuminate\Http\Request;
 use Session;
@@ -92,6 +93,51 @@ class AdminController extends Controller
         Session::forget('admin_name');
 
     	return redirect('admin/login');
+    }
+
+    public function showVerificationRequest ()
+    {
+        $nid_requests = NidVerification::with('user')->orderBy('created_at','desc')->Paginate(10);
+        return view('backend.request.show-nid-request', compact('nid_requests'));
+    }
+
+    public function approveNidRequest ($id)
+    {
+        $nid_request = NidVerification::find($id);
+
+        if($nid_request){
+            $nid_request->status = 1;
+            if($nid_request->save()){
+                $user = User::find($nid_request->user_id);
+                if($user->nid_verified!=1 && $user->nid_verified!=2){
+                    $user->nid_verified = 1;
+                    $user->save();
+                    return redirect()->back()->with('Success','Approved Successfully!!');
+                }
+                else{
+                    return redirect()->back()->with('Error','Already Approved!!');
+                }
+            }
+        }
+    }
+
+    public function rejectNidRequest ($id)
+    {
+        $nid_request = NidVerification::find($id);
+
+        if($nid_request && $nid_request->status !=1){
+            if($nid_request->status==2){
+                return redirect()->back()->with('Error','Already Rejected!!');
+            }
+            else{
+                $nid_request->status = 2;
+                $nid_request->save();
+                return redirect()->back()->with('Success','Rejected Successfully!!');
+            }
+        }
+        else{
+            return redirect()->back()->with('Error','Already Approved!!');
+        }
     }
 
 
