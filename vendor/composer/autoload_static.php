@@ -563,6 +563,7 @@ class ComposerStaticInit1c3baf1cb902a8ea4cef8396f7687a52
         'App\\Models\\Membership' => __DIR__ . '/../..' . '/app/Models/Membership.php',
         'App\\Models\\NidVerification' => __DIR__ . '/../..' . '/app/Models/NidVerification.php',
         'App\\Models\\Post' => __DIR__ . '/../..' . '/app/Models/Post.php',
+        'App\\Models\\PostSubmit' => __DIR__ . '/../..' . '/app/Models/PostSubmit.php',
         'App\\Models\\SpecificTask' => __DIR__ . '/../..' . '/app/Models/SpecificTask.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\UserVideo' => __DIR__ . '/../..' . '/app/Models/UserVideo.php',
