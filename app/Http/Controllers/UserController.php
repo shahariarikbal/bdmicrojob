@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\NidVerificationRequest;
+use App\Models\NidVerification;
 use Auth;
 
 class UserController extends Controller
@@ -54,10 +56,34 @@ class UserController extends Controller
         }
     }
 
-    public function storeAccountVerify()
+    public function storeAccountVerify(NidVerificationRequest $request)
     {
-        $auth_user = Auth::user();
+        if(Auth::check()){
+            $auth_user = Auth::user();
+            $nid_verification = new NidVerification();
 
+            if($request->hasFile('card_image')){
+                $name = time() . '.' . $request->card_image->getClientOriginalExtension();
+                $request->card_image->move('card_verification/', $name);
+                $nid_verification->card_image = $name;
+            }
+            if($request->hasFile('user_image')){
+                $name = time() . '.' . $request->user_image->getClientOriginalExtension();
+                $request->user_image->move('card_verification/', $name);
+                $nid_verification->user_image = $name;
+            }
+            $nid_verification->user_id = $auth_user->id;
+            $nid_verification->card_type = $request->card_type;
+            $nid_verification->card_name = $request->card_name;
+            $nid_verification->card_number = $request->card_number;
+
+            $nid_verification->save();
+            return redirect()->back()->with('Success','Documents Submission done');
+        }
+
+        else{
+            return redirect('/login');
+        }
     }
 
     public function showMyTask()

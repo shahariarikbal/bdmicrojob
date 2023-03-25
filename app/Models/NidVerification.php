@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class NidVerification extends Model
 {
     use HasFactory;
+    protected $table='nid_verifications';
+    protected $guarded = [];
 }

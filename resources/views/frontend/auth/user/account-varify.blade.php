@@ -9,7 +9,8 @@ Account Varify
     <div class="container">
         <div class="row">
             <div class="col-md-10 m-auto">
-                <form action="{{ url('/account/varify/store') }}" method="post" class="account-varify-form">
+                <form action="{{ url('/account/varify/store') }}" method="post" class="account-varify-form" enctype="multipart/form-data">
+                    @csrf
                     <h4 class="title">Account Verification</h4>
                     <div class="form-group">
                         <label for="cardType" class="form-control-label">Select Verify Card</label>
@@ -30,11 +31,11 @@ Account Varify
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
                             <input class="form-control" placeholder="Your Orginal Full Name" name="card_name"
-                                id="cardName" type="text" required="">
-                            @if ($errors->has('card_name'))
-                            <div class="text-danger">{{ $errors->first('card_name') }}</div>
-                            @endif
+                                id="cardName" type="text">
                         </div>
+                        @if ($errors->has('card_name'))
+                        <div class="text-danger">{{ $errors->first('card_name') }}</div>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label class="form-control-label">Card Number*</label>
@@ -43,11 +44,11 @@ Account Varify
                                 <span class="input-group-text"><i class="fa fa-id-card" aria-hidden="true"></i></span>
                             </div>
                             <input class="form-control" placeholder="Your Card Number" name="card_number"
-                                id="cardNumber" type="text" required="">
-                            @if ($errors->has('card_number'))
-                            <div class="text-danger">{{ $errors->first('card_number') }}</div>
-                            @endif
+                                id="cardNumber" type="text">
                         </div>
+                        @if ($errors->has('card_number'))
+                        <div class="text-danger">{{ $errors->first('card_number') }}</div>
+                        @endif
                     </div>
                     <p class="font-weight-500 text-blue">*Card Front Image</p>
                     <div>
