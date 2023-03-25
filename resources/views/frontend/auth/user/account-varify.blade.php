@@ -5,28 +5,30 @@ Account Varify
 @endsection
 
 @section('content')
-    <section class="account-varify-section">
-        <div class="container-fluid pt-5">
-            <div class="row">
-                <div class="col-md-10 m-auto">
-                    <form action="" method="" class="account-varify-form">
-                        <h4 class="title">Account Verification</h4>
-                        <div class="form-group">
-                            <label for="cardType" class="form-control-label">Select Verify Card</label>
-                            <select class="form-control" id="cardType">
-                                <option value="National ID Card"> ID Card</option>
-                                <option value="Passport">Passport</option>
-                                <option value="Driving Licence">Driving Licence</option>
-                                <option value="Birth Certificate">Birth Certificate</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-control-label">Full Name*</label>
-                            <div class="input-group input-group-merge">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                </div>
-                                <input class="form-control" placeholder="Your Card Orginal Full Name" id="cardName" type="text" required="">
+<section class="account-varify-section">
+    <div class="container-fluid pt-5">
+        <div class="row">
+            <div class="col-md-10 m-auto">
+                <form action="{{ url('/account/varify/store') }}" method="post" class="account-varify-form" enctype="multipart/form-data">
+                    @csrf
+                    <h4 class="title">Account Verification</h4>
+                    <div class="form-group">
+                        <label for="cardType" class="form-control-label">Select Verify Card</label>
+                        <select class="form-control" name="card_type" id="cardType">
+                            <option value="nid"> ID Card</option>
+                            {{-- <option value="Passport">Passport</option>
+                            <option value="Driving Licence">Driving Licence</option> --}}
+                            <option value="birth">Birth Certificate</option>
+                        </select>
+                        @if ($errors->has('card_type'))
+                        <div class="text-danger">{{ $errors->first('card_type') }}</div>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label">Full Name*</label>
+                        <div class="input-group input-group-merge">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
                             <input class="form-control" placeholder="Your Orginal Full Name" name="card_name"
                                 id="cardName" type="text">
