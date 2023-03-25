@@ -109,6 +109,11 @@ class UserController extends Controller
         return view('frontend.auth.user.job.job-report', compact('postDetail'));
     }
 
+    public function showMyPost()
+    {
+        return view('frontend.auth.user.my-post');
+    }
+
     // public function showDeposit()
     // {
     //     return view('frontend.auth.user.deposit');
