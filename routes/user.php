@@ -25,6 +25,8 @@ Route::get('/accepted/task', [\App\Http\Controllers\UserController::class, 'show
 Route::get('/job/details', [\App\Http\Controllers\UserController::class, 'showJobDetails']);
 Route::get('/job/report', [\App\Http\Controllers\UserController::class, 'showJobReport']);
 
-//Deposit...
+//Deposit and Withdraw...
 Route::get('/instant/deposit', [App\Http\Controllers\Payment\DepositController::class, 'showDeposit']);
 Route::post('/store/deposit', [App\Http\Controllers\Payment\DepositController::class, 'storeDeposit']);
+Route::get('/instant/withdraw', [App\Http\Controllers\Payment\DepositController::class, 'showWithdraw']);
+Route::post('/withdraw/earning', [App\Http\Controllers\Payment\DepositController::class, 'withdrawEarning']);

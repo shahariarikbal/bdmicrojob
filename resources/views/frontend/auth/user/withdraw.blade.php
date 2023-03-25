@@ -9,16 +9,12 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header p-3">
-                    <h2 class="text-center m-0 text-blue deposit-sec-title">Instant Deposit</h2>
+                    <h2 class="text-center m-0 text-blue deposit-sec-title">Withdraw</h2>
                     <div class="card-body">
                         <div>
-                            <h5>
-                                1.বিকাশ মার্চেন্ট (পেমেন্ট) => 01580366311 <br>
-                                2.নগদ পারসোনাল (সেন্ডমানি) => 01580366311
-                            </h5>
-                            <p class="deposit-sec-notice" style="padding: 5px; border: 2px solid #7E41C2; border-radius: 4px;">NOTICE : Minimum deposit amount: 100tk . Any deposits less then the minimum will not be credited or refunded.Thank You</p>
+                            <p class="deposit-sec-notice" style="padding: 5px; border: 2px solid #7E41C2; border-radius: 4px;">NOTICE : Minimum withdraw amount: 100tk. Thank You</p>
                         </div>
-                        <form action="{{ url('/store/deposit') }}" method="POST" class="deposit-form form-group" enctype="multipart/form-data">
+                        <form action="{{ url('/withdraw/earning') }}" method="POST" class="deposit-form form-group">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
@@ -76,17 +72,17 @@
                                     @endif
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="transaction_id" class="deposit-form-label">Transaction Id</label>
-                                    <input type="text" name="transaction_id" value="{{ old('transaction_id') }}" class="deposit-form-input form-control" placeholder="Transaction Id">
-                                    @if ($errors->has('transaction_id'))
-                                    <div class="text-danger">{{ $errors->first('transaction_id') }}</div>
+                                    <label for="payment_gateway_number" class="deposit-form-label">Payment Gateway Number</label>
+                                    <input type="text" name="payment_gateway_number" class="deposit-form-input form-control" value="{{ old('payment_gateway_number') }}" placeholder="Bkash/Nagad Number">
+                                    @if ($errors->has('payment_gateway_number'))
+                                    <div class="text-danger">{{ $errors->first('payment_gateway_number') }}</div>
                                     @endif
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="deposit_amount" class="deposit-form-label">Deposit Amount</label>
-                                    <input type="number" name="deposit_amount" value="{{ old('deposit_amount') }}" class="deposit-form-input form-control" placeholder="Deposit Amount">
-                                    @if ($errors->has('deposit_amount'))
-                                    <div class="text-danger">{{ $errors->first('deposit_amount') }}</div>
+                                    <label for="withdraw_amount" class="deposit-form-label">Deposit Amount</label>
+                                    <input type="number" name="withdraw_amount" value="{{ old('withdraw_amount') }}" class="deposit-form-input form-control" placeholder="Withdraw Amount">
+                                    @if ($errors->has('withdraw_amount'))
+                                    <div class="text-danger">{{ $errors->first('withdraw_amount') }}</div>
                                     @endif
                                 </div>
                                 <div class="col-md-6">
@@ -98,19 +94,19 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <label for="screenshot" class="deposit-form-label">Payment Sucesfull Screenshot (Optional)</label>
-                                    <input type="file" name="screenshot" class="deposit-form-input form-control" placeholder="Deposit Amount">
-                                </div>
+                                @if ($user_nid_verification==1)
                                 <button type="submit" class="deposit-form-btn">Continue to payment</button>
+                                @else
+                                <div><h1 class="text-danger">Your NID/Birth Certificate is not verified yet!!</h1></div>
+                                @endif
                             </div>
                         </form>
                     </div>
-                    <div class="text-right">
+                    {{--  <div class="text-right">
                         <div class="text-center">
                             <img class="gateway-branding" src="https://workupjob.com/assets/img/brand/donex.png" />
                         </div>
-                    </div>
+                    </div>  --}}
                 </div>
             </div>
         </div>
