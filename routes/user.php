@@ -19,11 +19,14 @@ Route::post('/user/register', [\App\Http\Controllers\UserController::class, 'use
 Route::get('/post/job', [\App\Http\Controllers\UserController::class, 'showPostJob']);
 Route::post('/post/store', [\App\Http\Controllers\Backend\JobController::class, 'postStore']);
 Route::get('/account/varify', [\App\Http\Controllers\UserController::class, 'showAccountVarify']);
+Route::post('/account/varify/store', [\App\Http\Controllers\UserController::class, 'storeAccountVerify']);
 Route::get('/my/task', [\App\Http\Controllers\UserController::class, 'showMyTask']);
 Route::get('/accepted/task', [\App\Http\Controllers\UserController::class, 'showAcceptedTask']);
 Route::get('/job/details/{id}', [\App\Http\Controllers\UserController::class, 'showJobDetails']);
 Route::get('/job/report', [\App\Http\Controllers\UserController::class, 'showJobReport']);
 
-//Deposit...
+//Deposit and Withdraw...
 Route::get('/instant/deposit', [App\Http\Controllers\Payment\DepositController::class, 'showDeposit']);
 Route::post('/store/deposit', [App\Http\Controllers\Payment\DepositController::class, 'storeDeposit']);
+Route::get('/instant/withdraw', [App\Http\Controllers\Payment\DepositController::class, 'showWithdraw']);
+Route::post('/withdraw/earning', [App\Http\Controllers\Payment\DepositController::class, 'withdrawEarning']);
