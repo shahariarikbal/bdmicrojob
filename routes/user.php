@@ -21,7 +21,7 @@ Route::post('/post/store', [\App\Http\Controllers\Backend\JobController::class, 
 Route::get('/account/varify', [\App\Http\Controllers\UserController::class, 'showAccountVarify']);
 Route::get('/my/task', [\App\Http\Controllers\UserController::class, 'showMyTask']);
 Route::get('/accepted/task', [\App\Http\Controllers\UserController::class, 'showAcceptedTask']);
-Route::get('/job/details', [\App\Http\Controllers\UserController::class, 'showJobDetails']);
+Route::get('/job/details/{id}', [\App\Http\Controllers\UserController::class, 'showJobDetails']);
 Route::get('/job/report', [\App\Http\Controllers\UserController::class, 'showJobReport']);
 
 //Deposit...

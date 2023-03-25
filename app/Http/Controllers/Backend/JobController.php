@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
+use App\Models\Category;
 use App\Models\Deposit;
 use App\Models\Post;
 use App\Models\SpecificTask;
@@ -21,14 +22,15 @@ class JobController extends Controller
     {
         $deposit = User::where('id', auth()->user()->id)->first();
         if(empty($deposit)){
-            return redirect()->back()->with('message', 'Please deposit your account balance first');
+            return redirect()->back()->with('info', 'Please deposit your account balance first');
         }
 
         $imageName = time() .'.'.$request->avatar->extension();
-        $image = $request->avatar->move('/Thumbnail', $imageName);
+        $image = $request->avatar->move('thumbnail', $imageName);
 
         $post = new Post();
         $post->cat_id = $request->cat_id;
+        $post->user_id = auth()->user()->id;
         $post->title = $request->title;
         $post->required_task = $request->required_task;
         $post->avatar = $imageName;
@@ -42,6 +44,15 @@ class JobController extends Controller
             $post->save();
         }
 
+        //Balance Debit from deposit amount
+        if ($post->save()){
+            $category = Category::where('id', $post->cat_id)->first();
+            $userDeposit = User::where('id', auth()->user()->id)->first();
+            $userDeposit->total_deposit = ($userDeposit->total_deposit - $category->price) - $request->total_cost;
+            $userDeposit->save();
+        }
+
+        //Data save specific task in another table
         if ($post->save()){
             foreach($request->specific_task as $k => $task){
                 $specificTask = new SpecificTask();
