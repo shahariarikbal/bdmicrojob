@@ -19,21 +19,21 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="user_name" class="deposit-form-label">Full Name</label>
-                                    <input type="text" name="user_name" readonly value="{{ $user_name }}" class="deposit-form-input form-control" placeholder="Full Name">
+                                    <input type="text" name="user_name" readonly value="{{ $auth_user->name }}" class="deposit-form-input form-control" placeholder="Full Name">
                                     @if ($errors->has('user_name'))
                                     <div class="text-danger">{{ $errors->first('user_name') }}</div>
                                     @endif
                                 </div>
                                 <div class="col-md-6">
                                     <label for="user_phone" class="deposit-form-label">Phone Number</label>
-                                    <input type="number" name="user_phone" readonly value="{{ $user_phone }}" class="deposit-form-input form-control" placeholder="Phone Number">
+                                    <input type="number" name="user_phone" readonly value="{{ $auth_user->phone }}" class="deposit-form-input form-control" placeholder="Phone Number">
                                     @if ($errors->has('user_phone'))
                                     <div class="text-danger">{{ $errors->first('user_phone') }}</div>
                                     @endif
                                 </div>
                                 <div class="col-md-6">
                                     <label for="user_email" class="deposit-form-label">Email</label>
-                                    <input type="email" name="user_email" readonly value="{{ $user_email }}" class="deposit-form-input form-control" placeholder="Email">
+                                    <input type="email" name="user_email" readonly value="{{ $auth_user->email }}" class="deposit-form-input form-control" placeholder="Email">
                                     @if ($errors->has('user_email'))
                                     <div class="text-danger">{{ $errors->first('user_email') }}</div>
                                     @endif
@@ -94,13 +94,13 @@
                                         @endif
                                     </div>
                                 </div>
-                                @if ($user_nid_verification==1 && $total_income>=100)
+                                @if ($auth_user->nid_verified==1 && $auth_user->total_income>=100)
                                 <button type="submit" class="deposit-form-btn">Continue to payment</button>
-                                @elseif ($user_nid_verification!=1 && $total_income>=100)
+                                @elseif ($auth_user->nid_verified!=1 && $auth_user->total_income>=100)
                                 <div><h1 class="text-danger">Your NID/Birth Certificate is not verified yet!!</h1></div>
-                                @elseif ($user_nid_verification==1 && $total_income<100)
+                                @elseif ($auth_user->nid_verified==1 && $auth_user->total_income<100)
                                 <div><h1 class="text-danger">Insufficient Earning Balance!!</h1></div>
-                                @elseif ($user_nid_verification!=1 && $total_income<100)
+                                @elseif ($auth_user->nid_verified!=1 && $auth_user->total_income<100)
                                 <div><h1 class="text-danger">NID is not Verified & Insufficient Earning Balance!!</h1></div>
                                 @endif
                             </div>

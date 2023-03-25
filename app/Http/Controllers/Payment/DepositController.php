@@ -63,12 +63,8 @@ class DepositController extends Controller
     {
         if(Auth::check()){
             $user = Auth::user();
-            $user_email = $user->email;
-            $user_name = $user->name;
-            $user_phone = $user->phone;
-            $user_nid_verification = $user->nid_verified;
-            $total_income = $user->total_income;
-            return view('frontend.auth.user.withdraw', compact('user_email','user_name','user_phone','user_nid_verification','total_income'));
+            $auth_user = User::select(['name', 'email', 'phone', 'nid_verified', 'total_income'])->where('id',$user->id)->first();
+            return view('frontend.auth.user.withdraw', compact('auth_user'));
         }
         return redirect('/login');
     }
