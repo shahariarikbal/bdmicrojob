@@ -48,4 +48,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(NidVerification::class);
     }
+
+    public function withdrawrequest(): HasMany
+    {
+        return $this->hasMany(Withdraw::class);
+    }
 }

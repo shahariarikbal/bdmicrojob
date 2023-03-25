@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Deposit;
+use App\Models\Withdraw;
 use App\Models\User;
 
 class PaymentController extends Controller
@@ -41,6 +42,50 @@ class PaymentController extends Controller
         }
         else{
             return redirect()->back()->with('error',"Deposit Record is not Found!");
+        }
+    }
+
+    public function showWithdrawRequest ()
+    {
+        $withdraws = Withdraw::orderBy('created_at','desc')->with('user')->Paginate(10);
+        return view('backend.payment.show-withdraw', compact('withdraws'));
+    }
+
+    public function approveWithdraw ($id)
+    {
+        $withdraw = Withdraw::find($id);
+        if($withdraw->is_approved==true){
+            return redirect()->back()->with('Error','Already Approved!!');
+        }
+        if($withdraw){
+            $user = User::where('id',$withdraw->user_id)->first();
+
+            if($user){
+                if($user->total_income>=$withdraw->withdraw_amount){
+                    $withdraw->is_approved = true;
+                if($withdraw->save()){
+                    $final_income_amount = $user->total_income-$withdraw->withdraw_amount;
+                    $user->total_income = $final_income_amount;
+                    $user->save();
+                    //Notification....
+
+                    //Notification....
+                    return redirect()->back()->with('Success',"Approved Successfully!");
+                }
+                return redirect()->back()->with('Error',"Technical Error!!");
+                }
+
+                else{
+                    return redirect()->back()->with('Error',"Insufficient Balance!");
+                }
+            }
+
+            else{
+                return redirect()->back()->with('Error',"User Record is not Found!");
+            }
+        }
+        else{
+            return redirect()->back()->with('Error',"Withdraw Record is not Found!");
         }
     }
 }

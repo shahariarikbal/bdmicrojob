@@ -47,6 +47,12 @@
        <span>Deposit Requests</span>
        </a>
     </li>
+    <li class="nav-item {{ Request::url() == url('admin/withdraw/request') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('admin/withdraw/request') }}">
+         <i class="fas fa-money-bill"></i>
+        <span>Withdraw Requests</span>
+        </a>
+     </li>
     <li class="nav-item {{ Request::url() == url('admin/nid_verification/request') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('admin/nid_verification/request') }}">
          <i class="fas fa-money-bill"></i>
