@@ -7,6 +7,7 @@ use App\Http\Requests\PostRequest;
 use App\Models\Deposit;
 use App\Models\Post;
 use App\Models\SpecificTask;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class JobController extends Controller
@@ -18,7 +19,7 @@ class JobController extends Controller
 
     public function postStore(PostRequest $request)
     {
-        $deposit = Deposit::where('user_id', auth()->user()->id)->first();
+        $deposit = User::where('id', auth()->user()->id)->first();
         if(empty($deposit)){
             return redirect()->back()->with('message', 'Please deposit your account balance first');
         }
@@ -35,8 +36,8 @@ class JobController extends Controller
         $post->worker_earn = $request->worker_earn;
         $post->required_screenshot = $request->required_screenshot;
         $post->estimated_date = $request->estimated_date;
-        if($deposit->deposit_amount == 0 && $deposit->is_approved == 0){
-            return redirect()->back()->with('message', 'Please deposit your account balance first');
+        if($deposit->total_deposit == 0){
+            return redirect()->back()->with('info', 'Please deposit your account balance first');
         }else{
             $post->save();
         }

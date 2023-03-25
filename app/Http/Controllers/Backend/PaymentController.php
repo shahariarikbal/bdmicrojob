@@ -30,7 +30,7 @@ class PaymentController extends Controller
                     $final_deposit_amount = $deposit->deposit_amount+$user->total_deposit;
                     $user->total_deposit = $final_deposit_amount;
                     $user->save();
-                    return redirect()->back()->with('Success',"Approved Successfully!");
+                    return redirect()->back()->with('success',"Approved Successfully!");
                 }
                 return redirect()->back()->with('error',"Technical Error!!");
             }
