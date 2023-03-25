@@ -71,18 +71,19 @@
                             1. {{ $postDetail->required_task }}
                         </p>
                     </div>
-                    <form action="" method="" class="job-details-form form-group">
+                    <form action="{{ url('/post/submit/'.$postDetail->id) }}" method="post" class="job-details-form form-group" enctype="multipart/form-data">
+                        @csrf
                         <div class="job-details-form-item">
                             <h4 class="job-details-text-title">
                                 Submit required work Prove
                             </h4>
-                            <textarea name="prove_details" rows="5" cols="50" class="form-control"></textarea>
+                            <textarea name="work_prove" rows="5" cols="50" class="form-control"></textarea>
                         </div>
                         <div class="job-details-form-item">
                             <h4 class="job-details-text-title">
                                 UPLOAD SCREENSHOT PROVE
                             </h4>
-                            <input type="file" name="screenshot" multiple class="form-control">
+                            <input type="file" name="images" multiple class="form-control">
                         </div>
                         <button type="submit" class="job-details-form-sub-btn">Submit</button>
                     </form>

@@ -38,6 +38,14 @@ class JobController extends Controller
         $post->worker_earn = $request->worker_earn;
         $post->required_screenshot = $request->required_screenshot;
         $post->estimated_date = $request->estimated_date;
+
+        $category = Category::where('id', $post->cat_id)->first();
+        $postPriceEarnPrice = $category->price + $request->total_cost;
+        $userDeposit = User::where('id', auth()->user()->id)->first();
+
+        if($userDeposit->total_deposit < $postPriceEarnPrice){
+            return redirect()->back()->with('error', 'Insufficient balance');
+        }
         if($deposit->total_deposit == 0){
             return redirect()->back()->with('info', 'Please deposit your account balance first');
         }else{
@@ -46,8 +54,14 @@ class JobController extends Controller
 
         //Balance Debit from deposit amount
         if ($post->save()){
-            $category = Category::where('id', $post->cat_id)->first();
-            $userDeposit = User::where('id', auth()->user()->id)->first();
+            // $category = Category::where('id', $post->cat_id)->first();
+            // $postPriceEarnPrice = $category->price + $request->total_cost;
+            // $userDeposit = User::where('id', auth()->user()->id)->first();
+
+            // if($userDeposit->total_deposit < $postPriceEarnPrice){
+            //     return redirect()->back()->with('info', 'Insufficient balance');
+            // }
+
             $userDeposit->total_deposit = ($userDeposit->total_deposit - $category->price) - $request->total_cost;
             $userDeposit->save();
         }

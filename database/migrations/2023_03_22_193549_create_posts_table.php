@@ -24,9 +24,6 @@ class CreatePostsTable extends Migration
             $table->string('required_screenshot');
             $table->string('estimated_date');
             $table->string('avatar');
-            $table->foreign('user_id')
-                ->references('id')->on('users')
-                ->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSpecificTasksTable extends Migration
+class CreatePostSubmitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateSpecificTasksTable extends Migration
      */
     public function up()
     {
-        Schema::create('specific_tasks', function (Blueprint $table) {
+        Schema::create('post_submits', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('post_id');
-            $table->longText('specific_task');
-            $table->foreign('post_id')
-                ->references('id')->on('posts')
-                ->onDelete('cascade');
+            $table->longText('work_prove');
+            $table->string('images');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateSpecificTasksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('specific_tasks');
+        Schema::dropIfExists('post_submits');
     }
 }
