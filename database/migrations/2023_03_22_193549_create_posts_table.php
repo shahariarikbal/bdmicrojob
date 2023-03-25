@@ -16,6 +16,7 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('cat_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('title');
             $table->longText('required_task');
             $table->string('worker_number');
@@ -23,6 +24,9 @@ class CreatePostsTable extends Migration
             $table->string('required_screenshot');
             $table->string('estimated_date');
             $table->string('avatar');
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -68,9 +68,11 @@
                             <div class="col-md-12">
                                 <div class="left-content">
                                     <label for="worker_number">Worker Need</label><span style="color: red; font-size: 16px;"> *</span><br>
-                                    <input type="number" name="worker_number" min="1" placeholder="Minimum 1" class="form-control">
+                                    <input type="number" name="worker_number" id="worker_number" min="1" placeholder="Minimum 1" class="form-control">
                                     <label for="worker_earn">Each worker Earn</label><span style="color: red; font-size: 16px;"> *</span><br>
-                                    <input type="number" name="worker_earn" placeholder="min 0.1" min="0.1" step="0.001" class="form-control">
+                                    <input type="number" name="worker_earn" id="worker_earn" onblur="totalWorkerEarn()" placeholder="min 0.1" min="0.1" step="0.001" class="form-control">
+                                    <label for="total_cost">Total Cost</label><span style="color: red; font-size: 16px;"> *</span><br>
+                                    <input type="number" readonly name="total_cost" id="total_cost" placeholder="min 0.1" step="0.001" class="form-control">
                                     <label for="required_screenshot">Require Screenshots</label><span style="color: red; font-size: 16px;"> *</span><br>
                                     <input type="number" name="required_screenshot" placeholder="0" min="1" max="2" class="form-control">
                                     <label for="estimated_date">Estimated Day</label><span style="color: red; font-size: 16px;"> *</span><br>
@@ -113,5 +115,11 @@
                 deleteELement(e, item)
             })
         });
+
+        function totalWorkerEarn(){
+            let totalWorker = document.getElementById('worker_number').value;
+            let totalEarnCost = document.getElementById('worker_earn').value;
+            document.getElementById('total_cost').value = parseInt(totalWorker) * parseInt(totalEarnCost);
+        }
     </script>
 @endpush
