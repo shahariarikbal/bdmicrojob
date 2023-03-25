@@ -101,6 +101,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
    Route::get('/deposit/request', [PaymentController::class,'showDepositRequest']);
    Route::get('/deposit/approve/{id}', [PaymentController::class,'approveDeposit']);
 
+   //NID Verification Requests....
+   Route::get('/nid_verification/request', [AdminController::class,'showVerificationRequest']);
+   Route::get('/nid_verification/approve/{id}', [AdminController::class,'approveNidRequest']);
+
 
 
 });
