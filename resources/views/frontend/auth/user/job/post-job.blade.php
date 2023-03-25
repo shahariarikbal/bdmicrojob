@@ -22,13 +22,14 @@
                         @csrf
                         <div class="row">
                             <div class="col-7">
-                                <h2 class="fs-title">Select Category:</h2>
+                                <h2 class="fs-title">Job Post Form</h2>
                             </div>
                             <div class="col-5">
-                                <h2 class="steps">Job Post Form</h2>
+                                <h2 class="steps"></h2>
                             </div>
                         </div>
                         <hr>
+                        <label for="title" class="mb-2">Select Category</label><span style="color: red; font-size: 16px;"> *</span><br>
                         <div class="category-items-wrap">
                             @foreach($categories as $category)
                                 <div class="category-item-outer">
@@ -78,7 +79,7 @@
                             </div>
                         </div>
                         <div class="job-post-sub-btn-outer">
-                            <button type="submit" class="btn btn-primary mb-3 float-right">Submit</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </form>
                 </div>

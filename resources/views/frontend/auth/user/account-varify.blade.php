@@ -6,7 +6,7 @@
 
 @section('content')
     <section class="account-varify-section">
-        <div class="container">
+        <div class="container-fluid pt-5">
             <div class="row">
                 <div class="col-md-10 m-auto">
                     <form action="" method="" class="account-varify-form">
