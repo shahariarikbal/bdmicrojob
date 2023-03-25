@@ -35,5 +35,11 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('total_deposit',User::where('id',Auth::user()->id)->first(['total_deposit']));
             }
         });
+
+        view()->composer('*', function($view){
+            if(Auth::check()){
+                $view->with('total_income',User::where('id',Auth::user()->id)->first(['total_income']));
+            }
+        });
     }
 }

@@ -9,7 +9,7 @@
             </a>
         </div>
         <div class="text-center earning-btn-outer">
-            <h4 class="user-dashb-earning-btn">Earning: $0.0006</h4>
+            <h4 class="user-dashb-earning-btn">Earning: {{ $total_income->total_income }}tk</h4>
             <h4 class="user-dashb-deposit-btn">Deposit: {{ $total_deposit->total_deposit }}tk</h4>
         </div>
         <ul class="navbar-nav ml-auto ml-md-0 osahan-right-navbar">
