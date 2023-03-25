@@ -112,6 +112,9 @@ class AdminController extends Controller
                 if($user->nid_verified!=1 && $user->nid_verified!=2){
                     $user->nid_verified = 1;
                     $user->save();
+                    //Notification....
+
+                    //Notification....
                     return redirect()->back()->with('Success','Approved Successfully!!');
                 }
                 else{
@@ -132,6 +135,9 @@ class AdminController extends Controller
             else{
                 $nid_request->status = 2;
                 $nid_request->save();
+                //Notification....
+
+                //Notification....
                 return redirect()->back()->with('Success','Rejected Successfully!!');
             }
         }
