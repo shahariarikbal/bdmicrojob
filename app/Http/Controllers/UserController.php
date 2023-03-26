@@ -7,7 +7,9 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\NidVerificationRequest;
+use App\Models\JobReport;
 use App\Models\NidVerification;
+use App\Models\PostSubmit;
 use Auth;
 
 class UserController extends Controller
@@ -49,9 +51,7 @@ class UserController extends Controller
     public function showAccountVarify()
     {
         if(Auth::check()){
-            $auth_user = Auth::user();
-            $nid_verified = $auth_user->nid_verified;
-            return view('frontend.auth.user.account-varify', compact('nid_verified'));
+            return view('frontend.auth.user.account-varify');
         }
 
         else{
@@ -66,14 +66,14 @@ class UserController extends Controller
             $nid_verification = new NidVerification();
 
             if($request->hasFile('card_image')){
-                $name = time() . '-' . '.' . $request->card_image->getClientOriginalExtension();
+                $name = time() . '.' . $request->card_image->getClientOriginalExtension();
                 $request->card_image->move('card_verification/', $name);
                 $nid_verification->card_image = $name;
             }
             if($request->hasFile('user_image')){
-                $user_image_name = time() . '.' . $request->user_image->getClientOriginalExtension();
-                $request->user_image->move('card_verification/', $user_image_name);
-                $nid_verification->user_image = $user_image_name;
+                $name = time() . '.' . $request->user_image->getClientOriginalExtension();
+                $request->user_image->move('card_verification/', $name);
+                $nid_verification->user_image = $name;
             }
             $nid_verification->user_id = $auth_user->id;
             $nid_verification->card_type = $request->card_type;
@@ -101,19 +101,63 @@ class UserController extends Controller
 
     public function showJobDetails($id)
     {
-        $postDetail = Post::with('specificTasks')->find($id);
-        return view('frontend.auth.user.job.job-details', compact('postDetail'));
+        $postDetail = Post::with('specificTasks', 'jobSubmit')->find($id);
+        $isPostSubmit = PostSubmit::where('user_id', auth()->user()->id)->where('post_id', $postDetail->id)->first();
+        $totalPostSubmit = PostSubmit::where('post_id', $postDetail->id)->get()->count();
+        return view('frontend.auth.user.job.job-details', compact('postDetail', 'isPostSubmit', 'totalPostSubmit'));
     }
 
     public function showJobReport($id)
     {
-        $postDetail = Post::with('specificTasks')->find($id);
-        return view('frontend.auth.user.job.job-report', compact('postDetail'));
+        $postReport = Post::with('specificTasks')->find($id);
+        return view('frontend.auth.user.job.job-report', compact('postReport'));
+    }
+
+    public function submitJobReport(Request $request, $id)
+    {
+        $this->validate($request, [
+            'message' => 'required'
+        ]);
+
+        $submitReport = new JobReport();
+        $submitReport->user_id = auth()->user()->id;
+        $submitReport->post_id = $id;
+        $submitReport->message = $request->message;
+        $submitReport->save();
+        return redirect()->back()->with('success', 'Post report has been submitted');
+    }
+
+    public function postSubmit(Request $request, $id)
+    {
+        $this->validate($request, [
+            'work_prove' => 'required',
+            'images' => 'required',
+        ]);
+
+        if($request->hasfile('images'))
+         {
+            foreach($request->file('images') as $file)
+            {
+                $name = mt_rand(10000, 99999).'.'.$file->extension();
+                $file->move('post/', $name);
+                $data[] = $name;
+            }
+         }
+
+         $submitPost = new PostSubmit();
+         $submitPost->user_id = auth()->user()->id;
+         $submitPost->post_id = $id;
+         $submitPost->work_prove = $request->work_prove;
+         $submitPost->images = json_encode($data);
+         $submitPost->save();
+
+         return redirect()->back()->with('success', 'Post has been submitted');
     }
 
     public function showMyPost()
     {
-        return view('frontend.auth.user.my-post');
+        $posts = Post::with('category')->orderBy('created_at', 'desc')->where('user_id', auth()->user()->id)->get();
+        return view('frontend.auth.user.my-post', compact('posts'));
     }
 
     // public function showDeposit()

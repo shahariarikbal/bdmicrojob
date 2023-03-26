@@ -23,9 +23,10 @@ Route::post('/account/varify/store', [\App\Http\Controllers\UserController::clas
 Route::get('/my/task', [\App\Http\Controllers\UserController::class, 'showMyTask']);
 Route::get('/accepted/task', [\App\Http\Controllers\UserController::class, 'showAcceptedTask']);
 Route::get('/job/details/{id}', [\App\Http\Controllers\UserController::class, 'showJobDetails']);
-Route::get('/job/report', [\App\Http\Controllers\UserController::class, 'showJobReport']);
+Route::get('/job/report/{id}', [\App\Http\Controllers\UserController::class, 'showJobReport']);
+Route::post('/report/submit/{id}', [\App\Http\Controllers\UserController::class, 'submitJobReport']);
 Route::get('/my/post', [\App\Http\Controllers\UserController::class, 'showMyPost']);
-Route::post('/post/submit', [\App\Http\Controllers\UserController::class, 'postSubmit']);
+Route::post('/post/submit/{id}', [\App\Http\Controllers\UserController::class, 'postSubmit']);
 
 //Deposit and Withdraw...
 Route::get('/instant/deposit', [App\Http\Controllers\Payment\DepositController::class, 'showDeposit']);

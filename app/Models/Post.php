@@ -13,4 +13,14 @@ class Post extends Model
     {
         return $this->hasMany(SpecificTask::class);
     }
+
+    public function jobSubmit()
+    {
+        return $this->hasMany(PostSubmit::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'cat_it', 'id');
+    }
 }

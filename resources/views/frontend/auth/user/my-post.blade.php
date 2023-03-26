@@ -16,39 +16,45 @@
                     <table class="table align-items-center table-striped table-hover table-flush my-task-table">
                         <thead class="thead-light my-task-th">
                             <tr class="my-task-th-outer">
-                                <th scope="col" class="sort">Task Name</th>
-                                <th scope="col" class="sort">Status</th>
-                                <th scope="col" class="sort">Earned</th>
+                                <th scope="col" class="sort">SL</th>
+                                <th scope="col" class="sort">Catrgory Name</th>
+                                <th scope="col" class="sort">Title</th>
+                                <th scope="col" class="sort">Total Worker</th>
+                                <th scope="col" class="sort">Per job Earn</th>
                                 <th scope="col" class="sort">Action</th>
-                                <th scope="col" class="sort">Date</th>
                             </tr>
                         </thead>
                         <tbody class="list">
-                            <tr class="my-task-valued">
-                                <td>
-                                    <h6 class="task-name-text">
-                                        Google video
-                                    </h6>
-                                </td>
-                                <td>
-                                    <h6 class="task-status-text">
-                                        Pending
-                                    </h6>
-                                </td>
-                                <td>
-                                    <h6 class="task-earned-text">
-                                        10 BDT
-                                    </h6>
-                                </td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-warning">Edit</a>
-                                </td>
-                                <td>
-                                    <h6 class="task-date-text">
-                                        10-20-2023
-                                    </h6>
-                                </td>
-                            </tr>
+                            @foreach ($posts as $post)
+                                <tr class="my-task-valued">
+                                    <td>
+                                        <h6 class="task-name-text">
+                                            {{ $loop->index+1 }}
+                                        </h6>
+                                    </td>
+                                    <td>
+                                        <h6 class="task-earned-text">
+                                            {{ $post->category->name ?? 'No name found' }}
+                                        </h6>
+                                    </td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-warning">{{ $post->title }}</a>
+                                    </td>
+                                    <td>
+                                        <h6 class="task-date-text">
+                                            {{ $post->worker_number }}
+                                        </h6>
+                                    </td>
+                                    <td>
+                                        <h6 class="task-date-text">
+                                            {{ $post->worker_number * $post->worker_earn }}
+                                        </h6>
+                                    </td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-warning">Edit</a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

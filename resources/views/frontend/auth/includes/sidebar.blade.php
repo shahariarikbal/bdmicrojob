@@ -17,6 +17,12 @@
        <span>Job Post</span>
        </a>
     </li>
+    <li class="nav-item {{ Request::url() == url('/my/post') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('/my/post') }}">
+        <i class="fas fa-tasks"></i>
+        <span>My Post</span>
+        </a>
+    </li>
     <li class="nav-item {{ Request::url() == url('/my/task') ? 'active' : '' }}">
        <a class="nav-link" href="{{ url('/my/task') }}">
         <i class="fas fa-tasks"></i>
@@ -28,12 +34,6 @@
         <i class="fas fa-check-double"></i>
        <span>Accepted Task</span>
        </a>
-    </li>
-    <li class="nav-item {{ Request::url() == url('/my/post') ? 'active' : '' }}">
-        <a class="nav-link" href="{{ url('/my/post') }}">
-        <i class="fas fa-tasks"></i>
-        <span>My Post</span>
-        </a>
     </li>
     <li class="nav-item {{ Request::url() == url('/instant/deposit') ? 'active' : '' }}">
        <a class="nav-link" href="{{ url('/instant/deposit') }}">
