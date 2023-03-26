@@ -19,4 +19,16 @@ class FrontendController extends Controller
     public function contactUs(){
         return view('frontend.setting.contact-us');
     }
+
+    public function showFaq(){
+        return view('frontend.setting.faq');
+    }
+
+    public function showTermsConditions(){
+        return view('frontend.setting.terms-condition');
+    }
+
+    public function showPrivacyPolicy(){
+        return view('frontend.setting.privacy-policy');
+    }
 }

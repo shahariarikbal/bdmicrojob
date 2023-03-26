@@ -27,7 +27,7 @@
                 </a>
             </li>
             <li class="nav-item-main">
-                <a class="nav-item-main-link" href="#">FAQ</a>
+                <a class="nav-item-main-link" href="{{ url('/faq') }}">FAQ</a>
             </li>
             </li>
             <li class="nav-item-main">

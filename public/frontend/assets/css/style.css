@@ -942,56 +942,13 @@ button:hover {
 
 
 /*FAQ section css start*/
-
-.faq-section-wrapper {
-    padding-top: 40px;
-}
-
-.faq-section-wrapper .container {
-    padding-bottom: 40px;
-    border-bottom: 1px solid #000;
-}
-
-.faq-section-title {
-    font-size: 43px;
-    margin-top: 10px;
-    color: #545454;
-    font-weight: 500;
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-.faq-section-title .extra-color {
-    color: #2448D6;
-    font-weight: 600;
-}
-
-.faq-section-title span {
-    color: #7E41C2;
-    font-weight: 600;
-}
-
-.faq-section-des {
-    text-align: center;
-    font-size: 16px;
-    line-height: 30px;
-    margin-bottom: 30px;
-}
-
-.faq-section-btn-outer {
-    text-align: center;
-}
-
-.faq-section-btn-inner {
-    border: none;
-    background: #7E41C2;
+.faq-content .accordion-button {
+    background: #7e41c2;
     color: #fff;
     font-size: 16px;
-    padding: 10px 70px;
-    border-radius: 10px;
+    font-weight: 700;
+    text-transform: capitalize;
 }
-
-
 /*FAQ section css End*/
 
 

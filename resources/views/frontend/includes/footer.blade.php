@@ -38,12 +38,12 @@
         <div class="footer-condition-link">
             <ul class="privacy-terms-list">
                 <li class="privacy-terms-list-item">
-                    <a href="#" class="privacy-terms-list-item-link">
+                    <a href="{{ url('/privacy/policy') }}" class="privacy-terms-list-item-link">
                         Privacy Policy
                     </a>
                 </li>
                 <li class="privacy-terms-list-item">
-                    <a href="#" class="privacy-terms-list-item-link">
+                    <a href="{{ url('/terms/conditions') }}" class="privacy-terms-list-item-link">
                         Terms & Conditions
                     </a>
                 </li>
