@@ -44,6 +44,9 @@ Route::get('/', [FrontendController::class, 'index']);
 // ======================== Static Routes ===================================== //
 Route::get('/about', [FrontendController::class, 'aboutUs']);
 Route::get('/contact', [FrontendController::class, 'contactUs']);
+Route::get('/faq', [FrontendController::class, 'showFaq']);
+Route::get('/terms/conditions', [FrontendController::class, 'showTermsConditions']);
+Route::get('/privacy/policy', [FrontendController::class, 'showPrivacyPolicy']);
 
 Auth::routes();
 
