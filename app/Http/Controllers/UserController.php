@@ -11,6 +11,7 @@ use App\Models\JobReport;
 use App\Models\NidVerification;
 use App\Models\PostSubmit;
 use App\Models\Notification;
+use App\Models\Deposit;
 use Auth;
 
 class UserController extends Controller
@@ -180,5 +181,19 @@ class UserController extends Controller
             return redirect()->back();
         }
 
+    }
+
+    public function depositNotificationSeen ($id)
+    {
+        $notification = Notification::find($id);
+        $notification->is_seen = true;
+
+        if($notification->save()){
+            $deposit = Deposit::find($notification->notifiable_id);
+            return view('frontend.notification.deposit-notification-details',compact('deposit'));
+        }
+        else{
+            return redirect()->back();
+        }
     }
 }
