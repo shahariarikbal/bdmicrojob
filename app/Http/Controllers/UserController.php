@@ -50,7 +50,6 @@ class UserController extends Controller
 
     public function showAccountVarify()
     {
-        //Account Verification Code...
         if(Auth::check()){
             $auth_user = Auth::user();
             $nid_verified = $auth_user->nid_verified;
