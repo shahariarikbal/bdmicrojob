@@ -329,15 +329,16 @@
       <div class="col-md-10 m-auto">
          <marquee>Please buy a plane and safe your money !</marquee>
          <div class="job-items-wrapper">
-            <form action="" method="get" class="select-category-outer">
+            <form action="{{ url('/dashboard') }}" method="get" class="select-category-outer">
+                @csrf
                <div class="input-group">
-                  <select name="category">
+                  <select name="cat_id">
                      <option selected disabled>--- Select Category ---</option>
                       @foreach($categories as $category)
                         <option value="{{ $category->id }}">{{ ucfirst($category->name) }}</option>
                       @endforeach
                   </select>
-                  <button type="button" class="btn btn-lg btn-info">Search</button>
+                  <button type="submit" class="btn btn-lg btn-info">Search</button>
                </div>
             </form>
              @foreach($posts as $post)

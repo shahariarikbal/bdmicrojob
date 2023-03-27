@@ -165,6 +165,20 @@ class UserController extends Controller
         return view('frontend.auth.user.my-post', compact('posts'));
     }
 
+    public function postEdit($id)
+    {
+        $post = Post::find($id);
+        $categories = Category::select(['id', 'name', 'status', 'price'])->orderBy('created_at', 'desc')->where('status', 1)->get();
+        return view('frontend.auth.user.job.edit-post-job', compact('categories', 'post'));
+    }
+
+    public function postDelete($id)
+    {
+        $postDelete = Post::find($id);
+        $postDelete->delete();
+        return redirect()->back()->with('success', 'Post has been deleted');
+    }
+
     public function showSubmittedJob()
     {
         return view('frontend.auth.user.submitted-job');

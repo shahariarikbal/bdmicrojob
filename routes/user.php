@@ -28,6 +28,9 @@ Route::post('/report/submit/{id}', [\App\Http\Controllers\UserController::class,
 Route::get('/my/post', [\App\Http\Controllers\UserController::class, 'showMyPost']);
 Route::post('/post/submit/{id}', [\App\Http\Controllers\UserController::class, 'postSubmit']);
 Route::get('/submitted/job', [\App\Http\Controllers\UserController::class, 'showSubmittedJob']);
+Route::get('/post/delete/{id}', [\App\Http\Controllers\UserController::class, 'postDelete']);
+Route::get('/post/edit/{id}', [\App\Http\Controllers\UserController::class, 'postEdit']);
+Route::get('/submitted/job', [\App\Http\Controllers\UserController::class, 'showSubmittedJob']);
 
 //Deposit and Withdraw...
 Route::get('/instant/deposit', [App\Http\Controllers\Payment\DepositController::class, 'showDeposit']);

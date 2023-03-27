@@ -38,7 +38,11 @@ class HomeController extends Controller
     public function dashboard()
     {
         $categories = Category::select(['id', 'name', 'status', 'price'])->orderBy('created_at', 'desc')->where('status', 1)->get();
-        $posts = Post::with('specificTasks')->orderBy('created_at', 'desc')->get();
+        $sql = Post::with('specificTasks')->orderBy('created_at', 'desc');
+        if(isset(request()->cat_id)){
+            $sql->where('cat_id', request()->cat_id)->get();
+        }
+        $posts = $sql->get();
         return view('frontend.auth.dashboard', compact('categories', 'posts'));
     }
 

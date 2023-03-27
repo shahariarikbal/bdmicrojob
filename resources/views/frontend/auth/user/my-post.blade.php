@@ -38,7 +38,7 @@
                                         </h6>
                                     </td>
                                     <td>
-                                        <a href="#" class="btn btn-sm btn-warning">{{ $post->title }}</a>
+                                        {{ $post->title }}
                                     </td>
                                     <td>
                                         <h6 class="task-date-text">
@@ -51,7 +51,8 @@
                                         </h6>
                                     </td>
                                     <td>
-                                        <a href="#" class="btn btn-sm btn-warning">Edit</a>
+                                        {{-- <a href="{{ url('/post/edit/'.$post->id) }}" class="btn btn-sm btn-warning">Edit</a> --}}
+                                        <a href="{{ url('/post/delete/'.$post->id) }}" onclick="return confirm('Are you sure delete this post ?')" class="btn btn-sm btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
