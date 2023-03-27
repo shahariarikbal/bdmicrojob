@@ -59,6 +59,16 @@ class DepositController extends Controller
         }
     }
 
+    public function showDepositHistory ()
+    {
+        if(Auth::check()){
+            $deposits = Deposit::where('user_id',Auth::user()->id)->Paginate(10);
+            return view('frontend.auth.user.deposit-history',compact('deposits'));
+        }
+
+        return redirect('/login');
+    }
+
     public function showWithdraw()
     {
         if(Auth::check()){
@@ -97,5 +107,15 @@ class DepositController extends Controller
         else{
             return redirect('/login');
         }
+    }
+
+    public function showWithdrawHistory()
+    {
+        if(Auth::check()){
+            $withdraws = Withdraw::where('user_id',Auth::user()->id)->Paginate(10);
+            return view('frontend.auth.user.withdraw-history',compact('withdraws'));
+        }
+
+        return redirect('/login');
     }
 }

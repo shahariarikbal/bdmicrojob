@@ -53,14 +53,14 @@
         <span>Withdraw</span>
         </a>
     </li>
-    <li class="nav-item {{ Request::url() == url('/deposit-history') ? 'active' : '' }}">
-        <a class="nav-link" href="{{ url('/deposit-history') }}">
+    <li class="nav-item {{ Request::url() == url('/instant/deposit/history') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('/instant/deposit/history') }}">
         <i class="far fa-credit-card"></i>
         <span>Deposit History</span>
         </a>
     </li>
-    <li class="nav-item {{ Request::url() == url('/withdraw-history') ? 'active' : '' }}">
-        <a class="nav-link" href="{{ url('/withdraw-history') }}">
+    <li class="nav-item {{ Request::url() == url('/instant/withdraw/history') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('/instant/withdraw/history') }}">
         <i class="far fa-credit-card"></i>
         <span>Withdraw History</span>
         </a>

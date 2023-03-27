@@ -34,6 +34,8 @@ Route::get('/instant/deposit', [App\Http\Controllers\Payment\DepositController::
 Route::post('/store/deposit', [App\Http\Controllers\Payment\DepositController::class, 'storeDeposit']);
 Route::get('/instant/withdraw', [App\Http\Controllers\Payment\DepositController::class, 'showWithdraw']);
 Route::post('/withdraw/earning', [App\Http\Controllers\Payment\DepositController::class, 'withdrawEarning']);
+Route::get('/instant/deposit/history', [App\Http\Controllers\Payment\DepositController::class, 'showDepositHistory']);
+Route::get('/instant/withdraw/history', [App\Http\Controllers\Payment\DepositController::class, 'showWithdrawHistory']);
 
 //Notification Seen....
 Route::get('/nid_notification_seen/{id}', [\App\Http\Controllers\UserController::class, 'nidNotificationSeen']);
