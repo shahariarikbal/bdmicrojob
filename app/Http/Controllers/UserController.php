@@ -12,6 +12,7 @@ use App\Models\NidVerification;
 use App\Models\PostSubmit;
 use App\Models\Notification;
 use App\Models\Deposit;
+use App\Models\Withdraw;
 use Auth;
 
 class UserController extends Controller
@@ -191,6 +192,20 @@ class UserController extends Controller
         if($notification->save()){
             $deposit = Deposit::find($notification->notifiable_id);
             return view('frontend.notification.deposit-notification-details',compact('deposit'));
+        }
+        else{
+            return redirect()->back();
+        }
+    }
+
+    public function withdrawNotificationSeen ($id)
+    {
+        $notification = Notification::find($id);
+        $notification->is_seen = true;
+
+        if($notification->save()){
+            $withdraw = Withdraw::find($notification->notifiable_id);
+            return view('frontend.notification.withdraw-notification-details',compact('withdraw'));
         }
         else{
             return redirect()->back();
