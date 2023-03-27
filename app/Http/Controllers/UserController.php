@@ -50,6 +50,7 @@ class UserController extends Controller
 
     public function showAccountVarify()
     {
+        //Account Verification Code...
         if(Auth::check()){
             return view('frontend.auth.user.account-varify');
         }
