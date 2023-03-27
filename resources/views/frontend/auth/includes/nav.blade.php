@@ -13,18 +13,19 @@
             <h4 class="user-dashb-deposit-btn">Deposit: {{ $total_deposit->total_deposit }}tk</h4>
         </div>
         <ul class="navbar-nav ml-auto ml-md-0 osahan-right-navbar">
+            {{--  Notification Icon....  --}}
             <li class="nav-item dropdown no-arrow mx-1">
                 <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
-                <span class="badge badge-danger">9+</span>
+                <span class="badge badge-danger">{{ $user_notification_count }}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-                    <a class="dropdown-item" href="#"><i class="fas fa-fw fa-edit "></i> &nbsp; Action</a>
-                    <a class="dropdown-item" href="#"><i class="fas fa-fw fa-headphones-alt "></i> &nbsp; Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#"><i class="fas fa-fw fa-star "></i> &nbsp; Something else here</a>
+                    @foreach ($user_notifications as $user_notification )
+                    <a class="dropdown-item" href="#"><i class="fas fa-fw fa-star "></i> &nbsp; {{ $user_notification->message }}</a>
+                    @endforeach
                 </div>
             </li>
+            {{--  Notification Icon....  --}}
             <li class="nav-item dropdown no-arrow osahan-right-navbar-user">
                 <a class="nav-link dropdown-toggle user-dropdown-link" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img alt="Avatar" src="{{asset('backend')}}/img/user.png" />
