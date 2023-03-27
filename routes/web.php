@@ -113,6 +113,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
 
    //NID Verification Requests....
    Route::get('/nid_verification/request', [AdminController::class,'showVerificationRequest']);
+   Route::get('/nid_verification/details/{id}', [AdminController::class,'showVerificationRequestDetails']);
    Route::get('/nid_verification/approve/{id}', [AdminController::class,'approveNidRequest']);
    Route::get('/nid_verification/reject/{id}', [AdminController::class,'rejectNidRequest']);
 

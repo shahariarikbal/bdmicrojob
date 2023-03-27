@@ -101,6 +101,11 @@ class AdminController extends Controller
         return view('backend.request.show-nid-request', compact('nid_requests'));
     }
 
+    public function showVerificationRequestDetails ($id)
+    {
+        return view('backend.request.show-nid-request-details');
+    }
+
     public function approveNidRequest ($id)
     {
         $nid_request = NidVerification::find($id);

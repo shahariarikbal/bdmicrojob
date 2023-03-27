@@ -1,7 +1,7 @@
 @extends('backend.master')
 
 @section('title')
-    Deposit list
+    NID Verification list
 @endsection
 
 @push('page-css')
@@ -62,14 +62,15 @@
                                     @endif
                                 </td>
                                 <td>
-                                    @if ($nid_request->status==0)
+                                    {{--  @if ($nid_request->status==0)
                                     <a href="{{ url('admin/nid_verification/approve/'.$nid_request->id) }}" onclick="return confirm('Are you sure??')" class="btn btn-sm btn-danger">Approve</a>
                                     <a href="{{ url('admin/nid_verification/reject/'.$nid_request->id) }}" onclick="return confirm('Are you sure??')" class="btn btn-sm btn-danger">Reject</a>
                                     @elseif ($nid_request->status==1)
                                     <a href="{{ url('admin/nid_verification/approve/'.$nid_request->id) }}" onclick="return confirm('Are you sure??')" class="btn btn-sm btn-danger">Approve</a>
                                     @elseif ($nid_request->status==2)
                                     <a href="{{ url('admin/nid_verification/reject/'.$nid_request->id) }}" onclick="return confirm('Are you sure??')" class="btn btn-sm btn-danger">Reject</a>
-                                    @endif
+                                    @endif  --}}
+                                    <a href="{{ url('admin/nid_verification/details/'.$nid_request->id) }}" class="btn btn-sm btn-primary">Details</a>
                                 </td>
                             </tr>
                             @endforeach
