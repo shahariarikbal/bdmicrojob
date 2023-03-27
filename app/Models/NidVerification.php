@@ -16,4 +16,9 @@ class NidVerification extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function nidVerification()
+    {
+        return $this->morphOne(Notification::class, 'notifiable');
+    }
 }

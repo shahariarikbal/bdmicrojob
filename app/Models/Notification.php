@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Deposit extends Model
+class Notification extends Model
 {
     use HasFactory;
-    protected $table='deposits';
+    protected $table='notifications';
     protected $guarded = [];
 
-    public function deposit()
+    public function notifiable()
     {
-        return $this->morphOne(Notification::class, 'notifiable');
+        return $this->morphTo();
     }
 }

@@ -324,8 +324,8 @@ class ComposerStaticInitb4430d02368a7290a5a1a02216b330ad
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -560,8 +560,10 @@ class ComposerStaticInitb4430d02368a7290a5a1a02216b330ad
         'App\\Models\\Admin' => __DIR__ . '/../..' . '/app/Models/Admin.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
         'App\\Models\\Deposit' => __DIR__ . '/../..' . '/app/Models/Deposit.php',
+        'App\\Models\\JobReport' => __DIR__ . '/../..' . '/app/Models/JobReport.php',
         'App\\Models\\Membership' => __DIR__ . '/../..' . '/app/Models/Membership.php',
         'App\\Models\\NidVerification' => __DIR__ . '/../..' . '/app/Models/NidVerification.php',
+        'App\\Models\\Notification' => __DIR__ . '/../..' . '/app/Models/Notification.php',
         'App\\Models\\Post' => __DIR__ . '/../..' . '/app/Models/Post.php',
         'App\\Models\\PostSubmit' => __DIR__ . '/../..' . '/app/Models/PostSubmit.php',
         'App\\Models\\SpecificTask' => __DIR__ . '/../..' . '/app/Models/SpecificTask.php',
