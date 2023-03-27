@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\UserVideo;
 use App\Models\Video;
 use App\Models\NidVerification;
+use App\Models\Notification;
 use Hash;
 use Illuminate\Http\Request;
 use Session;
@@ -118,7 +119,11 @@ class AdminController extends Controller
                     $user->nid_verified = 1;
                     $user->save();
                     //Notification....
-
+                    $notification = new Notification();
+                    $notification->message = 'Account verification request is approved';
+                    $notification->specific_user_id = $nid_request->user_id;
+                    $notification->notification_for = "user";
+                    $nid_request->nidVerification()->save($notification);
                     //Notification....
                     return redirect()->back()->with('Success','Approved Successfully!!');
                 }
@@ -141,7 +146,11 @@ class AdminController extends Controller
                 $nid_request->status = 2;
                 $nid_request->save();
                 //Notification....
-
+                $notification = new Notification();
+                $notification->message = 'Account verification request is rejected';
+                $notification->specific_user_id = $nid_request->user_id;
+                $notification->notification_for = "user";
+                $nid_request->nidVerification()->save($notification);
                 //Notification....
                 return redirect()->back()->with('Success','Rejected Successfully!!');
             }

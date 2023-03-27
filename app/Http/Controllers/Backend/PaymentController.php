@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Deposit;
 use App\Models\Withdraw;
 use App\Models\User;
+use App\Models\Notification;
 
 class PaymentController extends Controller
 {
@@ -31,6 +32,13 @@ class PaymentController extends Controller
                     $final_deposit_amount = $deposit->deposit_amount+$user->total_deposit;
                     $user->total_deposit = $final_deposit_amount;
                     $user->save();
+                    //Notification....
+                    $notification = new Notification();
+                    $notification->message = 'Deposit request is approved';
+                    $notification->specific_user_id = $deposit->user_id;
+                    $notification->notification_for = "user";
+                    $deposit->deposit()->save($notification);
+                    //Notification....
                     return redirect()->back()->with('success',"Approved Successfully!");
                 }
                 return redirect()->back()->with('error',"Technical Error!!");
@@ -68,7 +76,11 @@ class PaymentController extends Controller
                     $user->total_income = $final_income_amount;
                     $user->save();
                     //Notification....
-
+                    $notification = new Notification();
+                    $notification->message = 'Withdraw request is approved';
+                    $notification->specific_user_id = $withdraw->user_id;
+                    $notification->notification_for = "user";
+                    $withdraw->withdraw()->save($notification);
                     //Notification....
                     return redirect()->back()->with('Success',"Approved Successfully!");
                 }
