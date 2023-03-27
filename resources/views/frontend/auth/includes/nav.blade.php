@@ -21,7 +21,13 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
                     @foreach ($user_notifications as $user_notification )
-                    <a class="dropdown-item" href="#"><i class="fas fa-fw fa-star "></i> &nbsp; {{ $user_notification->message }}</a>
+                    @if ($user_notification->notifiable_type=='App\Models\NidVerification')
+                    <a class="dropdown-item" href="{{ url('/nid-notification-seen/'.$user_notification->notifiable_id) }}"><i class="fas fa-fw fa-star "></i> &nbsp; {{ $user_notification->message }}</a>
+                    @elseif ($user_notification->notifiable_type=='App\Models\Deposit')
+                    <a class="dropdown-item" href="{{ url('/deposit-notification-seen/'.$user_notification->notifiable_id) }}"><i class="fas fa-fw fa-star "></i> &nbsp; {{ $user_notification->message }}</a>
+                    @elseif ($user_notification->notifiable_type=='App\Models\Withdraw')
+                    <a class="dropdown-item" href="{{ url('/withdraw-notification-seen/'.$user_notification->notifiable_id) }}"><i class="fas fa-fw fa-star "></i> &nbsp; {{ $user_notification->message }}</a>
+                    @endif
                     @endforeach
                 </div>
             </li>
