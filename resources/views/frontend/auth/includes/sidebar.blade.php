@@ -47,10 +47,16 @@
         <span>Withdraw</span>
         </a>
     </li>
-    <li class="nav-item {{ Request::url() == url('/link') ? 'active' : '' }}">
-       <a class="nav-link" href="history-page.html">
-        <i class="fas fa-money-bill"></i>
-       <span>Payments</span>
-       </a>
+    <li class="nav-item {{ Request::url() == url('/deposit-history') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('/deposit-history') }}">
+        <i class="far fa-credit-card"></i>
+        <span>Deposit History</span>
+        </a>
+    </li>
+    <li class="nav-item {{ Request::url() == url('/withdraw-history') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('/withdraw-history') }}">
+        <i class="far fa-credit-card"></i>
+        <span>Withdraw History</span>
+        </a>
     </li>
  </ul>
