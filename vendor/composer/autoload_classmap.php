@@ -51,6 +51,7 @@ return array(
     'App\\Models\\Notification' => $baseDir . '/app/Models/Notification.php',
     'App\\Models\\Post' => $baseDir . '/app/Models/Post.php',
     'App\\Models\\PostSubmit' => $baseDir . '/app/Models/PostSubmit.php',
+    'App\\Models\\Setting' => $baseDir . '/app/Models/Setting.php',
     'App\\Models\\SpecificTask' => $baseDir . '/app/Models/SpecificTask.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\UserVideo' => $baseDir . '/app/Models/UserVideo.php',

@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\AdvertisementController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\PaymentController;
 use App\Http\Controllers\Backend\HelpSupportController;
+use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -117,6 +118,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
    Route::get('/nid_verification/approve/{id}', [AdminController::class,'approveNidRequest']);
    Route::get('/nid_verification/reject/{id}', [AdminController::class,'rejectNidRequest']);
 
-
+   //Setting....
+   Route::get('/settings', [SettingController::class,'showSetting']);
+   Route::post('/settings/update', [SettingController::class,'updateSetting']);
 
 });

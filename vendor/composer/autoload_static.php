@@ -566,6 +566,7 @@ class ComposerStaticInitb4430d02368a7290a5a1a02216b330ad
         'App\\Models\\Notification' => __DIR__ . '/../..' . '/app/Models/Notification.php',
         'App\\Models\\Post' => __DIR__ . '/../..' . '/app/Models/Post.php',
         'App\\Models\\PostSubmit' => __DIR__ . '/../..' . '/app/Models/PostSubmit.php',
+        'App\\Models\\Setting' => __DIR__ . '/../..' . '/app/Models/Setting.php',
         'App\\Models\\SpecificTask' => __DIR__ . '/../..' . '/app/Models/SpecificTask.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\UserVideo' => __DIR__ . '/../..' . '/app/Models/UserVideo.php',
