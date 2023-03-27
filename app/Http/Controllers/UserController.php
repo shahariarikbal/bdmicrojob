@@ -10,6 +10,7 @@ use App\Http\Requests\NidVerificationRequest;
 use App\Models\JobReport;
 use App\Models\NidVerification;
 use App\Models\PostSubmit;
+use App\Models\Notification;
 use Auth;
 
 class UserController extends Controller
@@ -167,8 +168,17 @@ class UserController extends Controller
         return view('frontend.auth.user.submitted-job');
     }
 
-    // public function showDeposit()
-    // {
-    //     return view('frontend.auth.user.deposit');
-    // }
+    public function nidNotificationSeen ($id)
+    {
+        $notification = Notification::find($id);
+        $notification->is_seen = true;
+
+        if($notification->save()){
+            return view('frontend.notification.nid-notification-details',compact('notification'));
+        }
+        else{
+            return redirect()->back();
+        }
+
+    }
 }
