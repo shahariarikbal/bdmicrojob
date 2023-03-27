@@ -3039,9 +3039,67 @@ label.job-report-form-label {
 }
 /* Job Report page css End */
 
+/* NID Details page css start */
+.nid-details-wrap {
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #5718b6;
+}
+
+.nid-details-back-btn-inner {
+    background: #5917b6;
+    color: #fff;
+    padding: 7px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.nid-details-right-btn-outer {
+    text-align: end;
+}
+
+.nid-details-label {
+    font-size: 17px;
+    margin-bottom: 3px;
+    font-weight: 500;
+    color: #000;
+}
+
+.nid-details-value {
+    font-size: 15px;
+    font-weight: 400;
+    color: #5917b6;
+}
+
+.nid-details-image {
+    width: 100%;
+    margin-bottom: 10px;
+}
+/* NID Details page css End */
+
 @media screen and ( max-width: 520px ){
     .earning-btn-outer {
         display: inline-block;
     }
 }
 /*Coustom css End*/
+
+.back-home-btn-inner {
+    width: 100%;
+    text-align: center;
+    background: #4c23bd;
+    display: block;
+    color: #fff;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 15px;
+    transition: all .3s ease;
+}
+
+.back-home-btn-inner:hover {
+    transform: translateY(-5px);
+    color: #fff;
+}

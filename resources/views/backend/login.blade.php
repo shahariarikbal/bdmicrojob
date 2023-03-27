@@ -48,6 +48,9 @@
                            </div>
                         </div>
                      </form>
+                     <a href="{{ url('/') }}" class="back-home-btn-inner">
+                        Home
+                     </a>
                   </div>
                </div>
                <div class="col-md-7">
