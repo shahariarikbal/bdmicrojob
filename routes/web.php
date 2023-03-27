@@ -123,4 +123,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
    Route::get('/settings', [SettingController::class,'showSetting']);
    Route::post('/settings/update', [SettingController::class,'updateSetting']);
 
+   //Contact Us...
+   Route::get('/contacts', [AdminController::class,'showContact']);
+   Route::get('/contact/delete/{id}', [AdminController::class,'deleteContact']);
+
 });

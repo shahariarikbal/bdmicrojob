@@ -59,12 +59,18 @@
         <span>NID Verification</span>
         </a>
      </li>
-    <li class="nav-item {{ Request::url() == url('admin/help-support') ? 'active' : '' }}">
+     <li class="nav-item {{ Request::url() == url('admin/contacts') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('/admin/contacts') }}">
+         <i class="fas fa-money-bill"></i>
+        <span>Contacts</span>
+        </a>
+     </li>
+    {{--  <li class="nav-item {{ Request::url() == url('admin/help-support') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('/admin/help-support') }}">
          <i class="fas fa-money-bill"></i>
         <span>Help & Support</span>
         </a>
-     </li>
+     </li>  --}}
     <li class="nav-item {{ Request::url() == url('admin/link') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('/admin/settings') }}">
          <i class="fas fa-cog"></i>

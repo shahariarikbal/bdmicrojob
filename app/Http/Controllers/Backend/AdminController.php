@@ -9,6 +9,7 @@ use App\Models\UserVideo;
 use App\Models\Video;
 use App\Models\NidVerification;
 use App\Models\Notification;
+use App\Models\Contact;
 use Hash;
 use Illuminate\Http\Request;
 use Session;
@@ -159,6 +160,19 @@ class AdminController extends Controller
         else{
             return redirect()->back()->with('Error','Already Approved!!');
         }
+    }
+
+    public function showContact ()
+    {
+        $contacts = Contact::Paginate(10);
+        return view ('backend.contact.show-contacts', compact('contacts'));
+    }
+
+    public function deleteContact ($id)
+    {
+        $contact = Contact::find($id);
+        $contact->delete();
+        return redirect()->back()->with('Success','Deleted Successfully!!');
     }
 
 
