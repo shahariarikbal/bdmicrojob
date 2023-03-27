@@ -11,13 +11,31 @@
                 <div class="card-header p-3">
                     <h2 class="text-center m-0 text-blue deposit-sec-title">Instant Deposit</h2>
                     <div class="card-body">
-                        <div>
-                            <h5>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <a href="https://shop.bkash.com/apon-telecom01580366311/paymentlink/default-payment" target="_blank" class="payment-method-outer">
+                                    <h5 class="payment-method-title">
+                                        বিকাশ মার্চেন্ট (পেমেন্ট)
+                                    </h5>
+                                    <p class="payment-method-number">01580366311</p>
+                                </a>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <a href="#" target="_blank" class="payment-method-outer">
+                                    <h5 class="payment-method-title">
+                                        নগদ পারসোনাল (সেন্ডমানি)
+                                    </h5>
+                                    <p class="payment-method-number">01580366311</p>
+                                </a>
+                            </div>
+                            {{-- <h5>
                                 1.বিকাশ মার্চেন্ট (পেমেন্ট) => 01580366311 <br>
                                 2.নগদ পারসোনাল (সেন্ডমানি) => 01580366311
-                            </h5>
-                            <p class="deposit-sec-notice" style="padding: 5px; border: 2px solid #7E41C2; border-radius: 4px;">NOTICE : Minimum deposit amount: 100tk . Any deposits less then the minimum will not be credited or refunded.Thank You</p>
+                            </h5> --}}
                         </div>
+                        <p class="deposit-sec-notice" style="padding: 5px; border: 2px solid #7E41C2; border-radius: 4px;">
+                            NOTICE : Minimum deposit amount: 100tk . Any deposits less then the minimum will not be credited or refunded.Thank You
+                        </p>
                         <form action="{{ url('/store/deposit') }}" method="POST" class="deposit-form form-group" enctype="multipart/form-data">
                             @csrf
                             <div class="row">

@@ -2721,6 +2721,35 @@ button.account-varify-btn-inner:hover {
     color: #7E41C2;
 }
 
+.payment-method-outer {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: block;
+    margin-bottom: 30px;
+    padding: 30px 10px;
+    text-align: center;
+    border-radius: 10px;
+    transition: all .3s ease;
+}
+ .payment-method-title {
+    font-size: 18px;
+    text-transform: capitalize;
+    color: #000;
+    font-weight: 700;
+}
+ .payment-method-number {
+     font-size: 18px;
+     margin-bottom: 0;
+     font-weight: 600;
+     color: #6908ac;
+}
+ .payment-method-outer:hover {
+     transform: translateY(-5px);
+}
+ .payment-method-outer:hover .payment-method-title {
+     color: #6908ac;
+}
+
+
 .deposit-sec-notice {
     font-size: 16px;
     text-align: center;
