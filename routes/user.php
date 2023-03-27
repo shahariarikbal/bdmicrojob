@@ -22,11 +22,22 @@ Route::get('/account/varify', [\App\Http\Controllers\UserController::class, 'sho
 Route::post('/account/varify/store', [\App\Http\Controllers\UserController::class, 'storeAccountVerify']);
 Route::get('/my/task', [\App\Http\Controllers\UserController::class, 'showMyTask']);
 Route::get('/accepted/task', [\App\Http\Controllers\UserController::class, 'showAcceptedTask']);
-Route::get('/job/details', [\App\Http\Controllers\UserController::class, 'showJobDetails']);
-Route::get('/job/report', [\App\Http\Controllers\UserController::class, 'showJobReport']);
+Route::get('/job/details/{id}', [\App\Http\Controllers\UserController::class, 'showJobDetails']);
+Route::get('/job/report/{id}', [\App\Http\Controllers\UserController::class, 'showJobReport']);
+Route::post('/report/submit/{id}', [\App\Http\Controllers\UserController::class, 'submitJobReport']);
+Route::get('/my/post', [\App\Http\Controllers\UserController::class, 'showMyPost']);
+Route::post('/post/submit/{id}', [\App\Http\Controllers\UserController::class, 'postSubmit']);
+Route::get('/submitted/job', [\App\Http\Controllers\UserController::class, 'showSubmittedJob']);
 
 //Deposit and Withdraw...
 Route::get('/instant/deposit', [App\Http\Controllers\Payment\DepositController::class, 'showDeposit']);
 Route::post('/store/deposit', [App\Http\Controllers\Payment\DepositController::class, 'storeDeposit']);
 Route::get('/instant/withdraw', [App\Http\Controllers\Payment\DepositController::class, 'showWithdraw']);
 Route::post('/withdraw/earning', [App\Http\Controllers\Payment\DepositController::class, 'withdrawEarning']);
+Route::get('/instant/deposit/history', [App\Http\Controllers\Payment\DepositController::class, 'showDepositHistory']);
+Route::get('/instant/withdraw/history', [App\Http\Controllers\Payment\DepositController::class, 'showWithdrawHistory']);
+
+//Notification Seen....
+Route::get('/nid_notification_seen/{id}', [\App\Http\Controllers\UserController::class, 'nidNotificationSeen']);
+Route::get('/deposit_notification_seen/{id}', [\App\Http\Controllers\UserController::class, 'depositNotificationSeen']);
+Route::get('/withdraw_notification_seen/{id}', [\App\Http\Controllers\UserController::class, 'withdrawNotificationSeen']);

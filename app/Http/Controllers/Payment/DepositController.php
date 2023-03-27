@@ -59,15 +59,22 @@ class DepositController extends Controller
         }
     }
 
+    public function showDepositHistory ()
+    {
+        if(Auth::check()){
+            $deposits = Deposit::where('user_id',Auth::user()->id)->Paginate(10);
+            return view('frontend.auth.user.deposit-history',compact('deposits'));
+        }
+
+        return redirect('/login');
+    }
+
     public function showWithdraw()
     {
         if(Auth::check()){
             $user = Auth::user();
-            $user_email = $user->email;
-            $user_name = $user->name;
-            $user_phone = $user->phone;
-            $user_nid_verification = $user->nid_verified;
-            return view('frontend.auth.user.withdraw', compact('user_email','user_name','user_phone','user_nid_verification'));
+            $auth_user = User::select(['name', 'email', 'phone', 'nid_verified', 'total_income'])->where('id',$user->id)->first();
+            return view('frontend.auth.user.withdraw', compact('auth_user'));
         }
         return redirect('/login');
     }
@@ -100,5 +107,15 @@ class DepositController extends Controller
         else{
             return redirect('/login');
         }
+    }
+
+    public function showWithdrawHistory()
+    {
+        if(Auth::check()){
+            $withdraws = Withdraw::where('user_id',Auth::user()->id)->Paginate(10);
+            return view('frontend.auth.user.withdraw-history',compact('withdraws'));
+        }
+
+        return redirect('/login');
     }
 }

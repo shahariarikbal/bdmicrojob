@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\NidVerificationRequest;
+use App\Models\JobReport;
 use App\Models\NidVerification;
+use App\Models\PostSubmit;
+use App\Models\Notification;
 use Auth;
 
 class UserController extends Controller
@@ -48,7 +52,9 @@ class UserController extends Controller
     public function showAccountVarify()
     {
         if(Auth::check()){
-            return view('frontend.auth.user.account-varify');
+            $auth_user = Auth::user();
+            $nid_verified = $auth_user->nid_verified;
+            return view('frontend.auth.user.account-varify', compact('nid_verified'));
         }
 
         else{
@@ -68,7 +74,7 @@ class UserController extends Controller
                 $nid_verification->card_image = $name;
             }
             if($request->hasFile('user_image')){
-                $name = time() . '.' . $request->user_image->getClientOriginalExtension();
+                $name = time() . '-'. '.' . $request->user_image->getClientOriginalExtension();
                 $request->user_image->move('card_verification/', $name);
                 $nid_verification->user_image = $name;
             }
@@ -96,18 +102,83 @@ class UserController extends Controller
         return view('frontend.auth.user.accepted-task');
     }
 
-    public function showJobDetails()
+    public function showJobDetails($id)
     {
-        return view('frontend.auth.user.job.job-details');
+        $postDetail = Post::with('specificTasks', 'jobSubmit')->find($id);
+        $isPostSubmit = PostSubmit::where('user_id', auth()->user()->id)->where('post_id', $postDetail->id)->first();
+        $totalPostSubmit = PostSubmit::where('post_id', $postDetail->id)->get()->count();
+        return view('frontend.auth.user.job.job-details', compact('postDetail', 'isPostSubmit', 'totalPostSubmit'));
     }
 
-    public function showJobReport()
+    public function showJobReport($id)
     {
-        return view('frontend.auth.user.job.job-report');
+        $postReport = Post::with('specificTasks')->find($id);
+        return view('frontend.auth.user.job.job-report', compact('postReport'));
     }
 
-    // public function showDeposit()
-    // {
-    //     return view('frontend.auth.user.deposit');
-    // }
+    public function submitJobReport(Request $request, $id)
+    {
+        $this->validate($request, [
+            'message' => 'required'
+        ]);
+
+        $submitReport = new JobReport();
+        $submitReport->user_id = auth()->user()->id;
+        $submitReport->post_id = $id;
+        $submitReport->message = $request->message;
+        $submitReport->save();
+        return redirect()->back()->with('success', 'Post report has been submitted');
+    }
+
+    public function postSubmit(Request $request, $id)
+    {
+        $this->validate($request, [
+            'work_prove' => 'required',
+            'images' => 'required',
+        ]);
+
+        if($request->hasfile('images'))
+         {
+            foreach($request->file('images') as $file)
+            {
+                $name = mt_rand(10000, 99999).'.'.$file->extension();
+                $file->move('post/', $name);
+                $data[] = $name;
+            }
+         }
+
+         $submitPost = new PostSubmit();
+         $submitPost->user_id = auth()->user()->id;
+         $submitPost->post_id = $id;
+         $submitPost->work_prove = $request->work_prove;
+         $submitPost->images = json_encode($data);
+         $submitPost->save();
+
+         return redirect()->back()->with('success', 'Post has been submitted');
+    }
+
+    public function showMyPost()
+    {
+        $posts = Post::with('category')->orderBy('created_at', 'desc')->where('user_id', auth()->user()->id)->get();
+        return view('frontend.auth.user.my-post', compact('posts'));
+    }
+
+    public function showSubmittedJob()
+    {
+        return view('frontend.auth.user.submitted-job');
+    }
+
+    public function nidNotificationSeen ($id)
+    {
+        $notification = Notification::find($id);
+        $notification->is_seen = true;
+
+        if($notification->save()){
+            return view('frontend.notification.nid-notification-details',compact('notification'));
+        }
+        else{
+            return redirect()->back();
+        }
+
+    }
 }

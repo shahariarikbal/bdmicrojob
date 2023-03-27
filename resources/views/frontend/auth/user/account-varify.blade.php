@@ -6,7 +6,7 @@ Account Varify
 
 @section('content')
 <section class="account-varify-section">
-    <div class="container">
+    <div class="container-fluid pt-5">
         <div class="row">
             <div class="col-md-10 m-auto">
                 <form action="{{ url('/account/varify/store') }}" method="post" class="account-varify-form" enctype="multipart/form-data">
@@ -73,7 +73,11 @@ Account Varify
                     </div>
                     <img id="userPreview" class="imgPreview" src="" width="250px">
                     <div class="account-varify-btn-outer">
+                        @if ($nid_verified !=1)
                         <button type="submit" class="account-varify-btn-inner">Submit</button>
+                        @else
+                        <div><h1 class="text-danger">Already Verified!!</h1></div>
+                        @endif
                     </div>
                 </form>
             </div>

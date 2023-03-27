@@ -13,7 +13,8 @@
                         <h4 class="job-report-title">
                             Report This Job
                         </h4>
-                        <form action="" method="" class="job-report-form form-group">
+                        <form action="{{ url('/report/submit/'.$postReport->id) }}" method="post" class="job-report-form form-group">
+                            @csrf
                             <p class="job-report-form-text">
                                 Do you have any issue/problem with this job?<br>
                                 Write down below about your problem/reason
@@ -22,7 +23,7 @@
                                 <label class="job-report-form-label" for="report_message">
                                     Describe your issue/reason
                                 </label>
-                                <textarea class="form-control" id="report_message" rows="5" name="report_describe" placeholder="Write your reason here..."></textarea>
+                                <textarea class="form-control" id="report_message" rows="5" name="message" placeholder="Write your reason here..."></textarea>
                             </div>
                             <div class="report-form-btn-outer">
                                 <button type="submit" class="report-form-btn-inner">
@@ -30,7 +31,7 @@
                                 </button>
                             </div>
                         </form>
-                    </div>                    
+                    </div>
                 </div>
             </div>
         </div>

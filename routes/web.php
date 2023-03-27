@@ -41,6 +41,12 @@ Route::get('flush', function() {
 
 Route::get('/', [FrontendController::class, 'index']);
 
+// ======================== Static Routes ===================================== //
+Route::get('/about', [FrontendController::class, 'aboutUs']);
+Route::get('/contact', [FrontendController::class, 'contactUs']);
+Route::get('/faq', [FrontendController::class, 'showFaq']);
+Route::get('/terms/conditions', [FrontendController::class, 'showTermsConditions']);
+Route::get('/privacy/policy', [FrontendController::class, 'showPrivacyPolicy']);
 
 Auth::routes();
 
@@ -100,6 +106,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
    //Deposit Requests....
    Route::get('/deposit/request', [PaymentController::class,'showDepositRequest']);
    Route::get('/deposit/approve/{id}', [PaymentController::class,'approveDeposit']);
+
+   //Withdraw Requests....
+   Route::get('/withdraw/request', [PaymentController::class,'showWithdrawRequest']);
+   Route::get('/withdraw/approve/{id}', [PaymentController::class,'approveWithdraw']);
+
+   //NID Verification Requests....
+   Route::get('/nid_verification/request', [AdminController::class,'showVerificationRequest']);
+   Route::get('/nid_verification/details/{id}', [AdminController::class,'showVerificationRequestDetails']);
+   Route::get('/nid_verification/approve/{id}', [AdminController::class,'approveNidRequest']);
+   Route::get('/nid_verification/reject/{id}', [AdminController::class,'rejectNidRequest']);
 
 
 
