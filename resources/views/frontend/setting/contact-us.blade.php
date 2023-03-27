@@ -32,7 +32,7 @@
                     <h5 class="title">
                         Phone
                     </h5>
-                    <a href="tel:+65-98112405">+65-98112405</a>
+                    <a href="#">{{ $setting->phone }}</a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12">
@@ -43,7 +43,7 @@
                     <h5 class="title">
                         Email
                     </h5>
-                    <a href="mailto:hndymanservice.sg@gmail.com">hndymanservice.sg@gmail.com</a>
+                    <a href="#">{{ $setting->email }}</a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12">
@@ -55,7 +55,7 @@
                         Address
                     </h5>
                     <p>
-                        30 Roberts Lane, #02-01 Singapore 218309, Singapore
+                        {{ $setting->address }}
                     </p>
                 </div>
             </div>

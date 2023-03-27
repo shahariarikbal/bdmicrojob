@@ -2,7 +2,7 @@
     <nav class="nav-main">
         <!-- logo start -->
         <a href="{{ url('/') }}" class="header-main-logo">
-             <img src="{{ asset('/frontend/') }}/assets/logo/bd jobs.png" style="height: 70px;" />
+             <img src="{{ asset('/logo/'.$setting->logo) }}" style="height: 70px;" />
 {{--            BD<span>Microjob</span>--}}
         </a>
         <!-- logo End -->
@@ -50,17 +50,17 @@
         <!-- Nav items End --><div class="header-social-icon">
             <ul class="social-icon-list">
                 <li class="social-icon-list-item">
-                    <a href="" class="social-icon-item-link">
+                    <a href="{{ $setting->facebook }}" class="social-icon-item-link">
                         <i class="fab fa-facebook-f"></i>
                     </a>
                 </li>
                 <li class="social-icon-list-item">
-                    <a href="" class="social-icon-item-link">
+                    <a href="{{ $setting->twitter }}" class="social-icon-item-link">
                         <i class="fab fa-twitter"></i>
                     </a>
                 </li>
                 <li class="social-icon-list-item">
-                    <a href="" class="social-icon-item-link">
+                    <a href="{{ $setting->instagram }}" class="social-icon-item-link">
                         <i class="fab fa-instagram"></i>
                     </a>
                 </li>

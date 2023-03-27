@@ -49,6 +49,7 @@ class AppServiceProvider extends ServiceProvider
                 ->where('specific_user_id',Auth::user()->id)->where('notification_for','user')
                 ->where('is_seen','!=','1')->orderBy('created_at','desc')->get());
             }
+            $view->with('setting', DB::table('settings')->first());
         });
     }
 }
