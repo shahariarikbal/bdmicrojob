@@ -31,8 +31,6 @@
                             <th scope="col">User Phone</th>
                             <th scope="col">Type</th>
                             <th scope="col">Card Number</th>
-                            <th scope="col">Card Image</th>
-                            <th scope="col">User Image</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>
                           </tr>
@@ -46,12 +44,12 @@
                                 <td>{{ $nid_request->user->phone }}</td>
                                 <td>{{ $nid_request->card_type }}</td>
                                 <td>{{ $nid_request->card_number }}</td>
-                                <td>
+                                {{--  <td>
                                     <img src="{{ asset('/card_verification/'.$nid_request->card_image) }}" height="100px" width="100px" alt="">
                                 </td>
                                 <td>
                                     <img src="{{ asset('/card_verification/'.$nid_request->user_image) }}" height="100px" width="100px" alt="">
-                                </td>
+                                </td>  --}}
                                 <td>
                                     @if($nid_request->status == 1)
                                     <a href="#" class="btn btn-sm btn-success">Approved</a>

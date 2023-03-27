@@ -21,8 +21,8 @@
                 </div>
                 <div class="col-md-6">
                     <div class="nid-details-right-btn-outer">
-                        <button type="button" class="btn btn-sm btn-success">Approved</button>
-                        <button type="button" class="btn btn-sm btn-danger">Reject</button>
+                        <a href="{{ url('admin/nid_verification/approve/'.$nid_request->id) }}" onclick="return confirm('Are you sure??')" class="btn btn-sm btn-danger">Approve</a>
+                        <a href="{{ url('admin/nid_verification/reject/'.$nid_request->id) }}" onclick="return confirm('Are you sure??')" class="btn btn-sm btn-danger">Reject</a>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                                         Name
                                     </h5>
                                     <p class="nid-details-value">
-                                        Saidul Islam
+                                        {{ $nid_request->user->name }}
                                     </p>
                                 </div>
                             </div>
@@ -48,56 +48,62 @@
                                         Email
                                     </h5>
                                     <p class="nid-details-value">
-                                        info@gmail.com
+                                        {{ $nid_request->user->email }}
                                     </p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="nid-details-outer">
                                     <h5 class="nid-details-label">
-                                        Phone 
+                                        Phone
                                     </h5>
                                     <p class="nid-details-value">
-                                        012345678996
+                                        {{ $nid_request->user->phone }}
                                     </p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="nid-details-outer">
                                     <h5 class="nid-details-label">
-                                        Card Type 
+                                        Card Type
                                     </h5>
                                     <p class="nid-details-value">
-                                        Birth
+                                        {{ $nid_request->card_type }} certificate
                                     </p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="nid-details-outer">
                                     <h5 class="nid-details-label">
-                                        Card Number 
+                                        Card Number
                                     </h5>
                                     <p class="nid-details-value">
-                                        012345678996
+                                        {{ $nid_request->card_number }}
                                     </p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="nid-details-outer">
                                     <h5 class="nid-details-label">
-                                        Status 
+                                        Status
                                     </h5>
                                     <p class="nid-details-value">
-                                        Pending
+                                        @if ($nid_request->status==0)
+                                            Pending
+                                        @elseif ($nid_request->status==1)
+                                            Approved
+                                        @else
+                                            Rejected
+                                        @endif
                                     </p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="nid-details-outer">
                                     <h5 class="nid-details-label">
-                                        Card Image 
+                                        Card Image
                                     </h5>
-                                    <img src="{{ asset('backend/') }}/img/Rectangle 24.png" class="nid-details-image" alt="Card Image" />
+                                    <img src="{{ asset('/card_verification/'.$nid_request->card_image) }}" class="nid-details-image" alt="Card Image" />
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -105,13 +111,13 @@
                                     <h5 class="nid-details-label">
                                         User Image
                                     </h5>
-                                    <img src="{{ asset('backend/') }}/img/Rectangle 29.png" class="nid-details-image" alt="User Image" />
+                                    <img src="{{ asset('/card_verification/'.$nid_request->user_image) }}" class="nid-details-image" alt="User Image" />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>            
+            </div>
         </div>
     </div>
 </div>
