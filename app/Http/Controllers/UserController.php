@@ -52,7 +52,9 @@ class UserController extends Controller
     {
         //Account Verification Code...
         if(Auth::check()){
-            return view('frontend.auth.user.account-varify');
+            $auth_user = Auth::user();
+            $nid_verified = $auth_user->nid_verified;
+            return view('frontend.auth.user.account-varify', compact('nid_verified'));
         }
 
         else{
