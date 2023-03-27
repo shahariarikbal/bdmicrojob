@@ -74,7 +74,7 @@ class UserController extends Controller
                 $nid_verification->card_image = $name;
             }
             if($request->hasFile('user_image')){
-                $name = time() . '.' . $request->user_image->getClientOriginalExtension();
+                $name = time() . '-'. '.' . $request->user_image->getClientOriginalExtension();
                 $request->user_image->move('card_verification/', $name);
                 $nid_verification->user_image = $name;
             }
