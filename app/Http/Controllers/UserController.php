@@ -196,6 +196,32 @@ class UserController extends Controller
         return view ('frontend.auth.user.submitted-job-details');
     }
 
+    public function submittedJobApprove ($id)
+    {
+
+        if(Auth::check()){
+            $submitted_job = PostSubmit::where('id',$id)->with('post')->first();
+
+            if($submitted_job->status != '1'){
+                $submitted_job->status = '1';
+                if($submitted_job->save()){
+                    $worker = User::find($submitted_job->user_id);
+                    $worker->total_income=+$submitted_job->post->worker_earn;
+                    $worker->save();
+
+                    return redirect()->back()->with('Success','Approved Successfully!');
+                }
+            }
+            else{
+                return redirect()->back()->with('Error','Already Approved!');
+            }
+
+        }
+        else{
+            return redirect('/login');
+        }
+    }
+
     public function nidNotificationSeen ($id)
     {
         $notification = Notification::find($id);
