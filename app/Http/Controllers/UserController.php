@@ -96,7 +96,8 @@ class UserController extends Controller
 
     public function showMyTask()
     {
-        return view('frontend.auth.user.my-task');
+        $post_submits = PostSubmit::where('user_id',Auth::user()->id)->with('post')->Paginate(10);
+        return view('frontend.auth.user.my-task', compact('post_submits'));
     }
 
     public function showAcceptedTask()
