@@ -31,6 +31,7 @@ Route::get('/submitted/job', [\App\Http\Controllers\UserController::class, 'show
 Route::get('/post/delete/{id}', [\App\Http\Controllers\UserController::class, 'postDelete']);
 Route::get('/post/edit/{id}', [\App\Http\Controllers\UserController::class, 'postEdit']);
 Route::get('/submitted/job', [\App\Http\Controllers\UserController::class, 'showSubmittedJob']);
+Route::get('/submitted/job/details/{id}', [\App\Http\Controllers\UserController::class, 'showSubmittedJobDetails']);
 
 //Deposit and Withdraw...
 Route::get('/instant/deposit', [App\Http\Controllers\Payment\DepositController::class, 'showDeposit']);

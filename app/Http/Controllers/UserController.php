@@ -187,7 +187,13 @@ class UserController extends Controller
 
     public function showSubmittedJob()
     {
-        return view('frontend.auth.user.submitted-job');
+        $submitted_jobs = PostSubmit::where('job_owner_id', Auth::user()->id)->with('user','post')->Paginate(10);
+        return view('frontend.auth.user.submitted-job', compact('submitted_jobs'));
+    }
+
+    public function showSubmittedJobDetails ($id)
+    {
+        return view ('frontend.auth.user.submitted-job-details');
     }
 
     public function nidNotificationSeen ($id)
