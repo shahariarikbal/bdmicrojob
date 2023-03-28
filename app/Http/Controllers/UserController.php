@@ -223,6 +223,32 @@ class UserController extends Controller
         }
     }
 
+    public function submittedJobReject ($id)
+    {
+        if(Auth::check()){
+            $submitted_job = PostSubmit::where('id',$id)->with('post')->first();
+
+            if($submitted_job->status != '1'){
+                if($submitted_job->status != '2'){
+                    $submitted_job->status = '2';
+                    $submitted_job->save();
+                    return redirect()->back()->with('Success','Rejected Successfully!');
+                }
+
+                else{
+                    return redirect()->back()->with('Error','Already Rejected!');
+                }
+            }
+            else{
+                return redirect()->back()->with('Error','Already Approved!');
+            }
+
+        }
+        else{
+            return redirect('/login');
+        }
+    }
+
     public function nidNotificationSeen ($id)
     {
         $notification = Notification::find($id);
