@@ -15,6 +15,7 @@ class CreatePostSubmitsTable extends Migration
     {
         Schema::create('post_submits', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('job_owner_id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('post_id');
             $table->longText('work_prove');

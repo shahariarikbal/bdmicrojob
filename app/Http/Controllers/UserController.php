@@ -149,8 +149,13 @@ class UserController extends Controller
                 $data[] = $name;
             }
          }
+         //Get Job Post with ID for job owner...
+         $job_post = Post::find($id);
+         $job_owner = User::find($job_post->user_id);
+         //Get Job Post with ID for job owner...
 
          $submitPost = new PostSubmit();
+         $submitPost->job_owner_id = $job_owner->id;
          $submitPost->user_id = auth()->user()->id;
          $submitPost->post_id = $id;
          $submitPost->work_prove = $request->work_prove;
