@@ -3078,6 +3078,44 @@ label.job-report-form-label {
 }
 /* NID Details page css End */
 
+
+/* Submitted job detailos page css start */
+.sumitted-job-details-wrap {
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #5718b6;
+}
+
+.sumitted-job-details-outer {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.sumitted-job-details-label {
+    margin-bottom: 0;
+    font-size: 17px;
+    font-weight: 500;
+    color: #000;
+    margin-right: 10px;
+}
+
+.sumitted-job-details-value {
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 400;
+    color: #5917b6;
+}
+
+.sumitted-job-details-image {
+    width: 100%;
+    margin: 10px 0px 20px 0px;
+    border-radius: 10px;
+}
+/* Submitted job detailos page css End*/
+
 @media screen and ( max-width: 520px ){
     .earning-btn-outer {
         display: inline-block;
@@ -3101,5 +3139,5 @@ label.job-report-form-label {
 
 .back-home-btn-inner:hover {
     transform: translateY(-5px);
-    color: #fff;
+    color: #fff!important;
 }
