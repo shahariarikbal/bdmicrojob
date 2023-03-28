@@ -22,59 +22,59 @@
                     <table class="table align-items-center table-striped table-hover table-flush my-task-table">
                         <thead class="thead-light my-task-th">
                             <tr class="my-task-th-outer">
+                                <th scope="col" class="sort">SL</th>
                                 <th scope="col" class="sort">Task Name</th>
-                                <th scope="col" class="sort">Proves</th>
-                                <th scope="col" class="sort">Time</th>
-                                <th scope="col" class="sort">Action</th>
+                                <th scope="col" class="sort">Reward Amount</th>
+                                <th scope="col" class="sort">Status</th>
+                                <th scope="col" class="sort">Submission Date</th>
                             </tr>
                         </thead>
                         <tbody class="list">
+                            @foreach ($accepted_tasks as $accepted_task )
                             <tr class="my-task-valued">
                                 <td>
                                     <h6 class="task-name-text">
-                                        Google video
+                                        {{ $loop->index+1 }}
                                     </h6>
                                 </td>
-                                <td>
-                                    <img src="{{ asset('/frontend') }}/assets/images/task.jpg" class="accepted-task-proves-image" alt="prooves">
-                                </td>
-                                <td>
-                                    <h6 class="task-earned-text">
-                                        10:00
-                                    </h6>
-                                </td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-warning">Edit</a>
-                                </td>
-                            </tr>
-                            <tr class="my-task-valued">
                                 <td>
                                     <h6 class="task-name-text">
-                                        Google video
+                                        {{ $accepted_task->post->title }}
                                     </h6>
-                                </td>
-                                <td>
-                                    <img src="{{ asset('/frontend') }}/assets/images/task.jpg" class="accepted-task-proves-image" alt="prooves">
                                 </td>
                                 <td>
                                     <h6 class="task-earned-text">
-                                        10:00
+                                        {{ $accepted_task->post->worker_earn }} tk
                                     </h6>
                                 </td>
                                 <td>
-                                    <a href="#" class="btn btn-sm btn-warning">Edit</a>
+                                    <h6 class="task-status-text">
+                                        @if ($accepted_task->status==0)
+                                        Pending
+                                        @elseif ($accepted_task->status==1)
+                                        Approved
+                                        @elseif ($accepted_task->status==2)
+                                        Rejected
+                                        @endif
+                                    </h6>
+                                </td>
+                                <td>
+                                    <h6 class="task-date-text">
+                                        {{ date('d-m-Y', strtotime($accepted_task->created_at)) }}
+                                    </h6>
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
-            </div>                     
+            </div>
         </div>
     </section>
 @endsection
 
 @push('page-scripts')
     <script type="text/javascript">
-        
+
     </script>
 @endpush

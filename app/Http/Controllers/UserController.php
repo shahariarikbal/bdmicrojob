@@ -102,7 +102,8 @@ class UserController extends Controller
 
     public function showAcceptedTask()
     {
-        return view('frontend.auth.user.accepted-task');
+        $accepted_tasks = PostSubmit::where('user_id',Auth::user()->id)->where('status', '1')->with('post')->Paginate(10);
+        return view('frontend.auth.user.accepted-task', compact('accepted_tasks'));
     }
 
     public function showJobDetails($id)
