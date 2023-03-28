@@ -61,8 +61,8 @@
                                 </td>
                                 <td>
                                     <a href="{{ url('/submitted/job/details/'.$submitted_job->id) }}" class="btn btn-sm btn-warning">Details</a>
-                                    <a href="{{ url('/submitted/job/reject/'.$submitted_job->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger">Reject</a>
-                                    <a href="{{ url('/submitted/job/approve/'.$submitted_job->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-warning">Approve</a>
+                                    {{--  <a href="{{ url('/submitted/job/reject/'.$submitted_job->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger">Reject</a>
+                                    <a href="{{ url('/submitted/job/approve/'.$submitted_job->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-warning">Approve</a>  --}}
                                 </td>
                             </tr>
                             @endforeach

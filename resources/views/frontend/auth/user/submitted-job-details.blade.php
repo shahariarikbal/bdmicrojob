@@ -17,8 +17,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="nid-details-right-btn-outer">
-                                <a href="#" onclick="return confirm('Are you sure??')" class="btn btn-sm btn-danger">Approve</a>
-                                <a href="#" onclick="return confirm('Are you sure??')" class="btn btn-sm btn-danger">Reject</a>
+                                <a href="{{ url('/submitted/job/approve/'.$submitted_job->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger">Approve</a>
+                                <a href="{{ url('/submitted/job/reject/'.$submitted_job->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger">Reject</a>
                             </div>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                                                 Job Title:
                                             </h5>
                                             <p class="sumitted-job-details-value">
-                                                fgdfg
+                                                {{ $submitted_job->post->title }}
                                             </p>
                                         </div>
                                     </div>
@@ -44,17 +44,17 @@
                                                 Worker Name:
                                             </h5>
                                             <p class="sumitted-job-details-value">
-                                                Devid lois
+                                                {{ $submitted_job->user->name }}
                                             </p>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="sumitted-job-details-outer">
                                             <h5 class="sumitted-job-details-label">
-                                                Worker Email:   
+                                                Worker Email:
                                             </h5>
                                             <p class="sumitted-job-details-value">
-                                                infoaaa@gmail.com
+                                                {{ $submitted_job->user->email }}
                                             </p>
                                         </div>
                                     </div>
@@ -64,26 +64,34 @@
                                                 Status:
                                             </h5>
                                             <p class="sumitted-job-details-value">
-                                                Pending
+                                                @if($submitted_job->status=='1')
+                                                    Approved
+                                                @elseif ($submitted_job->status=='2')
+                                                    Rejected
+                                                @else
+                                                    Pending
+                                                @endif
                                             </p>
                                         </div>
                                     </div>
+                                    @foreach (json_decode($submitted_job->images) as $image )
                                     <div class="col-md-12">
+                                        <div class="sumitted-job-details-image-outer">
+                                            <h5 class="sumitted-job-details-label">
+                                                Screenshots
+                                            </h5>
+                                            <img src="{{ asset('/post/'.$image) }}" class="sumitted-job-details-image" alt="Card Image" />
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                    {{--  <div class="col-md-12">
                                         <div class="sumitted-job-details-image-outer">
                                             <h5 class="sumitted-job-details-label">
                                                 Screenshots
                                             </h5>
                                             <img src="{{ asset('/frontend/') }}/assets/images/video-bg.png" class="sumitted-job-details-image" alt="Card Image" />
                                         </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="sumitted-job-details-image-outer">
-                                            <h5 class="sumitted-job-details-label">
-                                                Screenshots
-                                            </h5>
-                                            <img src="{{ asset('/frontend/') }}/assets/images/video-bg.png" class="sumitted-job-details-image" alt="Card Image" />
-                                        </div>
-                                    </div>
+                                    </div>  --}}
                                 </div>
                             </div>
                         </div>

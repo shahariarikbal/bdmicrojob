@@ -193,7 +193,8 @@ class UserController extends Controller
 
     public function showSubmittedJobDetails ($id)
     {
-        return view ('frontend.auth.user.submitted-job-details');
+        $submitted_job = PostSubmit::where('job_owner_id', Auth::user()->id)->where('id', $id)->with('user', 'post')->first();
+        return view ('frontend.auth.user.submitted-job-details', compact('submitted_job'));
     }
 
     public function submittedJobApprove ($id)
