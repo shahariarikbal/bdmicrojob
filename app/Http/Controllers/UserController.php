@@ -206,7 +206,8 @@ class UserController extends Controller
                 $submitted_job->status = '1';
                 if($submitted_job->save()){
                     $worker = User::find($submitted_job->user_id);
-                    $worker->total_income=+$submitted_job->post->worker_earn;
+                    $previous_income=$worker->total_income;
+                    $worker->total_income = $previous_income+$submitted_job->post->worker_earn;
                     $worker->save();
 
                     return redirect()->back()->with('Success','Approved Successfully!');
