@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\NidVerificationRequest;
+use App\Mail\UserRegisterEmail;
 use App\Models\JobReport;
 use App\Models\NidVerification;
 use App\Models\PostSubmit;
@@ -14,6 +15,9 @@ use App\Models\Notification;
 use App\Models\Deposit;
 use App\Models\Withdraw;
 use Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -30,13 +34,35 @@ class UserController extends Controller
             'phone' => 'required|unique:users,phone',
             'password' => 'required|confirmed',
         ]);
-        User::create([
+        $token = Str::random(64);
+       $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
+            'remember_token' => $token,
             'password' => bcrypt($request->password),
         ]);
-        return redirect()->back()->with('success', 'User has been register successfully');
+        Mail::to($request->email)->send(new UserRegisterEmail($user));
+        return redirect()->back()->with('success', 'User has been register successfully, Please verify your email ASAP');
+    }
+
+    public function verification($token = null)
+    {
+        if($token === null){
+            return redirect('/login')->with('error', 'Invalid token');
+        }
+
+        $user = User::where('remember_token', $token)->first();
+        if($user === null){
+            return redirect('/login')->with('error', 'Invalid user');
+        }
+
+        $user->update([
+            'email_verified_at' => Carbon::now(),
+            'remember_token' => ''
+        ]);
+
+        return redirect('/login')->with('success', 'Your account is activated. You can login now');
     }
 
     public function index()
