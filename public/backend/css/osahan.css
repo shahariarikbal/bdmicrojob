@@ -3041,6 +3041,56 @@ label.job-report-form-label {
 }
 /* Job Report page css End */
 
+/*Footer section css start*/
+.footer-section {
+    background: #ddd;
+}
+
+.footer-policies-list {
+    display: flex;
+    align-items: center;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.footer-policies-list-item {
+    list-style: none;
+}
+
+.footer-policies-list-item-link {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 0 10px;
+    color: #000;
+    transition: all .3s ease;
+}
+
+.footer-social-list {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.footer-social-list-item {
+    list-style: none;
+}
+
+.footer-social-list-item-link {
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.footer-social-list-item-link i {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.footer-policies-list-item-link:hover {
+    color: #6908ac;
+}
+/*Footer section css End*/
+
 /* NID Details page css start */
 .nid-details-wrap {
     padding: 20px;
@@ -3117,10 +3167,46 @@ label.job-report-form-label {
     border-radius: 10px;
 }
 /* Submitted job detailos page css End*/
+@media screen and ( max-width: 991px ){
+    .footer-social-list {
+        justify-content: center;
+        margin-top: 20px;
+    }
+    .footer-policies-list {
+        justify-content: center;
+    }
+}
 
 @media screen and ( max-width: 520px ){
     .earning-btn-outer {
         display: inline-block;
+    }
+    .footer-policies-list {
+        display: inline-block;
+        text-align: start;
+    }
+
+    .footer-policies-list-item-link {
+        padding: 5px 0;
+    }
+
+    .footer-social-list {
+        justify-content: flex-start;
+    }
+}
+
+@media screen and ( max-width: 370px ){
+    .user-dashb-earning-btn {
+        font-size: 12px;
+        margin-bottom: 5px;
+        padding: 5px 10px;
+        margin-top: 5px;
+    }
+
+    .user-dashb-deposit-btn {
+        font-size: 12px;
+        margin-bottom: 5px;
+        padding: 5px 10px;
     }
 }
 /*Coustom css End*/

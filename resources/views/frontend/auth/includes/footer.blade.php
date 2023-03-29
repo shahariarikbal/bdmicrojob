@@ -1,20 +1,54 @@
-
-
-		    <footer class="sticky-footer">
-		        <div class="container">
-		            <div class="row no-gutters">
-		                <div class="col-lg-6 col-sm-6">
-		                    <p class="mt-1 mb-0">
-		                        &copy; Copyright 2020 <strong class="text-dark">Vidoe</strong>. All Rights Reserved<br />
-		                        <small class="mt-0 mb-0">Made with <i class="fas fa-heart text-danger"></i> by <a class="text-primary" target="_blank" href="https://askbootstrap.com/">Ask Bootstrap</a> </small>
-		                    </p>
-		                </div>
-		                <div class="col-lg-6 col-sm-6 text-right">
-		                    <div class="app">
-		                        <a href="#"><img alt="" src="img/google.png" /></a>
-		                        <a href="#"><img alt="" src="img/apple.png" /></a>
-		                    </div>
-		                </div>
-		            </div>
-		        </div>
-		    </footer>
+<footer class="footer-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-9 col-sm-12">
+                <ul class="footer-policies-list">
+                	<li class="footer-policies-list-item">
+                		<a href="{{ url('/about') }}" class="footer-policies-list-item-link">
+                			About Us
+                		</a>
+                	</li>
+                	<li class="footer-policies-list-item">
+                		<a href="{{ url('/faq') }}" class="footer-policies-list-item-link">
+                			FAQ
+                		</a>
+                	</li>
+                	<li class="footer-policies-list-item">
+                		<a href="{{ url('/contact') }}" class="footer-policies-list-item-link">
+                			Contact Us
+                		</a>
+                	</li>
+                	<li class="footer-policies-list-item">
+                		<a href="{{ url('/privacy/policy') }}" class="footer-policies-list-item-link">
+                			Privacy Policy
+                		</a>
+                	</li>
+                	<li class="footer-policies-list-item">
+                		<a href="{{ url('/terms/conditions') }}" class="footer-policies-list-item-link">
+                			Terms & Conditions
+                		</a>
+                	</li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-sm-12 text-right">
+            	<ul class="footer-social-list">
+            		<li class="footer-social-list-item">
+            			<a href="{{ $setting->facebook }}" class="footer-social-list-item-link" target="_blank">
+            				<i class="fab fa-facebook-f"></i>
+            			</a>
+            		</li>
+            		<li class="footer-social-list-item">
+            			<a href="{{ $setting->twitter }}" class="footer-social-list-item-link" target="_blank">
+            				<i class="fab fa-twitter"></i>
+            			</a>
+            		</li>
+            		<li class="footer-social-list-item">
+            			<a href="{{ $setting->instagram }}" class="footer-social-list-item-link" target="_blank">
+            				<i class="fab fa-instagram"></i>
+            			</a>
+            		</li>            		
+            	</ul>
+            </div>
+        </div>
+    </div>
+</footer>

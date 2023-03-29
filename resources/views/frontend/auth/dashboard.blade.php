@@ -324,7 +324,7 @@
        </div>
     </div>
  </div> -->
-<div class="dashboard-section container-fluid pb-0">
+<div class="dashboard-section container-fluid">
    <div class="row">
       <div class="col-md-10 m-auto">
          <marquee>Please buy a plane and safe your money !</marquee>
