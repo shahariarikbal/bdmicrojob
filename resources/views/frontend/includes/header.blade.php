@@ -21,11 +21,11 @@
                     About us
                 </a>
             </li>
-            <li class="nav-item-main">
+            <!-- <li class="nav-item-main">
                 <a class="nav-item-main-link" href="#">
                     How It Works
                 </a>
-            </li>
+            </li> -->
             <li class="nav-item-main">
                 <a class="nav-item-main-link" href="{{ url('/faq') }}">FAQ</a>
             </li>
@@ -41,8 +41,7 @@
 
                   <a class="nav-item-main-link hide-item" href="{{ url('/user/register/form') }}" style="cursor: pointer;">Login / Register</a>
 
-                @else
-
+                @else                  
                   <a class="nav-item-main-link hide-item" onclick="document.querySelector('#logout').submit()" style="cursor: pointer;">Logout</a>
                 @endif
             </li>
@@ -69,10 +68,10 @@
         <div class="login-register-btn-outer">
             @if(!Auth::check())
 
-              <button onclick="location.href='{{ url('user/register/form') }}'" class="login-register-btn" name="button" type="button" style="cursor: pointer;">Login / Register</button>
+              <button onclick="location.href='{{ url('user/register/form') }}'" class="login-register-btn" name="button" type="button" style="cursor: pointer;">Sign In / Sign Out</button>
 
             @else
-
+            <a href="{{ url('/dashboard') }}" class="dashboard-btn-inner" style="cursor: pointer;">Dashboard</a>
               <button onclick="document.querySelector('#logout').submit()" class="login-register-btn" name="button" type="button" style="cursor: pointer;">Logout</button>
             @endif
         </div>

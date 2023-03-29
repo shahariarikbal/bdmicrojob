@@ -35,9 +35,9 @@
                             Tortor ipsum dolor sem venenatis. Nec sagittis eleifend sit sem enim arcu. Eget faucibus vitae mauris convallis felis, sed dolor massa.
                         </p>
                     </div>
-                    <div class="learn-more-btn-outer">
+                    {{-- <div class="learn-more-btn-outer">
                         <button type="button" class="learn-more-btn-inner">Learn More</button>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -77,9 +77,9 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="learn-more-btn-outer">
+                    {{-- <div class="learn-more-btn-outer">
                         <button type="button" class="learn-more-btn-inner">Learn More</button>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="col-md-6">
                     <div class="right-image-outer">
@@ -251,7 +251,7 @@
             </div>
         </div>
     </section>
-    <section class="faq-section-wrapper">
+    {{-- <section class="faq-section-wrapper">
         <div class="container">
             <div class="col-md-8 m-auto">
                 <h3 class="faq-section-title">
@@ -267,6 +267,6 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 </main>
 @endsection

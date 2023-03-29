@@ -24,7 +24,7 @@
 <section class="contact-section-wrapper">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-12">
+            <!-- <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="contact-info-item">
                     <div class="contact-info-icon">
                         <i class="fas fa-phone-alt"></i>
@@ -34,8 +34,8 @@
                     </h5>
                     <a href="#">{{ $setting->phone }}</a>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
+            </div> -->
+            <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="contact-info-item">
                     <div class="contact-info-icon">
                         <i class="fas fa-envelope"></i>
@@ -46,7 +46,7 @@
                     <a href="#">{{ $setting->email }}</a>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
+            <!-- <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="contact-info-item">
                     <div class="contact-info-icon">
                         <i class="fas fa-map-marker-alt"></i>
@@ -58,7 +58,7 @@
                         {{ $setting->address }}
                     </p>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="contact-form-wrapper">
             <div class="row">

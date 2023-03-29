@@ -2371,8 +2371,8 @@ footer.sticky-footer {
     position: relative;
     background: #ddd;
     margin-right: 10px;
-    width: 100px;
-    height: 40px;
+    width: 280px;
+    height: 70px;
     margin-bottom: 10px;
     border-radius: 3px;
 }
@@ -2409,12 +2409,14 @@ footer.sticky-footer {
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 0;
+    padding: 5px;
 }
 
 .category-items-wrap {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 20px;
+    justify-content: center;
 }
 
 .submit-btn-outer {
