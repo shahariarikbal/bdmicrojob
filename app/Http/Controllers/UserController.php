@@ -108,10 +108,15 @@ class UserController extends Controller
 
     public function showJobDetails($id)
     {
-        $postDetail = Post::with('specificTasks', 'jobSubmit')->find($id);
-        $isPostSubmit = PostSubmit::where('user_id', auth()->user()->id)->where('post_id', $postDetail->id)->first();
-        $totalPostSubmit = PostSubmit::where('post_id', $postDetail->id)->where('status','1')->get()->count();
-        return view('frontend.auth.user.job.job-details', compact('postDetail', 'isPostSubmit', 'totalPostSubmit'));
+        $postDetail = Post::with('specificTasks', 'jobSubmit')->where('user_id','!=', Auth::user()->id)->find($id);
+        if($postDetail){
+            $isPostSubmit = PostSubmit::where('user_id', auth()->user()->id)->where('post_id', $postDetail->id)->first();
+            $totalPostSubmit = PostSubmit::where('post_id', $postDetail->id)->where('status','1')->get()->count();
+            return view('frontend.auth.user.job.job-details', compact('postDetail', 'isPostSubmit', 'totalPostSubmit'));
+        }
+        else{
+            return redirect()->back()->with('Error','Not Found!!');
+        }
     }
 
     public function showJobReport($id)
