@@ -37,10 +37,17 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="price">Estimated Price</label>
-                            <input type="text" name="price" value="{{old('price')}}" placeholder="Enter Estimated Price" class="form-control">
+                            <label for="price">Estimated Commission in Percentage (%)</label>
+                            <input type="text" name="price" value="{{old('price')}}" placeholder="Enter Estimated Commission" class="form-control">
                             @if ($errors->has('price'))
                             <div class="text-danger">{{ $errors->first('price') }}</div>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label for="worker_earning">Each Worker Earning</label>
+                            <input type="text" name="worker_earning" value="{{old('worker_earning')}}" placeholder="Enter Estimated Each Worker Earning" class="form-control">
+                            @if ($errors->has('worker_earning'))
+                            <div class="text-danger">{{ $errors->first('worker_earning') }}</div>
                             @endif
                         </div>
                 		<button type="submit" class="btn btn-success mt-3">Submit</button>

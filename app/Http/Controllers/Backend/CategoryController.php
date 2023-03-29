@@ -25,6 +25,7 @@ class CategoryController extends Controller
         $category = new Category();
         $category->name = $request->name;
         $category->price = $request->price;
+        $category->worker_earning = $request->worker_earning;
 
         $category->save();
         return redirect('admin/categories')->with('Success', 'Category is added successfully!');
