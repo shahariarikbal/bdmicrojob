@@ -20,9 +20,9 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->longText('required_task');
             $table->string('worker_number');
-            $table->string('worker_earn');
+            $table->string('worker_earn')->nullable();
             $table->string('required_screenshot');
-            $table->string('estimated_date');
+            $table->string('estimated_date')->nullable();
             $table->string('avatar');
             $table->timestamps();
         });

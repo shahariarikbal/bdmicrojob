@@ -47,7 +47,7 @@ class UserController extends Controller
 
     public function showPostJob()
     {
-        $categories = Category::select(['id', 'name', 'status', 'price'])->orderBy('created_at', 'desc')->where('status', 1)->get();
+        $categories = Category::select(['id', 'name', 'status', 'price', 'worker_earning'])->orderBy('created_at', 'desc')->where('status', 1)->get();
         return view('frontend.auth.user.job.post-job', compact('categories'));
     }
 

@@ -29,9 +29,7 @@ class PostRequest extends FormRequest
             'required_task' => 'required',
             'avatar' => 'required|image',
             'worker_number' => 'required',
-            'worker_earn' => 'required',
             'required_screenshot' => 'required',
-            'estimated_date' => 'required',
             'specific_task' => 'required',
         ];
     }
