@@ -2371,8 +2371,8 @@ footer.sticky-footer {
     position: relative;
     background: #ddd;
     margin-right: 10px;
-    width: 100px;
-    height: 40px;
+    width: 280px;
+    height: 70px;
     margin-bottom: 10px;
     border-radius: 3px;
 }
@@ -2409,12 +2409,14 @@ footer.sticky-footer {
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 0;
+    padding: 5px;
 }
 
 .category-items-wrap {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 20px;
+    justify-content: center;
 }
 
 .submit-btn-outer {
@@ -2908,6 +2910,7 @@ button.account-varify-btn-inner:hover {
 
 .job-details-form-item .top-image {
     width: 100%;
+    height: 300px;
     border-radius: 10px;
     margin-bottom: 25px;
 }
@@ -3039,6 +3042,56 @@ label.job-report-form-label {
 }
 /* Job Report page css End */
 
+/*Footer section css start*/
+.footer-section {
+    background: #ddd;
+}
+
+.footer-policies-list {
+    display: flex;
+    align-items: center;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.footer-policies-list-item {
+    list-style: none;
+}
+
+.footer-policies-list-item-link {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 0 10px;
+    color: #000;
+    transition: all .3s ease;
+}
+
+.footer-social-list {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.footer-social-list-item {
+    list-style: none;
+}
+
+.footer-social-list-item-link {
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.footer-social-list-item-link i {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.footer-policies-list-item-link:hover {
+    color: #6908ac;
+}
+/*Footer section css End*/
+
 /* NID Details page css start */
 .nid-details-wrap {
     padding: 20px;
@@ -3115,10 +3168,50 @@ label.job-report-form-label {
     border-radius: 10px;
 }
 /* Submitted job detailos page css End*/
+@media screen and ( max-width: 991px ){
+    .footer-social-list {
+        justify-content: center;
+        margin-top: 20px;
+    }
+    .footer-policies-list {
+        justify-content: center;
+    }
+}
 
 @media screen and ( max-width: 520px ){
     .earning-btn-outer {
         display: inline-block;
+    }
+    .footer-policies-list {
+        display: inline-block;
+        text-align: start;
+    }
+
+    .footer-policies-list-item-link {
+        padding: 5px 0;
+    }
+
+    .footer-social-list {
+        justify-content: flex-start;
+    }
+
+    .job-details-form-item .top-image {
+        height: auto;
+    }
+}
+
+@media screen and ( max-width: 370px ){
+    .user-dashb-earning-btn {
+        font-size: 12px;
+        margin-bottom: 5px;
+        padding: 5px 10px;
+        margin-top: 5px;
+    }
+
+    .user-dashb-deposit-btn {
+        font-size: 12px;
+        margin-bottom: 5px;
+        padding: 5px 10px;
     }
 }
 /*Coustom css End*/

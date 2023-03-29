@@ -32,11 +32,10 @@
 
 	        	@yield('content')
 
-	        	{{-- @include('frontend.auth.includes.footer') --}}
+	        	@include('frontend.auth.includes.footer')
 			</div>
 		</div>
-
-
+        
 
 
 

@@ -60,6 +60,25 @@ ga('send', 'pageview');
     $(".sidebar").toggleClass("toggled");
   });
 
+  //Small Device Nav Collapse
+  $(document).ready(function(){
+    if($(window).width() <= 400){
+      $("body").addClass("sidebar-toggled");
+      $(".sidebar").addClass("toggled");
+    }else{
+      $("body").removeClass("sidebar-toggled");
+      $(".sidebar").removeClass("toggled");
+    }
+    $(window).resize(function(){
+      if($(window).width() <= 400){
+        $("body").addClass("sidebar-toggled");
+        $(".sidebar").addClass("toggled");
+      }else{
+        $("body").removeClass("sidebar-toggled");
+        $(".sidebar").removeClass("toggled");
+      }
+  });
+ });
   // Prevent the content wrapper from scrolling when the fixed side navigation hovered over
   $('body.fixed-nav .sidebar').on('mousewheel DOMMouseScroll wheel', function(e) {
     if ($window.width() > 768) {
