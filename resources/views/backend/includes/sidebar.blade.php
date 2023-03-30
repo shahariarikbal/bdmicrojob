@@ -23,30 +23,30 @@
         <span>Pending Jobs</span>
         </a>
      </li>
-     <li class="nav-item {{ Request::url() == url('admin/advertisements') ? 'active' : '' }}">
+     {{--  <li class="nav-item {{ Request::url() == url('admin/advertisements') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('/admin/advertisements') }}">
         <i class="fa fa-tasks"></i>
         <span>Advertisements</span>
         </a>
-     </li>
+     </li>  --}}
     <li class="nav-item {{ Request::url() == url('admin/link') ? 'active' : '' }} ">
        <a class="nav-link" href="{{ url('/admin/users') }}">
           <i class="fas fa-solid fa-dollar-sign"></i>
        <span>Users</span>
        </a>
     </li>
-    <li class="nav-item {{ Request::url() == url('admin/video/index') ? 'active' : '' }}">
+    {{--  <li class="nav-item {{ Request::url() == url('admin/video/index') ? 'active' : '' }}">
        <a class="nav-link" href="{{ url('/admin/video/index') }}">
           <i class="fab fa-youtube"></i>
        <span>Videos</span>
        </a>
-    </li>
-    <li class="nav-item {{ Request::url() == url('admin/link') ? 'active' : '' }}">
+    </li>  --}}
+    {{--  <li class="nav-item {{ Request::url() == url('admin/link') ? 'active' : '' }}">
        <a class="nav-link" href="{{ url('/admin/membership/index') }}">
           <i class="fas fa-qrcode"></i>
        <span>Memberships</span>
        </a>
-    </li>
+    </li>  --}}
     <li class="nav-item {{ Request::url() == url('admin/deposit/request') ? 'active' : '' }}">
        <a class="nav-link" href="{{ url('admin/deposit/request') }}">
         <i class="fas fa-money-bill"></i>

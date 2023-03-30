@@ -335,7 +335,7 @@
                             </div>
                         </div> --}}
                         <button type="submit" class="login-form-submit">Log In</button>
-                        <a href="{{ url('user/register') }}" class="sign-in-link">Registration</a>
+                        <a href="{{ route('register') }}" class="sign-in-link">Registration</a>
                     </form>
                 </div>
             </div>

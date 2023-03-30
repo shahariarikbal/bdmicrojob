@@ -6,7 +6,7 @@
 
 @push('page-css')
 <style type="text/css">
-    
+
 </style>
 @endpush
 
@@ -18,13 +18,13 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="nid-details-back-btn-outer">
-                                <a href="#" class="nid-details-back-btn-inner">Back</a>
+                                <a href="{{ url('/admin/dashboard') }}" class="nid-details-back-btn-inner">Back</a>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="nid-details-right-btn-outer">
-                                <a href="#" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger">Approve</a>
-                                <a href="#" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger">Reject</a>
+                                <a href="{{ url('/admin/job/approve/'.$job_post->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger">Approve</a>
+                                <a href="{{ url('/admin/job/reject/'.$job_post->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger">Reject</a>
                             </div>
                         </div>
                     </div>
@@ -37,30 +37,40 @@
                                     <div class="col-md-12">
                                         <div class="sumitted-job-details-outer">
                                             <h5 class="sumitted-job-details-label">
+                                                Job Category:
+                                            </h5>
+                                            <p class="sumitted-job-details-value">
+                                                {{ $job_post->category->name }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="sumitted-job-details-outer">
+                                            <h5 class="sumitted-job-details-label">
                                                 Job Title:
                                             </h5>
                                             <p class="sumitted-job-details-value">
-                                                dfdg
+                                                {{ $job_post->title }}
                                             </p>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="sumitted-job-details-outer">
                                             <h5 class="sumitted-job-details-label">
-                                                Worker Name:
+                                                User Name:
                                             </h5>
                                             <p class="sumitted-job-details-value">
-                                                dfgdg
+                                                {{ $job_post->user->name }}
                                             </p>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="sumitted-job-details-outer">
                                             <h5 class="sumitted-job-details-label">
-                                                Worker Email:
+                                                User Email:
                                             </h5>
                                             <p class="sumitted-job-details-value">
-                                               xdfsdg
+                                                {{ $job_post->user->email }}
                                             </p>
                                         </div>
                                     </div>
@@ -70,7 +80,13 @@
                                                 Status:
                                             </h5>
                                             <p class="sumitted-job-details-value">
-                                                dswfedrs
+                                                @if ($job_post->is_approved==0)
+                                                    Pending
+                                                @elseif($job_post->is_approved==1)
+                                                    Approved
+                                                @else
+                                                    Rejected
+                                                @endif
                                             </p>
                                         </div>
                                     </div>
@@ -79,7 +95,7 @@
                                             <h5 class="sumitted-job-details-label">
                                                 Screenshots
                                             </h5>
-                                            <img src="{{ asset('/frontend/') }}/assets/images/video-bg.png" class="sumitted-job-details-image" alt="Card Image" />
+                                            <img src="{{ asset('/thumbnail/'.$job_post->avatar) }}" class="sumitted-job-details-image" alt="Card Image" />
                                         </div>
                                     </div>
                                 </div>

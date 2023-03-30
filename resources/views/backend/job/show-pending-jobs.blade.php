@@ -72,8 +72,8 @@
                                 </td>
                                 <td>
                                     <a href="{{ url('/admin/job/details/'.$pending_job_post->id) }}" class="btn btn-sm btn-info">Details</a>
-                                    <a href="{{ url('/admin/job/approve/'.$pending_job_post->id) }}" onclick="return confirm('Are you sure?')"  class="btn btn-sm btn-success">Approve</a>
-                                    <a href="{{ url('/admin/job/reject/'.$pending_job_post->id) }}" onclick="return confirm('Are you sure?')"  class="btn btn-sm btn-danger">Reject</a>
+                                    {{--  <a href="{{ url('/admin/job/approve/'.$pending_job_post->id) }}" onclick="return confirm('Are you sure?')"  class="btn btn-sm btn-success">Approve</a>
+                                    <a href="{{ url('/admin/job/reject/'.$pending_job_post->id) }}" onclick="return confirm('Are you sure?')"  class="btn btn-sm btn-danger">Reject</a>  --}}
                                 </td>
                             </tr>
                             @endforeach
