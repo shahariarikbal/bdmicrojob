@@ -406,8 +406,8 @@
                       <input type="file" name="avater" class="input" required>
                     </div>
                 </div>
-                <button type="submit" class="login-form-submit">Sign Up</button>
-                <a href="{{ route('login') }}" class="sign-in-link">Sign In</a>
+                <button type="submit" class="login-form-submit">Registration</button>
+                <a href="{{ route('login') }}" class="sign-in-link">Log In</a>
             </form>            
         </div>
     </div> 

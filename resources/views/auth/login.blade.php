@@ -334,8 +334,8 @@
                                 @enderror
                             </div>
                         </div> --}}
-                        <button type="submit" class="login-form-submit">Sign in</button>
-                        <a href="{{ url('user/register') }}" class="sign-in-link">Sign Up</a>
+                        <button type="submit" class="login-form-submit">Log In</button>
+                        <a href="{{ url('user/register') }}" class="sign-in-link">Registration</a>
                     </form>
                 </div>
             </div>
