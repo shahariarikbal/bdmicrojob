@@ -22,6 +22,7 @@
                     <table class="table align-items-center table-striped table-hover table-flush my-task-table">
                         <thead class="thead-light my-task-th">
                             <tr class="my-task-th-outer">
+                                <th scope="col" class="sort">SL</th>
                                 <th scope="col" class="sort">Task Name</th>
                                 <th scope="col" class="sort">Reward Amount</th>
                                 <th scope="col" class="sort">Status</th>
@@ -31,6 +32,11 @@
                         <tbody class="list">
                             @foreach ($post_submits as $post_submit )
                             <tr class="my-task-valued">
+                                <td>
+                                    <h6 class="task-name-text">
+                                        {{ $loop->index+1 }}
+                                    </h6>
+                                </td>
                                 <td>
                                     <h6 class="task-name-text">
                                         {{ $post_submit->post->title }}

@@ -20,7 +20,7 @@ class CreatePostSubmitsTable extends Migration
             $table->unsignedBigInteger('post_id');
             $table->longText('work_prove');
             $table->string('images');
-            $table->boolean('status')->default(false)->comments('0=>pending, 1=>approved, 2=>rejected');
+            $table->string('status')->default('0')->comments('0=>pending, 1=>approved, 2=>rejected');
             $table->timestamps();
         });
     }

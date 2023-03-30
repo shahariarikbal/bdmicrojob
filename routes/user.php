@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/user/register/form', [\App\Http\Controllers\UserController::class, 'userRegister']);
 Route::post('/user/register', [\App\Http\Controllers\UserController::class, 'userRegisterStore']);
+Route::get('/verification/{token}', [\App\Http\Controllers\UserController::class, 'verification']);
 
 Route::get('/post/job', [\App\Http\Controllers\UserController::class, 'showPostJob']);
 Route::post('/post/store', [\App\Http\Controllers\Backend\JobController::class, 'postStore']);
@@ -32,6 +33,8 @@ Route::get('/post/delete/{id}', [\App\Http\Controllers\UserController::class, 'p
 Route::get('/post/edit/{id}', [\App\Http\Controllers\UserController::class, 'postEdit']);
 Route::get('/submitted/job', [\App\Http\Controllers\UserController::class, 'showSubmittedJob']);
 Route::get('/submitted/job/details/{id}', [\App\Http\Controllers\UserController::class, 'showSubmittedJobDetails']);
+Route::get('/submitted/job/approve/{id}', [\App\Http\Controllers\UserController::class, 'submittedJobApprove']);
+Route::get('/submitted/job/reject/{id}', [\App\Http\Controllers\UserController::class, 'submittedJobReject']);
 
 //Deposit and Withdraw...
 Route::get('/instant/deposit', [App\Http\Controllers\Payment\DepositController::class, 'showDeposit']);

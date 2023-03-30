@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\NidVerificationRequest;
+use App\Mail\UserRegisterEmail;
 use App\Models\JobReport;
 use App\Models\NidVerification;
 use App\Models\PostSubmit;
@@ -14,6 +15,9 @@ use App\Models\Notification;
 use App\Models\Deposit;
 use App\Models\Withdraw;
 use Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -30,13 +34,35 @@ class UserController extends Controller
             'phone' => 'required|unique:users,phone',
             'password' => 'required|confirmed',
         ]);
-        User::create([
+        $token = Str::random(64);
+       $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
+            'remember_token' => $token,
             'password' => bcrypt($request->password),
         ]);
-        return redirect()->back()->with('success', 'User has been register successfully');
+        Mail::to($request->email)->send(new UserRegisterEmail($user));
+        return redirect()->back()->with('success', 'User has been register successfully, Please verify your email ASAP');
+    }
+
+    public function verification($token = null)
+    {
+        if($token === null){
+            return redirect('/login')->with('error', 'Invalid token');
+        }
+
+        $user = User::where('remember_token', $token)->first();
+        if($user === null){
+            return redirect('/login')->with('error', 'Invalid user');
+        }
+
+        $user->update([
+            'email_verified_at' => Carbon::now(),
+            'remember_token' => ''
+        ]);
+
+        return redirect('/login')->with('success', 'Your account is activated. You can login now');
     }
 
     public function index()
@@ -47,7 +73,7 @@ class UserController extends Controller
 
     public function showPostJob()
     {
-        $categories = Category::select(['id', 'name', 'status', 'price'])->orderBy('created_at', 'desc')->where('status', 1)->get();
+        $categories = Category::select(['id', 'name', 'status', 'price', 'worker_earning'])->orderBy('created_at', 'desc')->where('status', 1)->get();
         return view('frontend.auth.user.job.post-job', compact('categories'));
     }
 
@@ -102,15 +128,21 @@ class UserController extends Controller
 
     public function showAcceptedTask()
     {
-        return view('frontend.auth.user.accepted-task');
+        $accepted_tasks = PostSubmit::where('user_id',Auth::user()->id)->where('status', '1')->with('post')->Paginate(10);
+        return view('frontend.auth.user.accepted-task', compact('accepted_tasks'));
     }
 
     public function showJobDetails($id)
     {
-        $postDetail = Post::with('specificTasks', 'jobSubmit')->find($id);
-        $isPostSubmit = PostSubmit::where('user_id', auth()->user()->id)->where('post_id', $postDetail->id)->first();
-        $totalPostSubmit = PostSubmit::where('post_id', $postDetail->id)->get()->count();
-        return view('frontend.auth.user.job.job-details', compact('postDetail', 'isPostSubmit', 'totalPostSubmit'));
+        $postDetail = Post::with('specificTasks', 'jobSubmit')->where('user_id','!=', Auth::user()->id)->find($id);
+        if($postDetail){
+            $isPostSubmit = PostSubmit::where('user_id', auth()->user()->id)->where('post_id', $postDetail->id)->first();
+            $totalPostSubmit = PostSubmit::where('post_id', $postDetail->id)->where('status','1')->get()->count();
+            return view('frontend.auth.user.job.job-details', compact('postDetail', 'isPostSubmit', 'totalPostSubmit'));
+        }
+        else{
+            return redirect()->back()->with('Error','Not Found!!');
+        }
     }
 
     public function showJobReport($id)
@@ -193,7 +225,61 @@ class UserController extends Controller
 
     public function showSubmittedJobDetails ($id)
     {
-        return view ('frontend.auth.user.submitted-job-details');
+        $submitted_job = PostSubmit::where('job_owner_id', Auth::user()->id)->where('id', $id)->with('user', 'post')->first();
+        return view ('frontend.auth.user.submitted-job-details', compact('submitted_job'));
+    }
+
+    public function submittedJobApprove ($id)
+    {
+
+        if(Auth::check()){
+            $submitted_job = PostSubmit::where('id',$id)->with('post')->first();
+
+            if($submitted_job->status != '1'){
+                $submitted_job->status = '1';
+                if($submitted_job->save()){
+                    $worker = User::find($submitted_job->user_id);
+                    $previous_income=$worker->total_income;
+                    $worker->total_income = $previous_income+$submitted_job->post->worker_earn;
+                    $worker->save();
+
+                    return redirect()->back()->with('Success','Approved Successfully!');
+                }
+            }
+            else{
+                return redirect()->back()->with('Error','Already Approved!');
+            }
+
+        }
+        else{
+            return redirect('/login');
+        }
+    }
+
+    public function submittedJobReject ($id)
+    {
+        if(Auth::check()){
+            $submitted_job = PostSubmit::where('id',$id)->with('post')->first();
+
+            if($submitted_job->status != '1'){
+                if($submitted_job->status != '2'){
+                    $submitted_job->status = '2';
+                    $submitted_job->save();
+                    return redirect()->back()->with('Success','Rejected Successfully!');
+                }
+
+                else{
+                    return redirect()->back()->with('Error','Already Rejected!');
+                }
+            }
+            else{
+                return redirect()->back()->with('Error','Already Approved!');
+            }
+
+        }
+        else{
+            return redirect('/login');
+        }
     }
 
     public function nidNotificationSeen ($id)

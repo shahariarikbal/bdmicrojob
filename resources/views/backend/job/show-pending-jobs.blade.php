@@ -1,7 +1,7 @@
 @extends('backend.master')
 
 @section('title')
-    Job list
+    Pending Job list
 @endsection
 
 @push('page-css')
@@ -17,7 +17,7 @@
     <div class="container-fluid pb-0">
         <div class="card">
             <div class="card-header">
-                <h2>Job list</h2>
+                <h2>Pending Job list</h2>
             </div>
             <div class="card-body">
                 <div class="col-md-12">
@@ -34,7 +34,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                            @foreach ($job_posts as $job_post)
+                            @foreach ($pending_job_posts as $pending_job_post)
                             <tr class="my-task-valued">
                                 <td>
                                     <h6 class="task-name-text">
@@ -43,27 +43,27 @@
                                 </td>
                                 <td>
                                     <h6 class="task-earned-text">
-                                        {{ $job_post->category->name ?? 'No name found' }}
+                                        {{ $pending_job_post->category->name ?? 'No name found' }}
                                     </h6>
                                 </td>
                                 <td>
-                                    {{ $job_post->title }}
+                                    {{ $pending_job_post->title }}
                                 </td>
                                 <td>
                                     <h6 class="task-date-text">
-                                        {{ $job_post->worker_number }}
-                                    </h6>
-                                </td>
-                                <td>
-                                    <h6 class="task-date-text">
-                                        {{ $job_post->category->worker_earning }}tk
+                                        {{ $pending_job_post->worker_number }}
                                     </h6>
                                 </td>
                                 <td>
                                     <h6 class="task-date-text">
-                                        @if ($job_post->is_approved==1)
+                                        {{ $pending_job_post->category->worker_earning }}tk
+                                    </h6>
+                                </td>
+                                <td>
+                                    <h6 class="task-date-text">
+                                        @if ($pending_job_post->is_approved==1)
                                             Approved
-                                        @elseif ($job_post->is_approved==2)
+                                        @elseif ($pending_job_post->is_approved==2)
                                             Rejected
                                         @else
                                             Pending
@@ -71,13 +71,15 @@
                                     </h6>
                                 </td>
                                 <td>
-                                    <a href="{{ url('/admin/job/details/'.$job_post->id) }}" class="btn btn-sm btn-info">Details</a>
+                                    <a href="{{ url('/admin/job/details/'.$pending_job_post->id) }}" class="btn btn-sm btn-info">Details</a>
+                                    <a href="{{ url('/admin/job/approve/'.$pending_job_post->id) }}" onclick="return confirm('Are you sure?')"  class="btn btn-sm btn-success">Approve</a>
+                                    <a href="{{ url('/admin/job/reject/'.$pending_job_post->id) }}" onclick="return confirm('Are you sure?')"  class="btn btn-sm btn-danger">Reject</a>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                       </table>
-                      {{ $job_posts->links() }}
+                      {{ $pending_job_posts->links() }}
                 </div>
             </div>
         </div>

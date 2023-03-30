@@ -98,6 +98,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
    Route::post('/category/store', [CategoryController::class,'storeCategory']);
    //Jobs....
    Route::get('/jobs', [JobController::class,'showJob']);
+   Route::get('/pending/jobs', [JobController::class,'showPendingJob']);
+   Route::get('/job/details/{id}', [JobController::class,'showJobDetails']);
+   Route::get('/job/approve/{id}', [JobController::class,'approveJob']);
+   Route::get('/job/reject/{id}', [JobController::class,'rejectJob']);
 
    //Advertisements....
    Route::get('/advertisements', [AdvertisementController::class,'showAdvertisement']);

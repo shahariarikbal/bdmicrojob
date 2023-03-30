@@ -350,10 +350,13 @@
                    </div>
                    <div class="job-item-center">
                       <div class="progress-label">
-                         0 OF {{ $post->worker_number }}
+                        @php
+                            $worker = \App\Models\PostSubmit::where('post_id', $post->id)->where('status','1')->get()->count();
+                        @endphp
+                         {{ $worker }} OF {{ $post->worker_number }}
                       </div>
                       <div class="progress">
-                         <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                         <div class="progress-bar" role="progressbar" style="width: {{ $worker }}%" aria-valuenow="{{ $worker }}" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
                    </div>
                    <div class="job-item-right">
