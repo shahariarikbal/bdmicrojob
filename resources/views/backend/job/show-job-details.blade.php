@@ -93,7 +93,7 @@
                                     <div class="col-md-12">
                                         <div class="sumitted-job-details-image-outer">
                                             <h5 class="sumitted-job-details-label">
-                                                Screenshots
+                                                Thumbnail
                                             </h5>
                                             <img src="{{ asset('/thumbnail/'.$job_post->avatar) }}" class="sumitted-job-details-image" alt="Card Image" />
                                         </div>
