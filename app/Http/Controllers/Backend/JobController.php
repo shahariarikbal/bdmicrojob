@@ -15,7 +15,7 @@ class JobController extends Controller
 {
     public function showJob ()
     {
-        $job_posts = Post::with('user')->orderBy('created_at', 'desc')->Paginate(10);
+        $job_posts = Post::with('user', 'category')->orderBy('created_at', 'desc')->Paginate(10);
         return view ('backend.job.show-jobs', compact('job_posts'));
     }
 
@@ -27,7 +27,7 @@ class JobController extends Controller
 
     public function showJobDetails ($id)
     {
-        $job_post = Post::with('user')->where('id', $id)->first();
+        $job_post = Post::with('user','category')->where('id', $id)->first();
         return view ('backend.job.show-job-details', compact('job_post'));
     }
 
@@ -98,5 +98,54 @@ class JobController extends Controller
         }
 
         return redirect()->back()->withSuccess('Your post has been submitted');
+    }
+
+    public function approveJob ($id)
+    {
+        $job_post = Post::find($id);
+        if($job_post->is_approved==1 && $job_post->is_approved!=2){
+            return redirect()->back()->with('error','Already Approved!');
+        }
+
+        elseif($job_post->is_approved==0 && $job_post->is_approved!=2){
+            $job_post->is_approved=1;
+            $job_post->save();
+            return redirect('/admin/pending/jobs')->with('success', 'Job post is approved successfully!!');
+        }
+
+        else{
+            return redirect()->back()->with('error', 'Already rejected!');
+        }
+    }
+
+    public function rejectJob ($id)
+    {
+        $job_post = Post::where('id', $id)->with('category')->first();
+        if($job_post->is_approved==1 && $job_post->is_approved!=2){
+            return redirect()->back()->with('error','Already Approved!');
+        }
+        elseif($job_post->is_approved==0 && $job_post->is_approved!=1){
+            $job_post->is_approved=2;
+
+            //Return Deposit Money....
+            if($job_post->save()){
+                $user = User::find($job_post->user_id);
+
+                $job_cost = $job_post->worker_number * $job_post->category->worker_earning;
+                $job_commission = (($job_post->category->price * $job_cost)/100);
+                $postPriceEarnPrice = $job_cost + $job_commission;
+                $user->total_deposit = ($user->total_deposit + $postPriceEarnPrice);
+                $user->save();
+                return redirect('/admin/pending/jobs')->with('success', 'Job post is rejected successfully!!');
+            }
+            //Return Deposit Money....
+            else{
+                return redirect()->back()->with('error', 'Operation failed!!');
+            }
+        }
+
+        else{
+            return redirect()->back()->with('error', 'Already rejected!');
+        }
     }
 }
