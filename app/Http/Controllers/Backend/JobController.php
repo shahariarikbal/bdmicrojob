@@ -15,7 +15,20 @@ class JobController extends Controller
 {
     public function showJob ()
     {
-        return view ('backend.job.show-jobs');
+        $job_posts = Post::with('user')->orderBy('created_at', 'desc')->Paginate(10);
+        return view ('backend.job.show-jobs', compact('job_posts'));
+    }
+
+    public function showPendingJob ()
+    {
+        $pending_job_posts = Post::with('user')->where('is_approved', 0)->orderBy('created_at', 'desc')->Paginate(10);
+        return view ('backend.job.show-pending-jobs', compact('pending_job_posts'));
+    }
+
+    public function showJobDetails ($id)
+    {
+        $job_post = Post::with('user')->where('id', $id)->first();
+        return view ('backend.job.show-job-details', compact('job_post'));
     }
 
     public function postStore(PostRequest $request)

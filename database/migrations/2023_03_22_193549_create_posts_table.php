@@ -24,6 +24,7 @@ class CreatePostsTable extends Migration
             $table->string('required_screenshot');
             $table->string('estimated_date')->nullable();
             $table->string('avatar');
+            $table->integer('is_approved')->comments('0=> Pending, 1=> Approved, 2=> Rejected')->default(0);
             $table->timestamps();
         });
     }

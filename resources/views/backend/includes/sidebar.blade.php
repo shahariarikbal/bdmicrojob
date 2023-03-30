@@ -14,7 +14,13 @@
     <li class="nav-item {{ Request::url() == url('admin/jobs') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('/admin/jobs') }}">
         <i class="fa fa-tasks"></i>
-        <span>Jobs</span>
+        <span>All Jobs</span>
+        </a>
+     </li>
+     <li class="nav-item {{ Request::url() == url('admin/pending/jobs') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('/admin/pending/jobs') }}">
+        <i class="fa fa-tasks"></i>
+        <span>Pending Jobs</span>
         </a>
      </li>
      <li class="nav-item {{ Request::url() == url('admin/advertisements') ? 'active' : '' }}">

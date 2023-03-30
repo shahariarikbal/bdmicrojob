@@ -58,4 +58,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(PostSubmit::class);
     }
+
+    public function jobPost(): HasMany
+    {
+        return $this->hasMany(Post::class);
+    }
 }
