@@ -10,6 +10,8 @@ use App\Models\Video;
 use App\Models\NidVerification;
 use App\Models\Notification;
 use App\Models\Contact;
+use App\Models\HomePage;
+use App\Http\Requests\HomePageRequest;
 use Hash;
 use Illuminate\Http\Request;
 use Session;
@@ -173,6 +175,89 @@ class AdminController extends Controller
         $contact = Contact::find($id);
         $contact->delete();
         return redirect()->back()->with('Success','Deleted Successfully!!');
+    }
+
+    public function showHomePage ()
+    {
+        $homepage = HomePage::first();
+        return view ('backend.homepage.show-homepage', compact('homepage'));
+    }
+
+    public function updateHomePage (HomePageRequest $request)
+    {
+        $homepage = HomePage::first();
+        if($request->hasFile('slider_image')){
+            if(file_exists(public_path('homepage/'.$homepage->slider_image))){
+                File::delete(public_path('homepage/'.$homepage->slider_image));
+                $name = rand(0, 99999) . '.' . $request->slider_image->getClientOriginalExtension();
+                $request->slider_image->move('homepage/', $name);
+                $homepage->slider_image = $name;
+            }
+            else{
+                $name = rand(0, 99999) . '.' . $request->slider_image->getClientOriginalExtension();
+                $request->slider_image->move('homepage/', $name);
+                $homepage->slider_image = $name;
+            }
+
+        }
+
+        if($request->hasFile('first_image')){
+            if(file_exists(public_path('homepage/'.$homepage->first_image))){
+                File::delete(public_path('homepage/'.$homepage->first_image));
+                $name = rand(0, 99999) . '.' . $request->first_image->getClientOriginalExtension();
+                $request->first_image->move('homepage/', $name);
+                $homepage->first_image = $name;
+            }
+            else{
+                $name = rand(0, 99999) . '.' . $request->first_image->getClientOriginalExtension();
+                $request->first_image->move('homepage/', $name);
+                $homepage->first_image = $name;
+            }
+
+        }
+
+        if($request->hasFile('second_image')){
+            if(file_exists(public_path('homepage/'.$homepage->second_image))){
+                File::delete(public_path('homepage/'.$homepage->second_image));
+                $name = rand(0, 99999) . '.' . $request->second_image->getClientOriginalExtension();
+                $request->second_image->move('homepage/', $name);
+                $homepage->second_image = $name;
+            }
+            else{
+                $name = rand(0, 99999) . '.' . $request->second_image->getClientOriginalExtension();
+                $request->second_image->move('homepage/', $name);
+                $homepage->second_image = $name;
+            }
+
+        }
+
+        if($request->hasFile('footer_image')){
+            if(file_exists(public_path('homepage/'.$homepage->footer_image))){
+                File::delete(public_path('homepage/'.$homepage->footer_image));
+                $name = rand(0, 99999) . '.' . $request->footer_image->getClientOriginalExtension();
+                $request->footer_image->move('homepage/', $name);
+                $homepage->footer_image = $name;
+            }
+            else{
+                $name = rand(0, 99999) . '.' . $request->footer_image->getClientOriginalExtension();
+                $request->footer_image->move('homepage/', $name);
+                $homepage->footer_image = $name;
+            }
+
+        }
+
+        $homepage->slider_title = $request->slider_title;
+        $homepage->first_image_title = $request->first_image_title;
+        $homepage->first_image_description = $request->first_image_description;
+        $homepage->second_image_title = $request->second_image_title;
+        $homepage->second_image_description = $request->second_image_description;
+        $homepage->how_works_title = $request->how_works_title;
+        $homepage->how_works_description = $request->how_works_description;
+        $homepage->footer_title = $request->footer_title;
+        $homepage->footer_description = $request->footer_description;
+
+        $homepage->save();
+        return redirect()->back()->with('success', 'Updated Successfully');
     }
 
 

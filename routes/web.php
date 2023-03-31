@@ -131,4 +131,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
    Route::get('/contacts', [AdminController::class,'showContact']);
    Route::get('/contact/delete/{id}', [AdminController::class,'deleteContact']);
 
+   //Home Page....
+   Route::get('/homepage', [AdminController::class,'showHomePage']);
+   Route::post('/homepage/update', [AdminController::class,'updateHomePage']);
+
 });

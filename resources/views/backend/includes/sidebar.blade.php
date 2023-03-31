@@ -77,7 +77,13 @@
         <span>Help & Support</span>
         </a>
      </li>  --}}
-    <li class="nav-item {{ Request::url() == url('admin/link') ? 'active' : '' }}">
+     <li class="nav-item {{ Request::url() == url('admin/homepage') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('/admin/homepage') }}">
+         <i class="fas fa-cog"></i>
+        <span>Home Page</span>
+        </a>
+     </li>
+    <li class="nav-item {{ Request::url() == url('admin/settings') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('/admin/settings') }}">
          <i class="fas fa-cog"></i>
         <span>Settings</span>
