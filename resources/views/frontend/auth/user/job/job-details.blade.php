@@ -30,7 +30,7 @@
                             <div class="col-md-5">
                                 <div class="earn-money-outer">
                                     <h3>
-                                        YOU CAN EARN <strong>৳ {{ $postDetail->worker_earn }}</strong>
+                                        YOU CAN EARN <strong>৳ {{ $postDetail->category->worker_earning }}</strong>
                                     </h3>
                                 </div>
                             </div>

@@ -5,12 +5,16 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Contact;
+use App\Models\HomePage;
+use App\Models\Post;
 
 class FrontendController extends Controller
 {
     public function index()
     {
-        return view('frontend.home.index');
+        $job_posts = Post::where('is_approved', 1)->with('user','category')->Paginate(5);
+        $homepage = HomePage::first();
+        return view('frontend.home.index', compact('homepage', 'job_posts'));
     }
 
     public function aboutUs(){
