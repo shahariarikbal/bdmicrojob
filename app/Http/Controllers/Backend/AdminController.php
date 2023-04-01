@@ -260,5 +260,47 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Updated Successfully');
     }
 
+    public function showTip ($user_id)
+    {
+        $user = User::find($user_id);
+        return view ('backend.tip.show-tip-page', compact('user'));
+    }
+
+    public function storeTip (TipRequest $request, $user_id)
+    {
+        $user = User::find($user_id);
+        if($user){
+            $tip = new Tip();
+            $tip->user_id = $user_id;
+            $tip->tips_type = $request->tips_type;
+            $tip->tips_amount = $request->tips_amount;
+
+            if($tip->save()){
+                if($request->tips_type=='earning'){
+                    $user->total_income = $user->total_income + $request->tips_amount;
+                    $user->save();
+                    //Notification....
+
+                    //Notification....
+                    return redirect()->back()->with('success', 'Tips are given successfully!!');
+                }
+                elseif($request->tips_type=='deposit'){
+                    $user->total_deposit = $user->total_deposit + $request->tips_amount;
+                    $user->save();
+                    //Notification....
+
+                    //Notification....
+                    return redirect()->back()->with('success', 'Tips are given successfully!!');
+                }
+            }
+            else{
+                return redirect()->back()->with('error', 'Failed to give tips!!');
+            }
+        }
+        else{
+            return redirect()->back()->with('error', 'User not found!!');
+        }
+    }
+
 
 }

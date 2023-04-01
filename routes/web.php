@@ -144,4 +144,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
     Route::post('/faq/update/{faq}', [FaqController::class, 'faqPost']);
     Route::get('/faq/delete/{faq}', [FaqController::class, 'faqDelete']);
 
+    //Tips....
+    Route::get('/tip/{user_id}', [AdminController::class, 'showTip']);
+    Route::post('/tip/store/{user_id}', [AdminController::class, 'storeTip']);
+
 });

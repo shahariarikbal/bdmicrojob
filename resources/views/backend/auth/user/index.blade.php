@@ -42,7 +42,8 @@
                                     @else
                                         <a href="{{ url('/admin/inactive/'.$user->id) }}" class="btn btn-sm btn-warning">Inactive</a>
                                     @endif
-                                    <a href="{{ url('/admin/delete/'.$user->id) }}" class="btn btn-sm btn-danger">Delete</a>
+                                    <a href="{{ url('/admin/tip/'.$user->id) }}" class="btn btn-sm btn-danger">Tips</a>
+                                    {{--  <a href="{{ url('/admin/delete/'.$user->id) }}" class="btn btn-sm btn-danger">Delete</a>  --}}
                                 </td>
                               </tr>
                             @endforeach
