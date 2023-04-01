@@ -82,7 +82,7 @@
                             </div>
                         </div>
                         <div class="contact-submit-btn-outer">
-                            <button class="contact-submit-btn-inner">
+                            <button class="btn btn-success mt-3">
                                 Update <i class="fas fa-paper-plane"></i>
                             </button>
                         </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Faq;
 use Illuminate\Http\Request;
 use App\Models\Contact;
 use App\Models\HomePage;
@@ -38,7 +39,8 @@ class FrontendController extends Controller
     }
 
     public function showFaq(){
-        return view('frontend.setting.faq');
+        $faqs = Faq::select(['id', 'question', 'answer'])->orderBy('id', 'desc')->get();
+        return view('frontend.setting.faq', compact('faqs'));
     }
 
     public function showTermsConditions(){
