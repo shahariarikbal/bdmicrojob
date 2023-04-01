@@ -83,6 +83,7 @@ class DepositController extends Controller
     {
         if(Auth::check()){
             $user = Auth::user();
+            $total_amount = ((15*$request->withdraw_amount)/100)+($request->withdraw_amount);
             $withdraw = new Withdraw();
 
             $withdraw->user_id = $user->id;
@@ -95,13 +96,20 @@ class DepositController extends Controller
             $withdraw->payment_gateway = $request->payment_gateway;
             $withdraw->payment_gateway_number = $request->payment_gateway_number;
             $withdraw->withdraw_amount = $request->withdraw_amount;
-            $withdraw->save();
 
-            //Email
-               //withdraw Mail to Admin...
-            //Email
+            if($user->total_income>=$total_amount){
+                $withdraw->save();
+                //Email
+                //withdraw Mail to Admin...
+                //Email
 
             return redirect()->back()->with('Success','withdraw will be approved soon!!');
+            }
+
+            else{
+                return redirect()->back()->with('error','Insufficient balance!!');
+            }
+
         }
 
         else{
