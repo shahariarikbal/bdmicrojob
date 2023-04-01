@@ -69,10 +69,11 @@ class PaymentController extends Controller
             $user = User::where('id',$withdraw->user_id)->first();
 
             if($user){
-                if($user->total_income>=$withdraw->withdraw_amount){
+                $total_amount = ((15*$withdraw->withdraw_amount)/100)+$withdraw->withdraw_amount;
+                if($user->total_income>=$total_amount){
                     $withdraw->is_approved = true;
                 if($withdraw->save()){
-                    $final_income_amount = $user->total_income-$withdraw->withdraw_amount;
+                    $final_income_amount = $user->total_income-$total_amount;
                     $user->total_income = $final_income_amount;
                     $user->save();
                     //Notification....
