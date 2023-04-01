@@ -19,14 +19,7 @@ class SettingSeeder extends Seeder
             'email'=>'support@microjob.com', 'facebook'=>'https://fb.com',
             'twitter'=>'https://twitter.com', 'instagram'=>'https://www.instagram.com',
             'linkedin'=>'https://www.linkedin.com', 'address'=>'Dhaka, Mohakhali',
-            'adsense_code'=>'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456" crossorigin="anonymous"></script>
-            <ins class="adsbygoogle"
-            style="display:inline-block;width:728px;height:90px"
-            data-ad-client="ca-pub-1234567890123456"
-            data-ad-slot="1234567890"></ins>
-            <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>']
+            'adsense_code'=>'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456" crossorigin="anonymous"></script>']
         ];
 
         Setting::insert($setting);
