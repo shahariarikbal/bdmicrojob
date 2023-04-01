@@ -283,7 +283,7 @@ class AdminController extends Controller
                     $user->save();
                     //Notification....
                     $notification = new Notification();
-                    $notification->message = 'You have received tips from admin!!';
+                    $notification->message = 'You have received tips'.' '.$request->tips_amount.' '.'tk on earning from admin!!';
                     $notification->specific_user_id = $user_id;
                     $notification->notification_for = "user";
                     $tip->tip()->save($notification);
@@ -295,7 +295,7 @@ class AdminController extends Controller
                     $user->save();
                     //Notification....
                     $notification = new Notification();
-                    $notification->message = 'You have received tips from admin!!';
+                    $notification->message = 'You have received tips'.' '.$request->tips_amount.' '.'tk on deposit from admin!!';
                     $notification->specific_user_id = $user_id;
                     $notification->notification_for = "user";
                     $tip->tip()->save($notification);
