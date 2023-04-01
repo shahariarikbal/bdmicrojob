@@ -13,7 +13,7 @@ class FrontendController extends Controller
 {
     public function index()
     {
-        $job_posts = Post::where('is_approved', 1)->with('user','category')->Paginate(5);
+        $job_posts = Post::where('is_approved', 1)->with('user','category')->orderBy('created_at', 'desc')->Paginate(5);
         $homepage = HomePage::first();
         return view('frontend.home.index', compact('homepage', 'job_posts'));
     }

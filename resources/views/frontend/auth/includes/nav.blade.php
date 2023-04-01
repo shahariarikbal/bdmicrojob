@@ -27,6 +27,8 @@
                     <a class="dropdown-item" href="{{ url('/deposit_notification_seen/'.$user_notification->id) }}"><i class="fas fa-fw fa-star "></i> &nbsp; {{ $user_notification->message }}</a>
                     @elseif ($user_notification->notifiable_type=='App\Models\Withdraw')
                     <a class="dropdown-item" href="{{ url('/withdraw_notification_seen/'.$user_notification->id) }}"><i class="fas fa-fw fa-star "></i> &nbsp; {{ $user_notification->message }}</a>
+                    @elseif ($user_notification->notifiable_type=='App\Models\Tip')
+                    <a class="dropdown-item" href="{{ url('/tip_notification_seen/'.$user_notification->id) }}"><i class="fas fa-fw fa-star "></i> &nbsp; {{ $user_notification->message }}</a>
                     @endif
                     @endforeach
                 </div>
