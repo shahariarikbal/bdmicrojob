@@ -10,8 +10,10 @@ use App\Models\Video;
 use App\Models\NidVerification;
 use App\Models\Notification;
 use App\Models\Contact;
+use App\Models\Tip;
 use App\Models\HomePage;
 use App\Http\Requests\HomePageRequest;
+use App\Http\Requests\TipRequest;
 use Hash;
 use Illuminate\Http\Request;
 use Session;
@@ -280,7 +282,11 @@ class AdminController extends Controller
                     $user->total_income = $user->total_income + $request->tips_amount;
                     $user->save();
                     //Notification....
-
+                    $notification = new Notification();
+                    $notification->message = 'You have received tips from admin!!';
+                    $notification->specific_user_id = $user_id;
+                    $notification->notification_for = "user";
+                    $tip->tip()->save($notification);
                     //Notification....
                     return redirect()->back()->with('success', 'Tips are given successfully!!');
                 }
@@ -288,7 +294,11 @@ class AdminController extends Controller
                     $user->total_deposit = $user->total_deposit + $request->tips_amount;
                     $user->save();
                     //Notification....
-
+                    $notification = new Notification();
+                    $notification->message = 'You have received tips from admin!!';
+                    $notification->specific_user_id = $user_id;
+                    $notification->notification_for = "user";
+                    $tip->tip()->save($notification);
                     //Notification....
                     return redirect()->back()->with('success', 'Tips are given successfully!!');
                 }
