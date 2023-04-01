@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\PaymentController;
 use App\Http\Controllers\Backend\HelpSupportController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Backend\FaqController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -134,5 +135,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
    //Home Page....
    Route::get('/homepage', [AdminController::class,'showHomePage']);
    Route::post('/homepage/update', [AdminController::class,'updateHomePage']);
+
+   //Faq
+    Route::get('/faqs', [FaqController::class, 'faqs']);
+    Route::get('/faq/create', [FaqController::class, 'createFaq']);
+    Route::post('/faq/store', [FaqController::class, 'faqStore']);
+    Route::get('/faq/edit/{faq}', [FaqController::class, 'faqEdit']);
+    Route::post('/faq/update/{faq}', [FaqController::class, 'faqPost']);
+    Route::get('/faq/delete/{faq}', [FaqController::class, 'faqDelete']);
 
 });
