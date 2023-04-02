@@ -37,13 +37,21 @@ class HomeController extends Controller
     }
     public function dashboard()
     {
-        $categories = Category::select(['id', 'name', 'status', 'price'])->orderBy('created_at', 'desc')->where('status', 1)->get();
-        $sql = Post::with('specificTasks')->where('user_id','!=',Auth::user()->id)->where('is_approved', 1)->orderBy('created_at', 'desc');
-        if(isset(request()->cat_id)){
-            $sql->where('cat_id', request()->cat_id)->get();
+        $auth_user = Auth::user();
+        if($auth_user->email_verified_at != null){
+            $categories = Category::select(['id', 'name', 'status', 'price'])->orderBy('created_at', 'desc')->where('status', 1)->get();
+            $sql = Post::with('specificTasks')->where('user_id','!=',Auth::user()->id)->where('is_approved', 1)->orderBy('created_at', 'desc');
+            if(isset(request()->cat_id)){
+                $sql->where('cat_id', request()->cat_id)->get();
+            }
+            $posts = $sql->get();
+            return view('frontend.auth.dashboard', compact('categories', 'posts'));
         }
-        $posts = $sql->get();
-        return view('frontend.auth.dashboard', compact('categories', 'posts'));
+
+        else{
+            Auth::logout();
+            return redirect()->back()->with('error','Your email is not verified yet!!');
+        }
     }
 
     public function membership()
