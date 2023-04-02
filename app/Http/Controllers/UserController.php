@@ -138,6 +138,7 @@ class UserController extends Controller
         if($postDetail){
             $isPostSubmit = PostSubmit::where('user_id', auth()->user()->id)->where('status','0')->orWhere('status','1')
             ->orderBy('created_at','desc')->where('post_id', $postDetail->id)->first();
+            //dd($isPostSubmit);
             $totalPostSubmit = PostSubmit::where('post_id', $postDetail->id)->where('status','!=','2')->get()->count();
             return view('frontend.auth.user.job.job-details', compact('postDetail', 'isPostSubmit', 'totalPostSubmit'));
         }
@@ -235,13 +236,14 @@ class UserController extends Controller
 
         if(Auth::check()){
             $submitted_job = PostSubmit::where('id',$id)->with('post')->first();
+            $job_post = Post::where('id', $submitted_job->post_id)->with('category')->first();
 
             if($submitted_job->status != '1'){
                 $submitted_job->status = '1';
                 if($submitted_job->save()){
                     $worker = User::find($submitted_job->user_id);
                     $previous_income=$worker->total_income;
-                    $worker->total_income = $previous_income+$submitted_job->post->worker_earn;
+                    $worker->total_income = $previous_income+$job_post->category->worker_earning;
                     $worker->save();
 
                     return redirect()->back()->with('Success','Approved Successfully!');
