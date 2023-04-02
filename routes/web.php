@@ -77,6 +77,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
 	Route::get('/active/{user}', [AdminController::class, 'active']);
 	Route::get('/inactive/{user}', [AdminController::class, 'inactive']);
 	Route::get('/delete/{user}', [AdminController::class, 'destroy']);
+	Route::get('/inactive/users/list', [AdminController::class, 'showInactiveUsers']);
 	Route::post('/logout', [AdminController::class, 'logout']);
 
    Route::get('/video/index', [VideoController::class, 'index']);

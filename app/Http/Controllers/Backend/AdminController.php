@@ -89,6 +89,12 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
+    public function showInactiveUsers ()
+    {
+        $users = User::orderBy('created_at', 'desc')->where('status', '!=', 1)->paginate(10);
+        return view('backend.auth.user.inactive-user', compact('users'));
+    }
+
 
     public function logout(Request $request){
     	// return $request;

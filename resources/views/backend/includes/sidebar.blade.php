@@ -29,12 +29,18 @@
         <span>Advertisements</span>
         </a>
      </li>  --}}
-    <li class="nav-item {{ Request::url() == url('admin/link') ? 'active' : '' }} ">
+    <li class="nav-item {{ Request::url() == url('admin/users') ? 'active' : '' }} ">
        <a class="nav-link" href="{{ url('/admin/users') }}">
           <i class="fas fa-solid fa-dollar-sign"></i>
        <span>Users</span>
        </a>
     </li>
+    <li class="nav-item {{ Request::url() == url('admin/inactive/users/list') ? 'active' : '' }} ">
+        <a class="nav-link" href="{{ url('/admin/inactive/users/list') }}">
+           <i class="fas fa-solid fa-dollar-sign"></i>
+        <span>InActive Users</span>
+        </a>
+     </li>
     {{--  <li class="nav-item {{ Request::url() == url('admin/video/index') ? 'active' : '' }}">
        <a class="nav-link" href="{{ url('/admin/video/index') }}">
           <i class="fab fa-youtube"></i>
