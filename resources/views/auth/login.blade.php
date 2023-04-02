@@ -132,13 +132,14 @@
             width: 100%;
             max-width: 500px;
             text-align: center;
+            padding: 20px 0;
         }
 
         .login-contant-left {
             margin-right: 60px;
         }
 
-        .animate-label label {
+        .animate-label .login-form-item-outer label {
             margin-bottom: 0;
             position: absolute;
             top: 13px;
@@ -146,7 +147,7 @@
             z-index: -1;
         }
 
-        .animate-label label {
+        .animate-label .login-form-item-outer label {
             margin-bottom: 0;
             position: absolute;
             top: 12px;
@@ -209,10 +210,10 @@
             font-size: 14px;
             animation: none;
         }
-        .animate-label input.empty {
+        .animate-label .login-form-item-outer input.empty {
             border: 1px solid #7E41C2;
         }
-        .animate-label input.empty + label {
+        .animate-label .login-form-item-outer input.empty + label {
             color: #7E41C2;
         }
 
@@ -255,6 +256,17 @@
             background: #7e41c2d6;
             color: #fff;
         }
+        .not-robot-outer {
+            text-align: initial;
+            display: flex;
+            align-items: center;
+        }
+
+        .not-robot-outer input#robot {
+            width: 22px;
+            height: 22px;
+            margin-right: 10px;
+        }
         @media screen and (max-width: 1024px){
             .col-lg-6.col-md-6.sm-device-none {
                 display: none;
@@ -280,7 +292,7 @@
                 <div class="login-content-right">
                     <form action="{{ route('login') }}" method="POST" class="form-group login-form animate-label">
                         @csrf
-                        <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/avatar.svg">
+                        <img src="{{ asset('/logo/'.$setting->logo) }}" />
                         <h2 class="title">Welcome</h2>
                         <div class="login-form-item-outer">
                             <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -306,34 +318,10 @@
                                 </h6>
                             @enderror
                         </div>
-                        {{-- <div class="login-form-outer">
-                            <div class="icon">
-                              <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="login-form-input">
-                              <h5>Email</h5>
-                              <input id="email" type="email" name="email" class="input @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                                @error('email')
-                                    <h6 class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </h6>
-                                @enderror
-                            </div>
+                        <div class="not-robot-outer">
+                            <input type="checkbox" name="robot" id="robot">
+                            <label for="robot">I am not a robot.</label>
                         </div>
-                        <div class="login-form-outer">
-                            <div class="icon">
-                                <i class="fas fa-lock"></i>
-                            </div>
-                            <div class="login-form-input">
-                              <h5>Password</h5>
-                              <input id="password" type="password" name="password" class="input @error('password') is-invalid @enderror" required autocomplete="current-password">
-                                @error('password')
-                                    <h6 class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </h6>
-                                @enderror
-                            </div>
-                        </div> --}}
                         <button type="submit" class="login-form-submit">Log In</button>
                         <a href="{{ route('register') }}" class="sign-in-link">Registration</a>
                     </form>
