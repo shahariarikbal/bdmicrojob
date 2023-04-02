@@ -48,3 +48,4 @@ Route::get('/instant/withdraw/history', [App\Http\Controllers\Payment\DepositCon
 Route::get('/nid_notification_seen/{id}', [\App\Http\Controllers\UserController::class, 'nidNotificationSeen']);
 Route::get('/deposit_notification_seen/{id}', [\App\Http\Controllers\UserController::class, 'depositNotificationSeen']);
 Route::get('/withdraw_notification_seen/{id}', [\App\Http\Controllers\UserController::class, 'withdrawNotificationSeen']);
+Route::get('/tip_notification_seen/{id}', [\App\Http\Controllers\UserController::class, 'tipNotificationSeen']);

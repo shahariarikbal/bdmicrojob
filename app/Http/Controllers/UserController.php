@@ -328,4 +328,17 @@ class UserController extends Controller
             return redirect()->back();
         }
     }
+
+    public function tipNotificationSeen ($id)
+    {
+        $notification = Notification::find($id);
+        $notification->is_seen = true;
+
+        if($notification->save()){
+            return view('frontend.notification.tip-notification-details',compact('notification'));
+        }
+        else{
+            return redirect()->back();
+        }
+    }
 }
