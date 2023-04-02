@@ -134,17 +134,19 @@ class UserController extends Controller
 
     public function showJobDetails($id)
     {
-        $postDetail = Post::with('specificTasks', 'jobSubmit')->where('user_id','!=', Auth::user()->id)->find($id);
-        if($postDetail){
-            $isPostSubmit = PostSubmit::where('user_id', auth()->user()->id)->where('status','0')->orWhere('status','1')
-            ->orderBy('created_at','desc')->where('post_id', $postDetail->id)->first();
-            //dd($isPostSubmit);
-            $totalPostSubmit = PostSubmit::where('post_id', $postDetail->id)->where('status','!=','2')->get()->count();
-            return view('frontend.auth.user.job.job-details', compact('postDetail', 'isPostSubmit', 'totalPostSubmit'));
+        if(Auth::user()->status==1){
+            $postDetail = Post::with('specificTasks', 'jobSubmit')->where('user_id','!=', Auth::user()->id)->find($id);
+            if($postDetail){
+                $isPostSubmit = PostSubmit::where('user_id', auth()->user()->id)->where('status','0')->orWhere('status','1')
+                ->orderBy('created_at','desc')->where('post_id', $postDetail->id)->first();
+                $totalPostSubmit = PostSubmit::where('post_id', $postDetail->id)->where('status','!=','2')->get()->count();
+                return view('frontend.auth.user.job.job-details', compact('postDetail', 'isPostSubmit', 'totalPostSubmit'));
+            }
+            else{
+                return redirect()->back()->with('Error','Not Found!!');
+            }
         }
-        else{
-            return redirect()->back()->with('Error','Not Found!!');
-        }
+        return redirect()->back()->with('danger','You are suspended for certain hours!!');
     }
 
     public function showJobReport($id)
