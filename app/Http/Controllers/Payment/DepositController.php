@@ -73,8 +73,13 @@ class DepositController extends Controller
     {
         if(Auth::check()){
             $user = Auth::user();
-            $auth_user = User::select(['name', 'email', 'phone', 'nid_verified', 'total_income'])->where('id',$user->id)->first();
-            return view('frontend.auth.user.withdraw', compact('auth_user'));
+            if($user->status == 1){
+                $auth_user = User::select(['name', 'email', 'phone', 'nid_verified', 'total_income'])->where('id',$user->id)->first();
+                return view('frontend.auth.user.withdraw', compact('auth_user'));
+            }
+            else{
+                return redirect()->back()->with('error', 'You are suspended for certain hours!!');
+            }
         }
         return redirect('/login');
     }
