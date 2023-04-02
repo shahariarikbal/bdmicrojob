@@ -351,7 +351,7 @@
                    <div class="job-item-center">
                       <div class="progress-label">
                         @php
-                            $worker = \App\Models\PostSubmit::where('post_id', $post->id)->where('status','1')->get()->count();
+                            $worker = \App\Models\PostSubmit::where('post_id', $post->id)->where('status','!=','2')->get()->count();
                         @endphp
                          {{ $worker }} OF {{ $post->worker_number }}
                       </div>

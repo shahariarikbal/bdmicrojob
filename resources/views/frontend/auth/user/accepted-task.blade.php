@@ -24,7 +24,7 @@
                             <tr class="my-task-th-outer">
                                 <th scope="col" class="sort">SL</th>
                                 <th scope="col" class="sort">Task Name</th>
-                                <th scope="col" class="sort">Reward Amount</th>
+                                {{--  <th scope="col" class="sort">Reward Amount</th>  --}}
                                 <th scope="col" class="sort">Status</th>
                                 <th scope="col" class="sort">Submission Date</th>
                             </tr>
@@ -42,11 +42,11 @@
                                         {{ $accepted_task->post->title }}
                                     </h6>
                                 </td>
-                                <td>
+                                {{--  <td>
                                     <h6 class="task-earned-text">
                                         {{ $accepted_task->post->worker_earn }} tk
                                     </h6>
-                                </td>
+                                </td>  --}}
                                 <td>
                                     <h6 class="task-status-text">
                                         @if ($accepted_task->status==0)

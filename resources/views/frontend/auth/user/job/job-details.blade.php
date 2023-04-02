@@ -17,7 +17,7 @@
                                         <h5 class="title">DONE</h5>
                                         <h3 class="number">{{ $totalPostSubmit }} of {{ $postDetail->worker_number }}</h3>
                                         <div class="progress">
-                                            <div class="progress-bar" role="progressbar" style="width: {{ $totalPostSubmit }}%" aria-valuenow="{{ $totalPostSubmit }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar" role="progressbar" style="width: {{ $totalPostSubmit }}%" aria-valuenow="{{ $totalPostSubmit }}" aria-valuemin="0" aria-valuemax="{{ $postDetail->worker_number }}"></div>
                                         </div>
                                     </div>
                                     <div class="done-job-right">
@@ -36,7 +36,7 @@
                             </div>
                         </div>
                     </div>
-                    @if (!$isPostSubmit)
+                    @if (!$isPostSubmit && ($totalPostSubmit<$postDetail->worker_number))
                         <div class="job-details-form-item">
                             <div class="job-details-form-top">
                                 <div class="left">
@@ -88,6 +88,8 @@
                             </div>
                             <button type="submit" class="job-details-form-sub-btn">Submit</button>
                         </form>
+                        @elseif ($totalPostSubmit>=$postDetail->worker_number)
+                        <div class="alert alert-danger">Job limit is finished!</div>
                         @else
                         <div class="alert alert-success">You already done this job</div>
                     @endif
