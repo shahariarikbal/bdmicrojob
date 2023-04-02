@@ -41,7 +41,7 @@
 
                   <a class="nav-item-main-link hide-item" href="{{ url('/user/register/form') }}" style="cursor: pointer;">Login / Register</a>
 
-                @else                  
+                @else
                   <a class="nav-item-main-link hide-item" onclick="document.querySelector('#logout').submit()" style="cursor: pointer;">Logout</a>
                 @endif
             </li>
