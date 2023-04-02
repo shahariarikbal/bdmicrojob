@@ -24,7 +24,8 @@
                 <div class="col-md-6">
                     <div class="section-right-content">
                         <h3 class="right-content-title">
-                            Get <span class="extra-color">Extra Earning</span> <span>Easy</span> And <span>Secured</span>
+                            {{--  Get <span class="extra-color">Extra Earning</span> <span>Easy</span> And <span>Secured</span>  --}}
+                            <span>{{ $homepage->first_image_title }}</span>
                         </h3>
                         <p>{{ $homepage->first_image_description }}</p>
                     </div>
@@ -41,7 +42,8 @@
                 <div class="col-md-6">
                     <div class="section-left-content">
                         <h3 class="left-content-title">
-                            Awesome <span class="extra-color">Features</span> With <span>Amazing Bonuses</span>
+                            {{--  Awesome <span class="extra-color">Features</span> With <span>Amazing Bonuses</span>  --}}
+                            <span class="extra-color">{{ $homepage->second_image_title }}</span>
                         </h3>
                         <ul class="feature-section-list">
                             <p>{{ $homepage->second_image_description }}</p>
@@ -87,7 +89,7 @@
         <div class="container">
             <div class="section-title-outer">
                 <h5 class="subtitle">
-                    BDMicrojobs
+                    BDMicrojob
                 </h5>
                 <h1 class="title">
                     Recent Activity
@@ -211,7 +213,8 @@
             <div class="col-md-8 m-auto">
                 <div class="video-section-top-content">
                     <h3 class="video-section-top-title">
-                        How <span class="extra-color">BD Micro Jobs</span> Works ? And How You Can <span>Get Paid ?</span>
+                        {{--  How <span class="extra-color">BD Micro Jobs</span> Works ? And How You Can <span>Get Paid ?</span>  --}}
+                        <span>{{ $homepage->how_works_title }}</span>
                     </h3>
                     <div class="video-section-top-des-outer">
                         <p class="video-section-top-des">
@@ -240,7 +243,8 @@
         <div class="container">
             <div class="col-md-8 m-auto">
                 <h3 class="signup-now-section-title">
-                    <span>Sign Up Now</span> & Get Busy With Lots Of <span class="extra-color">Earning Sources</span>
+                    {{--  <span>Sign Up Now</span> & Get Busy With Lots Of <span class="extra-color">Earning Sources</span>  --}}
+                    <span class="extra-color">{{ $homepage->footer_title }}</span>
                 </h3>
                 <p class="signup-now-section-des">
                     {{ $homepage->footer_description }}
