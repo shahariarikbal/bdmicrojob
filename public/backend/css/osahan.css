@@ -2290,6 +2290,10 @@ footer.sticky-footer {
 /*Header css End*/
 
 /*User dashboard css start*/
+.dashboard-section {
+    margin-bottom: 85px;
+}
+
 .dashboard-section marquee {
     font-size: 18px;
     font-weight: 500;
@@ -2438,6 +2442,10 @@ footer.sticky-footer {
 /*User dashboard css End*/
 
 /*Admission Form Css Start*/
+.post-job-section {
+    margin-bottom: 80px;
+}
+
 .post-job-form-wrapper {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     padding: 20px;
@@ -2624,6 +2632,7 @@ footer.sticky-footer {
 /* Account varifications css start */
 .account-varify-section {
     padding: 40px 0;
+    margin-bottom: 45px;
 }
 
 .account-varify-form {
@@ -2704,6 +2713,10 @@ button.account-varify-btn-inner:hover {
 /* Account varifications css End */
 
 /* My task css start */
+.my-task-section {
+    margin-bottom: 80px;
+}
+
 .my-task-th-outer th {
     font-size: 15px;
 }
@@ -2717,6 +2730,10 @@ button.account-varify-btn-inner:hover {
 /* My task css End */
 
 /* Deposit page css start */
+.deposit-section {
+    margin-bottom: 80px;
+}
+
 .deposit-sec-title {
     font-size: 20px;
     font-weight: 600;
@@ -3045,6 +3062,9 @@ label.job-report-form-label {
 /*Footer section css start*/
 .footer-section {
     background: #ddd;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
 }
 
 .footer-policies-list {
@@ -3071,6 +3091,8 @@ label.job-report-form-label {
     display: flex;
     align-items: center;
     justify-content: end;
+    padding-left: 0;
+    margin-bottom: 0;
 }
 
 .footer-social-list-item {
