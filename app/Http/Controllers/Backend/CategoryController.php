@@ -30,4 +30,20 @@ class CategoryController extends Controller
         $category->save();
         return redirect('admin/categories')->with('Success', 'Category is added successfully!');
     }
+
+    public function inactiveCategory ($id)
+    {
+        $category = Category::find($id);
+        $category->status = false;
+        $category->save();
+        return redirect()->back()->with('success', 'Inactivated successfully!');
+    }
+
+    public function activeCategory ($id)
+    {
+        $category = Category::find($id);
+        $category->status = true;
+        $category->save();
+        return redirect()->back()->with('success', 'Activated successfully!');
+    }
 }

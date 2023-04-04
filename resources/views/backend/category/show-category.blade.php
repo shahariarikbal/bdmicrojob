@@ -51,8 +51,11 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ url('admin/category/edit' , $category->id) }}" class="btn btn-sm btn-success">Edit</a>
-                                    <a href="{{ url('admin/category/delete' , $category->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger">Delete</a>
+                                    @if ($category->status==true)
+                                    <a href="{{ url('admin/category/inactive' , $category->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger">Inactivate</a>
+                                    @elseif ($category->status==false)
+                                    <a href="{{ url('admin/category/active' , $category->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-success">Activate</a>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach
