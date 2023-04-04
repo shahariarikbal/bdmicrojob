@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Contact;
 use App\Models\HomePage;
 use App\Models\Post;
+use App\Models\AboutUs;
 
 class FrontendController extends Controller
 {
@@ -19,7 +20,8 @@ class FrontendController extends Controller
     }
 
     public function aboutUs(){
-        return view('frontend.setting.about-us');
+        $about_us = AboutUs::all();
+        return view('frontend.setting.about-us', compact('about_us'));
     }
 
     public function contactUs(){

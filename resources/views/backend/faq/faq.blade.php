@@ -31,7 +31,8 @@
                                 <label for="answer">
                                     Answer
                                 </label>
-                                <textarea name="answer" class="form-control" rows="5" placeholder="Enter answer"></textarea>
+                                <textarea name="answer" id="your_summernote" class="form-control" placeholder="Enter answer"
+                                    rows="5"></textarea>
                             </div>
                         </div>
                         <div class="contact-submit-btn-outer">
@@ -60,8 +61,8 @@
                                 @foreach($data as $info)
                                     <tr>
                                         <td>{{ $loop->index+1 }}</td>
-                                        <td>{{ substr($info->question,0,50) }}</td>
-                                        <td>{{ substr($info->answer,0,50) }}</td>
+                                        <td>{{ $info->question }}</td>
+                                        <td>{!! substr($info->answer,0,50) !!}</td>
                                         <td>
                                             <a href="{{ url('/admin/faq/edit/'.$info->id) }}" class="btn btn-sm btn-info">Edit</a>
                                             <a href="{{ url('/admin/faq/delete/'.$info->id) }}" onclick="return confirm('Are you sure delete this data ?')" class="btn btn-sm btn-danger">Delete</a>
@@ -90,7 +91,8 @@
                                     <label for="answer">
                                         Answer
                                     </label>
-                                    <textarea name="answer" class="form-control" rows="5" placeholder="Enter answer">{{ $faq->answer }}</textarea>
+                                    <textarea name="answer" id="your_summernote" class="form-control" placeholder="Enter answer"
+                                    rows="5">{!! $faq->answer !!}</textarea>
                                 </div>
                             </div>
                             <div class="contact-submit-btn-outer">

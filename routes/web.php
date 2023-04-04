@@ -149,4 +149,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
     Route::get('/tip/{user_id}', [AdminController::class, 'showTip']);
     Route::post('/tip/store/{user_id}', [AdminController::class, 'storeTip']);
 
+    //About Us....
+    Route::get('/about-us', [AdminController::class, 'showAboutUs']);
+    Route::get('/edit/about-us/{id}', [AdminController::class, 'editAboutUs']);
+    Route::post('/update/about-us/{id}', [AdminController::class, 'updateAboutUs']);
+
 });

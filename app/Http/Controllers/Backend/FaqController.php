@@ -30,8 +30,10 @@ class FaqController extends Controller
 
     public function faqStore(Request $request)
     {
-        $faq = $request->all();
-        Faq::create($faq);
+        $faq = new Faq();
+        $faq->question = $request->question;
+        $faq->answer = $request->answer;
+        $faq->save();
         return redirect()->back()->with('success', 'Faq has been created');
     }
     public function faqPost(Request $request, Faq $faq)

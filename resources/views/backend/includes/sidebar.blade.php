@@ -95,6 +95,12 @@
             <span>FAQ</span>
         </a>
     </li>
+    <li class="nav-item {{ Request::url() == url('admin/about-us') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('/admin/about-us') }}">
+            <i class="fas fa-cog"></i>
+            <span>About Us</span>
+        </a>
+    </li>
     <li class="nav-item {{ Request::url() == url('admin/settings') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('/admin/settings') }}">
          <i class="fas fa-cog"></i>

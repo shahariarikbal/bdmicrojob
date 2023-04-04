@@ -12,6 +12,7 @@ use App\Models\Notification;
 use App\Models\Contact;
 use App\Models\Tip;
 use App\Models\HomePage;
+use App\Models\AboutUs;
 use App\Http\Requests\HomePageRequest;
 use App\Http\Requests\TipRequest;
 use Hash;
@@ -318,5 +319,29 @@ class AdminController extends Controller
         }
     }
 
+    public function showAboutUs ()
+    {
+        $about_us = AboutUs::all();
+        return view ('backend.about_us.show-about-us', compact('about_us'));
+    }
+
+    public function editAboutUs ($id)
+    {
+        $about_us = AboutUs::find($id);
+        return view ('backend.about_us.edit-about-us', compact('about_us'));
+    }
+
+    public function updateAboutUs (Request $request, $id)
+    {
+        $about_us = AboutUs::find($id);
+
+        $about_us->title = $request->title;
+        $about_us->short_description = $request->short_description;
+        $about_us->long_description = $request->long_description;
+
+        $about_us->save();
+        return redirect('/admin/about-us')->with('success', 'Updated Successfully!');
+
+    }
 
 }
