@@ -46,4 +46,21 @@ class CategoryController extends Controller
         $category->save();
         return redirect()->back()->with('success', 'Activated successfully!');
     }
+
+    public function editCategory ($id)
+    {
+        $category = Category::find($id);
+        return view ('backend.category.edit-category', compact('category'));
+    }
+
+    public function updateCategory (Request $request, $id)
+    {
+        $category = Category::find($id);
+        $category->name = $request->name;
+        $category->price = $request->price;
+        $category->worker_earning = $request->worker_earning;
+
+        $category->save();
+        return redirect('/admin/categories')->with('success', 'Updated Successfully!!');
+    }
 }

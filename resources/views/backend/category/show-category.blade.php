@@ -56,6 +56,7 @@
                                     @elseif ($category->status==false)
                                     <a href="{{ url('admin/category/active' , $category->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-success">Activate</a>
                                     @endif
+                                    <a href="{{ url('admin/category/edit' , $category->id) }}" class="btn btn-sm btn-success">Edit</a>
                                 </td>
                             </tr>
                             @endforeach
