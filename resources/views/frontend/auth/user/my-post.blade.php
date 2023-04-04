@@ -22,7 +22,7 @@
                                 <th scope="col" class="sort">Total Worker</th>
                                 <th scope="col" class="sort">Per job Earn</th>
                                 <th scope="col" class="sort">Status</th>
-                                <th scope="col" class="sort">Action</th>
+                                {{--  <th scope="col" class="sort">Action</th>  --}}
                             </tr>
                         </thead>
                         <tbody class="list">
@@ -62,10 +62,10 @@
                                             @endif
                                         </h6>
                                     </td>
-                                    <td>
-                                        {{-- <a href="{{ url('/post/edit/'.$post->id) }}" class="btn btn-sm btn-warning">Edit</a> --}}
+                                    {{--  <td>
+                                        <a href="{{ url('/post/edit/'.$post->id) }}" class="btn btn-sm btn-warning">Edit</a>
                                         <a href="{{ url('/post/delete/'.$post->id) }}" onclick="return confirm('Are you sure delete this post ?')" class="btn btn-sm btn-danger">Delete</a>
-                                    </td>
+                                    </td>  --}}
                                 </tr>
                             @endforeach
                         </tbody>
