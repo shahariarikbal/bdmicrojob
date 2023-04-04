@@ -29,7 +29,7 @@ Route::post('/report/submit/{id}', [\App\Http\Controllers\UserController::class,
 Route::get('/my/post', [\App\Http\Controllers\UserController::class, 'showMyPost']);
 Route::post('/post/submit/{id}', [\App\Http\Controllers\UserController::class, 'postSubmit']);
 Route::get('/submitted/job', [\App\Http\Controllers\UserController::class, 'showSubmittedJob']);
-Route::get('/post/delete/{id}', [\App\Http\Controllers\UserController::class, 'postDelete']);
+// Route::get('/post/delete/{id}', [\App\Http\Controllers\UserController::class, 'postDelete']);
 Route::get('/post/edit/{id}', [\App\Http\Controllers\UserController::class, 'postEdit']);
 Route::get('/submitted/job', [\App\Http\Controllers\UserController::class, 'showSubmittedJob']);
 Route::get('/submitted/job/details/{id}', [\App\Http\Controllers\UserController::class, 'showSubmittedJobDetails']);
@@ -48,3 +48,4 @@ Route::get('/instant/withdraw/history', [App\Http\Controllers\Payment\DepositCon
 Route::get('/nid_notification_seen/{id}', [\App\Http\Controllers\UserController::class, 'nidNotificationSeen']);
 Route::get('/deposit_notification_seen/{id}', [\App\Http\Controllers\UserController::class, 'depositNotificationSeen']);
 Route::get('/withdraw_notification_seen/{id}', [\App\Http\Controllers\UserController::class, 'withdrawNotificationSeen']);
+Route::get('/tip_notification_seen/{id}', [\App\Http\Controllers\UserController::class, 'tipNotificationSeen']);

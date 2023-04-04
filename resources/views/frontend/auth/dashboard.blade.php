@@ -327,7 +327,7 @@
 <div class="dashboard-section container-fluid">
    <div class="row">
       <div class="col-md-10 m-auto">
-         <marquee>Please buy a plane and safe your money !</marquee>
+         <marquee>Start Earning money by submitting job !</marquee>
          <div class="job-items-wrapper">
             <form action="{{ url('/dashboard') }}" method="get" class="select-category-outer">
                 @csrf

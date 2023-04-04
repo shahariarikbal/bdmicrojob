@@ -319,7 +319,7 @@
                             @enderror
                         </div>
                         <div class="not-robot-outer">
-                            <input type="checkbox" name="robot" id="robot">
+                            <input type="checkbox" name="robot" id="robot" required>
                             <label for="robot">I am not a robot.</label>
                         </div>
                         <button type="submit" class="login-form-submit">Log In</button>
