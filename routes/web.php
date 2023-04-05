@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Backend\FaqController;
 use App\Http\Controllers\Backend\TermConditionController;
+use App\Http\Controllers\Backend\PrivacyPolicyController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -166,5 +167,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
     Route::get('/edit/term-condition/{id}', [TermConditionController::class, 'editTermCondition']);
     Route::post('/update/term-condition/{id}', [TermConditionController::class, 'updateTermCondition']);
     Route::get('/delete/term-condition/{id}', [TermConditionController::class, 'deleteTermCondition']);
+
+    //Privacy Policy....
+    Route::get('/privacy-policy', [PrivacyPolicyController::class, 'showPrivacyPolicy']);
+    Route::get('/create/privacy-policy', [PrivacyPolicyController::class, 'createPrivacyPolicy']);
+    Route::post('/store/privacy-policy', [PrivacyPolicyController::class, 'storePrivacyPolicy']);
+    Route::get('/edit/privacy-policy/{id}', [PrivacyPolicyController::class, 'editPrivacyPolicy']);
+    Route::post('/update/privacy-policy/{id}', [PrivacyPolicyController::class, 'updatePrivacyPolicy']);
+    Route::get('/delete/privacy-policy/{id}', [PrivacyPolicyController::class, 'deletePrivacyPolicy']);
 
 });

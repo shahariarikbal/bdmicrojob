@@ -107,6 +107,12 @@
             <span>Terms & Conditions</span>
         </a>
     </li>
+    <li class="nav-item {{ Request::url() == url('admin/privacy-policy') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('/admin/privacy-policy') }}">
+            <i class="fas fa-cog"></i>
+            <span>Privacy Policy</span>
+        </a>
+    </li>
     <li class="nav-item {{ Request::url() == url('admin/settings') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('/admin/settings') }}">
          <i class="fas fa-cog"></i>
