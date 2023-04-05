@@ -14,6 +14,7 @@ use App\Models\PostSubmit;
 use App\Models\Notification;
 use App\Models\Deposit;
 use App\Models\Withdraw;
+use App\Models\MarqueeText;
 use Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -122,14 +123,16 @@ class UserController extends Controller
 
     public function showMyTask()
     {
+        $marquee_text = MarqueeText::where('page_name','may_task')->first();
         $post_submits = PostSubmit::where('user_id',Auth::user()->id)->with('post')->Paginate(10);
-        return view('frontend.auth.user.my-task', compact('post_submits'));
+        return view('frontend.auth.user.my-task', compact('post_submits', 'marquee_text'));
     }
 
     public function showAcceptedTask()
     {
+        $marquee_text = MarqueeText::where('page_name','accepted_task')->first();
         $accepted_tasks = PostSubmit::where('user_id',Auth::user()->id)->where('status', '1')->with('post')->Paginate(10);
-        return view('frontend.auth.user.accepted-task', compact('accepted_tasks'));
+        return view('frontend.auth.user.accepted-task', compact('accepted_tasks', 'marquee_text'));
     }
 
     public function showJobDetails($id)
@@ -339,6 +342,69 @@ class UserController extends Controller
         }
         else{
             return redirect()->back();
+        }
+    }
+
+    public function userProfileUpdate()
+    {
+        if(Auth::check()){
+            $auth_user = Auth::user();
+            return view('frontend.auth.user.profile', compact('auth_user'));
+        }
+
+        else{
+            return redirect('/login');
+        }
+    }
+
+    public function storeProfileUpdate (Request $request, $id)
+    {
+        $user = User::find($id);
+        if($request->hasFile('avatar')){
+            if(file_exists(public_path('user/'.$user->avatar))){
+                File::delete(public_path('user/'.$user->avatar));
+                $name = time() . '.' . $request->avatar->getClientOriginalExtension();
+                $request->avatar->move('user/', $name);
+                $user->avatar = $name;
+            }
+            else{
+                $name = time() . '.' . $request->avatar->getClientOriginalExtension();
+                $request->avatar->move('user/', $name);
+                $user->avatar = $name;
+            }
+
+        }
+        $user->name = $request->name;
+        $user->phone = $request->phone;
+        $user->name = $request->name;
+
+        $user->save();
+        return redirect()->back()->with('success', 'Updated Successfully!');
+    }
+
+    public function storePasswordUpdate (Request $request, $id)
+    {
+        $this->validate($request, [
+            'old_password' => 'required',
+            'new_password' => 'required',
+            'password_confirmation' => 'required',
+
+        ]);
+        $user = User::find($id);
+        if(isset($request->new_password)){
+            if (password_verify($request->old_password, $user->password)){
+                if($request->new_password==$request->password_confirmation){
+                    $user->password=bcrypt($request->new_password);
+                    $user->update();
+                    return redirect()->back()->with('success', 'Updated Successfully');
+                }
+                else{
+                    return redirect()->back()->with('error', 'Confirm Password is not Matched!!');
+                }
+            }
+            else{
+                return redirect()->back()->with('error', 'Old Password does not Match!!');
+            }
         }
     }
 }

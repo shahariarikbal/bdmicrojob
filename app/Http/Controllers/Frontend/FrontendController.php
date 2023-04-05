@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use App\Models\Contact;
 use App\Models\HomePage;
 use App\Models\Post;
+use App\Models\AboutUs;
+use App\Models\TermCondition;
+use App\Models\PrivacyPolicy;
 
 class FrontendController extends Controller
 {
@@ -19,7 +22,8 @@ class FrontendController extends Controller
     }
 
     public function aboutUs(){
-        return view('frontend.setting.about-us');
+        $about_us = AboutUs::all();
+        return view('frontend.setting.about-us', compact('about_us'));
     }
 
     public function contactUs(){
@@ -44,10 +48,12 @@ class FrontendController extends Controller
     }
 
     public function showTermsConditions(){
-        return view('frontend.setting.terms-condition');
+        $term_conditions = TermCondition::all();
+        return view('frontend.setting.terms-condition', compact('term_conditions'));
     }
 
     public function showPrivacyPolicy(){
-        return view('frontend.setting.privacy-policy');
+        $privacy_policies = PrivacyPolicy::all();
+        return view('frontend.setting.privacy-policy', compact('privacy_policies'));
     }
 }

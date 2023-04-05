@@ -21,8 +21,10 @@
             		<div class="col-md-6">
                 		<h2>Membership add</h2>            			
             		</div>
+                    {{-- <div class="col-md-6 text-right">
+                        <a href="{{ url('/admin/users') }}" class="btn btn-primary">Back</a>
+                    </div> --}}
             	</div>
-
             </div>
             <div class="card-body">
                 <div class="col-md-12">

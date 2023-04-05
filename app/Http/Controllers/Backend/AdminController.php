@@ -12,12 +12,14 @@ use App\Models\Notification;
 use App\Models\Contact;
 use App\Models\Tip;
 use App\Models\HomePage;
+use App\Models\AboutUs;
 use App\Http\Requests\HomePageRequest;
 use App\Http\Requests\TipRequest;
 use Hash;
 use Illuminate\Http\Request;
 use Session;
 use Str;
+use Auth;
 
 class AdminController extends Controller
 {
@@ -318,5 +320,68 @@ class AdminController extends Controller
         }
     }
 
+    public function showAboutUs ()
+    {
+        $about_us = AboutUs::all();
+        return view ('backend.about_us.show-about-us', compact('about_us'));
+    }
+
+    public function editAboutUs ($id)
+    {
+        $about_us = AboutUs::find($id);
+        return view ('backend.about_us.edit-about-us', compact('about_us'));
+    }
+
+    public function updateAboutUs (Request $request, $id)
+    {
+        $about_us = AboutUs::find($id);
+
+        $about_us->title = $request->title;
+        $about_us->short_description = $request->short_description;
+        $about_us->long_description = $request->long_description;
+
+        $about_us->save();
+        return redirect('/admin/about-us')->with('success', 'Updated Successfully!');
+
+    }
+
+    public function adminProfileUpdate ()
+    {
+        $auth_admin = Admin::first();
+        return view('backend.profile.show-profile', compact('auth_admin'));
+
+    }
+
+    public function storeProfileUpdate (Request $request, $id)
+    {
+        $this->validate($request, [
+            'email' => 'required|email',
+            'old_password' => 'required',
+            'new_password' => 'required',
+            'password_confirmation' => 'required',
+        ]);
+        $admin = Admin::find(1);
+        if(isset($request->new_password)){
+            if (password_verify($request->old_password, $admin->password)){
+                if($request->new_password==$request->password_confirmation){
+                    $admin->password=bcrypt($request->new_password);
+                    $admin->email=$request->email;
+                    $admin->update();
+                    return redirect('/admin/dashboard')->with('success', 'Updated Successfully');
+                }
+                else{
+                    return redirect()->back()->with('error', 'Confirm Password is not Matched!!');
+                }
+            }
+            else{
+                return redirect()->back()->with('error', 'Old Password does not Match!!');
+            }
+        }
+        else{
+            $admin->email=$request->email;
+            $admin->update();
+            return redirect('/admin/dashboard')->with('success', 'Updated Successfully');
+        }
+    }
 
 }

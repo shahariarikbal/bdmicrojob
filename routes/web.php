@@ -11,6 +11,9 @@ use App\Http\Controllers\Backend\HelpSupportController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Backend\FaqController;
+use App\Http\Controllers\Backend\TermConditionController;
+use App\Http\Controllers\Backend\PrivacyPolicyController;
+use App\Http\Controllers\Backend\MarqueeController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -79,6 +82,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
 	Route::get('/delete/{user}', [AdminController::class, 'destroy']);
 	Route::get('/inactive/users/list', [AdminController::class, 'showInactiveUsers']);
 	Route::post('/logout', [AdminController::class, 'logout']);
+	Route::get('/profile/update', [AdminController::class, 'adminProfileUpdate']);
+	Route::post('/profile/update/{id}', [AdminController::class, 'storeProfileUpdate']);
 
    Route::get('/video/index', [VideoController::class, 'index']);
    Route::get('/video/create', [VideoController::class, 'create']);
@@ -98,6 +103,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
    Route::get('/categories', [CategoryController::class,'showCategory']);
    Route::get('/category/create', [CategoryController::class,'createCategory']);
    Route::post('/category/store', [CategoryController::class,'storeCategory']);
+   Route::get('/category/active/{id}', [CategoryController::class,'activeCategory']);
+   Route::get('/category/inactive/{id}', [CategoryController::class,'inactiveCategory']);
+   Route::get('/category/edit/{id}', [CategoryController::class,'editCategory']);
+   Route::post('/category/update/{id}', [CategoryController::class,'updateCategory']);
    //Jobs....
    Route::get('/jobs', [JobController::class,'showJob']);
    Route::get('/pending/jobs', [JobController::class,'showPendingJob']);
@@ -148,5 +157,31 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
     //Tips....
     Route::get('/tip/{user_id}', [AdminController::class, 'showTip']);
     Route::post('/tip/store/{user_id}', [AdminController::class, 'storeTip']);
+
+    //About Us....
+    Route::get('/about-us', [AdminController::class, 'showAboutUs']);
+    Route::get('/edit/about-us/{id}', [AdminController::class, 'editAboutUs']);
+    Route::post('/update/about-us/{id}', [AdminController::class, 'updateAboutUs']);
+
+    //Term Condition....
+    Route::get('/term-condition', [TermConditionController::class, 'showTermCondition']);
+    Route::get('/create/term-condition', [TermConditionController::class, 'createTermCondition']);
+    Route::post('/store/term-condition', [TermConditionController::class, 'storeTermCondition']);
+    Route::get('/edit/term-condition/{id}', [TermConditionController::class, 'editTermCondition']);
+    Route::post('/update/term-condition/{id}', [TermConditionController::class, 'updateTermCondition']);
+    Route::get('/delete/term-condition/{id}', [TermConditionController::class, 'deleteTermCondition']);
+
+    //Privacy Policy....
+    Route::get('/privacy-policy', [PrivacyPolicyController::class, 'showPrivacyPolicy']);
+    Route::get('/create/privacy-policy', [PrivacyPolicyController::class, 'createPrivacyPolicy']);
+    Route::post('/store/privacy-policy', [PrivacyPolicyController::class, 'storePrivacyPolicy']);
+    Route::get('/edit/privacy-policy/{id}', [PrivacyPolicyController::class, 'editPrivacyPolicy']);
+    Route::post('/update/privacy-policy/{id}', [PrivacyPolicyController::class, 'updatePrivacyPolicy']);
+    Route::get('/delete/privacy-policy/{id}', [PrivacyPolicyController::class, 'deletePrivacyPolicy']);
+
+    //Marquee Text....
+    Route::get('/marque-text', [MarqueeController::class, 'showMarqueeText']);
+    Route::get('/edit/marque-text/{id}', [MarqueeController::class, 'editMarqueeText']);
+    Route::post('/update/marque-text/{id}', [MarqueeController::class, 'updateMarqueeText']);
 
 });

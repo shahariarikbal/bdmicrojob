@@ -35,7 +35,7 @@
                         </h2>
                         <div id="collapseOne{{ $faq->id }}" class="accordion-collapse collapse show" aria-labelledby="headingOne{{ $faq->id }}" data-bs-parent="#accordionExample" style="">
                             <div class="accordion-body">
-                                {{ $faq->answer }}
+                                {!! $faq->answer !!}
                             </div>
                         </div>
                     </div>

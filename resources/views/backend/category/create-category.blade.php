@@ -21,6 +21,9 @@
             		<div class="col-md-6">
                 		<h2>Add Category</h2>
             		</div>
+                    <div class="col-md-6 text-right">
+                        <a href="{{ url('/admin/categories') }}" class="btn btn-primary">Back</a>
+                    </div>
             	</div>
 
             </div>

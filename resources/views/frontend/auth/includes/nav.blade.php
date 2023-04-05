@@ -36,13 +36,20 @@
             {{--  Notification Icon....  --}}
             <li class="nav-item dropdown no-arrow osahan-right-navbar-user">
                 <a class="nav-link dropdown-toggle user-dropdown-link" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @php
+                        $user = Auth::user();
+                    @endphp
+                    @if (auth()->user()->avatar != null)
+                    <img alt="Avatar" src="{{ asset('/user/'.$user->avatar) }}" />
+                    @else
                     <img alt="Avatar" src="{{asset('backend')}}/img/user-avater.png" />
+                    @endif
                     {{ auth()->user()->name }}
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="#"><i class="fas fa-fw fa-user-circle"></i> &nbsp; My Account</a>
+                    <a class="dropdown-item" href="{{ url('/profile/update') }}"><i class="fas fa-fw fa-user-circle"></i> &nbsp; My Account</a>
                     {{--  <a class="dropdown-item" href="#"><i class="fas fa-fw fa-video"></i> &nbsp; Subscriptions</a>  --}}
-                    <a class="dropdown-item" href="#"><i class="fas fa-fw fa-cog"></i> &nbsp; Settings</a>
+                    {{-- <a class="dropdown-item" href="#"><i class="fas fa-fw fa-cog"></i> &nbsp; Settings</a> --}}
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"><i class="fas fa-fw fa-sign-out-alt"></i> &nbsp; Logout</a>
 
