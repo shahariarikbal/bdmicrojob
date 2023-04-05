@@ -23,25 +23,25 @@
                             <h4>Basic information</h4>
                         </div>
                         <div class="card-body">
-                            <form action="" method="post" enctype="multipart/form-data">
+                            <form action="{{ url('/profile/update/'.$auth_user->id) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email" value="{{ $auth_user->email }}" aria-describedby="emailHelp" placeholder="Enter email" readonly>
+                                    @if($errors->has('email'))
+                                      <div class="error">{{ $errors->first('email') }}</div>
+                                    @endif
+                                  </div>
+                                <div class="form-group">
                                   <label for="name">Name</label>
-                                  <input type="text" class="form-control" id="name" name="name" value="" placeholder="Enter name">
+                                  <input type="text" class="form-control" id="name" name="name" value="{{ $auth_user->name }}" placeholder="Enter name">
                                   @if($errors->has('name'))
                                     <div class="error">{{ $errors->first('name') }}</div>
                                   @endif
                                 </div>
                                 <div class="form-group">
-                                  <label for="email">Email</label>
-                                  <input type="email" class="form-control" id="email" name="email" value="" aria-describedby="emailHelp" placeholder="Enter email">
-                                  @if($errors->has('email'))
-                                    <div class="error">{{ $errors->first('email') }}</div>
-                                  @endif
-                                </div>
-                                <div class="form-group">
                                   <label for="phone">Phone</label>
-                                  <input type="text" class="form-control" id="phone" name="phone" value="" placeholder="Enter your phone number">
+                                  <input type="text" class="form-control" id="phone" name="phone" value="{{ $auth_user->phone }}" placeholder="Enter your phone number">
                                   @if($errors->has('phone'))
                                     <div class="error">{{ $errors->first('phone') }}</div>
                                   @endif
@@ -49,7 +49,7 @@
                                 <div class="form-group">
                                     <label for="avatar">Avatar</label>
                                     <input type="file" class="form-control" id="avatar" name="avatar"/>
-                                    <img src="" height="80" width="80" />
+                                    <img src="{{ asset('/user/'.$auth_user->avatar) }}" height="100" width="100" />
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
@@ -62,7 +62,7 @@
                             <h4>Password change</h4>
                         </div>
                         <div class="card-body">
-                            <form action="" method="post" enctype="multipart/form-data">
+                            <form action="{{ url('/password/update/'.$auth_user->id) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                   <label for="old_password">Old password</label>
@@ -93,7 +93,7 @@
             </div>
         </div>
     </div>
-  </section>    
+  </section>
 @endsection
 
 @push('page-scripts')

@@ -347,8 +347,64 @@ class UserController extends Controller
 
     public function userProfileUpdate()
     {
- 
-        return view('frontend.auth.user.profile');
+        if(Auth::check()){
+            $auth_user = Auth::user();
+            return view('frontend.auth.user.profile', compact('auth_user'));
+        }
 
+        else{
+            return redirect('/login');
+        }
+    }
+
+    public function storeProfileUpdate (Request $request, $id)
+    {
+        $user = User::find($id);
+        if($request->hasFile('avatar')){
+            if(file_exists(public_path('user/'.$user->avatar))){
+                File::delete(public_path('user/'.$user->avatar));
+                $name = time() . '.' . $request->avatar->getClientOriginalExtension();
+                $request->avatar->move('user/', $name);
+                $user->avatar = $name;
+            }
+            else{
+                $name = time() . '.' . $request->avatar->getClientOriginalExtension();
+                $request->avatar->move('user/', $name);
+                $user->avatar = $name;
+            }
+
+        }
+        $user->name = $request->name;
+        $user->phone = $request->phone;
+        $user->name = $request->name;
+
+        $user->save();
+        return redirect()->back()->with('success', 'Updated Successfully!');
+    }
+
+    public function storePasswordUpdate (Request $request, $id)
+    {
+        $this->validate($request, [
+            'old_password' => 'required',
+            'new_password' => 'required',
+            'password_confirmation' => 'required',
+
+        ]);
+        $user = User::find($id);
+        if(isset($request->new_password)){
+            if (password_verify($request->old_password, $user->password)){
+                if($request->new_password==$request->password_confirmation){
+                    $user->password=bcrypt($request->new_password);
+                    $user->update();
+                    return redirect()->back()->with('success', 'Updated Successfully');
+                }
+                else{
+                    return redirect()->back()->with('error', 'Confirm Password is not Matched!!');
+                }
+            }
+            else{
+                return redirect()->back()->with('error', 'Old Password does not Match!!');
+            }
+        }
     }
 }

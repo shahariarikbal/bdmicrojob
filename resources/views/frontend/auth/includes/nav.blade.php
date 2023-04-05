@@ -36,7 +36,14 @@
             {{--  Notification Icon....  --}}
             <li class="nav-item dropdown no-arrow osahan-right-navbar-user">
                 <a class="nav-link dropdown-toggle user-dropdown-link" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @php
+                        $user = Auth::user();
+                    @endphp
+                    @if (auth()->user()->avatar != null)
+                    <img alt="Avatar" src="{{ asset('/user/'.$user->avatar) }}" />
+                    @else
                     <img alt="Avatar" src="{{asset('backend')}}/img/user-avater.png" />
+                    @endif
                     {{ auth()->user()->name }}
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
