@@ -113,6 +113,12 @@
             <span>Privacy Policy</span>
         </a>
     </li>
+    <li class="nav-item {{ Request::url() == url('admin/marque-text') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('/admin/marque-text') }}">
+         <i class="fas fa-cog"></i>
+        <span>Marquee Text</span>
+        </a>
+     </li>
     <li class="nav-item {{ Request::url() == url('admin/settings') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('/admin/settings') }}">
          <i class="fas fa-cog"></i>
