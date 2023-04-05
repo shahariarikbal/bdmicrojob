@@ -22,7 +22,7 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Title</th>
-                                <th scope="col">Description</th>
+                                {{--  <th scope="col">Description</th>  --}}
                                 <th scope="col">Action</th>
                             </tr>
                             </thead>
@@ -31,7 +31,7 @@
                                     <tr>
                                         <td>{{ $loop->index+1 }}</td>
                                         <td>{{ $privacy_policy->title }}</td>
-                                        <td>{!! substr($privacy_policy->description,0,50) !!}</td>
+                                        {{--  <td>{!! substr($privacy_policy->description,0,50) !!}</td>  --}}
                                         <td>
                                             <a href="{{ url('/admin/edit/privacy-policy/'.$privacy_policy->id) }}" class="btn btn-sm btn-info">Edit</a>
                                             <a href="{{ url('/admin/delete/privacy-policy/'.$privacy_policy->id) }}" onclick="return confirm('Are you sure delete this data ?')" class="btn btn-sm btn-danger">Delete</a>

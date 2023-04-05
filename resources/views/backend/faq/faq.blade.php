@@ -53,7 +53,7 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Question</th>
-                                <th scope="col">Answer</th>
+                                {{--  <th scope="col">Answer</th>  --}}
                                 <th scope="col">Action</th>
                             </tr>
                             </thead>
@@ -62,7 +62,7 @@
                                     <tr>
                                         <td>{{ $loop->index+1 }}</td>
                                         <td>{{ $info->question }}</td>
-                                        <td>{!! substr($info->answer,0,50) !!}</td>
+                                        {{--  <td>{!! substr($info->answer,0,50) !!}</td>  --}}
                                         <td>
                                             <a href="{{ url('/admin/faq/edit/'.$info->id) }}" class="btn btn-sm btn-info">Edit</a>
                                             <a href="{{ url('/admin/faq/delete/'.$info->id) }}" onclick="return confirm('Are you sure delete this data ?')" class="btn btn-sm btn-danger">Delete</a>

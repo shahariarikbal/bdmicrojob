@@ -22,7 +22,7 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Title</th>
-                                <th scope="col">Description</th>
+                                {{--  <th scope="col">Description</th>  --}}
                                 <th scope="col">Action</th>
                             </tr>
                             </thead>
@@ -31,7 +31,7 @@
                                     <tr>
                                         <td>{{ $loop->index+1 }}</td>
                                         <td>{{ $term_condition->title }}</td>
-                                        <td>{!! substr($term_condition->description,0,50) !!}</td>
+                                        {{--  <td>{!! substr($term_condition->description,0,50) !!}</td>  --}}
                                         <td>
                                             <a href="{{ url('/admin/edit/term-condition/'.$term_condition->id) }}" class="btn btn-sm btn-info">Edit</a>
                                             <a href="{{ url('/admin/delete/term-condition/'.$term_condition->id) }}" onclick="return confirm('Are you sure delete this data ?')" class="btn btn-sm btn-danger">Delete</a>
