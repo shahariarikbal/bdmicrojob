@@ -33,7 +33,7 @@
                                 @foreach($categories as $category)
                                     <div class="category-item-outer">
                                         <input type="radio" id="{{ 'cat'. $category->id }}" name="category" value="{{ $category->id }}" onclick="categoryPrice(this)" class="category-item-radio">
-                                        <label for="{{ 'car'. $category->name }}" class="category-item-label">{{ ucfirst($category->name) }}</label>
+                                        <label for="{{ 'cat'. $category->id }}" class="category-item-label">{{ ucfirst($category->name) }}</label>
                                     </div>
                                 @endforeach
                             </div>
@@ -88,7 +88,7 @@
                             </div>
                             <hr>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="left-content">
                                         <label for="work_num">Worker Need</label><span style="color: red; font-size: 16px;"> *</span><br>
                                         <input type="number" name="work_num" min="1" placeholder="Minimum 1" class="form-control">
@@ -98,27 +98,27 @@
                                         <input type="number" name="work_num" placeholder="0" min="1" max="2" class="form-control">
                                         <label for="work_num">Estimated Day</label><span style="color: red; font-size: 16px;"> *</span><br>
                                         <input type="number" name="work_num" placeholder="7 day" min="1" max="7" class="form-control">
-                                        <label for="work_num">Have you need:Extend Period (optional)</label>
-                                        <select name="jobExtendPeriod" id="jobExtendPeriod" class="form-control">
-                                            <option value="0">None</option>
-                                            <option value="5">5m Cost $0.10</option>
-                                            <option value="10">10m Cost $0.08</option>
-                                            <option value="15">15m Cost $0.06</option>
-                                            <option value="20">20m Cost $0.04</option>
-                                        </select>
+{{--                                        <label for="work_num">Have you need:Extend Period (optional)</label>--}}
+{{--                                        <select name="jobExtendPeriod" id="jobExtendPeriod" class="form-control">--}}
+{{--                                            <option value="0">None</option>--}}
+{{--                                            <option value="5">5m Cost $0.10</option>--}}
+{{--                                            <option value="10">10m Cost $0.08</option>--}}
+{{--                                            <option value="15">15m Cost $0.06</option>--}}
+{{--                                            <option value="20">20m Cost $0.04</option>--}}
+{{--                                        </select>--}}
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="right-content">
-                                        <h5 style="color:#000;font-size: 13px;font-weight: bold;text-align: center">Estimated Job Cost</h5>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text drk_white_theme" style="font-size:10px">$</span>
-                                            </div>
-                                            <input type="number"  class="form-control" id="estimatedJobCost" placeholder="0.00" readonly="" value="1" style="margin-bottom: 0">
-                                        </div>
-                                    </div>
-                                </div>
+{{--                                <div class="col-md-6">--}}
+{{--                                    <div class="right-content">--}}
+{{--                                        <h5 style="color:#000;font-size: 13px;font-weight: bold;text-align: center">Estimated Job Cost</h5>--}}
+{{--                                        <div class="input-group mb-3">--}}
+{{--                                            <div class="input-group-prepend">--}}
+{{--                                                <span class="input-group-text drk_white_theme" style="font-size:10px">$</span>--}}
+{{--                                            </div>--}}
+{{--                                            <input type="number"  class="form-control" id="estimatedJobCost" placeholder="0.00" readonly="" value="1" style="margin-bottom: 0">--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                             </div>
                         </div>
                         <div style="overflow:auto;">
