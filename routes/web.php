@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\HelpSupportController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Backend\FaqController;
+use App\Http\Controllers\Backend\TermConditionController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -157,5 +158,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
     Route::get('/about-us', [AdminController::class, 'showAboutUs']);
     Route::get('/edit/about-us/{id}', [AdminController::class, 'editAboutUs']);
     Route::post('/update/about-us/{id}', [AdminController::class, 'updateAboutUs']);
+
+    //Term Condition....
+    Route::get('/term-condition', [TermConditionController::class, 'showTermCondition']);
+    Route::get('/create/term-condition', [TermConditionController::class, 'createTermCondition']);
+    Route::post('/store/term-condition', [TermConditionController::class, 'storeTermCondition']);
+    Route::get('/edit/term-condition/{id}', [TermConditionController::class, 'editTermCondition']);
+    Route::post('/update/term-condition/{id}', [TermConditionController::class, 'updateTermCondition']);
+    Route::get('/delete/term-condition/{id}', [TermConditionController::class, 'deleteTermCondition']);
 
 });

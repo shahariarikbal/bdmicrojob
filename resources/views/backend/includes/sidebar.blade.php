@@ -101,6 +101,12 @@
             <span>About Us</span>
         </a>
     </li>
+    <li class="nav-item {{ Request::url() == url('admin/term-condition') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('/admin/term-condition') }}">
+            <i class="fas fa-cog"></i>
+            <span>Terms & Conditions</span>
+        </a>
+    </li>
     <li class="nav-item {{ Request::url() == url('admin/settings') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('/admin/settings') }}">
          <i class="fas fa-cog"></i>
