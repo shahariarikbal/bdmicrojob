@@ -19,6 +19,7 @@ use Hash;
 use Illuminate\Http\Request;
 use Session;
 use Str;
+use Auth;
 
 class AdminController extends Controller
 {
@@ -346,8 +347,41 @@ class AdminController extends Controller
 
     public function adminProfileUpdate ()
     {
-        return view('backend.profile.show-profile');
+        $auth_admin = Admin::first();
+        return view('backend.profile.show-profile', compact('auth_admin'));
 
+    }
+
+    public function storeProfileUpdate (Request $request, $id)
+    {
+        $this->validate($request, [
+            'email' => 'required|email',
+            'old_password' => 'required',
+            'new_password' => 'required',
+            'password_confirmation' => 'required',
+        ]);
+        $admin = Admin::find(1);
+        if(isset($request->new_password)){
+            if (password_verify($request->old_password, $admin->password)){
+                if($request->new_password==$request->password_confirmation){
+                    $admin->password=bcrypt($request->new_password);
+                    $admin->email=$request->email;
+                    $admin->update();
+                    return redirect('/admin/dashboard')->with('success', 'Updated Successfully');
+                }
+                else{
+                    return redirect()->back()->with('error', 'Confirm Password is not Matched!!');
+                }
+            }
+            else{
+                return redirect()->back()->with('error', 'Old Password does not Match!!');
+            }
+        }
+        else{
+            $admin->email=$request->email;
+            $admin->update();
+            return redirect('/admin/dashboard')->with('success', 'Updated Successfully');
+        }
     }
 
 }

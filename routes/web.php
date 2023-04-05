@@ -83,6 +83,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
 	Route::get('/inactive/users/list', [AdminController::class, 'showInactiveUsers']);
 	Route::post('/logout', [AdminController::class, 'logout']);
 	Route::get('/profile/update', [AdminController::class, 'adminProfileUpdate']);
+	Route::post('/profile/update/{id}', [AdminController::class, 'storeProfileUpdate']);
 
    Route::get('/video/index', [VideoController::class, 'index']);
    Route::get('/video/create', [VideoController::class, 'create']);
