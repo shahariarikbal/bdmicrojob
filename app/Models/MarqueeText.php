@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class MarqueeText extends Model
 {
     use HasFactory;
+    protected $table='marquee_texts';
+    protected $guarded = [];
 }
