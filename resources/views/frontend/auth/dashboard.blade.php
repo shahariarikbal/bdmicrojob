@@ -324,43 +324,48 @@
        </div>
     </div>
  </div> -->
-<div class="dashboard-section container-fluid pb-0">
+<div class="dashboard-section container-fluid">
    <div class="row">
       <div class="col-md-10 m-auto">
-         <marquee>Please buy a plane and safe your money !</marquee>
+         <marquee>{{ $marquee_text->marquee_text }}</marquee>
          <div class="job-items-wrapper">
-            <form action="" method="get" class="select-category-outer">
+            <form action="{{ url('/dashboard') }}" method="get" class="select-category-outer">
+                @csrf
                <div class="input-group">
-                  <select name="category">
+                  <select name="cat_id">
                      <option selected disabled>--- Select Category ---</option>
                       @foreach($categories as $category)
                         <option value="{{ $category->id }}">{{ ucfirst($category->name) }}</option>
                       @endforeach
                   </select>
-                  <button type="button" class="btn btn-lg btn-info">Search</button>
+                  <button type="submit" class="btn btn-lg btn-info">Search</button>
                </div>
             </form>
-
-            <a href="{{ url('/job/details') }}" class="job-item-outer">
-               <div class="job-item-left">
-                  <h5 class="job-title">
-                     Game of 11
-                  </h5>
-               </div>
-               <div class="job-item-center">
-                  <div class="progress-label">
-                     20 OF 24
-                  </div>
-                  <div class="progress">
-                     <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-               </div>
-               <div class="job-item-right">
-                  <h4 class="totla-earning">
-                     $ 0.0200
-                  </h4>
-               </div>
-            </a>
+             @foreach($posts as $post)
+                <a href="{{ url('/job/details/'.$post->id) }}" class="job-item-outer">
+                   <div class="job-item-left">
+                      <h5 class="job-title">
+                         {{ $post->title }}
+                      </h5>
+                   </div>
+                   <div class="job-item-center">
+                      <div class="progress-label">
+                        @php
+                            $worker = \App\Models\PostSubmit::where('post_id', $post->id)->where('status','!=','2')->get()->count();
+                        @endphp
+                         {{ $worker }} OF {{ $post->worker_number }}
+                      </div>
+                      <div class="progress">
+                         <div class="progress-bar" role="progressbar" style="width: {{ $worker }}%" aria-valuenow="{{ $worker }}" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                   </div>
+                   <div class="job-item-right">
+                      <h4 class="totla-earning">
+                          ৳ {{ $post->worker_earn }}
+                      </h4>
+                   </div>
+                </a>
+             @endforeach
          </div>
       </div>
    </div>

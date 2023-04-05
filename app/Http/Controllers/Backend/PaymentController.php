@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Deposit;
+use App\Models\Withdraw;
 use App\Models\User;
+use App\Models\Notification;
 
 class PaymentController extends Controller
 {
@@ -30,7 +32,14 @@ class PaymentController extends Controller
                     $final_deposit_amount = $deposit->deposit_amount+$user->total_deposit;
                     $user->total_deposit = $final_deposit_amount;
                     $user->save();
-                    return redirect()->back()->with('Success',"Approved Successfully!");
+                    //Notification....
+                    $notification = new Notification();
+                    $notification->message = 'Deposit request is approved';
+                    $notification->specific_user_id = $deposit->user_id;
+                    $notification->notification_for = "user";
+                    $deposit->deposit()->save($notification);
+                    //Notification....
+                    return redirect()->back()->with('success',"Approved Successfully!");
                 }
                 return redirect()->back()->with('error',"Technical Error!!");
             }
@@ -41,6 +50,55 @@ class PaymentController extends Controller
         }
         else{
             return redirect()->back()->with('error',"Deposit Record is not Found!");
+        }
+    }
+
+    public function showWithdrawRequest ()
+    {
+        $withdraws = Withdraw::orderBy('created_at','desc')->with('user')->Paginate(10);
+        return view('backend.payment.show-withdraw', compact('withdraws'));
+    }
+
+    public function approveWithdraw ($id)
+    {
+        $withdraw = Withdraw::find($id);
+        if($withdraw->is_approved==true){
+            return redirect()->back()->with('Error','Already Approved!!');
+        }
+        if($withdraw){
+            $user = User::where('id',$withdraw->user_id)->first();
+
+            if($user){
+                $total_amount = ((15*$withdraw->withdraw_amount)/100)+$withdraw->withdraw_amount;
+                if($user->total_income>=$total_amount){
+                    $withdraw->is_approved = true;
+                if($withdraw->save()){
+                    $final_income_amount = $user->total_income-$total_amount;
+                    $user->total_income = $final_income_amount;
+                    $user->save();
+                    //Notification....
+                    $notification = new Notification();
+                    $notification->message = 'Withdraw request is approved';
+                    $notification->specific_user_id = $withdraw->user_id;
+                    $notification->notification_for = "user";
+                    $withdraw->withdraw()->save($notification);
+                    //Notification....
+                    return redirect()->back()->with('Success',"Approved Successfully!");
+                }
+                return redirect()->back()->with('Error',"Technical Error!!");
+                }
+
+                else{
+                    return redirect()->back()->with('Error',"Insufficient Balance!");
+                }
+            }
+
+            else{
+                return redirect()->back()->with('Error',"User Record is not Found!");
+            }
+        }
+        else{
+            return redirect()->back()->with('Error',"Withdraw Record is not Found!");
         }
     }
 }

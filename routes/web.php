@@ -8,7 +8,12 @@ use App\Http\Controllers\Backend\AdvertisementController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\PaymentController;
 use App\Http\Controllers\Backend\HelpSupportController;
+use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Backend\FaqController;
+use App\Http\Controllers\Backend\TermConditionController;
+use App\Http\Controllers\Backend\PrivacyPolicyController;
+use App\Http\Controllers\Backend\MarqueeController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +46,13 @@ Route::get('flush', function() {
 
 Route::get('/', [FrontendController::class, 'index']);
 
+// ======================== Static Routes ===================================== //
+Route::get('/about', [FrontendController::class, 'aboutUs']);
+Route::get('/contact', [FrontendController::class, 'contactUs']);
+Route::post('/contact/store', [FrontendController::class, 'contactStore']);
+Route::get('/faq', [FrontendController::class, 'showFaq']);
+Route::get('/terms/conditions', [FrontendController::class, 'showTermsConditions']);
+Route::get('/privacy/policy', [FrontendController::class, 'showPrivacyPolicy']);
 
 Auth::routes();
 
@@ -68,7 +80,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
 	Route::get('/active/{user}', [AdminController::class, 'active']);
 	Route::get('/inactive/{user}', [AdminController::class, 'inactive']);
 	Route::get('/delete/{user}', [AdminController::class, 'destroy']);
+	Route::get('/inactive/users/list', [AdminController::class, 'showInactiveUsers']);
 	Route::post('/logout', [AdminController::class, 'logout']);
+	Route::get('/profile/update', [AdminController::class, 'adminProfileUpdate']);
+	Route::post('/profile/update/{id}', [AdminController::class, 'storeProfileUpdate']);
 
    Route::get('/video/index', [VideoController::class, 'index']);
    Route::get('/video/create', [VideoController::class, 'create']);
@@ -88,8 +103,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
    Route::get('/categories', [CategoryController::class,'showCategory']);
    Route::get('/category/create', [CategoryController::class,'createCategory']);
    Route::post('/category/store', [CategoryController::class,'storeCategory']);
+   Route::get('/category/active/{id}', [CategoryController::class,'activeCategory']);
+   Route::get('/category/inactive/{id}', [CategoryController::class,'inactiveCategory']);
+   Route::get('/category/edit/{id}', [CategoryController::class,'editCategory']);
+   Route::post('/category/update/{id}', [CategoryController::class,'updateCategory']);
    //Jobs....
    Route::get('/jobs', [JobController::class,'showJob']);
+   Route::get('/pending/jobs', [JobController::class,'showPendingJob']);
+   Route::get('/job/details/{id}', [JobController::class,'showJobDetails']);
+   Route::get('/job/approve/{id}', [JobController::class,'approveJob']);
+   Route::get('/job/reject/{id}', [JobController::class,'rejectJob']);
 
    //Advertisements....
    Route::get('/advertisements', [AdvertisementController::class,'showAdvertisement']);
@@ -101,6 +124,64 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
    Route::get('/deposit/request', [PaymentController::class,'showDepositRequest']);
    Route::get('/deposit/approve/{id}', [PaymentController::class,'approveDeposit']);
 
+   //Withdraw Requests....
+   Route::get('/withdraw/request', [PaymentController::class,'showWithdrawRequest']);
+   Route::get('/withdraw/approve/{id}', [PaymentController::class,'approveWithdraw']);
 
+   //NID Verification Requests....
+   Route::get('/nid_verification/request', [AdminController::class,'showVerificationRequest']);
+   Route::get('/nid_verification/details/{id}', [AdminController::class,'showVerificationRequestDetails']);
+   Route::get('/nid_verification/approve/{id}', [AdminController::class,'approveNidRequest']);
+   Route::get('/nid_verification/reject/{id}', [AdminController::class,'rejectNidRequest']);
+
+   //Setting....
+   Route::get('/settings', [SettingController::class,'showSetting']);
+   Route::post('/settings/update', [SettingController::class,'updateSetting']);
+
+   //Contact Us...
+   Route::get('/contacts', [AdminController::class,'showContact']);
+   Route::get('/contact/delete/{id}', [AdminController::class,'deleteContact']);
+
+   //Home Page....
+   Route::get('/homepage', [AdminController::class,'showHomePage']);
+   Route::post('/homepage/update', [AdminController::class,'updateHomePage']);
+
+   //Faq
+    Route::get('/faqs', [FaqController::class, 'faqs']);
+    Route::get('/faq/create', [FaqController::class, 'createFaq']);
+    Route::post('/faq/store', [FaqController::class, 'faqStore']);
+    Route::get('/faq/edit/{faq}', [FaqController::class, 'faqEdit']);
+    Route::post('/faq/update/{faq}', [FaqController::class, 'faqPost']);
+    Route::get('/faq/delete/{faq}', [FaqController::class, 'faqDelete']);
+
+    //Tips....
+    Route::get('/tip/{user_id}', [AdminController::class, 'showTip']);
+    Route::post('/tip/store/{user_id}', [AdminController::class, 'storeTip']);
+
+    //About Us....
+    Route::get('/about-us', [AdminController::class, 'showAboutUs']);
+    Route::get('/edit/about-us/{id}', [AdminController::class, 'editAboutUs']);
+    Route::post('/update/about-us/{id}', [AdminController::class, 'updateAboutUs']);
+
+    //Term Condition....
+    Route::get('/term-condition', [TermConditionController::class, 'showTermCondition']);
+    Route::get('/create/term-condition', [TermConditionController::class, 'createTermCondition']);
+    Route::post('/store/term-condition', [TermConditionController::class, 'storeTermCondition']);
+    Route::get('/edit/term-condition/{id}', [TermConditionController::class, 'editTermCondition']);
+    Route::post('/update/term-condition/{id}', [TermConditionController::class, 'updateTermCondition']);
+    Route::get('/delete/term-condition/{id}', [TermConditionController::class, 'deleteTermCondition']);
+
+    //Privacy Policy....
+    Route::get('/privacy-policy', [PrivacyPolicyController::class, 'showPrivacyPolicy']);
+    Route::get('/create/privacy-policy', [PrivacyPolicyController::class, 'createPrivacyPolicy']);
+    Route::post('/store/privacy-policy', [PrivacyPolicyController::class, 'storePrivacyPolicy']);
+    Route::get('/edit/privacy-policy/{id}', [PrivacyPolicyController::class, 'editPrivacyPolicy']);
+    Route::post('/update/privacy-policy/{id}', [PrivacyPolicyController::class, 'updatePrivacyPolicy']);
+    Route::get('/delete/privacy-policy/{id}', [PrivacyPolicyController::class, 'deletePrivacyPolicy']);
+
+    //Marquee Text....
+    Route::get('/marque-text', [MarqueeController::class, 'showMarqueeText']);
+    Route::get('/edit/marque-text/{id}', [MarqueeController::class, 'editMarqueeText']);
+    Route::post('/update/marque-text/{id}', [MarqueeController::class, 'updateMarqueeText']);
 
 });

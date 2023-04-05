@@ -13,7 +13,14 @@
     <div class="container-fluid pb-0">
         <div class="card">
             <div class="card-header">
-                <h2>Members list</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2>Members list</h2>
+                    </div>
+                    {{-- <div class="col-md-6 text-right">
+                        <a href="{{ url('/admin/dashboard') }}" class="btn btn-primary">Back</a>
+                    </div>  --}}
+                </div>
             </div>
             <div class="card-body">
                 <div class="col-md-12">
@@ -42,7 +49,8 @@
                                     @else
                                         <a href="{{ url('/admin/inactive/'.$user->id) }}" class="btn btn-sm btn-warning">Inactive</a>
                                     @endif
-                                    <a href="{{ url('/admin/delete/'.$user->id) }}" class="btn btn-sm btn-danger">Delete</a>
+                                    <a href="{{ url('/admin/tip/'.$user->id) }}" class="btn btn-sm btn-danger">Tips</a>
+                                    {{--  <a href="{{ url('/admin/delete/'.$user->id) }}" class="btn btn-sm btn-danger">Delete</a>  --}}
                                 </td>
                               </tr>
                             @endforeach

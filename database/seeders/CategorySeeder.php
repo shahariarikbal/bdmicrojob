@@ -15,8 +15,8 @@ class CategorySeeder extends Seeder
     public function run()
     {
         $categories = [
-            ['name' => 'Facebook', 'price' => '40'],
-            ['name' => 'Youtube', 'price' => '50']
+            ['name' => 'Facebook', 'price' => '40', 'worker_earning' => '3.50'],
+            ['name' => 'Youtube', 'price' => '50', 'worker_earning' => '4.00']
         ];
 
         Category::insert($categories);

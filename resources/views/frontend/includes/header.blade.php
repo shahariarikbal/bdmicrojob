@@ -2,7 +2,7 @@
     <nav class="nav-main">
         <!-- logo start -->
         <a href="{{ url('/') }}" class="header-main-logo">
-             <img src="{{ asset('/frontend/') }}/assets/logo/bd jobs.png" style="height: 70px;" />
+             <img src="{{ asset('/logo/'.$setting->logo) }}" style="height: 70px;" />
 {{--            BD<span>Microjob</span>--}}
         </a>
         <!-- logo End -->
@@ -14,24 +14,24 @@
         <!-- Nav items start -->
         <ul class="nav-items-wrapper">
             <li class="nav-item-main">
-                <a class="nav-item-main-link active" href="#">Home</a>
+                <a class="nav-item-main-link active" href="{{ url('/') }}">Home</a>
             </li>
             <li class="nav-item-main">
-                <a class="nav-item-main-link" href="#">
+                <a class="nav-item-main-link" href="{{ url('/about') }}">
                     About us
                 </a>
             </li>
-            <li class="nav-item-main">
+            <!-- <li class="nav-item-main">
                 <a class="nav-item-main-link" href="#">
                     How It Works
                 </a>
+            </li> -->
+            <li class="nav-item-main">
+                <a class="nav-item-main-link" href="{{ url('/faq') }}">FAQ</a>
+            </li>
             </li>
             <li class="nav-item-main">
-                <a class="nav-item-main-link" href="#">FAQ</a>
-            </li>
-            </li>
-            <li class="nav-item-main">
-                <a class="nav-item-main-link" href="#">
+                <a class="nav-item-main-link" href="{{ url('/contact') }}">
                   Contact Us
                 </a>
             </li>
@@ -42,7 +42,6 @@
                   <a class="nav-item-main-link hide-item" href="{{ url('/user/register/form') }}" style="cursor: pointer;">Login / Register</a>
 
                 @else
-
                   <a class="nav-item-main-link hide-item" onclick="document.querySelector('#logout').submit()" style="cursor: pointer;">Logout</a>
                 @endif
             </li>
@@ -50,17 +49,17 @@
         <!-- Nav items End --><div class="header-social-icon">
             <ul class="social-icon-list">
                 <li class="social-icon-list-item">
-                    <a href="" class="social-icon-item-link">
+                    <a href="{{ $setting->facebook }}" class="social-icon-item-link">
                         <i class="fab fa-facebook-f"></i>
                     </a>
                 </li>
                 <li class="social-icon-list-item">
-                    <a href="" class="social-icon-item-link">
+                    <a href="{{ $setting->twitter }}" class="social-icon-item-link">
                         <i class="fab fa-twitter"></i>
                     </a>
                 </li>
                 <li class="social-icon-list-item">
-                    <a href="" class="social-icon-item-link">
+                    <a href="{{ $setting->instagram }}" class="social-icon-item-link">
                         <i class="fab fa-instagram"></i>
                     </a>
                 </li>
@@ -69,10 +68,10 @@
         <div class="login-register-btn-outer">
             @if(!Auth::check())
 
-              <button onclick="location.href='{{ url('user/register/form') }}'" class="login-register-btn" name="button" type="button" style="cursor: pointer;">Login / Register</button>
+              <button onclick="location.href='{{ url('user/register/form') }}'" class="login-register-btn" name="button" type="button" style="cursor: pointer;">Login / Registration</button>
 
             @else
-
+            <a href="{{ url('/dashboard') }}" class="dashboard-btn-inner" style="cursor: pointer;">Dashboard</a>
               <button onclick="document.querySelector('#logout').submit()" class="login-register-btn" name="button" type="button" style="cursor: pointer;">Logout</button>
             @endif
         </div>

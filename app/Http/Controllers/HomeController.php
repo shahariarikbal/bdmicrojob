@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Membership;
+use App\Models\Post;
 use App\Models\User;
 use App\Models\UserVideo;
 use App\Models\Video;
+use App\Models\MarqueeText;
 use App\Rules\MatchOldPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,8 +38,22 @@ class HomeController extends Controller
     }
     public function dashboard()
     {
-        $categories = Category::select(['id', 'name', 'status', 'price'])->orderBy('created_at', 'desc')->where('status', 1)->get();
-        return view('frontend.auth.dashboard', compact('categories'));
+        $auth_user = Auth::user();
+        if($auth_user->email_verified_at != null){
+            $marquee_text = MarqueeText::where('page_name','dashboard')->first();
+            $categories = Category::select(['id', 'name', 'status', 'price'])->orderBy('created_at', 'desc')->where('status', 1)->get();
+            $sql = Post::with('specificTasks')->where('user_id','!=',Auth::user()->id)->where('is_approved', 1)->orderBy('created_at', 'desc');
+            if(isset(request()->cat_id)){
+                $sql->where('cat_id', request()->cat_id)->get();
+            }
+            $posts = $sql->get();
+            return view('frontend.auth.dashboard', compact('categories', 'posts', 'marquee_text'));
+        }
+
+        else{
+            Auth::logout();
+            return redirect()->back()->with('error','Your email is not verified yet!!');
+        }
     }
 
     public function membership()
@@ -176,4 +192,5 @@ class HomeController extends Controller
 
         // UserVideo
     }
+
 }

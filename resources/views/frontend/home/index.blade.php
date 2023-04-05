@@ -4,11 +4,12 @@
 <main>
     <section class="home-banner-section-wrapper">
         <div class="home-banner-image-outer">
-            <img src="{{ asset('/frontend/') }}/assets/images/home-bg.png">
+            <img src="{{ asset('/homepage/'.$homepage->slider_image) }}">
         </div>
         <div class="home-banner-content">
             <h2 class="banner-content">
-                Get <span>Easy Earning</span> With Lots Of <span>Earning Sources</span>
+                {{--  Get <span>Easy Earning</span> With Lots Of <span>Earning Sources</span>  --}}
+                {{ $homepage->slider_title }}
             </h2>
         </div>
     </section>
@@ -17,27 +18,20 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="left-image-outer">
-                        <img src="{{ asset('/frontend/') }}/assets/images/left-image.png">
+                        <img src="{{ asset('/homepage/'.$homepage->first_image) }}">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="section-right-content">
                         <h3 class="right-content-title">
-                            Get <span class="extra-color">Extra Earning</span> <span>Easy</span> And <span>Secured</span>
+                            {{--  Get <span class="extra-color">Extra Earning</span> <span>Easy</span> And <span>Secured</span>  --}}
+                            <span>{{ $homepage->first_image_title }}</span>
                         </h3>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Congue quam id a, nam ipsum euismod vulputate et aliquam. Tortor ipsum dolor sem venenatis. Nec sagittis eleifend sit sem enim arcu.
-                        </p>
-                        <p>
-                            Nisl placerat ultrices malesuada tristique nullam quam. In ac, scelerisque sed enim etiam nunc commodo sapien.
-                        </p>
-                        <p>
-                            Tortor ipsum dolor sem venenatis. Nec sagittis eleifend sit sem enim arcu. Eget faucibus vitae mauris convallis felis, sed dolor massa.
-                        </p>
+                        <p>{{ $homepage->first_image_description }}</p>
                     </div>
-                    <div class="learn-more-btn-outer">
+                    {{-- <div class="learn-more-btn-outer">
                         <button type="button" class="learn-more-btn-inner">Learn More</button>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -48,10 +42,12 @@
                 <div class="col-md-6">
                     <div class="section-left-content">
                         <h3 class="left-content-title">
-                            Awesome <span class="extra-color">Features</span> With <span>Amazing Bonuses</span>
+                            {{--  Awesome <span class="extra-color">Features</span> With <span>Amazing Bonuses</span>  --}}
+                            <span class="extra-color">{{ $homepage->second_image_title }}</span>
                         </h3>
                         <ul class="feature-section-list">
-                            <li class="feature-section-list-item">
+                            <p>{{ $homepage->second_image_description }}</p>
+                            {{--  <li class="feature-section-list-item">
                                 <img src="{{ asset('/frontend/') }}/assets/images/point.png">
                                 Too Easy To Use Anytime Anywhere Around
                             </li>
@@ -74,16 +70,16 @@
                             <li class="feature-section-list-item">
                                 <img src="{{ asset('/frontend/') }}/assets/images/point.png">
                                 Get Instantly Paid Via Bank Or E-wallet
-                            </li>
+                            </li>  --}}
                         </ul>
                     </div>
-                    <div class="learn-more-btn-outer">
+                    {{-- <div class="learn-more-btn-outer">
                         <button type="button" class="learn-more-btn-inner">Learn More</button>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="col-md-6">
                     <div class="right-image-outer">
-                        <img src="{{ asset('/frontend/') }}/assets/images/right-image.png">
+                        <img src="{{ asset('/homepage/'.$homepage->second_image) }}">
                     </div>
                 </div>
             </div>
@@ -93,40 +89,45 @@
         <div class="container">
             <div class="section-title-outer">
                 <h5 class="subtitle">
-                    BDMicrojobs
+                    BDMicrojob
                 </h5>
                 <h1 class="title">
                     Recent Activity
                 </h1>
             </div>
             <div class="recent-activity-items-wrapper">
+                @foreach ($job_posts as $job_post )
                 <div class="recent-activity-item-outer">
-                    <div class="text-right text-blue">6 minutes ago</div>
+                    <div class="text-right text-blue">Posted Date: {{ date('m-d-Y', strtotime($job_post->created_at)) }}</div>
                     <div class="item-title">
-                        <span>Install and Register App </span>
+                        <span>{{ $job_post->title }} </span>
                     </div>
                     <div class="item-content">
                         <div class="item-left-content">
                             <span>
-                                Rasel
+                                {{ $job_post->user->name }}
                             </span>
                         </div>
                         <div class="item-center-content">
+                            @php
+                            $worker = \App\Models\PostSubmit::where('post_id', $job_post->id)->where('status','1')->get()->count();
+                            @endphp
                             <div class="progress-label">
-                                20 OF 24
+                                {{ $worker }} OF {{ $job_post->worker_number }}
                             </div>
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar" role="progressbar" style="width: {{ $worker }}%" aria-valuenow="{{ $worker }}" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                         <div class="item-right-content">
                             <div class="totla-earning">
-                                $ <b>0.0200</b>
+                                BDT <b>{{ $job_post->category->worker_earning }}</b>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="recent-activity-item-outer">
+                @endforeach
+                {{--  <div class="recent-activity-item-outer">
                     <div class="text-right text-blue">6 minutes ago</div>
                     <div class="item-title">
                         <span>Install and Register App </span>
@@ -203,7 +204,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>  --}}
             </div>
         </div>
     </section>
@@ -212,22 +213,26 @@
             <div class="col-md-8 m-auto">
                 <div class="video-section-top-content">
                     <h3 class="video-section-top-title">
-                        How <span class="extra-color">BD Micro Jobs</span> Works ? And How You Can <span>Get Paid ?</span>
+                        {{--  How <span class="extra-color">BD Micro Jobs</span> Works ? And How You Can <span>Get Paid ?</span>  --}}
+                        <span>{{ $homepage->how_works_title }}</span>
                     </h3>
                     <div class="video-section-top-des-outer">
                         <p class="video-section-top-des">
+                            {{ $homepage->how_works_description }}
+                        </p>
+                        {{--  <p class="video-section-top-des">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Congue quam id a, nam ipsum euismod vulputate et aliquam. Tortor ipsum dolor sem venenatis. Nec sagittis eleifend sit sem enim arcu
                         </p>
                         <p class="video-section-top-des">
                             Tortor ipsum dolor sem venenatis. Nec sagittis eleifend sit sem enim arcu. Eget faucibus vitae mauris convallis felis, sed dolor massa.
-                        </p>
+                        </p>  --}}
                     </div>
                 </div>
             </div>
         </div>
         <div class="video-section-outer">
             <div class="video-section-image-outer">
-                <img src="{{ asset('/frontend/') }}/assets/images/video-bg.png">
+                <img src="{{ asset('/homepage/'.$homepage->footer_image) }}">
             </div>
             <div class="video-icon-outer">
                 <i class="fas fa-play-circle"></i>
@@ -238,10 +243,11 @@
         <div class="container">
             <div class="col-md-8 m-auto">
                 <h3 class="signup-now-section-title">
-                    <span>Sign Up Now</span> & Get Busy With Lots Of <span class="extra-color">Earning Sources</span>
+                    {{--  <span>Sign Up Now</span> & Get Busy With Lots Of <span class="extra-color">Earning Sources</span>  --}}
+                    <span class="extra-color">{{ $homepage->footer_title }}</span>
                 </h3>
                 <p class="signup-now-section-des">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Congue quam id a, nam ipsum euismod vulputate et aliquam. Tortor ipsum dolor sem venenatis. Nec sagittis eleifend sit sem enim arcu.
+                    {{ $homepage->footer_description }}
                 </p>
                 <div class="section-btn-outer">
                     <button type="button" class="section-btn-inner">
@@ -251,7 +257,7 @@
             </div>
         </div>
     </section>
-    <section class="faq-section-wrapper">
+    {{-- <section class="faq-section-wrapper">
         <div class="container">
             <div class="col-md-8 m-auto">
                 <h3 class="faq-section-title">
@@ -267,6 +273,6 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 </main>
 @endsection

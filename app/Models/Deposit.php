@@ -10,4 +10,9 @@ class Deposit extends Model
     use HasFactory;
     protected $table='deposits';
     protected $guarded = [];
+
+    public function deposit()
+    {
+        return $this->morphOne(Notification::class, 'notifiable');
+    }
 }

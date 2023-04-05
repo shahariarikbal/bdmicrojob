@@ -30,7 +30,8 @@
                           <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Estimated Price</th>
+                            <th scope="col">Estimated Commission</th>
+                            <th scope="col">Each Worker Earning</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>
                           </tr>
@@ -40,7 +41,8 @@
                             <tr>
                                 <th>{{ $loop->index+1 }}</th>
                                 <td>{{ $category->name }}</td>
-                                <td>{{ $category->price }}tk</td>
+                                <td>{{ $category->price }}%</td>
+                                <td>{{ $category->worker_earning }}tk</td>
                                 <td>
                                     @if($category->status == 1)
                                     <a href="#" class="btn btn-sm btn-success">Active</a>
@@ -49,8 +51,12 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if ($category->status==true)
+                                    <a href="{{ url('admin/category/inactive' , $category->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger">Inactivate</a>
+                                    @elseif ($category->status==false)
+                                    <a href="{{ url('admin/category/active' , $category->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-success">Activate</a>
+                                    @endif
                                     <a href="{{ url('admin/category/edit' , $category->id) }}" class="btn btn-sm btn-success">Edit</a>
-                                    <a href="{{ url('admin/category/delete' , $category->id) }}" class="btn btn-sm btn-danger">Delete</a>
                                 </td>
                             </tr>
                             @endforeach
