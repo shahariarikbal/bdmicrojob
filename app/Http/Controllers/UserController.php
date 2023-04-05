@@ -14,6 +14,7 @@ use App\Models\PostSubmit;
 use App\Models\Notification;
 use App\Models\Deposit;
 use App\Models\Withdraw;
+use App\Models\MarqueeText;
 use Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -122,14 +123,16 @@ class UserController extends Controller
 
     public function showMyTask()
     {
+        $marquee_text = MarqueeText::where('page_name','may_task')->first();
         $post_submits = PostSubmit::where('user_id',Auth::user()->id)->with('post')->Paginate(10);
-        return view('frontend.auth.user.my-task', compact('post_submits'));
+        return view('frontend.auth.user.my-task', compact('post_submits', 'marquee_text'));
     }
 
     public function showAcceptedTask()
     {
+        $marquee_text = MarqueeText::where('page_name','accepted_task')->first();
         $accepted_tasks = PostSubmit::where('user_id',Auth::user()->id)->where('status', '1')->with('post')->Paginate(10);
-        return view('frontend.auth.user.accepted-task', compact('accepted_tasks'));
+        return view('frontend.auth.user.accepted-task', compact('accepted_tasks', 'marquee_text'));
     }
 
     public function showJobDetails($id)

@@ -10,7 +10,7 @@
             <div class="card">
                 <div class="card-header border-0">
                     <marquee style="color: green; padding: 10px; font-size: 16px; border-radius: 5px; border: 1px solid blue;" behavior="scroll">
-                        Your Withdraw Requests
+                        {{ $marquee_text->marquee_text }}
                     </marquee>
                     <br />
                     <br />

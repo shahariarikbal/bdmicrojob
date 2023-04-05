@@ -10,8 +10,7 @@
             <div class="card">
                 <div class="card-header border-0">
                     <marquee style="color: green; padding: 10px; font-size: 16px; border-radius: 5px; border: 1px solid blue;" behavior="scroll">
-                        Hello Sir, Each task can take a maximum of 48 hours to complete rating, Please wait ! For the information of all, it is informed that in the case of job report, all should report using appropriate and fluent words. If payment is
-                        not received within 48 hours of completion of work then report should be made. If someone uses any kind of obscene words before the specified time or in case of report, his user ID will be banned. Thank you.
+                        {{ $marquee_text->marquee_text }}
                     </marquee>
                     <br />
                     <br />

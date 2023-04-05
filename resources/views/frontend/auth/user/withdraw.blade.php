@@ -12,7 +12,7 @@
                     <h2 class="text-center m-0 text-blue deposit-sec-title">Withdraw</h2>
                     <div class="card-body">
                         <div>
-                            <p class="deposit-sec-notice" style="padding: 5px; border: 2px solid #7E41C2; border-radius: 4px;">NOTICE : Minimum withdraw amount: 100tk with 15% commission. Thank You</p>
+                            <p class="deposit-sec-notice" style="padding: 5px; border: 2px solid #7E41C2; border-radius: 4px;">{{ $marquee_text->marquee_text }}</p>
                         </div>
                         <form action="{{ url('/withdraw/earning') }}" method="POST" class="deposit-form form-group">
                             @csrf
