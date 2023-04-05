@@ -172,6 +172,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
     padding: 2px 0;
     position: fixed;
     height: 100%;
+    overflow: scroll;
 }
 
 .sidebar:hover {
@@ -3194,8 +3195,11 @@ label.job-report-form-label {
         justify-content: center;
         margin-top: 20px;
     }
-    .footer-policies-list {
-        justify-content: center;
+}
+
+@media screen and ( max-width: 767px ){
+    footer.footer-section {
+        display: none;
     }
 }
 
@@ -3254,4 +3258,8 @@ label.job-report-form-label {
 .back-home-btn-inner:hover {
     transform: translateY(-5px);
     color: #fff!important;
+}
+
+.profile-update-section {
+    margin-bottom: 80px;
 }

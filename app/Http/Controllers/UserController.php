@@ -344,4 +344,11 @@ class UserController extends Controller
             return redirect()->back();
         }
     }
+
+    public function userProfileUpdate()
+    {
+ 
+        return view('frontend.auth.user.profile');
+
+    }
 }

@@ -35,6 +35,7 @@ Route::get('/submitted/job', [\App\Http\Controllers\UserController::class, 'show
 Route::get('/submitted/job/details/{id}', [\App\Http\Controllers\UserController::class, 'showSubmittedJobDetails']);
 Route::get('/submitted/job/approve/{id}', [\App\Http\Controllers\UserController::class, 'submittedJobApprove']);
 Route::get('/submitted/job/reject/{id}', [\App\Http\Controllers\UserController::class, 'submittedJobReject']);
+Route::get('/profile/update', [\App\Http\Controllers\UserController::class, 'userProfileUpdate']);
 
 //Deposit and Withdraw...
 Route::get('/instant/deposit', [App\Http\Controllers\Payment\DepositController::class, 'showDeposit']);

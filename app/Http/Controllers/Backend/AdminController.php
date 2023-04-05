@@ -344,4 +344,10 @@ class AdminController extends Controller
 
     }
 
+    public function adminProfileUpdate ()
+    {
+        return view('backend.profile.show-profile');
+
+    }
+
 }

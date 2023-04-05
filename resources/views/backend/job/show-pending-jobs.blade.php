@@ -17,7 +17,11 @@
     <div class="container-fluid pb-0">
         <div class="card">
             <div class="card-header">
-                <h2>Pending Job list</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2>Pending Job list</h2>
+                    </div>                    
+                </div>
             </div>
             <div class="card-body">
                 <div class="col-md-12">

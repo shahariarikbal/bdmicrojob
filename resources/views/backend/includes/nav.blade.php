@@ -49,7 +49,7 @@
             {{Session::get('admin_name')}}
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="#"><i class="fas fa-fw fa-user-circle"></i> &nbsp; My Account</a>
+            <a class="dropdown-item" href="{{ url('/admin/profile/update') }}"><i class="fas fa-fw fa-user-circle"></i> &nbsp; My Account</a>
             {{--  <a class="dropdown-item" href="#"><i class="fas fa-fw fa-video"></i> &nbsp; Subscriptions</a>  --}}
             <a class="dropdown-item" href="{{ url('/admin/settings') }}"><i class="fas fa-fw fa-cog"></i> &nbsp; Settings</a>
             <div class="dropdown-divider"></div>
