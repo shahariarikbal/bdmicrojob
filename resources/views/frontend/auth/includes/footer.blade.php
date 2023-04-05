@@ -1,7 +1,7 @@
 <footer class="footer-section">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-9 col-sm-12">
+            <div class="col-lg-9 col-md-8 col-sm-12">
                 <ul class="footer-policies-list">
                 	<li class="footer-policies-list-item">
                 		<a href="{{ url('/about') }}" class="footer-policies-list-item-link">
@@ -30,7 +30,7 @@
                 	</li>
                 </ul>
             </div>
-            <div class="col-lg-3 col-sm-12 text-right">
+            <div class="col-lg-3 col-md-2 col-sm-12 text-right">
             	<ul class="footer-social-list">
             		<li class="footer-social-list-item">
             			<a href="{{ $setting->facebook }}" class="footer-social-list-item-link" target="_blank">

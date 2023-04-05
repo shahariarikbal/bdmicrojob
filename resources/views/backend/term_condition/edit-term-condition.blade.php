@@ -19,10 +19,12 @@
             <div class="card-header">
             	<div class="row">
             		<div class="col-md-6">
-                		<h2>Edit Term & Condition</h2>
+                		<h4>Edit Term & Condition</h4>
             		</div>
+                    <div class="col-md-6 text-right">
+                        <a href="{{ url('/admin/term-condition') }}" class="btn btn-primary">Back</a>
+                    </div>
             	</div>
-
             </div>
             <div class="card-body">
                 <div class="col-md-12">

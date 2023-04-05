@@ -1,7 +1,7 @@
-@extends('frontend.auth.master')
+@extends('backend.master')
 
 @section('title')
-	User Profile
+	Admin Profile
 @endsection
 
 @push('page-css')

@@ -18,7 +18,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="nid-details-back-btn-outer">
-                                <a href="{{ url('/admin/dashboard') }}" class="nid-details-back-btn-inner">Back</a>
+                                <a href="{{ url('/admin/jobs') }}" class="nid-details-back-btn-inner">Back</a>
                             </div>
                         </div>
                         <div class="col-md-6">

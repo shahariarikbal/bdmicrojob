@@ -16,7 +16,7 @@
             </div>
             @if($page == 'create')
             <div class="card-body">
-                <a href="{{ url('/admin/faqs') }}" class="btn btn-sm btn-primary mb-1">Faq List</a>
+                <a href="{{ url('/admin/faqs') }}" class="btn btn-sm btn-primary mb-2">Faq List</a>
                 <div class="col-md-12">
                     <form action="{{ url('/admin/faq/store') }}" method="post" class="contact-form form-group">
                         @csrf
