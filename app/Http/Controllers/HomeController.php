@@ -39,7 +39,7 @@ class HomeController extends Controller
     public function dashboard()
     {
         $auth_user = Auth::user();
-        if($auth_user->email_verified_at != null){
+        // if($auth_user->email_verified_at != null){
             $marquee_text = MarqueeText::where('page_name','dashboard')->first();
             $categories = Category::select(['id', 'name', 'status', 'price'])->orderBy('created_at', 'desc')->where('status', 1)->get();
             $sql = Post::with('specificTasks')->where('user_id','!=',Auth::user()->id)->where('is_approved', 1)->orderBy('created_at', 'desc');
@@ -48,12 +48,12 @@ class HomeController extends Controller
             }
             $posts = $sql->get();
             return view('frontend.auth.dashboard', compact('categories', 'posts', 'marquee_text'));
-        }
+        // }
 
-        else{
-            Auth::logout();
-            return redirect()->back()->with('error','Your email is not verified yet!!');
-        }
+        // else{
+        //     Auth::logout();
+        //     return redirect()->back()->with('error','Your email is not verified yet!!');
+        // }
     }
 
     public function membership()

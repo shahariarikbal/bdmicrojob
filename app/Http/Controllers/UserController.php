@@ -19,6 +19,7 @@ use Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
+use File;
 
 class UserController extends Controller
 {
@@ -45,6 +46,38 @@ class UserController extends Controller
         ]);
         Mail::to($request->email)->send(new UserRegisterEmail($user));
         return redirect()->back()->with('success', 'User has been register successfully, Please verify your email ASAP');
+    }
+
+    public function showForgotPassword(){
+        return view('auth.forgot-password');
+    }
+
+    public function storeForgotPassword (Request $request)
+    {
+        $user = User::where('email', $request->email)->first();
+        if($user){
+            $new_password = rand(0, 99999);
+            $user->password=bcrypt($new_password);
+            $user->update();
+
+            //Mail Send....
+            $user_email = $request->email;
+            $user_name = $user->name;
+            Mail::send('frontend.mail.forgot-password',  [
+                'new_password' => $new_password,
+                'name' => $user_name,
+            ],
+                function ($msg) use ($user_email){
+                    $msg->from('info@bdmicrojob.com', 'BDMicrojob');
+                    $msg->subject('Forgot password mail');
+                    $msg->to($user_email);
+                });
+            //Mail Send....
+            return redirect()->back()->with('success','A new password is sent in your email!!');
+        }
+        else{
+            return redirect()->back()->with('error','User with this email is not found!!');
+        }
     }
 
     public function verification($token = null)
@@ -124,7 +157,7 @@ class UserController extends Controller
     public function showMyTask()
     {
         $marquee_text = MarqueeText::where('page_name','may_task')->first();
-        $post_submits = PostSubmit::where('user_id',Auth::user()->id)->with('post')->Paginate(10);
+        $post_submits = PostSubmit::where('user_id',Auth::user()->id)->with('post')->orderBy('created_at', 'desc')->Paginate(10);
         return view('frontend.auth.user.my-task', compact('post_submits', 'marquee_text'));
     }
 
@@ -140,7 +173,7 @@ class UserController extends Controller
         if(Auth::user()->status==1){
             $postDetail = Post::with('specificTasks', 'jobSubmit')->where('user_id','!=', Auth::user()->id)->find($id);
             if($postDetail){
-                $isPostSubmit = PostSubmit::where('user_id', auth()->user()->id)->where('status','0')->orWhere('status','1')
+                $isPostSubmit = PostSubmit::where('user_id', auth()->user()->id)->where('status', '!=' ,'2')
                 ->orderBy('created_at','desc')->where('post_id', $postDetail->id)->first();
                 $totalPostSubmit = PostSubmit::where('post_id', $postDetail->id)->where('status','!=','2')->get()->count();
                 return view('frontend.auth.user.job.job-details', compact('postDetail', 'isPostSubmit', 'totalPostSubmit'));
@@ -226,7 +259,7 @@ class UserController extends Controller
 
     public function showSubmittedJob()
     {
-        $submitted_jobs = PostSubmit::where('job_owner_id', Auth::user()->id)->with('user','post')->Paginate(10);
+        $submitted_jobs = PostSubmit::where('job_owner_id', Auth::user()->id)->with('user','post')->orderBy('created_at', 'desc')->Paginate(10);
         return view('frontend.auth.user.submitted-job', compact('submitted_jobs'));
     }
 
