@@ -14,8 +14,23 @@
         <div class="card">
             <div class="card-header">
                 <div class="row">
-                    <div class="col-md-6">
-                        <h2>Members list</h2>
+                    <div class="col-md-4">
+                        <h4>Members list</h4>
+                    </div>
+                    <div class="col-md-8">
+                        <form action="{{ url('/admin/users') }}" method="get">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <input type="email" name="email" class="form-control" placeholder="Email" style="height: 40px;margin-bottom: 10px;">
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="input-group">
+                                        <button type="submit" class="input-group-text text-white btn btn-primary" style="margin-right: 5px">Search</button>
+                                        <a href="{{ url('/admin/users') }}" class="input-group-text text-white btn btn-danger">Clear</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                     {{-- <div class="col-md-6 text-right">
                         <a href="{{ url('/admin/dashboard') }}" class="btn btn-primary">Back</a>
@@ -39,7 +54,11 @@
                             <tr>
                                 <th>{{ $loop->index+1 }}</th>
                                 <td>
-                                    <img src="{{ asset('users/'.$user->avatar) }}" height="30" width="30" style="border-radius: 50%"/>{{ $user->name }}
+                                    @if ($user->avatar != null)
+                                    <img src="{{ asset('user/'.$user->avatar) }}" height="30" width="30" style="border-radius: 50%"/>
+                                    @else
+                                    <img src="{{ asset('backend/img/user-avater.png') }}" height="30" width="30" style="border-radius: 50%"/>
+                                    @endif{{ $user->name }}
                                 </td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->phone }}</td>
@@ -56,6 +75,7 @@
                             @endforeach
                         </tbody>
                       </table>
+                      {{ $users->links() }}
                 </div>
             </div>
         </div>
