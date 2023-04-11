@@ -34,7 +34,7 @@
                             </h5> --}}
                         </div>
                         <p class="deposit-sec-notice" style="padding: 5px; border: 2px solid #7E41C2; border-radius: 4px;">
-                            NOTICE : Minimum deposit amount: 100tk . Any deposits less then the minimum will not be credited or refunded.Thank You
+                            {{ $marquee_text->marquee_text }}
                         </p>
                         <form action="{{ url('/store/deposit') }}" method="POST" class="deposit-form form-group" enctype="multipart/form-data">
                             @csrf

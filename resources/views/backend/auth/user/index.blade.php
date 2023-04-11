@@ -13,7 +13,21 @@
     <div class="container-fluid pb-0">
         <div class="card">
             <div class="card-header">
-                <h2>Members list</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Members list</h4>
+                    </div>
+                    <div class="col-md-6">
+                        <form action="{{ url('/admin/users') }}" method="get" class="form-control">
+                            <input type="email" name="email" class="form-control">
+                            <button type="submit">Search</button>
+                            <a href="{{ url('/admin/users') }}">Clear</a>
+                        </form>
+                    </div>
+                    {{-- <div class="col-md-6 text-right">
+                        <a href="{{ url('/admin/dashboard') }}" class="btn btn-primary">Back</a>
+                    </div>  --}}
+                </div>
             </div>
             <div class="card-body">
                 <div class="col-md-12">
@@ -32,7 +46,11 @@
                             <tr>
                                 <th>{{ $loop->index+1 }}</th>
                                 <td>
-                                    <img src="{{ asset('users/'.$user->avatar) }}" height="30" width="30" style="border-radius: 50%"/>{{ $user->name }}
+                                    @if ($user->avatar != null)
+                                    <img src="{{ asset('user/'.$user->avatar) }}" height="30" width="30" style="border-radius: 50%"/>
+                                    @else
+                                    <img src="{{ asset('backend/img/user-avater.png') }}" height="30" width="30" style="border-radius: 50%"/>
+                                    @endif{{ $user->name }}
                                 </td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->phone }}</td>
@@ -42,7 +60,8 @@
                                     @else
                                         <a href="{{ url('/admin/inactive/'.$user->id) }}" class="btn btn-sm btn-warning">Inactive</a>
                                     @endif
-                                    <a href="{{ url('/admin/delete/'.$user->id) }}" class="btn btn-sm btn-danger">Delete</a>
+                                    <a href="{{ url('/admin/tip/'.$user->id) }}" class="btn btn-sm btn-danger">Tips</a>
+                                    {{--  <a href="{{ url('/admin/delete/'.$user->id) }}" class="btn btn-sm btn-danger">Delete</a>  --}}
                                 </td>
                               </tr>
                             @endforeach

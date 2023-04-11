@@ -29,19 +29,33 @@
     </div>
     <div class="video-block section-padding">
        <div class="row">
-          <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="col-xl-4 col-sm-6 mb-4">
              <div class="custom-card-one">
                 <div class="row">
                    <div class="col-md-4">
                     <img src="{{ asset('backend/') }}/img/Vector.png" style="height: 50px; margin-top: 25px; margin-left: 15px;"/>
                    </div>
                    <div class="col-md-8">
-                    <p class="earn-box-one">Subscription total amounts</p>
+                    <p class="earn-box-one">Approved Jobs</p>
+                    <p class="earn-box-one">100</p>
                    </div>
                </div>
              </div>
           </div>
-          <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="col-xl-4 col-sm-6 mb-4">
+            <div class="custom-card-one">
+               <div class="row">
+                  <div class="col-md-4">
+                   <img src="{{ asset('backend/') }}/img/Vector.png" style="height: 50px; margin-top: 25px; margin-left: 15px;"/>
+                  </div>
+                  <div class="col-md-8">
+                   <p class="earn-box-one">Pending Jobs</p>
+                   <p class="earn-box-one">100</p>
+                  </div>
+              </div>
+            </div>
+         </div>
+          {{--  <div class="col-xl-3 col-sm-6 mb-3">
              <div class="custom-card-two">
                 <div class="row">
                    <div class="col-md-4">
@@ -54,8 +68,8 @@
                    </div>
                </div>
              </div>
-          </div>
-          <div class="col-xl-3 col-sm-6 mb-3">
+          </div>  --}}
+          {{--  <div class="col-xl-3 col-sm-6 mb-3">
              <div class="custom-card-three">
                 <div class="row">
                    <div class="col-md-4">
@@ -66,15 +80,16 @@
                    </div>
                </div>
              </div>
-          </div>
-          <div class="col-xl-3 col-sm-6 mb-3">
+          </div>  --}}
+          <div class="col-xl-4 col-sm-6 mb-4">
              <div class="custom-card-four">
                 <div class="row">
                    <div class="col-md-4">
                     <img src="{{ asset('backend/') }}/img/Vector3.png" style="height: 50px; margin-top: 25px; margin-left: 15px;"/>
                    </div>
                    <div class="col-md-8">
-                    <p class="earn-box-one">Total users list</p>
+                    <p class="earn-box-one">Total users</p>
+                    <p class="earn-box-one">100</p>
                    </div>
                </div>
              </div>

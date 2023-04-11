@@ -1,7 +1,7 @@
 @extends('frontend.auth.master')
 
 @section('title')
-	Accepted Task
+	NID Details
 @endsection
 
 @section('content')

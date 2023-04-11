@@ -137,6 +137,7 @@
         .login-form{
             width: 100%;
             max-width: 360px;
+            padding: 20px 0;
         }
 
         .login-content-right img{
@@ -330,7 +331,7 @@
         <div class="login-content-right">
             <form action="{{ url('user/register') }}" method="POST" class="form-group login-form">
                 @csrf
-                <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/avatar.svg">
+                <img src="{{ asset('/logo/'.$setting->logo) }}" />
                 <h2 class="title">Registration</h2>
                 <div class="login-form-outer">
                     <div class="icon">
@@ -397,7 +398,7 @@
                       <input type="password" name="password_confirmation" class="input" required autocomplete="new-password">
                     </div>
                 </div>
-                <div class="login-form-outer">
+                <!-- <div class="login-form-outer">
                     <div class="icon">
                         <i class="fas fa-image"></i>
                     </div>
@@ -405,9 +406,9 @@
                       <h5>Image</h5>
                       <input type="file" name="avater" class="input" required>
                     </div>
-                </div>
-                <button type="submit" class="login-form-submit">Sign Up</button>
-                <a href="{{ route('login') }}" class="sign-in-link">Sign In</a>
+                </div> -->
+                <button type="submit" class="login-form-submit">Registration</button>
+                <a href="{{ route('login') }}" class="sign-in-link">Log In</a>
             </form>            
         </div>
     </div> 

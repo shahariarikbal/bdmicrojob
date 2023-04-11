@@ -937,6 +937,20 @@ button:hover {
     border-radius: 10px;
 }
 
+.dashboard-btn-inner {
+    border: none;
+    background: #7E41C2;
+    padding: 11px 20px;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 10px;
+    display: inline-block;
+    font-weight: 600;
+}
+
+.dashboard-btn-inner:hover {
+    color: #fff;
+}
 
 /*Sign up now section css End*/
 

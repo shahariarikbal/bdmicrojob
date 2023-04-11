@@ -25,7 +25,8 @@ class CategoryRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'price' => 'required',
+            'price' => 'required|numeric',
+            'worker_earning' => 'required|numeric',
         ];
     }
 }

@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('price');
+            $table->string('worker_earning');
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

@@ -9,10 +9,17 @@ use App\Models\UserVideo;
 use App\Models\Video;
 use App\Models\NidVerification;
 use App\Models\Notification;
+use App\Models\Contact;
+use App\Models\Tip;
+use App\Models\HomePage;
+use App\Models\AboutUs;
+use App\Http\Requests\HomePageRequest;
+use App\Http\Requests\TipRequest;
 use Hash;
 use Illuminate\Http\Request;
 use Session;
 use Str;
+use Auth;
 
 class AdminController extends Controller
 {
@@ -56,8 +63,12 @@ class AdminController extends Controller
     	return view('backend.dashboard');
     }
 
-    public function users()
+    public function users(Request $request)
     {
+        if($request->email){
+            $users = User::where('email', $request->email)->orderBy('created_at', 'desc')->paginate(10);
+            return view('backend.auth.user.index', compact('users'));
+        }
         $users = User::orderBy('created_at', 'desc')->paginate(10);
         return view('backend.auth.user.index', compact('users'));
     }
@@ -82,6 +93,12 @@ class AdminController extends Controller
         $user->delete();
         session()->flash('Success', 'User has been deleted.');
         return redirect()->back();
+    }
+
+    public function showInactiveUsers ()
+    {
+        $users = User::orderBy('created_at', 'desc')->where('status', '!=', 1)->paginate(10);
+        return view('backend.auth.user.inactive-user', compact('users'));
     }
 
 
@@ -161,5 +178,214 @@ class AdminController extends Controller
         }
     }
 
+    public function showContact ()
+    {
+        $contacts = Contact::Paginate(10);
+        return view ('backend.contact.show-contacts', compact('contacts'));
+    }
+
+    public function deleteContact ($id)
+    {
+        $contact = Contact::find($id);
+        $contact->delete();
+        return redirect()->back()->with('Success','Deleted Successfully!!');
+    }
+
+    public function showHomePage ()
+    {
+        $homepage = HomePage::first();
+        return view ('backend.homepage.show-homepage', compact('homepage'));
+    }
+
+    public function updateHomePage (HomePageRequest $request)
+    {
+        $homepage = HomePage::first();
+        if($request->hasFile('slider_image')){
+            if(file_exists(public_path('homepage/'.$homepage->slider_image))){
+                File::delete(public_path('homepage/'.$homepage->slider_image));
+                $name = rand(0, 99999) . '.' . $request->slider_image->getClientOriginalExtension();
+                $request->slider_image->move('homepage/', $name);
+                $homepage->slider_image = $name;
+            }
+            else{
+                $name = rand(0, 99999) . '.' . $request->slider_image->getClientOriginalExtension();
+                $request->slider_image->move('homepage/', $name);
+                $homepage->slider_image = $name;
+            }
+
+        }
+
+        if($request->hasFile('first_image')){
+            if(file_exists(public_path('homepage/'.$homepage->first_image))){
+                File::delete(public_path('homepage/'.$homepage->first_image));
+                $name = rand(0, 99999) . '.' . $request->first_image->getClientOriginalExtension();
+                $request->first_image->move('homepage/', $name);
+                $homepage->first_image = $name;
+            }
+            else{
+                $name = rand(0, 99999) . '.' . $request->first_image->getClientOriginalExtension();
+                $request->first_image->move('homepage/', $name);
+                $homepage->first_image = $name;
+            }
+
+        }
+
+        if($request->hasFile('second_image')){
+            if(file_exists(public_path('homepage/'.$homepage->second_image))){
+                File::delete(public_path('homepage/'.$homepage->second_image));
+                $name = rand(0, 99999) . '.' . $request->second_image->getClientOriginalExtension();
+                $request->second_image->move('homepage/', $name);
+                $homepage->second_image = $name;
+            }
+            else{
+                $name = rand(0, 99999) . '.' . $request->second_image->getClientOriginalExtension();
+                $request->second_image->move('homepage/', $name);
+                $homepage->second_image = $name;
+            }
+
+        }
+
+        if($request->hasFile('footer_image')){
+            if(file_exists(public_path('homepage/'.$homepage->footer_image))){
+                File::delete(public_path('homepage/'.$homepage->footer_image));
+                $name = rand(0, 99999) . '.' . $request->footer_image->getClientOriginalExtension();
+                $request->footer_image->move('homepage/', $name);
+                $homepage->footer_image = $name;
+            }
+            else{
+                $name = rand(0, 99999) . '.' . $request->footer_image->getClientOriginalExtension();
+                $request->footer_image->move('homepage/', $name);
+                $homepage->footer_image = $name;
+            }
+
+        }
+
+        $homepage->slider_title = $request->slider_title;
+        $homepage->first_image_title = $request->first_image_title;
+        $homepage->first_image_description = $request->first_image_description;
+        $homepage->second_image_title = $request->second_image_title;
+        $homepage->second_image_description = $request->second_image_description;
+        $homepage->how_works_title = $request->how_works_title;
+        $homepage->how_works_description = $request->how_works_description;
+        $homepage->footer_title = $request->footer_title;
+        $homepage->footer_description = $request->footer_description;
+
+        $homepage->save();
+        return redirect()->back()->with('success', 'Updated Successfully');
+    }
+
+    public function showTip ($user_id)
+    {
+        $user = User::find($user_id);
+        return view ('backend.tip.show-tip-page', compact('user'));
+    }
+
+    public function storeTip (TipRequest $request, $user_id)
+    {
+        $user = User::find($user_id);
+        if($user){
+            $tip = new Tip();
+            $tip->user_id = $user_id;
+            $tip->tips_type = $request->tips_type;
+            $tip->tips_amount = $request->tips_amount;
+
+            if($tip->save()){
+                if($request->tips_type=='earning'){
+                    $user->total_income = $user->total_income + $request->tips_amount;
+                    $user->save();
+                    //Notification....
+                    $notification = new Notification();
+                    $notification->message = 'You have received tips'.' '.$request->tips_amount.' '.'tk on earning from admin!!';
+                    $notification->specific_user_id = $user_id;
+                    $notification->notification_for = "user";
+                    $tip->tip()->save($notification);
+                    //Notification....
+                    return redirect()->back()->with('success', 'Tips are given successfully!!');
+                }
+                elseif($request->tips_type=='deposit'){
+                    $user->total_deposit = $user->total_deposit + $request->tips_amount;
+                    $user->save();
+                    //Notification....
+                    $notification = new Notification();
+                    $notification->message = 'You have received tips'.' '.$request->tips_amount.' '.'tk on deposit from admin!!';
+                    $notification->specific_user_id = $user_id;
+                    $notification->notification_for = "user";
+                    $tip->tip()->save($notification);
+                    //Notification....
+                    return redirect()->back()->with('success', 'Tips are given successfully!!');
+                }
+            }
+            else{
+                return redirect()->back()->with('error', 'Failed to give tips!!');
+            }
+        }
+        else{
+            return redirect()->back()->with('error', 'User not found!!');
+        }
+    }
+
+    public function showAboutUs ()
+    {
+        $about_us = AboutUs::all();
+        return view ('backend.about_us.show-about-us', compact('about_us'));
+    }
+
+    public function editAboutUs ($id)
+    {
+        $about_us = AboutUs::find($id);
+        return view ('backend.about_us.edit-about-us', compact('about_us'));
+    }
+
+    public function updateAboutUs (Request $request, $id)
+    {
+        $about_us = AboutUs::find($id);
+
+        $about_us->title = $request->title;
+        $about_us->short_description = $request->short_description;
+        $about_us->long_description = $request->long_description;
+
+        $about_us->save();
+        return redirect('/admin/about-us')->with('success', 'Updated Successfully!');
+
+    }
+
+    public function adminProfileUpdate ()
+    {
+        $auth_admin = Admin::first();
+        return view('backend.profile.show-profile', compact('auth_admin'));
+
+    }
+
+    public function storeProfileUpdate (Request $request, $id)
+    {
+        $this->validate($request, [
+            'email' => 'required|email',
+            'old_password' => 'required',
+            'new_password' => 'required',
+            'password_confirmation' => 'required',
+        ]);
+        $admin = Admin::find(1);
+        if(isset($request->new_password)){
+            if (password_verify($request->old_password, $admin->password)){
+                if($request->new_password==$request->password_confirmation){
+                    $admin->password=bcrypt($request->new_password);
+                    $admin->email=$request->email;
+                    $admin->update();
+                    return redirect('/admin/dashboard')->with('success', 'Updated Successfully');
+                }
+                else{
+                    return redirect()->back()->with('error', 'Confirm Password is not Matched!!');
+                }
+            }
+            else{
+                return redirect()->back()->with('error', 'Old Password does not Match!!');
+            }
+        }
+        else{
+            $admin->email=$request->email;
+            $admin->update();
+            return redirect('/admin/dashboard')->with('success', 'Updated Successfully');
+        }
+    }
 
 }

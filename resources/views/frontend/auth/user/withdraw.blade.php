@@ -12,7 +12,7 @@
                     <h2 class="text-center m-0 text-blue deposit-sec-title">Withdraw</h2>
                     <div class="card-body">
                         <div>
-                            <p class="deposit-sec-notice" style="padding: 5px; border: 2px solid #7E41C2; border-radius: 4px;">NOTICE : Minimum withdraw amount: 100tk. Thank You</p>
+                            <p class="deposit-sec-notice" style="padding: 5px; border: 2px solid #7E41C2; border-radius: 4px;">{{ $marquee_text->marquee_text }}</p>
                         </div>
                         <form action="{{ url('/withdraw/earning') }}" method="POST" class="deposit-form form-group">
                             @csrf
@@ -94,13 +94,13 @@
                                         @endif
                                     </div>
                                 </div>
-                                @if ($auth_user->nid_verified==1 && $auth_user->total_income>=100)
+                                @if ($auth_user->nid_verified==1 && $auth_user->total_income>=115)
                                 <button type="submit" class="deposit-form-btn">Continue to payment</button>
-                                @elseif ($auth_user->nid_verified!=1 && $auth_user->total_income>=100)
+                                @elseif ($auth_user->nid_verified!=1 && $auth_user->total_income>=115)
                                 <div><h1 class="text-danger">Your NID/Birth Certificate is not verified yet!!</h1></div>
-                                @elseif ($auth_user->nid_verified==1 && $auth_user->total_income<100)
+                                @elseif ($auth_user->nid_verified==1 && $auth_user->total_income<115)
                                 <div><h1 class="text-danger">Insufficient Earning Balance!!</h1></div>
-                                @elseif ($auth_user->nid_verified!=1 && $auth_user->total_income<100)
+                                @elseif ($auth_user->nid_verified!=1 && $auth_user->total_income<115)
                                 <div><h1 class="text-danger">NID is not Verified & Insufficient Earning Balance!!</h1></div>
                                 @endif
                             </div>

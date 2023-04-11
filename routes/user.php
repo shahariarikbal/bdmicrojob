@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/user/register/form', [\App\Http\Controllers\UserController::class, 'userRegister']);
 Route::post('/user/register', [\App\Http\Controllers\UserController::class, 'userRegisterStore']);
+Route::get('/verification/{token}', [\App\Http\Controllers\UserController::class, 'verification']);
 
 Route::get('/post/job', [\App\Http\Controllers\UserController::class, 'showPostJob']);
 Route::post('/post/store', [\App\Http\Controllers\Backend\JobController::class, 'postStore']);
@@ -28,6 +29,15 @@ Route::post('/report/submit/{id}', [\App\Http\Controllers\UserController::class,
 Route::get('/my/post', [\App\Http\Controllers\UserController::class, 'showMyPost']);
 Route::post('/post/submit/{id}', [\App\Http\Controllers\UserController::class, 'postSubmit']);
 Route::get('/submitted/job', [\App\Http\Controllers\UserController::class, 'showSubmittedJob']);
+// Route::get('/post/delete/{id}', [\App\Http\Controllers\UserController::class, 'postDelete']);
+Route::get('/post/edit/{id}', [\App\Http\Controllers\UserController::class, 'postEdit']);
+Route::get('/submitted/job', [\App\Http\Controllers\UserController::class, 'showSubmittedJob']);
+Route::get('/submitted/job/details/{id}', [\App\Http\Controllers\UserController::class, 'showSubmittedJobDetails']);
+Route::get('/submitted/job/approve/{id}', [\App\Http\Controllers\UserController::class, 'submittedJobApprove']);
+Route::get('/submitted/job/reject/{id}', [\App\Http\Controllers\UserController::class, 'submittedJobReject']);
+Route::get('/profile/update', [\App\Http\Controllers\UserController::class, 'userProfileUpdate']);
+Route::post('/profile/update/{id}', [\App\Http\Controllers\UserController::class, 'storeProfileUpdate']);
+Route::post('/password/update/{id}', [\App\Http\Controllers\UserController::class, 'storePasswordUpdate']);
 
 //Deposit and Withdraw...
 Route::get('/instant/deposit', [App\Http\Controllers\Payment\DepositController::class, 'showDeposit']);
@@ -41,3 +51,4 @@ Route::get('/instant/withdraw/history', [App\Http\Controllers\Payment\DepositCon
 Route::get('/nid_notification_seen/{id}', [\App\Http\Controllers\UserController::class, 'nidNotificationSeen']);
 Route::get('/deposit_notification_seen/{id}', [\App\Http\Controllers\UserController::class, 'depositNotificationSeen']);
 Route::get('/withdraw_notification_seen/{id}', [\App\Http\Controllers\UserController::class, 'withdrawNotificationSeen']);
+Route::get('/tip_notification_seen/{id}', [\App\Http\Controllers\UserController::class, 'tipNotificationSeen']);

@@ -15,10 +15,12 @@ class CreatePostSubmitsTable extends Migration
     {
         Schema::create('post_submits', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('job_owner_id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('post_id');
             $table->longText('work_prove');
             $table->string('images');
+            $table->string('status')->default('0')->comments('0=>pending, 1=>approved, 2=>rejected');
             $table->timestamps();
         });
     }

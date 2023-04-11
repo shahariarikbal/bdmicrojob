@@ -31,6 +31,16 @@
                         <hr>
                         <label for="title" class="mb-2">Select Category</label><span style="color: red; font-size: 16px;"> *</span><br>
                         <div class="category-items-wrap">
+                            <!-- <div class="row">
+                                @foreach($categories as $category)
+                                <div class="col-md-2 p-0">
+                                    <div class="category-item-outer">
+                                        <input type="radio" id="{{ 'cat'. $category->id }}" name="cat_id" value="{{ $category->id }}" onclick="categoryPrice(this)" class="category-item-radio">
+                                        <label for="{{ 'car'. $category->name }}" class="category-item-label">{{ ucfirst($category->name) }}</label>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div> -->
                             @foreach($categories as $category)
                                 <div class="category-item-outer">
                                     <input type="radio" id="{{ 'cat'. $category->id }}" name="cat_id" value="{{ $category->id }}" onclick="categoryPrice(this)" class="category-item-radio">
@@ -69,14 +79,14 @@
                                 <div class="left-content">
                                     <label for="worker_number">Worker Need</label><span style="color: red; font-size: 16px;"> *</span><br>
                                     <input type="number" name="worker_number" id="worker_number" min="1" placeholder="Minimum 1" class="form-control">
-                                    <label for="worker_earn">Each worker Earn</label><span style="color: red; font-size: 16px;"> *</span><br>
-                                    <input type="number" name="worker_earn" id="worker_earn" onblur="totalWorkerEarn()" placeholder="min 0.1" min="0.1" step="0.001" class="form-control">
-                                    <label for="total_cost">Total Cost</label><span style="color: red; font-size: 16px;"> *</span><br>
-                                    <input type="number" readonly name="total_cost" id="total_cost" placeholder="min 0.1" step="0.001" class="form-control">
+                                    {{--  <label for="worker_earn">Each worker Earn</label><span style="color: red; font-size: 16px;"> *</span><br>
+                                    <input type="number" name="worker_earn" id="worker_earn" onblur="totalWorkerEarn()" placeholder="min 0.1" min="0.1" step="0.001" class="form-control">  --}}
+                                    {{--  <label for="total_cost">Total Cost</label><span style="color: red; font-size: 16px;"> *</span><br>
+                                    <input type="number" readonly name="total_cost" id="total_cost" placeholder="min 0.1" step="0.001" class="form-control">  --}}
                                     <label for="required_screenshot">Require Screenshots</label><span style="color: red; font-size: 16px;"> *</span><br>
                                     <input type="number" name="required_screenshot" placeholder="0" min="1" max="2" class="form-control">
-                                    <label for="estimated_date">Estimated Day</label><span style="color: red; font-size: 16px;"> *</span><br>
-                                    <input type="number" name="estimated_date" placeholder="7 day" min="1" max="7" class="form-control">
+                                    {{--  <label for="estimated_date">Estimated Day</label><span style="color: red; font-size: 16px;"> *</span><br>
+                                    <input type="number" name="estimated_date" placeholder="7 day" min="1" max="7" class="form-control">  --}}
                                 </div>
                             </div>
                         </div>
