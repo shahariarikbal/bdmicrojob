@@ -19,6 +19,7 @@ use Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
+use File;
 
 class UserController extends Controller
 {

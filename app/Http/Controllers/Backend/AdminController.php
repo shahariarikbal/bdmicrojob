@@ -63,8 +63,12 @@ class AdminController extends Controller
     	return view('backend.dashboard');
     }
 
-    public function users()
+    public function users(Request $request)
     {
+        if($request->email){
+            $users = User::where('email', $request->email)->orderBy('created_at', 'desc')->paginate(10);
+            return view('backend.auth.user.index', compact('users'));
+        }
         $users = User::orderBy('created_at', 'desc')->paginate(10);
         return view('backend.auth.user.index', compact('users'));
     }
