@@ -157,7 +157,7 @@ class UserController extends Controller
     public function showMyTask()
     {
         $marquee_text = MarqueeText::where('page_name','may_task')->first();
-        $post_submits = PostSubmit::where('user_id',Auth::user()->id)->with('post')->Paginate(10);
+        $post_submits = PostSubmit::where('user_id',Auth::user()->id)->with('post')->orderBy('created_at', 'desc')->Paginate(10);
         return view('frontend.auth.user.my-task', compact('post_submits', 'marquee_text'));
     }
 
@@ -259,7 +259,7 @@ class UserController extends Controller
 
     public function showSubmittedJob()
     {
-        $submitted_jobs = PostSubmit::where('job_owner_id', Auth::user()->id)->with('user','post')->Paginate(10);
+        $submitted_jobs = PostSubmit::where('job_owner_id', Auth::user()->id)->with('user','post')->orderBy('created_at', 'desc')->Paginate(10);
         return view('frontend.auth.user.submitted-job', compact('submitted_jobs'));
     }
 
