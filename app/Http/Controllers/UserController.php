@@ -47,6 +47,10 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'User has been register successfully, Please verify your email ASAP');
     }
 
+    public function showForgotPassword(){
+        return view('auth.forgot-password');
+    }
+
     public function verification($token = null)
     {
         if($token === null){

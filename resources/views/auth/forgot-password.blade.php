@@ -305,43 +305,22 @@
             </div>
             <div class="col-lg-6 col-md-12">
                 <div class="login-content-right">
-                    <form action="{{ route('login') }}" method="POST" class="form-group login-form animate-label">
+                    <form action="" method="POST" class="form-group login-form animate-label">
                         @csrf
                         <img src="{{ asset('/logo/'.$setting->logo) }}" />
                         <h2 class="title">Welcome</h2>
                         <div class="login-form-item-outer">
-                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            <input type="email" name="email" class="form-control" value="" required>
                             <label>
                                 <i class="fas fa-user"></i>
                                 Email
                             </label>
-                            @error('email')
-                                <h6 class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </h6>
-                            @enderror
                         </div>
-                        <div class="login-form-item-outer">
-                            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" required autocomplete="current-password">
-                            <label>
-                                <i class="fas fa-lock"></i>
-                                Password
-                            </label>
-                            @error('password')
-                                <h6 class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </h6>
-                            @enderror
-                        </div>
-                        <a href="{{ url('/forgot/password') }}" class="forgot-password-link">
-                            forgot password
-                        </a>
                         <div class="not-robot-outer">
                             <input type="checkbox" name="robot" id="robot" required>
                             <label for="robot">I am not a robot.</label>
                         </div>
-                        <button type="submit" class="login-form-submit">Log In</button>
-                        <a href="{{ route('register') }}" class="sign-in-link">Registration</a>
+                        <button type="submit" class="login-form-submit">Submit</button>
                     </form>
                 </div>
             </div>
