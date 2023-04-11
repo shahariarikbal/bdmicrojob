@@ -305,7 +305,7 @@
             </div>
             <div class="col-lg-6 col-md-12">
                 <div class="login-content-right">
-                    <form action="" method="POST" class="form-group login-form animate-label">
+                    <form action="{{ url('/store/forgot/password') }}" method="POST" class="form-group login-form animate-label">
                         @csrf
                         <img src="{{ asset('/logo/'.$setting->logo) }}" />
                         <h2 class="title">Welcome</h2>

@@ -12,7 +12,7 @@
 @section('content')
     <div class="container-fluid pb-0">
         <div class="card">
-            <div class="card-header">                
+            <div class="card-header">
                 <div class="row">
             		<div class="col-md-6">
                 		<h2>Inactive User list</h2>
@@ -40,7 +40,11 @@
                             <tr>
                                 <th>{{ $loop->index+1 }}</th>
                                 <td>
-                                    <img src="{{ asset('users/'.$user->avatar) }}" height="30" width="30" style="border-radius: 50%"/>{{ $user->name }}
+                                    @if ($user->avatar != null)
+                                    <img src="{{ asset('user/'.$user->avatar) }}" height="30" width="30" style="border-radius: 50%"/>
+                                    @else
+                                    <img src="{{ asset('backend/img/user-avater.png') }}" height="30" width="30" style="border-radius: 50%"/>
+                                    @endif{{ $user->name }}
                                 </td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->phone }}</td>

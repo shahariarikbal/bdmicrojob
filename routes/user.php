@@ -17,6 +17,7 @@ Route::get('/user/register/form', [\App\Http\Controllers\UserController::class, 
 Route::post('/user/register', [\App\Http\Controllers\UserController::class, 'userRegisterStore']);
 Route::get('/verification/{token}', [\App\Http\Controllers\UserController::class, 'verification']);
 Route::get('/forgot/password', [\App\Http\Controllers\UserController::class, 'showForgotPassword']);
+Route::post('/store/forgot/password', [\App\Http\Controllers\UserController::class, 'storeForgotPassword']);
 
 Route::get('/post/job', [\App\Http\Controllers\UserController::class, 'showPostJob']);
 Route::post('/post/store', [\App\Http\Controllers\Backend\JobController::class, 'postStore']);

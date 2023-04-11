@@ -52,6 +52,34 @@ class UserController extends Controller
         return view('auth.forgot-password');
     }
 
+    public function storeForgotPassword (Request $request)
+    {
+        $user = User::where('email', $request->email)->first();
+        if($user){
+            $new_password = rand(0, 99999);
+            $user->password=bcrypt($new_password);
+            $user->update();
+
+            //Mail Send....
+            $user_email = $request->email;
+            $user_name = $user->name;
+            Mail::send('frontend.mail.forgot-password',  [
+                'new_password' => $new_password,
+                'name' => $user_name,
+            ],
+                function ($msg) use ($user_email){
+                    $msg->from('info@bdmicrojob.com', 'BDMicrojob');
+                    $msg->subject('Forgot password mail');
+                    $msg->to($user_email);
+                });
+            //Mail Send....
+            return redirect()->back()->with('success','A new password is sent in your email!!');
+        }
+        else{
+            return redirect()->back()->with('error','User with this email is not found!!');
+        }
+    }
+
     public function verification($token = null)
     {
         if($token === null){
