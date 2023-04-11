@@ -342,30 +342,33 @@
                </div>
             </form>
              @foreach($posts as $post)
+            @php
+            $worker = \App\Models\PostSubmit::where('post_id', $post->id)->where('status','!=','2')->get()->count();
+            @endphp
+            @if ($worker<$post->worker_number)
                 <a href="{{ url('/job/details/'.$post->id) }}" class="job-item-outer">
-                   <div class="job-item-left">
-                      <h5 class="job-title">
-                         {{ $post->title }}
-                      </h5>
-                   </div>
-                   <div class="job-item-center">
-                      <div class="progress-label">
-                        @php
-                            $worker = \App\Models\PostSubmit::where('post_id', $post->id)->where('status','!=','2')->get()->count();
-                        @endphp
-                         {{ $worker }} OF {{ $post->worker_number }}
-                      </div>
-                      <div class="progress">
-                         <div class="progress-bar" role="progressbar" style="width: {{ $worker }}%" aria-valuenow="{{ $worker }}" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                   </div>
-                   <div class="job-item-right">
-                      <h4 class="totla-earning">
-                          ৳ {{ $post->worker_earn }}
-                      </h4>
-                   </div>
+                    <div class="job-item-left">
+                        <h5 class="job-title">
+                            {{ $post->title }}
+                        </h5>
+                    </div>
+                    <div class="job-item-center">
+                        <div class="progress-label">
+                            {{ $worker }} OF {{ $post->worker_number }}
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: {{ $worker }}%" aria-valuenow="{{ $worker }}"
+                                aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="job-item-right">
+                        <h4 class="totla-earning">
+                            ৳ {{ $post->worker_earn }}
+                        </h4>
+                    </div>
                 </a>
-             @endforeach
+                @endif
+                @endforeach
          </div>
       </div>
    </div>
