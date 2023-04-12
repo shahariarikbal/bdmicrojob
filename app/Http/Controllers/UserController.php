@@ -263,6 +263,18 @@ class UserController extends Controller
         return view('frontend.auth.user.submitted-job', compact('submitted_jobs'));
     }
 
+    public function showSubmittedApprovedJob ()
+    {
+        $submitted_jobs = PostSubmit::where('job_owner_id', Auth::user()->id)->where('status','1')->with('user','post')->orderBy('created_at', 'desc')->Paginate(10);
+        return view('frontend.auth.user.submitted-job', compact('submitted_jobs'));
+    }
+
+    public function showSubmittedRejectedJob ()
+    {
+        $submitted_jobs = PostSubmit::where('job_owner_id', Auth::user()->id)->where('status','2')->with('user','post')->orderBy('created_at', 'desc')->Paginate(10);
+        return view('frontend.auth.user.submitted-job', compact('submitted_jobs'));
+    }
+
     public function showSubmittedJobDetails ($id)
     {
         $submitted_job = PostSubmit::where('job_owner_id', Auth::user()->id)->where('id', $id)->with('user', 'post')->first();

@@ -12,7 +12,13 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="nid-details-back-btn-outer">
+                                @if ($submitted_job->status=='0')
                                 <a href="{{ url('/submitted/job/pending') }}" class="nid-details-back-btn-inner">Back</a>
+                                @elseif ($submitted_job->status=='1')
+                                <a href="{{ url('/submitted/job/approved') }}" class="nid-details-back-btn-inner">Back</a>
+                                @elseif ($submitted_job->status=='2')
+                                <a href="{{ url('/submitted/job/rejected') }}" class="nid-details-back-btn-inner">Back</a>
+                                @endif
                             </div>
                         </div>
                         <div class="col-md-6">
