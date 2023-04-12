@@ -17,12 +17,24 @@
        <span>Job Post</span>
        </a>
     </li>
-    <li class="nav-item {{ Request::url() == url('/submitted/job') ? 'active' : '' }}">
-       <a class="nav-link" href="{{ url('/submitted/job') }}">
+    <li class="nav-item {{ Request::url() == url('/submitted/job/pending') ? 'active' : '' }}">
+       <a class="nav-link" href="{{ url('/submitted/job/pending') }}">
          <i class="fas fa-check-circle"></i>
-       <span>Submitted Job</span>
+       <span class="">Pending-Job <span style="color:red; font-size:1rem">{{ $submitted_pending_job }}</span></span>
        </a>
     </li>
+    <li class="nav-item {{ Request::url() == url('/submitted/job/approved') ? 'active' : '' }}">
+      <a class="nav-link" href="{{ url('/submitted/job/approved') }}">
+        <i class="fas fa-check-circle"></i>
+      <span>Approved-Job</span>
+      </a>
+   </li>
+   <li class="nav-item {{ Request::url() == url('/submitted/job/rejected') ? 'active' : '' }}">
+      <a class="nav-link" href="{{ url('/submitted/job/rejected') }}">
+        <i class="fas fa-check-circle"></i>
+      <span>Rejected-Job</span>
+      </a>
+   </li>
     <li class="nav-item {{ Request::url() == url('/my/post') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('/my/post') }}">
         <i class="fas fa-tasks"></i>
