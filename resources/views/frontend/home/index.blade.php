@@ -13,6 +13,24 @@
             </h2>
         </div>
     </section>
+    <section class="counter-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="counter-item-outer">
+                        <h4 class="counter-title">Page Views</h4>
+                        <h3 class="counter-number">20</h3>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="counter-item-outer">
+                        <h4 class="counter-title">Total User</h4>
+                        <h3 class="counter-number">30</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="extra-earning-section-wrapper">
         <div class="container">
             <div class="row">

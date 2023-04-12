@@ -157,7 +157,7 @@ class UserController extends Controller
     public function showMyTask()
     {
         $marquee_text = MarqueeText::where('page_name','may_task')->first();
-        $post_submits = PostSubmit::where('user_id',Auth::user()->id)->with('post')->Paginate(10);
+        $post_submits = PostSubmit::where('user_id',Auth::user()->id)->with('post')->orderBy('created_at', 'desc')->Paginate(10);
         return view('frontend.auth.user.my-task', compact('post_submits', 'marquee_text'));
     }
 
@@ -173,7 +173,7 @@ class UserController extends Controller
         if(Auth::user()->status==1){
             $postDetail = Post::with('specificTasks', 'jobSubmit')->where('user_id','!=', Auth::user()->id)->find($id);
             if($postDetail){
-                $isPostSubmit = PostSubmit::where('user_id', auth()->user()->id)->where('status','0')->orWhere('status','1')
+                $isPostSubmit = PostSubmit::where('user_id', auth()->user()->id)->where('status', '!=' ,'2')
                 ->orderBy('created_at','desc')->where('post_id', $postDetail->id)->first();
                 $totalPostSubmit = PostSubmit::where('post_id', $postDetail->id)->where('status','!=','2')->get()->count();
                 return view('frontend.auth.user.job.job-details', compact('postDetail', 'isPostSubmit', 'totalPostSubmit'));
@@ -257,9 +257,21 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'Post has been deleted');
     }
 
-    public function showSubmittedJob()
+    public function showSubmittedPendingJob()
     {
-        $submitted_jobs = PostSubmit::where('job_owner_id', Auth::user()->id)->with('user','post')->Paginate(10);
+        $submitted_jobs = PostSubmit::where('job_owner_id', Auth::user()->id)->where('status','0')->with('user','post')->orderBy('created_at', 'desc')->Paginate(10);
+        return view('frontend.auth.user.submitted-job', compact('submitted_jobs'));
+    }
+
+    public function showSubmittedApprovedJob ()
+    {
+        $submitted_jobs = PostSubmit::where('job_owner_id', Auth::user()->id)->where('status','1')->with('user','post')->orderBy('created_at', 'desc')->Paginate(10);
+        return view('frontend.auth.user.submitted-job', compact('submitted_jobs'));
+    }
+
+    public function showSubmittedRejectedJob ()
+    {
+        $submitted_jobs = PostSubmit::where('job_owner_id', Auth::user()->id)->where('status','2')->with('user','post')->orderBy('created_at', 'desc')->Paginate(10);
         return view('frontend.auth.user.submitted-job', compact('submitted_jobs'));
     }
 

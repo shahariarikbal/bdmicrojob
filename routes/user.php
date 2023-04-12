@@ -30,7 +30,9 @@ Route::get('/job/report/{id}', [\App\Http\Controllers\UserController::class, 'sh
 Route::post('/report/submit/{id}', [\App\Http\Controllers\UserController::class, 'submitJobReport']);
 Route::get('/my/post', [\App\Http\Controllers\UserController::class, 'showMyPost']);
 Route::post('/post/submit/{id}', [\App\Http\Controllers\UserController::class, 'postSubmit']);
-Route::get('/submitted/job', [\App\Http\Controllers\UserController::class, 'showSubmittedJob']);
+Route::get('/submitted/job/pending', [\App\Http\Controllers\UserController::class, 'showSubmittedPendingJob']);
+Route::get('/submitted/job/approved', [\App\Http\Controllers\UserController::class, 'showSubmittedApprovedJob']);
+Route::get('/submitted/job/rejected', [\App\Http\Controllers\UserController::class, 'showSubmittedRejectedJob']);
 // Route::get('/post/delete/{id}', [\App\Http\Controllers\UserController::class, 'postDelete']);
 Route::get('/post/edit/{id}', [\App\Http\Controllers\UserController::class, 'postEdit']);
 Route::get('/submitted/job', [\App\Http\Controllers\UserController::class, 'showSubmittedJob']);
