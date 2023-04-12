@@ -173,7 +173,7 @@ class UserController extends Controller
         if(Auth::user()->status==1){
             $postDetail = Post::with('specificTasks', 'jobSubmit')->where('user_id','!=', Auth::user()->id)->find($id);
             if($postDetail){
-                $isPostSubmit = PostSubmit::where('user_id', auth()->user()->id)->where('status','0')->orWhere('status','1')
+                $isPostSubmit = PostSubmit::where('user_id', auth()->user()->id)->where('status', '!=' ,'2')
                 ->orderBy('created_at','desc')->where('post_id', $postDetail->id)->first();
                 $totalPostSubmit = PostSubmit::where('post_id', $postDetail->id)->where('status','!=','2')->get()->count();
                 return view('frontend.auth.user.job.job-details', compact('postDetail', 'isPostSubmit', 'totalPostSubmit'));
