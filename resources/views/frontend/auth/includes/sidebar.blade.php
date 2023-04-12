@@ -20,7 +20,7 @@
     <li class="nav-item {{ Request::url() == url('/submitted/job/pending') ? 'active' : '' }}">
        <a class="nav-link" href="{{ url('/submitted/job/pending') }}">
          <i class="fas fa-check-circle"></i>
-       <span class="">Pending-Job <span style="color:red; font-size:1rem">{{ $submitted_pending_job }}</span></span>
+       <span class="">Pending-Job <span class="pending-job-bagde">{{ $submitted_pending_job }}</span></span>
        </a>
     </li>
     <li class="nav-item {{ Request::url() == url('/submitted/job/approved') ? 'active' : '' }}">
