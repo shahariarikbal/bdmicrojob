@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="counter-item-outer">
-                        <h4 class="counter-title">Total User</h4>
+                        <h4 class="counter-title">Total Users</h4>
                         <h3 class="counter-number">{{ $userCount ?? 0 }}</h3>
                     </div>
                 </div>
