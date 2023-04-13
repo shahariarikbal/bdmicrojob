@@ -13,6 +13,7 @@ class PaymentController extends Controller
 {
     public function showDepositRequest ()
     {
+        visitor()->visit();
         $deposits = Deposit::orderBy('created_at','desc')->Paginate(10);
         return view('backend.payment.show-deposit', compact('deposits'));
     }
@@ -75,6 +76,7 @@ class PaymentController extends Controller
 
     public function showWithdrawRequest ()
     {
+        visitor()->visit();
         $withdraws = Withdraw::orderBy('created_at','desc')->with('user')->Paginate(10);
         return view('backend.payment.show-withdraw', compact('withdraws'));
     }

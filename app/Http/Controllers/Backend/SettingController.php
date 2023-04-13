@@ -10,6 +10,7 @@ class SettingController extends Controller
 {
     public function showSetting ()
     {
+        visitor()->visit();
         $setting = Setting::first();
         return view ('backend.setting.show-setting', compact('setting'));
     }

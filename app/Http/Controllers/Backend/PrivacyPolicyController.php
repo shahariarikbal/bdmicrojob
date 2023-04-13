@@ -10,12 +10,14 @@ class PrivacyPolicyController extends Controller
 {
     public function showPrivacyPolicy ()
     {
+        visitor()->visit();
         $privacy_policies = PrivacyPolicy::all();
         return view ('backend.privacy_policy.show-privacy-policy', compact('privacy_policies'));
     }
 
     public function createPrivacyPolicy ()
     {
+        visitor()->visit();
         return view('backend.privacy_policy.create-privacy-policy');
     }
 
@@ -31,6 +33,7 @@ class PrivacyPolicyController extends Controller
 
     public function editPrivacyPolicy ($id)
     {
+        visitor()->visit();
         $privacy_policy = PrivacyPolicy::find($id);
         return view('backend.privacy_policy.edit-privacy-policy', compact('privacy_policy'));
     }

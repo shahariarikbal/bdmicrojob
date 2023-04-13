@@ -10,12 +10,14 @@ class MarqueeController extends Controller
 {
     public function showMarqueeText ()
     {
+        visitor()->visit();
         $marquee_texts = MarqueeText::all();
         return view ('backend.marquee.show-marquee', compact('marquee_texts'));
     }
 
     public function editMarqueeText ($id)
     {
+        visitor()->visit();
         $marquee_text = MarqueeText::find($id);
         return view('backend.marquee.edit-marquee', compact('marquee_text'));
     }

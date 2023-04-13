@@ -101,12 +101,14 @@ class UserController extends Controller
 
     public function index()
     {
+        visitor()->visit();
         $categories = Category::select(['id', 'name', 'status', 'price'])->orderBy('created_at', 'desc')->where('status', 1)->get();
         return view('user.dashboard', compact('categories'));
     }
 
     public function showPostJob()
     {
+        visitor()->visit();
         $categories = Category::select(['id', 'name', 'status', 'price', 'worker_earning'])->orderBy('created_at', 'desc')->where('status', 1)->get();
         return view('frontend.auth.user.job.post-job', compact('categories'));
     }
@@ -114,6 +116,7 @@ class UserController extends Controller
     public function showAccountVarify()
     {
         if(Auth::check()){
+            visitor()->visit();
             $auth_user = Auth::user();
             $nid_verified = $auth_user->nid_verified;
             return view('frontend.auth.user.account-varify', compact('nid_verified'));
@@ -273,24 +276,28 @@ class UserController extends Controller
 
     public function showSubmittedPendingJob()
     {
+        visitor()->visit();
         $submitted_jobs = PostSubmit::where('job_owner_id', Auth::user()->id)->where('status','0')->with('user','post')->orderBy('created_at', 'desc')->Paginate(10);
         return view('frontend.auth.user.submitted-job', compact('submitted_jobs'));
     }
 
     public function showSubmittedApprovedJob ()
     {
+        visitor()->visit();
         $submitted_jobs = PostSubmit::where('job_owner_id', Auth::user()->id)->where('status','1')->with('user','post')->orderBy('created_at', 'desc')->Paginate(10);
         return view('frontend.auth.user.submitted-job', compact('submitted_jobs'));
     }
 
     public function showSubmittedRejectedJob ()
     {
+        visitor()->visit();
         $submitted_jobs = PostSubmit::where('job_owner_id', Auth::user()->id)->where('status','2')->with('user','post')->orderBy('created_at', 'desc')->Paginate(10);
         return view('frontend.auth.user.submitted-job', compact('submitted_jobs'));
     }
 
     public function showSubmittedJobDetails ($id)
     {
+        visitor()->visit();
         $submitted_job = PostSubmit::where('job_owner_id', Auth::user()->id)->where('id', $id)->with('user', 'post')->first();
         return view ('frontend.auth.user.submitted-job-details', compact('submitted_job'));
     }
@@ -407,6 +414,7 @@ class UserController extends Controller
     public function userProfileUpdate()
     {
         if(Auth::check()){
+            visitor()->visit();
             $auth_user = Auth::user();
             return view('frontend.auth.user.profile', compact('auth_user'));
         }

@@ -10,12 +10,14 @@ class TermConditionController extends Controller
 {
     public function showTermCondition ()
     {
+        visitor()->visit();
         $term_conditions = TermCondition::all();
         return view ('backend.term_condition.show-term-condition', compact('term_conditions'));
     }
 
     public function createTermCondition ()
     {
+        visitor()->visit();
         return view('backend.term_condition.create-term-condition');
     }
 
@@ -31,6 +33,7 @@ class TermConditionController extends Controller
 
     public function editTermCondition ($id)
     {
+        visitor()->visit();
         $term_condition = TermCondition::find($id);
         return view('backend.term_condition.edit-term-condition', compact('term_condition'));
     }
