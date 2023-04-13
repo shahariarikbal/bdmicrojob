@@ -115,6 +115,10 @@
             </div>
             <div class="recent-activity-items-wrapper">
                 @foreach ($job_posts as $job_post )
+                @php
+                    $worker = \App\Models\PostSubmit::where('post_id', $job_post->id)->where('status', '!=' ,'2')->get()->count();
+                @endphp
+                @if ($worker < $job_post->worker_number)
                 <div class="recent-activity-item-outer">
                     <div class="text-right text-blue">Posted Date: {{ date('m-d-Y', strtotime($job_post->created_at)) }}</div>
                     <div class="item-title">
@@ -127,14 +131,11 @@
                             </span>
                         </div>
                         <div class="item-center-content">
-                            @php
-                            $worker = \App\Models\PostSubmit::where('post_id', $job_post->id)->where('status','1')->get()->count();
-                            @endphp
                             <div class="progress-label">
                                 {{ $worker }} OF {{ $job_post->worker_number }}
                             </div>
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: {{ $worker }}%" aria-valuenow="{{ $worker }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar" role="progressbar" style="width: {{ $worker }}%" aria-valuenow="{{ $worker }}" aria-valuemin="0" aria-valuemax="{{ $job_post->worker_number }}"></div>
                             </div>
                         </div>
                         <div class="item-right-content">
@@ -144,6 +145,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
                 @endforeach
                 {{--  <div class="recent-activity-item-outer">
                     <div class="text-right text-blue">6 minutes ago</div>
