@@ -37,7 +37,7 @@
                    </div>
                    <div class="col-md-8">
                     <p class="earn-box-one">Approved Jobs</p>
-                    <p class="earn-box-one">100</p>
+                    <p class="earn-box-one">{{ $approved_job_count }}</p>
                    </div>
                </div>
              </div>
@@ -50,7 +50,7 @@
                   </div>
                   <div class="col-md-8">
                    <p class="earn-box-one">Pending Jobs</p>
-                   <p class="earn-box-one">100</p>
+                   <p class="earn-box-one">{{ $pending_job_count }}</p>
                   </div>
               </div>
             </div>
@@ -89,7 +89,7 @@
                    </div>
                    <div class="col-md-8">
                     <p class="earn-box-one">Total users</p>
-                    <p class="earn-box-one">100</p>
+                    <p class="earn-box-one">{{ $user_count }}</p>
                    </div>
                </div>
              </div>
@@ -129,6 +129,7 @@
                     </tr>
                 @endforeach
             </table>
+            {{ $visitors->links() }}
         </div>
     </div>
  </div>

@@ -13,6 +13,7 @@ use App\Models\Contact;
 use App\Models\Tip;
 use App\Models\HomePage;
 use App\Models\AboutUs;
+use App\Models\Post;
 use App\Http\Requests\HomePageRequest;
 use App\Http\Requests\TipRequest;
 use Hash;
@@ -65,7 +66,10 @@ class AdminController extends Controller
     public function dashboard(){
         visitor()->visit();
         $visitors = DB::table('shetabit_visits')->orderBy('created_at', 'desc')->paginate(50);
-    	return view('backend.dashboard', compact('visitors'));
+        $user_count = User::count();
+        $pending_job_count = Post::where('is_approved',0)->count();
+        $approved_job_count = Post::where('is_approved',1)->count();
+    	return view('backend.dashboard', compact('visitors', 'user_count', 'pending_job_count', 'approved_job_count'));
     }
 
     public function visitorView($id)
