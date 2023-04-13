@@ -26,7 +26,7 @@ class CreateDepositsTable extends Migration
             $table->string('transaction_id')->unique();
             $table->float('deposit_amount');
             $table->string('screenshot')->nullable();
-            $table->boolean('is_approved')->default(false);
+            $table->string('is_approved')->default('0');
             $table->timestamps();
         });
     }

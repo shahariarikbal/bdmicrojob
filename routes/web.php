@@ -124,6 +124,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
    //Deposit Requests....
    Route::get('/deposit/request', [PaymentController::class,'showDepositRequest']);
    Route::get('/deposit/approve/{id}', [PaymentController::class,'approveDeposit']);
+   Route::get('/deposit/reject/{id}', [PaymentController::class,'rejectDeposit']);
 
    //Withdraw Requests....
    Route::get('/withdraw/request', [PaymentController::class,'showWithdrawRequest']);

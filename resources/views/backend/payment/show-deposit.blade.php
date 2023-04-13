@@ -47,14 +47,23 @@
                                 <td>{{ $deposit->payment_gateway }}</td>
                                 <td>{{ $deposit->transaction_id }}</td>
                                 <td>
-                                    @if($deposit->is_approved == 1)
+                                    @if($deposit->is_approved == '1')
                                     <a href="#" class="btn btn-sm btn-success">Approved</a>
+                                    @elseif ($deposit->is_approved == '2')
+                                    <a href="#" class="btn btn-sm btn-danger">Rejected</a>
                                     @else
                                     <a href="#" class="btn btn-sm btn-warning">Pending</a>
                                     @endif
                                 </td>
                                 <td>
+                                    @if ($deposit->is_approved == '0')
                                     <a href="{{ url('admin/deposit/approve/'.$deposit->id) }}" onclick="return confirm('Are you sure??')" class="btn btn-sm btn-danger">Approve</a>
+                                    <a href="{{ url('admin/deposit/reject/'.$deposit->id) }}" onclick="return confirm('Are you sure??')" class="btn btn-sm btn-primary">Reject</a>
+                                    @elseif ($deposit->is_approved == '1')
+                                    <a href="#" class="btn btn-sm btn-success">Approved</a>
+                                    @elseif ($deposit->is_approved == '2')
+                                    <a href="#" class="btn btn-sm btn-danger">Rejected</a>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

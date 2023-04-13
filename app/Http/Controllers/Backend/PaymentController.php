@@ -20,8 +20,11 @@ class PaymentController extends Controller
     public function approveDeposit ($id)
     {
         $deposit = Deposit::find($id);
-        if($deposit->is_approved==true){
+        if($deposit->is_approved=='1'){
             return redirect()->back()->with('Error','Already Approved!!');
+        }
+        if($deposit->is_approved=='2'){
+            return redirect()->back()->with('Error','Already Rejected!!');
         }
         if($deposit){
             $user = User::where('id',$deposit->user_id)->first();
@@ -50,6 +53,23 @@ class PaymentController extends Controller
         }
         else{
             return redirect()->back()->with('error',"Deposit Record is not Found!");
+        }
+    }
+
+    public function rejectDeposit ($id)
+    {
+        $deposit = Deposit::find($id);
+        if($deposit->is_approved=='1'){
+            return redirect()->back()->with('Error','Already Approved!!');
+        }
+        if($deposit->is_approved=='2'){
+            return redirect()->back()->with('Error','Already Rejected!!');
+        }
+
+        else{
+            $deposit->is_approved = '2';
+            $deposit->save();
+            return redirect()->back()->with('error', 'Rejected Successfully');
         }
     }
 
