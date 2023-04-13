@@ -19,13 +19,13 @@
                 <div class="col-md-6">
                     <div class="counter-item-outer">
                         <h4 class="counter-title">Page Views</h4>
-                        <h3 class="counter-number">20</h3>
+                        <h3 class="counter-number">{{ $visitorCount ?? 0 }}</h3>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="counter-item-outer">
                         <h4 class="counter-title">Total User</h4>
-                        <h3 class="counter-number">30</h3>
+                        <h3 class="counter-number">{{ $userCount ?? 0 }}</h3>
                     </div>
                 </div>
             </div>

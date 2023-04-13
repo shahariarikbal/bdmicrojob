@@ -156,6 +156,7 @@ class UserController extends Controller
 
     public function showMyTask()
     {
+        visitor()->visit();
         $marquee_text = MarqueeText::where('page_name','may_task')->first();
         $post_submits = PostSubmit::where('user_id',Auth::user()->id)->with('post')->orderBy('created_at', 'desc')->Paginate(10);
         return view('frontend.auth.user.my-task', compact('post_submits', 'marquee_text'));
@@ -163,6 +164,7 @@ class UserController extends Controller
 
     public function showAcceptedTask()
     {
+        visitor()->visit();
         $marquee_text = MarqueeText::where('page_name','accepted_task')->first();
         $accepted_tasks = PostSubmit::where('user_id',Auth::user()->id)->where('status', '1')->with('post')->Paginate(10);
         return view('frontend.auth.user.accepted-task', compact('accepted_tasks', 'marquee_text'));
@@ -170,6 +172,7 @@ class UserController extends Controller
 
     public function showJobDetails($id)
     {
+        visitor()->visit();
         if(Auth::user()->status==1){
             $postDetail = Post::with('specificTasks', 'jobSubmit')->where('user_id','!=', Auth::user()->id)->find($id);
             if($postDetail){
@@ -187,6 +190,7 @@ class UserController extends Controller
 
     public function showJobReport($id)
     {
+        visitor()->visit();
         $postReport = Post::with('specificTasks')->find($id);
         return view('frontend.auth.user.job.job-report', compact('postReport'));
     }
@@ -202,6 +206,7 @@ class UserController extends Controller
         $submitReport->post_id = $id;
         $submitReport->message = $request->message;
         $submitReport->save();
+        visitor()->visit();
         return redirect()->back()->with('success', 'Post report has been submitted');
     }
 
@@ -233,12 +238,13 @@ class UserController extends Controller
          $submitPost->work_prove = $request->work_prove;
          $submitPost->images = json_encode($data);
          $submitPost->save();
-
+        visitor()->visit();
          return redirect()->back()->with('success', 'Post has been submitted');
     }
 
     public function showMyPost()
     {
+        visitor()->visit();
         $posts = Post::with('category')->orderBy('created_at', 'desc')->where('user_id', auth()->user()->id)->get();
         return view('frontend.auth.user.my-post', compact('posts'));
     }
@@ -254,6 +260,7 @@ class UserController extends Controller
     {
         $postDelete = Post::find($id);
         $postDelete->delete();
+        visitor()->visit();
         return redirect()->back()->with('success', 'Post has been deleted');
     }
 

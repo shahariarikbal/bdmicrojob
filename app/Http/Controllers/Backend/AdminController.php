@@ -18,13 +18,16 @@ use App\Http\Requests\TipRequest;
 use Hash;
 use Illuminate\Http\Request;
 use Session;
+use Stevebauman\Location\Facades\Location;
 use Str;
 use Auth;
+use DB;
 
 class AdminController extends Controller
 {
 
 	public function showLoginForm(){
+        visitor()->visit();
 		return view('backend.login');
 	}
 
@@ -60,7 +63,16 @@ class AdminController extends Controller
     }
 
     public function dashboard(){
-    	return view('backend.dashboard');
+        //visitor()->visit();
+        $visitors = DB::table('shetabit_visits')->orderBy('created_at', 'desc')->paginate(50);
+    	return view('backend.dashboard', compact('visitors'));
+    }
+
+    public function visitorView($id)
+    {
+       $ip = DB::table('shetabit_visits')->where('id', $id)->find($id);
+       $visitor = Location::get($ip->ip);
+        return view('backend.visitor.details', compact('visitor'));
     }
 
     public function users(Request $request)
