@@ -11,6 +11,12 @@
        <span>Verify Now</span>
        </a>
     </li>
+    <li class="nav-item {{ Request::url() == url('/account/varify/history') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('/account/varify/history') }}">
+           <i class="fas fa-check"></i>
+        <span>Verification History</span>
+        </a>
+     </li>
     <li class="nav-item {{ Request::url() == url('/post/job') ? 'active' : '' }}">
        <a class="nav-link" href="{{ url('/post/job') }}">
          <i class="fas fa-plus-circle"></i>

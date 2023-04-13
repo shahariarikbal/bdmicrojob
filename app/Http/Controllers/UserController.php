@@ -154,6 +154,13 @@ class UserController extends Controller
         }
     }
 
+    public function historyAccountVerify ()
+    {
+        visitor()->visit();
+        $nid_verifications = NidVerification::where('user_id', Auth::user()->id)->paginate(5);
+        return view('frontend.auth.user.account-varify-history', compact('nid_verifications'));
+    }
+
     public function showMyTask()
     {
         visitor()->visit();

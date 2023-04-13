@@ -23,6 +23,7 @@ Route::get('/post/job', [\App\Http\Controllers\UserController::class, 'showPostJ
 Route::post('/post/store', [\App\Http\Controllers\Backend\JobController::class, 'postStore']);
 Route::get('/account/varify', [\App\Http\Controllers\UserController::class, 'showAccountVarify']);
 Route::post('/account/varify/store', [\App\Http\Controllers\UserController::class, 'storeAccountVerify']);
+Route::get('/account/varify/history', [\App\Http\Controllers\UserController::class, 'historyAccountVerify']);
 Route::get('/my/task', [\App\Http\Controllers\UserController::class, 'showMyTask']);
 Route::get('/accepted/task', [\App\Http\Controllers\UserController::class, 'showAcceptedTask']);
 Route::get('/job/details/{id}', [\App\Http\Controllers\UserController::class, 'showJobDetails']);

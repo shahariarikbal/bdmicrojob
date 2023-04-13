@@ -65,6 +65,7 @@ class AdminController extends Controller
     public function dashboard(){
         //visitor()->visit();
         $visitors = DB::table('shetabit_visits')->orderBy('created_at', 'desc')->paginate(50);
+        //dd($visitors);
     	return view('backend.dashboard', compact('visitors'));
     }
 
