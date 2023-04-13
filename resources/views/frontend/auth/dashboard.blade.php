@@ -363,7 +363,7 @@
                     </div>
                     <div class="job-item-right">
                         <h4 class="totla-earning">
-                            ৳ {{ $post->worker_earn }}
+                            ৳ {{ $post->category->worker_earning }}
                         </h4>
                     </div>
                 </a>
