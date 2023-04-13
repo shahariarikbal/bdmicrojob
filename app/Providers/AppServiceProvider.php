@@ -4,6 +4,7 @@ namespace App\Providers;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Schema;
 use App\Models\User;
+use App\Models\PostSubmit;
 use Auth;
 use DB;
 
@@ -48,6 +49,8 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('user_notifications', DB::table('notifications')
                 ->where('specific_user_id',Auth::user()->id)->where('notification_for','user')
                 ->where('is_seen','!=','1')->orderBy('created_at','desc')->get());
+
+                $view->with('submitted_pending_job', PostSubmit::where('job_owner_id', Auth::user()->id)->where('status','0')->count());
             }
             $view->with('setting', DB::table('settings')->first());
         });

@@ -724,6 +724,35 @@ button:hover {
 
 /*Header secton Nav css End*/
 
+/*Counter Section css start*/
+.counter-section {
+    padding: 50px 0;
+}
+
+.counter-item-outer {
+    text-align: center;
+    position: relative;
+    z-index: 0;
+    padding: 30px 0;
+    transition: all .3s ease;
+    margin-bottom: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+}
+
+.counter-item-outer .counter-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #7e41c2;
+}
+
+.counter-item-outer .counter-number {
+    font-size: 30px;
+    font-weight: 600;
+    color: #000;
+}
+/*Counter Section css End*/
 
 /*Home Banner section css start*/
 

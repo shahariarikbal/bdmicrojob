@@ -257,9 +257,9 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'Post has been deleted');
     }
 
-    public function showSubmittedJob()
+    public function showSubmittedPendingJob()
     {
-        $submitted_jobs = PostSubmit::where('job_owner_id', Auth::user()->id)->with('user','post')->orderBy('created_at', 'desc')->Paginate(10);
+        $submitted_jobs = PostSubmit::where('job_owner_id', Auth::user()->id)->where('status','0')->with('user','post')->orderBy('created_at', 'desc')->Paginate(10);
         return view('frontend.auth.user.submitted-job', compact('submitted_jobs'));
     }
 
