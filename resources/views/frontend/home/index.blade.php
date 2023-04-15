@@ -13,7 +13,7 @@
             </h2>
         </div>
     </section>
-    <section class="counter-section">
+    {{-- <section class="counter-section">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -30,7 +30,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <section class="extra-earning-section-wrapper">
         <div class="container">
             <div class="row">
@@ -119,7 +119,7 @@
                     $worker = \App\Models\PostSubmit::where('post_id', $job_post->id)->where('status', '!=' ,'2')->get()->count();
                 @endphp
                 @if ($worker < $job_post->worker_number)
-                <div class="recent-activity-item-outer">
+                <a href="" class="recent-activity-item-outer">
                     <div class="text-right text-blue">Posted Date: {{ date('m-d-Y', strtotime($job_post->created_at)) }}</div>
                     <div class="item-title">
                         <span>{{ $job_post->title }} </span>
@@ -144,7 +144,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
                 @endif
                 @endforeach
                 {{--  <div class="recent-activity-item-outer">
@@ -273,6 +273,24 @@
                     <button type="button" class="section-btn-inner">
                         Go To The Dashboard
                     </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="counter-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="counter-item-outer">
+                        <h4 class="counter-title">Page Views</h4>
+                        <h3 class="counter-number">{{ $visitorCount ?? 0 }}</h3>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="counter-item-outer">
+                        <h4 class="counter-title">Total Users</h4>
+                        <h3 class="counter-number">{{ $userCount ?? 0 }}</h3>
+                    </div>
                 </div>
             </div>
         </div>
