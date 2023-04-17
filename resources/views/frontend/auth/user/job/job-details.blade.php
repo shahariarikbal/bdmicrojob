@@ -84,7 +84,11 @@
                                 <h4 class="job-details-text-title">
                                     UPLOAD SCREENSHOT PROVE
                                 </h4>
-                                <input type="file" name="images[]" multiple class="form-control">
+                                @for ($i = 1; $i<=$postDetail->required_screenshot; $i++)
+                                <label for="images[]">Screenshot {{ $i }}</label>
+                                <input type="file" name="images[]" multiple class="form-control" required>
+                                @endfor
+                                {{--  <input type="file" name="images[]" multiple class="form-control">  --}}
                             </div>
                             <button type="submit" class="job-details-form-sub-btn">Submit</button>
                         </form>
