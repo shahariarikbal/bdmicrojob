@@ -12,12 +12,18 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="nid-details-back-btn-outer">
-                                <a href="{{ url('/submitted/job') }}" class="nid-details-back-btn-inner">Back</a>
+                                @if ($submitted_job->status=='0')
+                                <a href="{{ url('/submitted/job/pending') }}" class="nid-details-back-btn-inner">Back</a>
+                                @elseif ($submitted_job->status=='1')
+                                <a href="{{ url('/submitted/job/approved') }}" class="nid-details-back-btn-inner">Back</a>
+                                @elseif ($submitted_job->status=='2')
+                                <a href="{{ url('/submitted/job/rejected') }}" class="nid-details-back-btn-inner">Back</a>
+                                @endif
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="nid-details-right-btn-outer">
-                                <a href="{{ url('/submitted/job/approve/'.$submitted_job->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger">Approve</a>
+                                <a href="{{ url('/submitted/job/approve/'.$submitted_job->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-primary">Approve</a>
                                 <a href="{{ url('/submitted/job/reject/'.$submitted_job->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger">Reject</a>
                             </div>
                         </div>
@@ -65,11 +71,11 @@
                                             </h5>
                                             <p class="sumitted-job-details-value">
                                                 @if($submitted_job->status=='1')
-                                                    Approved
+                                                <h4><span class="badge badge-primary">Approved</span></h4>
                                                 @elseif ($submitted_job->status=='2')
-                                                    Rejected
+                                                <h4><span class="badge badge-danger">Rejected</span></h4>
                                                 @else
-                                                    Pending
+                                                <h4><span class="badge badge-info">Pending</span></h4>
                                                 @endif
                                             </p>
                                         </div>

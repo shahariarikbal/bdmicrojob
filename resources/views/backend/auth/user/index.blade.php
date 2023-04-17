@@ -14,14 +14,22 @@
         <div class="card">
             <div class="card-header">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <h4>Members list</h4>
                     </div>
-                    <div class="col-md-6">
-                        <form action="{{ url('/admin/users') }}" method="get" class="form-control">
-                            <input type="email" name="email" class="form-control">
-                            <button type="submit">Search</button>
-                            <a href="{{ url('/admin/users') }}">Clear</a>
+                    <div class="col-md-8">
+                        <form action="{{ url('/admin/users') }}" method="get">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <input type="email" name="email" class="form-control" placeholder="Email" style="height: 40px;margin-bottom: 10px;">
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="input-group">
+                                        <button type="submit" class="input-group-text text-white btn btn-primary" style="margin-right: 5px">Search</button>
+                                        <a href="{{ url('/admin/users') }}" class="input-group-text text-white btn btn-danger">Clear</a>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
                     {{-- <div class="col-md-6 text-right">
@@ -67,6 +75,7 @@
                             @endforeach
                         </tbody>
                       </table>
+                      {{ $users->links() }}
                 </div>
             </div>
         </div>

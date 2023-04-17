@@ -11,12 +11,14 @@ class CategoryController extends Controller
 {
     public function showCategory ()
     {
+        visitor()->visit();
         $categories = Category::all();
         return view('backend.category.show-category', compact('categories'));
     }
 
     public function createCategory ()
     {
+        visitor()->visit();
         return view('backend.category.create-category');
     }
 
@@ -49,6 +51,7 @@ class CategoryController extends Controller
 
     public function editCategory ($id)
     {
+        visitor()->visit();
         $category = Category::find($id);
         return view ('backend.category.edit-category', compact('category'));
     }

@@ -46,8 +46,10 @@
                                     </h6>
                                 </td>
                                 <td>
-                                    @if ($deposit->is_approved==1)
+                                    @if ($deposit->is_approved=='1')
                                     <a href="#" class="btn btn-sm btn-success">Approved</a>
+                                    @elseif ($deposit->is_approved=='2')
+                                    <a href="#" class="btn btn-sm btn-danger">Rejected</a>
                                     @else
                                     <a href="#" class="btn btn-sm btn-warning">Pending</a>
                                     @endif

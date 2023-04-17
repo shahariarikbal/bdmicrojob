@@ -3263,3 +3263,11 @@ label.job-report-form-label {
 .profile-update-section {
     margin-bottom: 80px;
 }
+
+.pending-job-bagde {
+    background: -webkit-linear-gradient(-45deg, #ff253a 0%, #ff8453 100%);
+    padding: 0px 6px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}

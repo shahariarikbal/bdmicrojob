@@ -42,7 +42,7 @@ class HomeController extends Controller
         // if($auth_user->email_verified_at != null){
             $marquee_text = MarqueeText::where('page_name','dashboard')->first();
             $categories = Category::select(['id', 'name', 'status', 'price'])->orderBy('created_at', 'desc')->where('status', 1)->get();
-            $sql = Post::with('specificTasks')->where('user_id','!=',Auth::user()->id)->where('is_approved', 1)->orderBy('created_at', 'desc');
+            $sql = Post::with('specificTasks','category')->where('user_id','!=',Auth::user()->id)->where('is_approved', 1)->orderBy('created_at', 'desc');
             if(isset(request()->cat_id)){
                 $sql->where('cat_id', request()->cat_id)->get();
             }

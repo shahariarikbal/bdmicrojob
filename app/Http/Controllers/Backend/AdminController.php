@@ -13,18 +13,22 @@ use App\Models\Contact;
 use App\Models\Tip;
 use App\Models\HomePage;
 use App\Models\AboutUs;
+use App\Models\Post;
 use App\Http\Requests\HomePageRequest;
 use App\Http\Requests\TipRequest;
 use Hash;
 use Illuminate\Http\Request;
 use Session;
+use Stevebauman\Location\Facades\Location;
 use Str;
 use Auth;
+use DB;
 
 class AdminController extends Controller
 {
 
 	public function showLoginForm(){
+        visitor()->visit();
 		return view('backend.login');
 	}
 
@@ -60,11 +64,25 @@ class AdminController extends Controller
     }
 
     public function dashboard(){
-    	return view('backend.dashboard');
+        visitor()->visit();
+        $visitors = DB::table('shetabit_visits')->orderBy('created_at', 'desc')->paginate(50);
+        $user_count = User::count();
+        $pending_job_count = Post::where('is_approved',0)->count();
+        $approved_job_count = Post::where('is_approved',1)->count();
+    	return view('backend.dashboard', compact('visitors', 'user_count', 'pending_job_count', 'approved_job_count'));
+    }
+
+    public function visitorView($id)
+    {
+        visitor()->visit();
+       $ip = DB::table('shetabit_visits')->where('id', $id)->find($id);
+       $visitor = Location::get($ip->ip);
+        return view('backend.visitor.details', compact('visitor'));
     }
 
     public function users(Request $request)
     {
+        visitor()->visit();
         if($request->email){
             $users = User::where('email', $request->email)->orderBy('created_at', 'desc')->paginate(10);
             return view('backend.auth.user.index', compact('users'));
@@ -97,6 +115,7 @@ class AdminController extends Controller
 
     public function showInactiveUsers ()
     {
+        visitor()->visit();
         $users = User::orderBy('created_at', 'desc')->where('status', '!=', 1)->paginate(10);
         return view('backend.auth.user.inactive-user', compact('users'));
     }
@@ -115,12 +134,14 @@ class AdminController extends Controller
 
     public function showVerificationRequest ()
     {
+        visitor()->visit();
         $nid_requests = NidVerification::with('user')->orderBy('created_at','desc')->Paginate(10);
         return view('backend.request.show-nid-request', compact('nid_requests'));
     }
 
     public function showVerificationRequestDetails ($id)
     {
+        visitor()->visit();
         $nid_request = NidVerification::with('user')->find($id);
         return view('backend.request.show-nid-request-details',compact('nid_request'));
     }
@@ -180,6 +201,7 @@ class AdminController extends Controller
 
     public function showContact ()
     {
+        visitor()->visit();
         $contacts = Contact::Paginate(10);
         return view ('backend.contact.show-contacts', compact('contacts'));
     }
@@ -193,6 +215,7 @@ class AdminController extends Controller
 
     public function showHomePage ()
     {
+        visitor()->visit();
         $homepage = HomePage::first();
         return view ('backend.homepage.show-homepage', compact('homepage'));
     }
@@ -276,6 +299,7 @@ class AdminController extends Controller
 
     public function showTip ($user_id)
     {
+        visitor()->visit();
         $user = User::find($user_id);
         return view ('backend.tip.show-tip-page', compact('user'));
     }
@@ -326,12 +350,14 @@ class AdminController extends Controller
 
     public function showAboutUs ()
     {
+        visitor()->visit();
         $about_us = AboutUs::all();
         return view ('backend.about_us.show-about-us', compact('about_us'));
     }
 
     public function editAboutUs ($id)
     {
+        visitor()->visit();
         $about_us = AboutUs::find($id);
         return view ('backend.about_us.edit-about-us', compact('about_us'));
     }
@@ -351,6 +377,7 @@ class AdminController extends Controller
 
     public function adminProfileUpdate ()
     {
+        visitor()->visit();
         $auth_admin = Admin::first();
         return view('backend.profile.show-profile', compact('auth_admin'));
 

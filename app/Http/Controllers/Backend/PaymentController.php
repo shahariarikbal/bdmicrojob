@@ -13,6 +13,7 @@ class PaymentController extends Controller
 {
     public function showDepositRequest ()
     {
+        visitor()->visit();
         $deposits = Deposit::orderBy('created_at','desc')->Paginate(10);
         return view('backend.payment.show-deposit', compact('deposits'));
     }
@@ -20,8 +21,11 @@ class PaymentController extends Controller
     public function approveDeposit ($id)
     {
         $deposit = Deposit::find($id);
-        if($deposit->is_approved==true){
+        if($deposit->is_approved=='1'){
             return redirect()->back()->with('Error','Already Approved!!');
+        }
+        if($deposit->is_approved=='2'){
+            return redirect()->back()->with('Error','Already Rejected!!');
         }
         if($deposit){
             $user = User::where('id',$deposit->user_id)->first();
@@ -53,8 +57,26 @@ class PaymentController extends Controller
         }
     }
 
+    public function rejectDeposit ($id)
+    {
+        $deposit = Deposit::find($id);
+        if($deposit->is_approved=='1'){
+            return redirect()->back()->with('Error','Already Approved!!');
+        }
+        if($deposit->is_approved=='2'){
+            return redirect()->back()->with('Error','Already Rejected!!');
+        }
+
+        else{
+            $deposit->is_approved = '2';
+            $deposit->save();
+            return redirect()->back()->with('error', 'Rejected Successfully');
+        }
+    }
+
     public function showWithdrawRequest ()
     {
+        visitor()->visit();
         $withdraws = Withdraw::orderBy('created_at','desc')->with('user')->Paginate(10);
         return view('backend.payment.show-withdraw', compact('withdraws'));
     }

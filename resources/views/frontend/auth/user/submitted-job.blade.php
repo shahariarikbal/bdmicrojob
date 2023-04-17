@@ -51,11 +51,11 @@
                                 <td>
                                     <h6 class="task-name-text">
                                         @if ($submitted_job->status==1)
-                                            Approved
+                                        <span class="badge badge-primary">Approved</span>
                                         @elseif ($submitted_job->status==0)
-                                            Pending
+                                        <span class="badge badge-info">Pending</span>
                                         @else
-                                            Rejected
+                                        <span class="badge badge-danger">Rejected</span>
                                         @endif
                                     </h6>
                                 </td>

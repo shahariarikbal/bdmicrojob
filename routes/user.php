@@ -16,11 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/user/register/form', [\App\Http\Controllers\UserController::class, 'userRegister']);
 Route::post('/user/register', [\App\Http\Controllers\UserController::class, 'userRegisterStore']);
 Route::get('/verification/{token}', [\App\Http\Controllers\UserController::class, 'verification']);
+Route::get('/forgot/password', [\App\Http\Controllers\UserController::class, 'showForgotPassword']);
+Route::post('/store/forgot/password', [\App\Http\Controllers\UserController::class, 'storeForgotPassword']);
 
 Route::get('/post/job', [\App\Http\Controllers\UserController::class, 'showPostJob']);
 Route::post('/post/store', [\App\Http\Controllers\Backend\JobController::class, 'postStore']);
 Route::get('/account/varify', [\App\Http\Controllers\UserController::class, 'showAccountVarify']);
 Route::post('/account/varify/store', [\App\Http\Controllers\UserController::class, 'storeAccountVerify']);
+Route::get('/account/varify/history', [\App\Http\Controllers\UserController::class, 'historyAccountVerify']);
 Route::get('/my/task', [\App\Http\Controllers\UserController::class, 'showMyTask']);
 Route::get('/accepted/task', [\App\Http\Controllers\UserController::class, 'showAcceptedTask']);
 Route::get('/job/details/{id}', [\App\Http\Controllers\UserController::class, 'showJobDetails']);
@@ -28,7 +31,9 @@ Route::get('/job/report/{id}', [\App\Http\Controllers\UserController::class, 'sh
 Route::post('/report/submit/{id}', [\App\Http\Controllers\UserController::class, 'submitJobReport']);
 Route::get('/my/post', [\App\Http\Controllers\UserController::class, 'showMyPost']);
 Route::post('/post/submit/{id}', [\App\Http\Controllers\UserController::class, 'postSubmit']);
-Route::get('/submitted/job', [\App\Http\Controllers\UserController::class, 'showSubmittedJob']);
+Route::get('/submitted/job/pending', [\App\Http\Controllers\UserController::class, 'showSubmittedPendingJob']);
+Route::get('/submitted/job/approved', [\App\Http\Controllers\UserController::class, 'showSubmittedApprovedJob']);
+Route::get('/submitted/job/rejected', [\App\Http\Controllers\UserController::class, 'showSubmittedRejectedJob']);
 // Route::get('/post/delete/{id}', [\App\Http\Controllers\UserController::class, 'postDelete']);
 Route::get('/post/edit/{id}', [\App\Http\Controllers\UserController::class, 'postEdit']);
 Route::get('/submitted/job', [\App\Http\Controllers\UserController::class, 'showSubmittedJob']);

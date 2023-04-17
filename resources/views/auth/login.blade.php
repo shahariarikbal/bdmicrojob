@@ -267,6 +267,21 @@
             height: 22px;
             margin-right: 10px;
         }
+
+        .forgot-password-link {
+            text-align: right;
+            display: block;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 900;
+            text-transform: capitalize;
+            color: #7e41c2;
+            transition: all .3s ease;
+        }
+        .forgot-password-link:hover {
+            color: #000;
+        }
+
         @media screen and (max-width: 1024px){
             .col-lg-6.col-md-6.sm-device-none {
                 display: none;
@@ -318,6 +333,9 @@
                                 </h6>
                             @enderror
                         </div>
+                        <a href="{{ url('/forgot/password') }}" class="forgot-password-link">
+                            forgot password
+                        </a>
                         <div class="not-robot-outer">
                             <input type="checkbox" name="robot" id="robot" required>
                             <label for="robot">I am not a robot.</label>
