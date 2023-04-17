@@ -74,7 +74,7 @@
                                     <input type="number" readonly name="total_cost" id="total_cost" placeholder="min 0.1" step="0.001" class="form-control">
                                     <label for="total_deposit">Total Deposit Money (tk)</label><span style="color: red; font-size: 16px;"> *</span><br>
                                     <input type="text" name="total_deposit" id="total_deposit" value="{{ $total_deposit->total_deposit }}" readonly class="form-control">
-                                    <p id="my-p-tag"></p>
+                                    <p id="my-p-tag" style="color:red;font-size:20px;"></p>
                                 </div>
                             </div>
                         </div>
