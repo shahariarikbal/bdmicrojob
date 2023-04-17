@@ -110,7 +110,16 @@ class UserController extends Controller
     {
         visitor()->visit();
         $categories = Category::select(['id', 'name', 'status', 'price', 'worker_earning'])->orderBy('created_at', 'desc')->where('status', 1)->get();
-        return view('frontend.auth.user.job.post-job', compact('categories'));
+        $form_step = 'one';
+        return view('frontend.auth.user.job.post-job', compact('categories', 'form_step'));
+    }
+
+    public function postStoreCategoryDetails (Request $request)
+    {
+        $category_id = $request->cat_id;
+        $cat_details = Category::find($category_id);
+        $form_step = 'two';
+        return view('frontend.auth.user.job.post-job', compact('cat_details', 'form_step'));
     }
 
     public function showAccountVarify()
