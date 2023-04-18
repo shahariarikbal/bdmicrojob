@@ -65,8 +65,8 @@ class JobController extends Controller
         $userDeposit = User::where('id', auth()->user()->id)->first();
 
         if($userDeposit->total_deposit < $postPriceEarnPrice){
-            // return redirect()->back()->with('error', 'Insufficient balance');
-            return view ('frontend.auth.user.job.job-post-failed', compact('job_cost', 'job_commission', 'postPriceEarnPrice', 'per_worker_earn', 'admin_commission'));
+             return redirect()->back()->with('error', 'Insufficient balance');
+            // return view ('frontend.auth.user.job.job-post-failed', compact('job_cost', 'job_commission', 'postPriceEarnPrice', 'per_worker_earn', 'admin_commission'));
         }
         if($deposit->total_deposit == 0){
             return redirect()->back()->with('info', 'Please deposit your account balance first');
@@ -97,10 +97,11 @@ class JobController extends Controller
                 $specificTask->specific_task = $request->specific_task[$k];
                 $specificTask->save();
             }
-            return view ('frontend.auth.user.job.job-post-success', compact('job_cost', 'job_commission', 'postPriceEarnPrice', 'per_worker_earn', 'admin_commission'));
+            // return view ('frontend.auth.user.job.job-post-success', compact('job_cost', 'job_commission', 'postPriceEarnPrice', 'per_worker_earn', 'admin_commission'));
+            return redirect('/my/post')->withSuccess('Your post has been submitted');
         }
 
-        return redirect()->back()->withSuccess('Your post has been submitted');
+        return redirect('/my/post')->withSuccess('Your post has been submitted');
     }
 
     public function approveJob ($id)

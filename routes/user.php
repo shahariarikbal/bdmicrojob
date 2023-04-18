@@ -20,6 +20,8 @@ Route::get('/forgot/password', [\App\Http\Controllers\UserController::class, 'sh
 Route::post('/store/forgot/password', [\App\Http\Controllers\UserController::class, 'storeForgotPassword']);
 
 Route::get('/post/job', [\App\Http\Controllers\UserController::class, 'showPostJob']);
+Route::get('/post/job/category/details', [\App\Http\Controllers\UserController::class, 'postStoreCategoryDetails']);
+Route::get('/post/job/job-information', [\App\Http\Controllers\UserController::class, 'postStoreJobInfo']);
 Route::post('/post/store', [\App\Http\Controllers\Backend\JobController::class, 'postStore']);
 Route::get('/account/varify', [\App\Http\Controllers\UserController::class, 'showAccountVarify']);
 Route::post('/account/varify/store', [\App\Http\Controllers\UserController::class, 'storeAccountVerify']);
