@@ -357,8 +357,11 @@
                             {{ $worker }} OF {{ $post->worker_number }}
                         </div>
                         <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: {{ $worker }}%" aria-valuenow="{{ $worker }}"
-                                aria-valuemin="0" aria-valuemax="100"></div>
+                            @if ($worker >= 100)
+                            <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="{{ $worker }}" aria-valuemin="0" aria-valuemax="{{ $post->worker_number }}"></div>
+                            @else
+                            <div class="progress-bar" role="progressbar" style="width: {{ $worker }}%" aria-valuenow="{{ $worker }}" aria-valuemin="0" aria-valuemax="{{ $post->worker_number }}"></div>
+                            @endif
                         </div>
                     </div>
                     <div class="job-item-right">

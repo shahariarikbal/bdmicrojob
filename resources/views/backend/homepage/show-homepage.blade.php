@@ -48,7 +48,8 @@
                                 <label for="first_image_description">
                                     First Image Description
                                 </label>
-                                <textarea required name="first_image_description" rows="10" class="form-control" placeholder="Enter First Image Description">{{ $homepage->first_image_description }}</textarea>
+                                <textarea required name="first_image_description" id="your_summernote" class="form-control" placeholder="Enter First Image Description"
+                                    rows="5">{!! $homepage->first_image_description !!}</textarea>
                             </div>
                             <div class="col-md-12">
                                 <label for="first_image">
@@ -67,7 +68,8 @@
                                 <label for="second_image_description">
                                     Second Image Description
                                 </label>
-                                <textarea required name="second_image_description" rows="10" class="form-control" placeholder="Enter Second Image Description">{{ $homepage->second_image_description }}</textarea>
+                                <textarea required name="second_image_description" id="your_summernote_h2" class="form-control" placeholder="Enter Second Image Description"
+                                    rows="5">{!! $homepage->second_image_description !!}</textarea>
                             </div>
                             <div class="col-md-12">
                                 <label for="second_image">
@@ -86,7 +88,8 @@
                                 <label for="how_works_description">
                                     How it Works Description
                                 </label>
-                                <textarea required name="how_works_description" rows="10" class="form-control" placeholder="Enter how it works">{{ $homepage->how_works_description }}</textarea>
+                                <textarea required name="how_works_description" id="your_summernote_h3" class="form-control" placeholder="Enter how it works"
+                                    rows="5">{!! $homepage->how_works_description !!}</textarea>
                             </div>
                             <div class="col-md-12">
                                 <label for="footer_image">
@@ -105,7 +108,8 @@
                                 <label for="footer_description">
                                     Footer Description
                                 </label>
-                                <textarea required name="footer_description" rows="10" class="form-control" placeholder="Footer Description">{{ $homepage->footer_description }}</textarea>
+                                <textarea required name="footer_description" class="form-control" placeholder="Footer Description"
+                                    rows="5">{{ $homepage->footer_description }}</textarea>
                             </div>
                         </div>
                         <div class="contact-submit-btn-outer">

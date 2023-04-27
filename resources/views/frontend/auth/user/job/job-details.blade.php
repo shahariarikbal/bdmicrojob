@@ -17,7 +17,11 @@
                                         <h5 class="title">DONE</h5>
                                         <h3 class="number">{{ $totalPostSubmit }} of {{ $postDetail->worker_number }}</h3>
                                         <div class="progress">
+                                            @if ($totalPostSubmit >= 100)
+                                            <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="{{ $totalPostSubmit }}" aria-valuemin="0" aria-valuemax="{{ $postDetail->worker_number }}"></div>
+                                             @else
                                             <div class="progress-bar" role="progressbar" style="width: {{ $totalPostSubmit }}%" aria-valuenow="{{ $totalPostSubmit }}" aria-valuemin="0" aria-valuemax="{{ $postDetail->worker_number }}"></div>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="done-job-right">
@@ -84,7 +88,11 @@
                                 <h4 class="job-details-text-title">
                                     UPLOAD SCREENSHOT PROVE
                                 </h4>
-                                <input type="file" name="images[]" multiple class="form-control">
+                                @for ($i = 1; $i<=$postDetail->required_screenshot; $i++)
+                                <label for="images[]">Screenshot {{ $i }}</label>
+                                <input type="file" name="images[]" multiple class="form-control" required>
+                                @endfor
+                                {{--  <input type="file" name="images[]" multiple class="form-control">  --}}
                             </div>
                             <button type="submit" class="job-details-form-sub-btn">Submit</button>
                         </form>

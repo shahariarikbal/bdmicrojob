@@ -85,5 +85,24 @@
             $('.dropdown-toggle').dropdown();
         });
     </script>
+    <script>
+        $(document).ready(function() {
+            $("#your_summernote_h2").summernote();
+            $('.dropdown-toggle').dropdown();
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#your_summernote_h3").summernote();
+            $('.dropdown-toggle').dropdown();
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#your_summernote_h4").summernote();
+            $('.dropdown-toggle').dropdown();
+        });
+    </script>
+
     <!-- //Summernote JS - CDN Link -->
 

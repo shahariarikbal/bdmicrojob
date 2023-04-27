@@ -75,6 +75,22 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
+                                        <h5 class="sumitted-job-details-label">
+                                            What is expected from workers:
+                                        </h5>
+                                        @foreach($job_post->specificTasks as $task)
+                                        {{ $task->specific_task }} <br>
+                                        @endforeach
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <h5 class="sumitted-job-details-label">
+                                            Required Proof:
+                                        </h5>
+                                        {{ $job_post->required_task }}
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-12">
                                         <div class="sumitted-job-details-outer">
                                             <h5 class="sumitted-job-details-label">
                                                 Status:

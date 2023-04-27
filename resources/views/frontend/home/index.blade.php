@@ -7,7 +7,7 @@
             <img src="{{ asset('/homepage/'.$homepage->slider_image) }}">
         </div>
         <div class="home-banner-content">
-            <h2 class="banner-content">
+            <h2 class="banner-content" style="color:blue">
                 {{--  Get <span>Easy Earning</span> With Lots Of <span>Earning Sources</span>  --}}
                 {{ $homepage->slider_title }}
             </h2>
@@ -45,7 +45,7 @@
                             {{--  Get <span class="extra-color">Extra Earning</span> <span>Easy</span> And <span>Secured</span>  --}}
                             <span>{{ $homepage->first_image_title }}</span>
                         </h3>
-                        <p>{{ $homepage->first_image_description }}</p>
+                        {!! $homepage->first_image_description !!}
                     </div>
                     {{-- <div class="learn-more-btn-outer">
                         <button type="button" class="learn-more-btn-inner">Learn More</button>
@@ -64,7 +64,7 @@
                             <span class="extra-color">{{ $homepage->second_image_title }}</span>
                         </h3>
                         <ul class="feature-section-list">
-                            <p>{{ $homepage->second_image_description }}</p>
+                            {!! $homepage->second_image_description !!}
                             {{--  <li class="feature-section-list-item">
                                 <img src="{{ asset('/frontend/') }}/assets/images/point.png">
                                 Too Easy To Use Anytime Anywhere Around
@@ -119,7 +119,7 @@
                     $worker = \App\Models\PostSubmit::where('post_id', $job_post->id)->where('status', '!=' ,'2')->get()->count();
                 @endphp
                 @if ($worker < $job_post->worker_number)
-                <a href="" class="recent-activity-item-outer">
+                <a href="{{ url('/dashboard') }}" class="recent-activity-item-outer">
                     <div class="text-right text-blue">Posted Date: {{ date('m-d-Y', strtotime($job_post->created_at)) }}</div>
                     <div class="item-title">
                         <span>{{ $job_post->title }} </span>
@@ -135,7 +135,11 @@
                                 {{ $worker }} OF {{ $job_post->worker_number }}
                             </div>
                             <div class="progress">
+                                @if ($worker >= 100)
+                                <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="{{ $worker }}" aria-valuemin="0" aria-valuemax="{{ $job_post->worker_number }}"></div>
+                                @else
                                 <div class="progress-bar" role="progressbar" style="width: {{ $worker }}%" aria-valuenow="{{ $worker }}" aria-valuemin="0" aria-valuemax="{{ $job_post->worker_number }}"></div>
+                                @endif
                             </div>
                         </div>
                         <div class="item-right-content">
@@ -237,9 +241,9 @@
                         <span>{{ $homepage->how_works_title }}</span>
                     </h3>
                     <div class="video-section-top-des-outer">
-                        <p class="video-section-top-des">
-                            {{ $homepage->how_works_description }}
-                        </p>
+                        {{--  <p class="video-section-top-des">  --}}
+                            {!! $homepage->how_works_description !!}
+                        {{--  </p>  --}}
                         {{--  <p class="video-section-top-des">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Congue quam id a, nam ipsum euismod vulputate et aliquam. Tortor ipsum dolor sem venenatis. Nec sagittis eleifend sit sem enim arcu
                         </p>
@@ -267,7 +271,7 @@
                     <span class="extra-color">{{ $homepage->footer_title }}</span>
                 </h3>
                 <p class="signup-now-section-des">
-                    {{ $homepage->footer_description }}
+                    {!! $homepage->footer_description !!}
                 </p>
                 <div class="section-btn-outer">
                     <button type="button" class="section-btn-inner">
