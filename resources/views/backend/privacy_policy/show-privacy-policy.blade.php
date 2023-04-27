@@ -17,7 +17,7 @@
                 <div class="card-body">
                     <div class="col-md-12">
                         <a href="{{ url('/admin/create/privacy-policy') }}" class="btn btn-sm btn-primary float-right mb-2">Add Privacy Policy</a>
-                        <table class="table table-striped">
+                        <table class="table table-striped table-responsive">
                             <thead>
                             <tr>
                                 <th scope="col">#</th>

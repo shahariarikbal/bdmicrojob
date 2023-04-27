@@ -48,7 +48,7 @@
                 <div class="card-body">
                     <div class="col-md-12">
                         <a href="{{ url('/admin/faq/create') }}" class="btn btn-sm btn-primary float-right mb-2">Add Faq</a>
-                        <table class="table table-striped">
+                        <table class="table table-striped table-responsive">
                             <thead>
                             <tr>
                                 <th scope="col">#</th>

@@ -39,7 +39,7 @@
             </div>
             <div class="card-body">
                 <div class="col-md-12">
-                    <table class="table table-striped">
+                    <table class="table table-striped table-responsive">
                         <thead>
                           <tr>
                             <th scope="col">#</th>
