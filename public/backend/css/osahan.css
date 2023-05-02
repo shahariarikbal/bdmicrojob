@@ -3064,7 +3064,7 @@ button.account-varify-btn-inner:hover {
 /*Footer section css start*/
 .footer-section {
     background: #ddd;
-    position: fixed;
+    position: absolute;
     width: 100%;
     bottom: 0;
 }
