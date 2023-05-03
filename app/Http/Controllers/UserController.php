@@ -223,6 +223,12 @@ class UserController extends Controller
         return view('frontend.auth.user.job.job-report', compact('postReport'));
     }
 
+    public function showFreelancerJobReport($id)
+    {
+        visitor()->visit();
+        return view('frontend.auth.user.user-report');
+    }
+
     public function submitJobReport(Request $request, $id)
     {
         $this->validate($request, [

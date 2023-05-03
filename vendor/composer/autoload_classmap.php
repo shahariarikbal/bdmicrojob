@@ -70,6 +70,7 @@ return array(
     'App\\Models\\TermCondition' => $baseDir . '/app/Models/TermCondition.php',
     'App\\Models\\Tip' => $baseDir . '/app/Models/Tip.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
+    'App\\Models\\UserReport' => $baseDir . '/app/Models/UserReport.php',
     'App\\Models\\UserVideo' => $baseDir . '/app/Models/UserVideo.php',
     'App\\Models\\Video' => $baseDir . '/app/Models/Video.php',
     'App\\Models\\Withdraw' => $baseDir . '/app/Models/Withdraw.php',

@@ -353,8 +353,8 @@ class ComposerStaticInite231e4cc8cac79ccc9fa315b2afd6403
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -649,6 +649,7 @@ class ComposerStaticInite231e4cc8cac79ccc9fa315b2afd6403
         'App\\Models\\TermCondition' => __DIR__ . '/../..' . '/app/Models/TermCondition.php',
         'App\\Models\\Tip' => __DIR__ . '/../..' . '/app/Models/Tip.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Models\\UserReport' => __DIR__ . '/../..' . '/app/Models/UserReport.php',
         'App\\Models\\UserVideo' => __DIR__ . '/../..' . '/app/Models/UserVideo.php',
         'App\\Models\\Video' => __DIR__ . '/../..' . '/app/Models/Video.php',
         'App\\Models\\Withdraw' => __DIR__ . '/../..' . '/app/Models/Withdraw.php',
