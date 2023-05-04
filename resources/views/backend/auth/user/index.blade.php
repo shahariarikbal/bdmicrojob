@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <form method="GET" action="" class="form-inline mb-3" style="width: 60%">
+                <form method="GET" action="{{ url('/admin/users') }}" class="form-inline mb-3" style="width: 60%">
                     @csrf
                     <div class="input-group mb-3" style="width: 100%">
                         <span class="input-group-text bg-gradient-blues" style="background-color: black; color: white">From</span>
