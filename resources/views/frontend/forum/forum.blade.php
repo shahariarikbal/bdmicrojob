@@ -63,17 +63,6 @@
             height: 60px;
             border-radius: 7px;
         }
-        .single-post-top-left .author-image:before {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: #3db91c;
-            border-radius: 50%;
-            top: -10px;
-            left: -10px;
-            z-index: 9;
-        }
         .single-post-top-left .author-info .author-name {
             font-size: 20px;
             font-weight: 500;
@@ -213,11 +202,6 @@
             height: 60px;
             border-radius: 8px;
         }
-        .children-comment {
-            display: flex;
-            padding-left: 50px;
-            margin-bottom: 20px;
-        }
         .avatar-item {
             margin-right: 15px;
         }
@@ -236,25 +220,6 @@
             font-size: 14px;
             font-weight: 400;
             color: #717171;
-        }
-        .like-share {
-            padding-left: 0;
-        }
-        .like-share li {
-            margin-right: 15px;
-        }
-        .like-share li button {
-            border: none;
-            height: auto;
-            text-transform: capitalize;
-            font-family: inherit;
-            padding: 0;
-            font-weight: 600;
-            color: #000;
-        }
-        .like-share li button:hover {
-            background: transparent;
-            color: #000;
         }
     </style>
 @endpush
@@ -365,39 +330,6 @@
                             <div class="comment-area">
                                 <div class="single-comment-area">
                                     <div class="parent-comment">
-                                        <div class="avatar-item">
-                                            <img class="avatar-img" src="{{ asset('/frontend') }}/assets/images/user.jpg" alt="avatar" />
-                                        </div>
-                                        <div class="info-item active">
-                                            <div class="top-area align-items-start justify-content-between">
-                                                <div class="title-area">
-                                                    <h6>
-                                                        Lori Cortez
-                                                    </h6>
-                                                    <p class="mdtxt">
-                                                        The only way to solve the problem is to code for the hardware directly
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <ul class="like-share d-flex">
-                                                <li class="d-center">
-                                                    <button class="mdtxt">Like</button>
-                                                </li>
-                                                <li class="d-center flex-column">
-                                                    <button class="mdtxt reply-btn">Reply</button>
-                                                </li>
-                                            </ul>
-                                            <form action="#" method="" class="reply-comment-form">
-                                                <div class="d-flex gap-3">
-                                                    <input placeholder="Write a comment.." class="form-control" type="text" />
-                                                    <button class="reply-comment-btn">
-                                                        <i class="far fa-comment-alt"></i>
-                                                    </button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="children-comment">
                                         <div class="avatar-item">
                                             <img class="avatar-img" src="{{ asset('/frontend') }}/assets/images/user.jpg" alt="avatar" />
                                         </div>
