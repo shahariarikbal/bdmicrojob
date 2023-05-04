@@ -79,7 +79,10 @@
                                 </div>
                             @endforeach
                             <div class="report-btn-outer">
-                                <a href="{{ url('/job/report/'.$postDetail->id) }}" class="report-btn-inner">Report</a>
+                                <a href="{{ url('/job/report/'.$postDetail->id) }}" class="report-btn-inner">Report On Job</a>
+                                @if ($is_reported<=0)
+                                <a href="{{ url('/job-poster/report/'.$postDetail->id) }}" class="report-btn-inner">Report On Job Poster</a>
+                                @endif
                             </div>
                         </div>
                         <div class="job-details-form-item">

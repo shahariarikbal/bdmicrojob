@@ -204,11 +204,13 @@ class UserController extends Controller
         visitor()->visit();
         if(Auth::user()->status==1){
             $postDetail = Post::with('specificTasks', 'jobSubmit')->where('user_id','!=', Auth::user()->id)->find($id);
+            $is_reported = UserReport::where('reporter_id', Auth::user()->id)->where('user_id', $postDetail->user_id)
+            ->where('posted_job_id', $id)->count();
             if($postDetail){
                 $isPostSubmit = PostSubmit::where('user_id', auth()->user()->id)->where('status', '!=' ,'2')
                 ->orderBy('created_at','desc')->where('post_id', $postDetail->id)->first();
                 $totalPostSubmit = PostSubmit::where('post_id', $postDetail->id)->where('status','!=','2')->get()->count();
-                return view('frontend.auth.user.job.job-details', compact('postDetail', 'isPostSubmit', 'totalPostSubmit'));
+                return view('frontend.auth.user.job.job-details', compact('postDetail', 'isPostSubmit', 'totalPostSubmit', 'is_reported'));
             }
             else{
                 return redirect()->back()->with('Error','Not Found!!');
@@ -222,6 +224,13 @@ class UserController extends Controller
         visitor()->visit();
         $postReport = Post::with('specificTasks')->find($id);
         return view('frontend.auth.user.job.job-report', compact('postReport'));
+    }
+
+    public function showJobPosterReport($id)
+    {
+        visitor()->visit();
+        $userReport = Post::with('specificTasks','user')->find($id);
+        return view('frontend.auth.user.job.job-poster-report', compact('userReport'));
     }
 
     public function showFreelancerJobReport($id)
@@ -284,6 +293,38 @@ class UserController extends Controller
             return redirect('/login');
         }
 
+    }
+
+    public function storeJobPosterReport(Request $request)
+    {
+        $auth_user = Auth::user();
+        if($auth_user){
+            $is_reported = UserReport::where('reporter_id', $auth_user->id)->where('user_id', $request->user_id)
+            ->where('posted_job_id', $request->posted_job_id)->first();
+            if(!$is_reported){
+                $user_report = new UserReport();
+                $user_report->reporter_id = $auth_user->id;
+                $user_report->user_id = $request->user_id;
+                $user_report->report_type = 0;
+                $user_report->posted_job_id = $request->posted_job_id;
+                $user_report->message = $request->message;
+                if($user_report->save()){
+                    $user = User::find($request->user_id);
+                    $user->job_post_report = $user->job_post_report+1;
+                    $user->save();
+                    return redirect('/dashboard')->with('success', 'Report is submitted successfully!');
+                }
+                else{
+                    return redirect('/dashboard')->with('error', 'Technical error!!');
+                }
+            }
+            else{
+                return redirect()->back()->with('error', 'Already reported!!');
+            }
+        }
+        else{
+            return redirect('/login');
+        }
     }
 
     public function submitJobReport(Request $request, $id)
