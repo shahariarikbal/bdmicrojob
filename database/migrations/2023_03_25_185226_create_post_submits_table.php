@@ -21,6 +21,7 @@ class CreatePostSubmitsTable extends Migration
             $table->longText('work_prove');
             $table->string('images');
             $table->string('status')->default('0')->comments('0=>pending, 1=>approved, 2=>rejected');
+            $table->boolean('is_reported')->default(false);
             $table->timestamps();
         });
     }

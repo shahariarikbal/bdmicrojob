@@ -7,30 +7,30 @@
             <img src="{{ asset('/homepage/'.$homepage->slider_image) }}">
         </div>
         <div class="home-banner-content">
-            <h2 class="banner-content">
+            <h2 class="banner-content" style="color:blue">
                 {{--  Get <span>Easy Earning</span> With Lots Of <span>Earning Sources</span>  --}}
                 {{ $homepage->slider_title }}
             </h2>
         </div>
     </section>
-    <section class="counter-section">
+    {{-- <section class="counter-section">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
                     <div class="counter-item-outer">
                         <h4 class="counter-title">Page Views</h4>
-                        <h3 class="counter-number">20</h3>
+                        <h3 class="counter-number">{{ $visitorCount ?? 0 }}</h3>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="counter-item-outer">
-                        <h4 class="counter-title">Total User</h4>
-                        <h3 class="counter-number">30</h3>
+                        <h4 class="counter-title">Total Users</h4>
+                        <h3 class="counter-number">{{ $userCount ?? 0 }}</h3>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <section class="extra-earning-section-wrapper">
         <div class="container">
             <div class="row">
@@ -45,7 +45,7 @@
                             {{--  Get <span class="extra-color">Extra Earning</span> <span>Easy</span> And <span>Secured</span>  --}}
                             <span>{{ $homepage->first_image_title }}</span>
                         </h3>
-                        <p>{{ $homepage->first_image_description }}</p>
+                        {!! $homepage->first_image_description !!}
                     </div>
                     {{-- <div class="learn-more-btn-outer">
                         <button type="button" class="learn-more-btn-inner">Learn More</button>
@@ -64,7 +64,7 @@
                             <span class="extra-color">{{ $homepage->second_image_title }}</span>
                         </h3>
                         <ul class="feature-section-list">
-                            <p>{{ $homepage->second_image_description }}</p>
+                            {!! $homepage->second_image_description !!}
                             {{--  <li class="feature-section-list-item">
                                 <img src="{{ asset('/frontend/') }}/assets/images/point.png">
                                 Too Easy To Use Anytime Anywhere Around
@@ -115,7 +115,11 @@
             </div>
             <div class="recent-activity-items-wrapper">
                 @foreach ($job_posts as $job_post )
-                <div class="recent-activity-item-outer">
+                @php
+                    $worker = \App\Models\PostSubmit::where('post_id', $job_post->id)->where('status', '!=' ,'2')->get()->count();
+                @endphp
+                @if ($worker < $job_post->worker_number)
+                <a href="{{ url('/dashboard') }}" class="recent-activity-item-outer">
                     <div class="text-right text-blue">Posted Date: {{ date('m-d-Y', strtotime($job_post->created_at)) }}</div>
                     <div class="item-title">
                         <span>{{ $job_post->title }} </span>
@@ -127,14 +131,15 @@
                             </span>
                         </div>
                         <div class="item-center-content">
-                            @php
-                            $worker = \App\Models\PostSubmit::where('post_id', $job_post->id)->where('status','1')->get()->count();
-                            @endphp
                             <div class="progress-label">
                                 {{ $worker }} OF {{ $job_post->worker_number }}
                             </div>
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: {{ $worker }}%" aria-valuenow="{{ $worker }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                @if ($worker >= 100)
+                                <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="{{ $worker }}" aria-valuemin="0" aria-valuemax="{{ $job_post->worker_number }}"></div>
+                                @else
+                                <div class="progress-bar" role="progressbar" style="width: {{ $worker }}%" aria-valuenow="{{ $worker }}" aria-valuemin="0" aria-valuemax="{{ $job_post->worker_number }}"></div>
+                                @endif
                             </div>
                         </div>
                         <div class="item-right-content">
@@ -143,7 +148,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
+                @endif
                 @endforeach
                 {{--  <div class="recent-activity-item-outer">
                     <div class="text-right text-blue">6 minutes ago</div>
@@ -235,9 +241,9 @@
                         <span>{{ $homepage->how_works_title }}</span>
                     </h3>
                     <div class="video-section-top-des-outer">
-                        <p class="video-section-top-des">
-                            {{ $homepage->how_works_description }}
-                        </p>
+                        {{--  <p class="video-section-top-des">  --}}
+                            {!! $homepage->how_works_description !!}
+                        {{--  </p>  --}}
                         {{--  <p class="video-section-top-des">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Congue quam id a, nam ipsum euismod vulputate et aliquam. Tortor ipsum dolor sem venenatis. Nec sagittis eleifend sit sem enim arcu
                         </p>
@@ -265,12 +271,30 @@
                     <span class="extra-color">{{ $homepage->footer_title }}</span>
                 </h3>
                 <p class="signup-now-section-des">
-                    {{ $homepage->footer_description }}
+                    {!! $homepage->footer_description !!}
                 </p>
                 <div class="section-btn-outer">
                     <button type="button" class="section-btn-inner">
                         Go To The Dashboard
                     </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="counter-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="counter-item-outer">
+                        <h4 class="counter-title">Page Views</h4>
+                        <h3 class="counter-number">{{ $visitorCount ?? 0 }}</h3>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="counter-item-outer">
+                        <h4 class="counter-title">Total Users</h4>
+                        <h3 class="counter-number">{{ $userCount ?? 0 }}</h3>
+                    </div>
                 </div>
             </div>
         </div>

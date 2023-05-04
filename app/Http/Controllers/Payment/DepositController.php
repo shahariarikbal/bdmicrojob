@@ -17,6 +17,7 @@ class DepositController extends Controller
     public function showDeposit()
     {
         if(Auth::check()){
+            visitor()->visit();
             $user = Auth::user();
             $user_email = $user->email;
             $user_name = $user->name;
@@ -64,6 +65,7 @@ class DepositController extends Controller
     public function showDepositHistory ()
     {
         if(Auth::check()){
+            visitor()->visit();
             $marquee_text = MarqueeText::where('page_name','deposit_history')->first();
             $deposits = Deposit::where('user_id',Auth::user()->id)->Paginate(10);
             return view('frontend.auth.user.deposit-history',compact('deposits', 'marquee_text'));
@@ -75,6 +77,7 @@ class DepositController extends Controller
     public function showWithdraw()
     {
         if(Auth::check()){
+            visitor()->visit();
             $user = Auth::user();
             if($user->status == 1){
                 $marquee_text = MarqueeText::where('page_name','withdraw')->first();
@@ -91,6 +94,7 @@ class DepositController extends Controller
     public function withdrawEarning (WithdrawRequest $request)
     {
         if(Auth::check()){
+            visitor()->visit();
             $user = Auth::user();
             $total_amount = ((15*$request->withdraw_amount)/100)+($request->withdraw_amount);
             $withdraw = new Withdraw();
@@ -129,6 +133,7 @@ class DepositController extends Controller
     public function showWithdrawHistory()
     {
         if(Auth::check()){
+            visitor()->visit();
             $marquee_text = MarqueeText::where('page_name','withdraw_history')->first();
             $withdraws = Withdraw::where('user_id',Auth::user()->id)->Paginate(10);
             return view('frontend.auth.user.withdraw-history',compact('withdraws', 'marquee_text'));

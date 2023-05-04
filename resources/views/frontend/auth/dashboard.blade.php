@@ -9,7 +9,11 @@
     /* #wrapper #content-wrapper .container-fluid {
         padding: 30px 30px 30px 30px !important;
     } */
-
+      progress {
+         width: 100%;
+         height: 20px;
+         accent-color: #6908ac;
+      }
     </style>
 @endpush
 
@@ -356,14 +360,18 @@
                         <div class="progress-label">
                             {{ $worker }} OF {{ $post->worker_number }}
                         </div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: {{ $worker }}%" aria-valuenow="{{ $worker }}"
-                                aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
+                        <progress value="{{ $worker }}" max="{{ $post->worker_number }}"></progress>
+                        <!-- <div class="progress">
+                            @if ($worker >= 100)
+                            <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="{{ $worker }}" aria-valuemin="0" aria-valuemax="{{ $post->worker_number }}"></div>
+                            @else
+                            <div class="progress-bar" role="progressbar" style="width: {{ $worker }}%" aria-valuenow="{{ $worker }}" aria-valuemin="0" aria-valuemax="{{ $post->worker_number }}"></div>
+                            @endif
+                        </div> -->
                     </div>
                     <div class="job-item-right">
                         <h4 class="totla-earning">
-                            ৳ {{ $post->worker_earn }}
+                            ৳ {{ $post->category->worker_earning }}
                         </h4>
                     </div>
                 </a>

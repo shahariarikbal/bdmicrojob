@@ -15,19 +15,22 @@ class JobController extends Controller
 {
     public function showJob ()
     {
+        visitor()->visit();
         $job_posts = Post::with('user', 'category')->orderBy('created_at', 'desc')->Paginate(10);
         return view ('backend.job.show-jobs', compact('job_posts'));
     }
 
     public function showPendingJob ()
     {
+        visitor()->visit();
         $pending_job_posts = Post::with('user')->where('is_approved', 0)->orderBy('created_at', 'desc')->Paginate(10);
         return view ('backend.job.show-pending-jobs', compact('pending_job_posts'));
     }
 
     public function showJobDetails ($id)
     {
-        $job_post = Post::with('user','category')->where('id', $id)->first();
+        visitor()->visit();
+        $job_post = Post::with('user','category','specificTasks')->where('id', $id)->first();
         return view ('backend.job.show-job-details', compact('job_post'));
     }
 
@@ -62,8 +65,8 @@ class JobController extends Controller
         $userDeposit = User::where('id', auth()->user()->id)->first();
 
         if($userDeposit->total_deposit < $postPriceEarnPrice){
-            // return redirect()->back()->with('error', 'Insufficient balance');
-            return view ('frontend.auth.user.job.job-post-failed', compact('job_cost', 'job_commission', 'postPriceEarnPrice', 'per_worker_earn', 'admin_commission'));
+             return redirect()->back()->with('error', 'Insufficient balance');
+            // return view ('frontend.auth.user.job.job-post-failed', compact('job_cost', 'job_commission', 'postPriceEarnPrice', 'per_worker_earn', 'admin_commission'));
         }
         if($deposit->total_deposit == 0){
             return redirect()->back()->with('info', 'Please deposit your account balance first');
@@ -94,10 +97,11 @@ class JobController extends Controller
                 $specificTask->specific_task = $request->specific_task[$k];
                 $specificTask->save();
             }
-            return view ('frontend.auth.user.job.job-post-success', compact('job_cost', 'job_commission', 'postPriceEarnPrice', 'per_worker_earn', 'admin_commission'));
+            // return view ('frontend.auth.user.job.job-post-success', compact('job_cost', 'job_commission', 'postPriceEarnPrice', 'per_worker_earn', 'admin_commission'));
+            return redirect('/my/post')->withSuccess('Your post has been submitted');
         }
 
-        return redirect()->back()->withSuccess('Your post has been submitted');
+        return redirect('/my/post')->withSuccess('Your post has been submitted');
     }
 
     public function approveJob ($id)

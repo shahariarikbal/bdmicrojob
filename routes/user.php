@@ -20,13 +20,20 @@ Route::get('/forgot/password', [\App\Http\Controllers\UserController::class, 'sh
 Route::post('/store/forgot/password', [\App\Http\Controllers\UserController::class, 'storeForgotPassword']);
 
 Route::get('/post/job', [\App\Http\Controllers\UserController::class, 'showPostJob']);
+Route::get('/post/job/category/details', [\App\Http\Controllers\UserController::class, 'postStoreCategoryDetails']);
+Route::get('/post/job/job-information', [\App\Http\Controllers\UserController::class, 'postStoreJobInfo']);
 Route::post('/post/store', [\App\Http\Controllers\Backend\JobController::class, 'postStore']);
 Route::get('/account/varify', [\App\Http\Controllers\UserController::class, 'showAccountVarify']);
 Route::post('/account/varify/store', [\App\Http\Controllers\UserController::class, 'storeAccountVerify']);
+Route::get('/account/varify/history', [\App\Http\Controllers\UserController::class, 'historyAccountVerify']);
 Route::get('/my/task', [\App\Http\Controllers\UserController::class, 'showMyTask']);
 Route::get('/accepted/task', [\App\Http\Controllers\UserController::class, 'showAcceptedTask']);
 Route::get('/job/details/{id}', [\App\Http\Controllers\UserController::class, 'showJobDetails']);
 Route::get('/job/report/{id}', [\App\Http\Controllers\UserController::class, 'showJobReport']);
+Route::get('/job-poster/report/{id}', [\App\Http\Controllers\UserController::class, 'showJobPosterReport']);
+Route::post('/job-poster/report/store', [\App\Http\Controllers\UserController::class, 'storeJobPosterReport']);
+Route::get('/submitted-job/report/{id}', [\App\Http\Controllers\UserController::class, 'showFreelancerJobReport']);
+Route::post('/submitted-job/report/store', [\App\Http\Controllers\UserController::class, 'storeFreelancerJobReport']);
 Route::post('/report/submit/{id}', [\App\Http\Controllers\UserController::class, 'submitJobReport']);
 Route::get('/my/post', [\App\Http\Controllers\UserController::class, 'showMyPost']);
 Route::post('/post/submit/{id}', [\App\Http\Controllers\UserController::class, 'postSubmit']);

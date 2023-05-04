@@ -14,9 +14,12 @@
                     </div>
                 </div>
             </div>
-                <div class="card-body">
-                    <div class="col-md-12">
-                        <a href="{{ url('/admin/create/term-condition') }}" class="btn btn-sm btn-primary float-right mb-2">Add Terms & Conditions</a>
+            <div class="card-body">
+                <div class="col-md-12">
+                    <div class="text-right">
+                        <a href="{{ url('/admin/create/term-condition') }}" class="btn btn-sm btn-primary mb-2">Add Terms & Conditions</a>
+                    </div>                    
+                    <div class="table-responsive-scroll">
                         <table class="table table-striped">
                             <thead>
                             <tr>
@@ -42,6 +45,7 @@
                         </table>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
 @endsection

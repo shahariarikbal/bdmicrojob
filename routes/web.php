@@ -53,6 +53,7 @@ Route::post('/contact/store', [FrontendController::class, 'contactStore']);
 Route::get('/faq', [FrontendController::class, 'showFaq']);
 Route::get('/terms/conditions', [FrontendController::class, 'showTermsConditions']);
 Route::get('/privacy/policy', [FrontendController::class, 'showPrivacyPolicy']);
+Route::get('/forum', [FrontendController::class, 'showForum']);
 
 Auth::routes();
 
@@ -76,6 +77,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
 
 
 	Route::get('/dashboard', [AdminController::class, 'dashboard']);
+	Route::get('/visitor/view/{id}', [AdminController::class, 'visitorView']);
 	Route::get('/users', [AdminController::class, 'users']);
 	Route::get('/active/{user}', [AdminController::class, 'active']);
 	Route::get('/inactive/{user}', [AdminController::class, 'inactive']);
@@ -123,6 +125,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
    //Deposit Requests....
    Route::get('/deposit/request', [PaymentController::class,'showDepositRequest']);
    Route::get('/deposit/approve/{id}', [PaymentController::class,'approveDeposit']);
+   Route::get('/deposit/reject/{id}', [PaymentController::class,'rejectDeposit']);
 
    //Withdraw Requests....
    Route::get('/withdraw/request', [PaymentController::class,'showWithdrawRequest']);

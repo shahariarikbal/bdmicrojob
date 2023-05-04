@@ -410,13 +410,13 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
     color: #777;
 }
 
-footer.sticky-footer {
+.sticky-footer {
     background-color: #e9ecef;
     padding: 15px;
     margin-left: 225px;
 }
 
-footer.sticky-footer .copyright {
+.sticky-footer .copyright {
     line-height: 1;
     font-size: 0.8rem;
 }
@@ -2612,7 +2612,6 @@ footer.sticky-footer {
     outline: none;
 }
 
-
 .post-job-form-wrapper {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 10px;
@@ -2757,18 +2756,19 @@ button.account-varify-btn-inner:hover {
     font-weight: 700;
 }
  .payment-method-number {
-     font-size: 18px;
-     margin-bottom: 0;
-     font-weight: 600;
-     color: #6908ac;
-}
- .payment-method-outer:hover {
-     transform: translateY(-5px);
-}
- .payment-method-outer:hover .payment-method-title {
-     color: #6908ac;
+    font-size: 18px;
+    margin-bottom: 0;
+    font-weight: 600;
+    color: #6908ac;
 }
 
+ .payment-method-outer:hover {
+    transform: translateY(-5px);
+}
+
+ .payment-method-outer:hover .payment-method-title {
+    color: #6908ac;
+}
 
 .deposit-sec-notice {
     font-size: 16px;
@@ -2997,6 +2997,7 @@ button.account-varify-btn-inner:hover {
     letter-spacing: 1px;
     padding: 10px 0;
     border-radius: 30px;
+    margin-bottom: 85px;
 }
 /*Job Details page css End*/
 
@@ -3020,7 +3021,7 @@ button.account-varify-btn-inner:hover {
     font-weight: 500;
 }
 
-label.job-report-form-label {
+.job-report-form-label {
     font-size: 16px;
     color: #000;
     margin-bottom: 6px;
@@ -3063,7 +3064,7 @@ label.job-report-form-label {
 /*Footer section css start*/
 .footer-section {
     background: #ddd;
-    position: fixed;
+    position: absolute;
     width: 100%;
     bottom: 0;
 }
@@ -3198,7 +3199,7 @@ label.job-report-form-label {
 }
 
 @media screen and ( max-width: 767px ){
-    footer.footer-section {
+    .footer-section {
         display: none;
     }
 }
@@ -3207,6 +3208,7 @@ label.job-report-form-label {
     .earning-btn-outer {
         display: inline-block;
     }
+    
     .footer-policies-list {
         display: inline-block;
         text-align: start;
@@ -3270,4 +3272,8 @@ label.job-report-form-label {
     border-radius: 4px;
     font-size: 16px;
     font-weight: 600;
+}
+
+.table-responsive-scroll {
+    overflow-x: scroll;
 }
