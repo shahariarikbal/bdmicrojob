@@ -31,6 +31,7 @@ Route::get('/accepted/task', [\App\Http\Controllers\UserController::class, 'show
 Route::get('/job/details/{id}', [\App\Http\Controllers\UserController::class, 'showJobDetails']);
 Route::get('/job/report/{id}', [\App\Http\Controllers\UserController::class, 'showJobReport']);
 Route::get('/submitted-job/report/{id}', [\App\Http\Controllers\UserController::class, 'showFreelancerJobReport']);
+Route::post('/submitted-job/report/store', [\App\Http\Controllers\UserController::class, 'storeFreelancerJobReport']);
 Route::post('/report/submit/{id}', [\App\Http\Controllers\UserController::class, 'submitJobReport']);
 Route::get('/my/post', [\App\Http\Controllers\UserController::class, 'showMyPost']);
 Route::post('/post/submit/{id}', [\App\Http\Controllers\UserController::class, 'postSubmit']);

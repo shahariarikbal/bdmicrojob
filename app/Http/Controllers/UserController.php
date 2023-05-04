@@ -15,6 +15,7 @@ use App\Models\Notification;
 use App\Models\Deposit;
 use App\Models\Withdraw;
 use App\Models\MarqueeText;
+use App\Models\UserReport;
 use Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -226,7 +227,63 @@ class UserController extends Controller
     public function showFreelancerJobReport($id)
     {
         visitor()->visit();
-        return view('frontend.auth.user.user-report');
+        $job_details = PostSubmit::where('id', $id)->with('post','user')->first();
+        //dd($job_details);
+        return view('frontend.auth.user.user-report', compact('job_details'));
+    }
+
+    public function storeFreelancerJobReport (Request $request)
+    {
+        $auth_user = Auth::user();
+        if($auth_user){
+            // $is_reported = UserReport::where('reporter_id', $auth_user->id)->where('user_id', $request->user_id)
+            // ->where('submitted_job_id', $request->submitted_job_id)->first();
+            $job_details = PostSubmit::where('id', $request->submitted_job_id)->first();
+            if($job_details->is_reported==false){
+                $user_report = new UserReport();
+                $user_report->reporter_id = $auth_user->id;
+                $user_report->user_id = $request->user_id;
+                $user_report->report_type = 1;
+                $user_report->submitted_job_id = $request->submitted_job_id;
+                $user_report->message = $request->message;
+                if($user_report->save()){
+                    $user = User::find($request->user_id);
+                    $user->job_submit_report = $user->job_submit_report+1;
+                    $user->save();
+                    $job_details->is_reported = true;
+                    $job_details->save();
+                    return redirect('/submitted/job/pending')->with('success', 'Report is submitted successfully!');
+                }
+                else{
+                    return redirect('/submitted/job/pending')->with('error', 'Technical error!!');
+                }
+
+                //Automatic block if report count is 5..
+                // if($user_report->save()){
+                //     $report_count = UserReport::where('user_id',$request->user_id)->count();
+                //     if($report_count>=5){
+                //         $user = User::find($request->user_id);
+                //         $user->status = false;
+                //         $user->save();
+                //         return redirect('/submitted/job/pending')->with('success', 'Report submitted successfully!');
+                //     }
+                //     else{
+                //         return redirect('/submitted/job/pending')->with('success', 'Report submitted successfully!');
+                //     }
+                // }
+                // else{
+                //     return redirect('/submitted/job/pending')->with('error', 'Technical error!!');
+                // }
+                //Automatic block if report count is 5..
+            }
+            else{
+                return redirect()->back()->with('error', 'Already reported!!');
+            }
+        }
+        else{
+            return redirect('/login');
+        }
+
     }
 
     public function submitJobReport(Request $request, $id)

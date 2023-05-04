@@ -13,17 +13,19 @@
                         <h4 class="job-report-title">
                             Report This Job
                         </h4>
-                        <form action="" method="post" class="job-report-form form-group">
+                        <form action="{{ url('/submitted-job/report/store') }}" method="post" class="job-report-form form-group">
                             @csrf
                             <p class="job-report-form-text">
                                 Do you have any issue/problem with this job?<br>
                                 Write down below about your problem/reason
                             </p>
+                            <input type="hidden" name="user_id", value="{{ $job_details->user_id }}">
+                            <input type="hidden" name="submitted_job_id", value="{{ $job_details->id }}">
                             <div class="form-group">
                                 <label class="job-report-form-label" for="report_message">
                                     Describe your issue/reason
                                 </label>
-                                <textarea class="form-control" id="report_message" rows="5" name="message" placeholder="Write your reason here..."></textarea>
+                                <textarea class="form-control" id="report_message" rows="5" name="message" placeholder="Write your reason here..." required></textarea>
                             </div>
                             <div class="report-form-btn-outer">
                                 <button type="submit" class="report-form-btn-inner">
