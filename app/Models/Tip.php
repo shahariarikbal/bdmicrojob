@@ -11,9 +11,9 @@ class Tip extends Model
     protected $table='tips';
     protected $guarded = [];
 
-    public function user(): BelongsTo
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function tip()

@@ -29,8 +29,16 @@
 {{--    </div>--}}
     <div class="video-block section-padding">
        <div class="row">
-          <div class="col-xl-4 col-sm-6 mb-4">
-             <div class="custom-card-one">
+          <div class="col-xl-3 col-md-4 col-sm-6 mb-4">
+            <div class="card radius-10" style="background: linear-gradient(131.26deg,#5E44C9 26.64%,#2448D6 214.9%)">
+                <div class="card-body text-center">
+                    <p class="mb-1 text-white" style="font-size: 17px;font-weight: 600;">Approved Jobs</p>
+                    <h3 class="text-white">
+                        {{ $approved_job_count }}
+                    </h3>
+                </div>
+            </div>
+             <!-- <div class="custom-card-one">
                 <div class="row">
                    <div class="col-md-4">
                     <img src="{{ asset('backend/') }}/img/Vector.png" style="height: 50px; margin-top: 25px; margin-left: 15px;"/>
@@ -40,59 +48,27 @@
                     <p class="earn-box-one">{{ $approved_job_count }}</p>
                    </div>
                </div>
-             </div>
+             </div> -->
           </div>
-          <div class="col-xl-4 col-sm-6 mb-4">
-            <div class="custom-card-one">
-               <div class="row">
-                  <div class="col-md-4">
-                   <img src="{{ asset('backend/') }}/img/Vector.png" style="height: 50px; margin-top: 25px; margin-left: 15px;"/>
-                  </div>
-                  <div class="col-md-8">
-                   <p class="earn-box-one">Pending Jobs</p>
-                   <p class="earn-box-one">{{ $pending_job_count }}</p>
-                  </div>
-              </div>
+          <div class="col-xl-3 col-md-4 col-sm-6 mb-4">
+            <div class="card radius-10" style="background: linear-gradient(131.26deg,#5E44C9 26.64%,#2448D6 214.9%)">
+                <div class="card-body text-center">
+                    <p class="mb-1 text-white" style="font-size: 17px;font-weight: 600;">Pending Jobs</p>
+                    <h3 class="text-white">
+                        {{ $pending_job_count }}
+                    </h3>
+                </div>
             </div>
-         </div>
-          {{--  <div class="col-xl-3 col-sm-6 mb-3">
-             <div class="custom-card-two">
-                <div class="row">
-                   <div class="col-md-4">
-                      <div style="border: 2px solid #ffffff; height: 40px; margin-top: 25px; margin-left: 15px; border-radius: 8px; width: 50px;">
-                         <img src="{{ asset('backend/') }}/img/Vector1.png" style="height: 20px; margin-top: 8px; margin-left: 15px;"/>
-                      </div>
-                   </div>
-                   <div class="col-md-8">
-                    <p class="earn-box-one">Total videos</p>
-                   </div>
-               </div>
-             </div>
-          </div>  --}}
-          {{--  <div class="col-xl-3 col-sm-6 mb-3">
-             <div class="custom-card-three">
-                <div class="row">
-                   <div class="col-md-4">
-                    <img src="{{ asset('backend/') }}/img/Vector2.png" style="height: 50px; margin-top: 25px; margin-left: 15px;"/>
-                   </div>
-                   <div class="col-md-8">
-                    <p class="earn-box-one">Share Links And Get Rewards !</p>
-                   </div>
-               </div>
-             </div>
-          </div>  --}}
-          <div class="col-xl-4 col-sm-6 mb-4">
-             <div class="custom-card-four">
-                <div class="row">
-                   <div class="col-md-4">
-                    <img src="{{ asset('backend/') }}/img/Vector3.png" style="height: 50px; margin-top: 25px; margin-left: 15px;"/>
-                   </div>
-                   <div class="col-md-8">
-                    <p class="earn-box-one">Total users</p>
-                    <p class="earn-box-one">{{ $user_count }}</p>
-                   </div>
-               </div>
-             </div>
+          </div>
+          <div class="col-xl-3 col-md-4 col-sm-6 mb-4">
+            <div class="card radius-10" style="background: linear-gradient(131.26deg,#5E44C9 26.64%,#2448D6 214.9%)">
+                <div class="card-body text-center">
+                    <p class="mb-1 text-white" style="font-size: 17px;font-weight: 600;">Total users</p>
+                    <h3 class="text-white">
+                        {{ $user_count }}
+                    </h3>
+                </div>
+            </div>
           </div>
        </div>
     </div>

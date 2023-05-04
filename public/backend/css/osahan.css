@@ -3064,7 +3064,7 @@ button.account-varify-btn-inner:hover {
 /*Footer section css start*/
 .footer-section {
     background: #ddd;
-    position: fixed;
+    position: absolute;
     width: 100%;
     bottom: 0;
 }
@@ -3272,4 +3272,8 @@ button.account-varify-btn-inner:hover {
     border-radius: 4px;
     font-size: 16px;
     font-weight: 600;
+}
+
+.table-responsive-scroll {
+    overflow-x: scroll;
 }

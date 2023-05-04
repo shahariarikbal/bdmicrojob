@@ -4,6 +4,19 @@
 	Job Details
 @endsection
 
+@push('page-css')
+    <style>
+    /* #wrapper #content-wrapper .container-fluid {
+        padding: 30px 30px 30px 30px !important;
+    } */
+      progress {
+         width: 100%;
+         height: 20px;
+         accent-color: #6908ac;
+      }
+    </style>
+@endpush
+
 @section('content')
     <section class="job-details-section">
         <div class="container-fluid">
@@ -16,13 +29,14 @@
                                     <div class="done-job-left">
                                         <h5 class="title">DONE</h5>
                                         <h3 class="number">{{ $totalPostSubmit }} of {{ $postDetail->worker_number }}</h3>
-                                        <div class="progress">
+                                        <progress value="{{ $totalPostSubmit }}" max="{{ $postDetail->worker_number }}"></progress>
+                                        <!-- <div class="progress">
                                             @if ($totalPostSubmit >= 100)
                                             <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="{{ $totalPostSubmit }}" aria-valuemin="0" aria-valuemax="{{ $postDetail->worker_number }}"></div>
                                              @else
                                             <div class="progress-bar" role="progressbar" style="width: {{ $totalPostSubmit }}%" aria-valuenow="{{ $totalPostSubmit }}" aria-valuemin="0" aria-valuemax="{{ $postDetail->worker_number }}"></div>
                                             @endif
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <div class="done-job-right">
                                         <span class="icon-outer">

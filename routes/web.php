@@ -53,6 +53,7 @@ Route::post('/contact/store', [FrontendController::class, 'contactStore']);
 Route::get('/faq', [FrontendController::class, 'showFaq']);
 Route::get('/terms/conditions', [FrontendController::class, 'showTermsConditions']);
 Route::get('/privacy/policy', [FrontendController::class, 'showPrivacyPolicy']);
+Route::get('/forum', [FrontendController::class, 'showForum']);
 
 Auth::routes();
 
