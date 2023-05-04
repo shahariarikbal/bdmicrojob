@@ -87,7 +87,7 @@ class AdminController extends Controller
             $users = User::where('email', $request->email)->orderBy('created_at', 'desc')->paginate(10);
             return view('backend.auth.user.index', compact('users'));
         }
-        $users = User::orderBy('created_at', 'desc')->paginate(10);
+        $users = User::with('getTip')->orderBy('created_at', 'desc')->paginate(10);
         return view('backend.auth.user.index', compact('users'));
     }
 
