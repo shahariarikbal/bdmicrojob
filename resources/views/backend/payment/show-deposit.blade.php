@@ -18,9 +18,19 @@
                 		<h2>Deposit list</h2>
             		</div>
             	</div>
-
             </div>
             <div class="card-body">
+                <form method="GET" action="" class="form-inline mb-3" style="width: 60%">
+                    @csrf
+                    <div class="input-group mb-3" style="width: 100%">
+                        <span class="input-group-text bg-gradient-blues" style="background-color: black; color: white">From</span>
+                        <input type="date" class="form-control" name="from" placeholder="From date" aria-label="Username" style="padding: 18px;">
+                        <span class="input-group-text bg-gradient-burning" style="background-color: black; color: white">To</span>
+                        <input type="date" class="form-control" name="to" placeholder="To date" aria-label="Server" style="padding: 18px;">
+                        <button type="submit" class="btn btn-sm btn-info" style="margin-left: 5px;"><i class="fa fa-search"></i> Search</button>
+                        <a href="" class="btn btn-sm btn-danger" style="margin-left: 5px;"><i class="fa fa-search"></i> Clear</a>
+                    </div>
+                </form>
                 <div class="col-md-12">
                     <table class="table table-striped table-responsive">
                         <thead>
