@@ -14,17 +14,20 @@
                     </div>
                 </div>
             </div>
-                <div class="card-body">
-                    <div class="col-md-12">
-                        <a href="{{ url('/admin/create/privacy-policy') }}" class="btn btn-sm btn-primary float-right mb-2">Add Privacy Policy</a>
-                        <table class="table table-striped table-responsive">
+            <div class="card-body">
+                <div class="col-md-12">
+                    <div class="text-right">
+                        <a href="{{ url('/admin/create/privacy-policy') }}" class="btn btn-sm btn-primary mb-2">Add Privacy Policy</a>
+                    </div>
+                    <div class="table-responsive-scroll">
+                        <table class="table table-striped">
                             <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Title</th>
-                                {{--  <th scope="col">Description</th>  --}}
-                                <th scope="col">Action</th>
-                            </tr>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Title</th>
+                                    {{--  <th scope="col">Description</th>  --}}
+                                    <th scope="col">Action</th>
+                                </tr>
                             </thead>
                             <tbody>
                                 @foreach($privacy_policies as $privacy_policy)
@@ -42,6 +45,7 @@
                         </table>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
 @endsection

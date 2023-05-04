@@ -24,7 +24,8 @@
             </div>
             <div class="card-body">
                 <div class="col-md-12">
-                    <table class="table table-striped table-responsive">
+                    <div class="table-responsive-scroll">
+                        <table class="table table-striped">
                         <thead>
                           <tr>
                             <th scope="col">#</th>
@@ -61,8 +62,9 @@
                               </tr>
                             @endforeach
                         </tbody>
-                      </table>
-                      {{ $users->links() }}
+                    </table>
+                    {{ $users->links() }}
+                    </div>
                 </div>
             </div>
         </div>
