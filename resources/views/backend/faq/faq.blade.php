@@ -46,31 +46,35 @@
             @endif
             @if($page == 'index')
                 <div class="card-body">
-                    <div class="col-md-12">
-                        <a href="{{ url('/admin/faq/create') }}" class="btn btn-sm btn-primary float-right mb-2">Add Faq</a>
-                        <table class="table table-striped table-responsive">
-                            <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Question</th>
-                                {{--  <th scope="col">Answer</th>  --}}
-                                <th scope="col">Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($data as $info)
-                                    <tr>
-                                        <td>{{ $loop->index+1 }}</td>
-                                        <td>{{ $info->question }}</td>
-                                        {{--  <td>{!! substr($info->answer,0,50) !!}</td>  --}}
-                                        <td>
-                                            <a href="{{ url('/admin/faq/edit/'.$info->id) }}" class="btn btn-sm btn-info">Edit</a>
-                                            <a href="{{ url('/admin/faq/delete/'.$info->id) }}" onclick="return confirm('Are you sure delete this data ?')" class="btn btn-sm btn-danger">Delete</a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                    <div class="text-right">
+                        <a href="{{ url('/admin/faq/create') }}" class="btn btn-sm btn-primary mb-2">Add Faq</a>
+                    </div>
+                    <div class="col-md-12">                        
+                        <div class="table-responsive-scroll">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Question</th>
+                                    {{--  <th scope="col">Answer</th>  --}}
+                                    <th scope="col">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($data as $info)
+                                        <tr>
+                                            <td>{{ $loop->index+1 }}</td>
+                                            <td>{{ $info->question }}</td>
+                                            {{--  <td>{!! substr($info->answer,0,50) !!}</td>  --}}
+                                            <td>
+                                                <a href="{{ url('/admin/faq/edit/'.$info->id) }}" class="btn btn-sm btn-info">Edit</a>
+                                                <a href="{{ url('/admin/faq/delete/'.$info->id) }}" onclick="return confirm('Are you sure delete this data ?')" class="btn btn-sm btn-danger">Delete</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             @endif
