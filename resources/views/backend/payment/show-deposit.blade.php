@@ -21,7 +21,7 @@
             </div>
             <div class="card-body">
                 <div class="col-md-10 m-auto">
-                    <form method="GET" action="" class="gobal-serch-form form-group mb-3">
+                    <form method="GET" action="{{ url('/admin/deposit/request') }}" class="gobal-serch-form form-group mb-3">
                         @csrf
                         <div class="row" style="width: 100%">
                             <div class="col-md-5 mb-2">
@@ -34,12 +34,12 @@
                                 <div class="d-flex align-items-center">
                                     <span class="input-group-text bg-gradient-burning" style="background-color: black; color: white">To</span>
                                     <input type="date" class="form-control" name="to" placeholder="To date" aria-label="Server" style="padding: 18px;">
-                                </div>                                
+                                </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="d-flex align-items-center">
                                     <button type="submit" class="input-group-text text-white btn btn-primary" style="margin-right: 5px">Search</button>
-                                    <a href="" class="input-group-text text-white btn btn-danger">Clear</a>
+                                    <a href="{{ url('/admin/deposit/request') }}" class="input-group-text text-white btn btn-danger">Clear</a>
                                 </div>
                             </div>
                         </div>

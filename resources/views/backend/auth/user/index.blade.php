@@ -54,7 +54,7 @@
                             <div class="col-md-2">
                                 <div class="d-flex align-items-center">
                                     <button type="submit" class="input-group-text text-white btn btn-primary" style="margin-right: 5px">Search</button>
-                                    <a href="" class="input-group-text text-white btn btn-danger">Clear</a>
+                                    <a href="{{ url('/admin/users') }}" class="input-group-text text-white btn btn-danger">Clear</a>
                                 </div>
                             </div>
                         </div>

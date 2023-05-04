@@ -78,6 +78,31 @@
             <span style="font-size: 18px; font-weight: bold">Visitor's List</span>
         </div>
         <div class="card-body">
+            <div class="col-md-10 m-auto">
+                <form method="GET" action="{{ url('/admin/dashboard') }}" class="gobal-serch-form form-group mb-3">
+                    @csrf
+                    <div class="row" style="width: 100%">
+                        <div class="col-md-5 mb-2">
+                            <div class="d-flex align-items-center">
+                                <span class="input-group-text bg-gradient-blues" style="background-color: black; color: white">From</span>
+                                <input type="date" class="form-control" name="from" placeholder="From date" aria-label="Username" style="padding: 18px;">
+                            </div>
+                        </div>
+                        <div class="col-md-5 mb-2">
+                            <div class="d-flex align-items-center">
+                                <span class="input-group-text bg-gradient-burning" style="background-color: black; color: white">To</span>
+                                <input type="date" class="form-control" name="to" placeholder="To date" aria-label="Server" style="padding: 18px;">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="d-flex align-items-center">
+                                <button type="submit" class="input-group-text text-white btn btn-primary" style="margin-right: 5px">Search</button>
+                                <a href="{{ url('/admin/dashboard') }}" class="input-group-text text-white btn btn-danger">Clear</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
             <table class="table table-hover table-bordered">
                 <tr>
                     <th>SL</th>

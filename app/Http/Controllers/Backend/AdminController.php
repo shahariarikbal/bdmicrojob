@@ -63,9 +63,16 @@ class AdminController extends Controller
 
     }
 
-    public function dashboard(){
+    public function dashboard(Request $request){
         visitor()->visit();
-        $visitors = DB::table('shetabit_visits')->orderBy('created_at', 'desc')->paginate(50);
+        $sql = DB::table('shetabit_visits')->orderBy('created_at', 'desc');
+        if (isset($request->from)) {
+            $sql->whereDate('created_at', '>=', $request->from);
+        }
+        if (isset($request->to)) {
+            $sql->whereDate('created_at', '<=', $request->to);
+        }
+        $visitors = $sql->paginate(50);
         $user_count = User::count();
         $pending_job_count = Post::where('is_approved',0)->count();
         $approved_job_count = Post::where('is_approved',1)->count();
@@ -83,12 +90,18 @@ class AdminController extends Controller
     public function users(Request $request)
     {
         visitor()->visit();
+        $sql = Tip::with('user')->orderBy('created_at', 'desc');
         if($request->email){
-            $users = $userTips = Tip::with('user')->orderBy('created_at', 'desc')->get()->groupBy('user_id');
-            return view('backend.auth.user.index', compact('users'));
+            $userTips = $sql->get()->groupBy('user_id');
+            return view('backend.auth.user.index', compact('userTips'));
         }
-//        $users = User::with('getTip')->orderBy('created_at', 'desc')->paginate(10);
-        $userTips = Tip::with('user')->orderBy('created_at', 'desc')->get()->groupBy('user_id');
+        if (isset($request->from)) {
+            $sql->whereDate('created_at', '>=', $request->from);
+        }
+        if (isset($request->to)) {
+            $sql->whereDate('created_at', '<=', $request->to);
+        }
+        $userTips = $sql->get()->groupBy('user_id');
         return view('backend.auth.user.index', compact('userTips'));
     }
 
