@@ -23,6 +23,7 @@ use Stevebauman\Location\Facades\Location;
 use Str;
 use Auth;
 use DB;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
@@ -108,6 +109,7 @@ class AdminController extends Controller
     public function active(User $user)
     {
         $user->status = 0;
+        $user->updated_at = Carbon::now()->toDateTimeString();
         $user->save();
         session()->flash('Success', 'User has been inactive.');
         return redirect()->back();
@@ -116,6 +118,7 @@ class AdminController extends Controller
     public function inactive(User $user)
     {
         $user->status = 1;
+        $user->updated_at = Carbon::now()->toDateTimeString();
         $user->save();
         session()->flash('Success', 'User has been active.');
         return redirect()->back();
