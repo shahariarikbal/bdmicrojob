@@ -333,7 +333,6 @@
         $auth_user = Auth::user();
         $blockDateTime = $auth_user->updated_at;
         $unblockDateTime = $auth_user->updated_at->addHours(6);
-        //$totalDuration = $blockDateTime->diffInHours($unblockDateTime) .' '. 'hour(s)' . $blockDateTime->diffInMinutes($unblockDateTime);
         $totalDuration = Carbon\Carbon::now()->diff($unblockDateTime)->format('%H hour(s):%I minutes(s):%S second(s)');
     @endphp
    <div class="row">
