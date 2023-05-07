@@ -329,9 +329,21 @@
     </div>
  </div> -->
 <div class="dashboard-section container-fluid">
+    @php
+        $auth_user = Auth::user();
+        $blockDateTime = $auth_user->updated_at;
+        $unblockDateTime = $auth_user->updated_at->addHours(6);
+        //$totalDuration = $blockDateTime->diffInHours($unblockDateTime) .' '. 'hour(s)' . $blockDateTime->diffInMinutes($unblockDateTime);
+        $totalDuration = Carbon\Carbon::now()->diff($unblockDateTime)->format('%H hour(s):%I minutes(s):%S second(s)');
+    @endphp
    <div class="row">
       <div class="col-md-10 m-auto">
+         @if ($auth_user->status==1)
          <marquee>{{ $marquee_text->marquee_text }}</marquee>
+         @elseif ($auth_user->status==0)
+         <h4 style="color:red">You are temporarily blocked!!</h4>
+         <h5>You will be automatically unblocked after {{ $totalDuration  }}</h5>
+         @endif
          <div class="job-items-wrapper">
             <form action="{{ url('/dashboard') }}" method="get" class="select-category-outer">
                 @csrf
