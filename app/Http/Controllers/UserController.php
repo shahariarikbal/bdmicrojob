@@ -381,6 +381,11 @@ class UserController extends Controller
         return view('frontend.auth.user.my-post', compact('posts'));
     }
 
+    public function showAddWorker($id)
+    {
+        return view('frontend.auth.user.add-worker');
+    }
+
     public function postEdit($id)
     {
         $post = Post::find($id);
