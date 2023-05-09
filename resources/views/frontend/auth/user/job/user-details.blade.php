@@ -215,15 +215,15 @@
                                        <ul class="stats">
                                            <li>
                                                <h3>{{ $userPostCount }}</h3>
-                                               <h4>Total Post</h4>
+                                               <h4>Total Job</h4>
                                            </li>
                                            <li>
                                                <h3>{{ $userApprovedPostCount }}</h3>
-                                               <h4>Accepted Post</h4>
+                                               <h4>Accepted Job</h4>
                                            </li>
                                            <li>
                                                <h3>{{ $userRejectPostCount }}</h3>
-                                               <h4>Rejected Post</h4>
+                                               <h4>Rejected Job</h4>
                                            </li>
                                            <li>
                                                <h3>{{ $user->job_post_report }}</h3>
