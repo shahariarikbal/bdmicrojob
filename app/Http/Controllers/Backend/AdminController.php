@@ -106,6 +106,19 @@ class AdminController extends Controller
         return view('backend.auth.user.index', compact('userTips'));
     }
 
+    public function allUsers (Request $request)
+    {
+        visitor()->visit();
+        if($request->email){
+            $users = User::where('email',$request->email)->Paginate(20);
+            return view('backend.auth.user.all-user', compact('users'));
+        }
+        else{
+            $users = User::Paginate(20);
+            return view('backend.auth.user.all-user', compact('users'));
+        }
+    }
+
     public function active(User $user)
     {
         $user->status = 0;
