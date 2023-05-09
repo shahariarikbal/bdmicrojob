@@ -415,12 +415,14 @@
                                    </div>
                                    <div class="infos">
                                        <div class="name">
-                                           <h2>Bradley Steve</h2>
-                                           <h4>@bradsteve</h4>
+                                           <h2>Name : {{ $user->name }}</h2>
+                                           <h4>
+                                               Email : <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>
+                                           </h4>
                                        </div>
                                        <ul class="stats">
                                            <li>
-                                               <h3>15K</h3>
+                                               <h3>15</h3>
                                                <h4>Total Post</h4>
                                            </li>
                                            <li>
@@ -428,8 +430,12 @@
                                                <h4>Accepted Post</h4>
                                            </li>
                                            <li>
-                                               <h3>1.3M</h3>
+                                               <h3>10</h3>
                                                <h4>Rejected Post</h4>
+                                           </li>
+                                           <li>
+                                               <h3>{{ $user->job_post_report }}</h3>
+                                               <h4>Job Report</h4>
                                            </li>
                                        </ul>
 {{--                                       <div class="links">--}}
