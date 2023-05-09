@@ -617,6 +617,9 @@ class UserController extends Controller
     public function userDetails($userId)
     {
         $user = User::with('jobPost')->where('id', $userId)->first();
-        return view('frontend.auth.user.job.user-details', compact('user'));
+        $userPostCount = Post::with('jobPost')->where('user_id', $userId)->count();
+        $userApprovedPostCount = PostSubmit::where('job_owner_id', $userId)->where('status', 1)->count();
+        $userRejectPostCount = PostSubmit::where('job_owner_id', $userId)->where('status', 2)->count();
+        return view('frontend.auth.user.job.user-details', compact('user', 'userPostCount', 'userApprovedPostCount', 'userRejectPostCount'));
     }
 }

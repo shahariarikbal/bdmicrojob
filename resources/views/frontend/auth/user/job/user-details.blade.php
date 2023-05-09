@@ -202,7 +202,7 @@
                                 <div class="user-details-wrap card">
                                     <div class="user-details-outer">
                                         <div class="img">
-                                           <img src="https://images.unsplash.com/photo-1610216705422-caa3fcb6d158?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDB8fGZhY2V8ZW58MHwyfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60">
+                                           <img src="{{ asset('/user/'.$user->avatar) }}" alt="user">
                                         </div>
                                         <div class="name">
                                            <h2>Name : {{ $user->name }}</h2>
@@ -210,19 +210,19 @@
                                                Email : <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>
                                            </h4>
                                        </div>
-                                    </div>                                   
-                                   <div class="user-details-infos">                                       
+                                    </div>
+                                   <div class="user-details-infos">
                                        <ul class="stats">
                                            <li>
-                                               <h3>15</h3>
+                                               <h3>{{ $userPostCount }}</h3>
                                                <h4>Total Post</h4>
                                            </li>
                                            <li>
-                                               <h3>82</h3>
+                                               <h3>{{ $userApprovedPostCount }}</h3>
                                                <h4>Accepted Post</h4>
                                            </li>
                                            <li>
-                                               <h3>10</h3>
+                                               <h3>{{ $userRejectPostCount }}</h3>
                                                <h4>Rejected Post</h4>
                                            </li>
                                            <li>
@@ -243,13 +243,13 @@
                                    <div class="custom-progress-bar-wrap">
                                        <div class="custom-progress-bar-outer">
                                            <div class="progress vertical">
-                                               <div role="progressbar" style="height: 95%;background: #42ba96;" title="95%" class="progress-bar progress-bar-success"></div>
+                                               <div role="progressbar" style="height: {{ $userApprovedPostCount }}%;background: #42ba96;" class="progress-bar progress-bar-success"></div>
                                            </div>
                                            <p class="label">Approved</p>
                                        </div>
                                        <div class="custom-progress-bar-outer">
                                            <div class="progress vertical">
-                                               <div role="progressbar" style="height: 70%;background: red;" title="70%" class="progress-bar progress-bar-success"></div>
+                                               <div role="progressbar" style="height: {{ $userRejectPostCount }}%;background: red;" class="progress-bar progress-bar-success"></div>
                                            </div>
                                            <p class="label">Rejected</p>
                                        </div>
