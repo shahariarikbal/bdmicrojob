@@ -268,9 +268,12 @@
             margin-right: 10px;
         }
 
+        .forgot-password-link-outer {
+            text-align: end;
+        }
+
         .forgot-password-link {
-            text-align: right;
-            display: block;
+            display: inline-block;
             text-decoration: none;
             font-size: 17px;
             font-weight: 900;
@@ -333,9 +336,11 @@
                                 </h6>
                             @enderror
                         </div>
-                        <a href="{{ url('/forgot/password') }}" class="forgot-password-link">
-                            forgot password
-                        </a>
+                        <div class="forgot-password-link-outer">
+                            <a href="{{ url('/forgot/password') }}" class="forgot-password-link">
+                                forgot password
+                            </a>
+                        </div>
                         <div class="not-robot-outer">
                             <input type="checkbox" name="robot" id="robot" required>
                             <label for="robot">I am not a robot.</label>
