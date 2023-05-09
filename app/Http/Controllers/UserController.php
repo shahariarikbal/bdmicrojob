@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
@@ -209,7 +210,9 @@ class UserController extends Controller
             if($postDetail){
                 $isPostSubmit = PostSubmit::where('user_id', auth()->user()->id)->where('status', '!=' ,'2')
                 ->orderBy('created_at','desc')->where('post_id', $postDetail->id)->first();
-                $totalPostSubmit = PostSubmit::where('post_id', $postDetail->id)->where('status','!=','2')->get()->count();
+                $postSubmit = PostSubmit::where('post_id', $postDetail->id)->where('status','!=','2')->get()->count();
+                $userAddToCart = Cart::where('post_id', $id)->get()->count();
+                $totalPostSubmit = $postSubmit + $userAddToCart;
                 return view('frontend.auth.user.job.job-details', compact('postDetail', 'isPostSubmit', 'totalPostSubmit', 'is_reported'));
             }
             else{
@@ -600,5 +603,20 @@ class UserController extends Controller
                 return redirect()->back()->with('error', 'Old Password does not Match!!');
             }
         }
+    }
+
+    public function addToCart($userId, $id)
+    {
+        $addToCart = new Cart();
+        $addToCart->user_id = $userId;
+        $addToCart->post_id = $id;
+        $addToCart->save();
+        return redirect()->back()->with('success', 'Post has been added to your favourite list');
+    }
+
+    public function userDetails($userId)
+    {
+        $user = User::with('jobPost')->where('id', $userId)->first();
+        return view('frontend.auth.user.job.user-details', compact('user'));
     }
 }

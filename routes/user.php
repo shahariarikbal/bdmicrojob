@@ -64,3 +64,7 @@ Route::get('/nid_notification_seen/{id}', [\App\Http\Controllers\UserController:
 Route::get('/deposit_notification_seen/{id}', [\App\Http\Controllers\UserController::class, 'depositNotificationSeen']);
 Route::get('/withdraw_notification_seen/{id}', [\App\Http\Controllers\UserController::class, 'withdrawNotificationSeen']);
 Route::get('/tip_notification_seen/{id}', [\App\Http\Controllers\UserController::class, 'tipNotificationSeen']);
+
+//Add to cart
+Route::get('/add/to/cart/{userId}/{id}', [\App\Http\Controllers\UserController::class, 'addToCart']);
+Route::get('/user/details/{userId}', [\App\Http\Controllers\UserController::class, 'userDetails']);
