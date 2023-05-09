@@ -9,7 +9,11 @@
     /* #wrapper #content-wrapper .container-fluid {
         padding: 30px 30px 30px 30px !important;
     } */
-
+      progress {
+         width: 100%;
+         height: 20px;
+         accent-color: #6908ac;
+      }
     </style>
 @endpush
 
@@ -325,9 +329,20 @@
     </div>
  </div> -->
 <div class="dashboard-section container-fluid">
+    @php
+        $auth_user = Auth::user();
+        $blockDateTime = $auth_user->updated_at;
+        $unblockDateTime = $auth_user->updated_at->addHours(6);
+        $totalDuration = Carbon\Carbon::now()->diff($unblockDateTime)->format('%H hour(s):%I minutes(s):%S second(s)');
+    @endphp
    <div class="row">
       <div class="col-md-10 m-auto">
+         @if ($auth_user->status==1)
          <marquee>{{ $marquee_text->marquee_text }}</marquee>
+         @elseif ($auth_user->status==0)
+         <h4 style="color:red">You are temporarily blocked!!</h4>
+         <h5>You will be automatically unblocked after {{ $totalDuration  }}</h5>
+         @endif
          <div class="job-items-wrapper">
             <form action="{{ url('/dashboard') }}" method="get" class="select-category-outer">
                 @csrf
@@ -356,10 +371,14 @@
                         <div class="progress-label">
                             {{ $worker }} OF {{ $post->worker_number }}
                         </div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: {{ $worker }}%" aria-valuenow="{{ $worker }}"
-                                aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
+                        <progress value="{{ $worker }}" max="{{ $post->worker_number }}"></progress>
+                        <!-- <div class="progress">
+                            @if ($worker >= 100)
+                            <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="{{ $worker }}" aria-valuemin="0" aria-valuemax="{{ $post->worker_number }}"></div>
+                            @else
+                            <div class="progress-bar" role="progressbar" style="width: {{ $worker }}%" aria-valuenow="{{ $worker }}" aria-valuemin="0" aria-valuemax="{{ $post->worker_number }}"></div>
+                            @endif
+                        </div> -->
                     </div>
                     <div class="job-item-right">
                         <h4 class="totla-earning">

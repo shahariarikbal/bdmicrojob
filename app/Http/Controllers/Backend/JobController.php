@@ -30,7 +30,7 @@ class JobController extends Controller
     public function showJobDetails ($id)
     {
         visitor()->visit();
-        $job_post = Post::with('user','category')->where('id', $id)->first();
+        $job_post = Post::with('user','category','specificTasks')->where('id', $id)->first();
         return view ('backend.job.show-job-details', compact('job_post'));
     }
 

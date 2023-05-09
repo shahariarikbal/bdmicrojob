@@ -23,6 +23,7 @@ use Stevebauman\Location\Facades\Location;
 use Str;
 use Auth;
 use DB;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
@@ -63,9 +64,16 @@ class AdminController extends Controller
 
     }
 
-    public function dashboard(){
+    public function dashboard(Request $request){
         visitor()->visit();
-        $visitors = DB::table('shetabit_visits')->orderBy('created_at', 'desc')->paginate(50);
+        $sql = DB::table('shetabit_visits')->orderBy('created_at', 'desc');
+        if (isset($request->from)) {
+            $sql->whereDate('created_at', '>=', $request->from);
+        }
+        if (isset($request->to)) {
+            $sql->whereDate('created_at', '<=', $request->to);
+        }
+        $visitors = $sql->paginate(50);
         $user_count = User::count();
         $pending_job_count = Post::where('is_approved',0)->count();
         $approved_job_count = Post::where('is_approved',1)->count();
@@ -83,17 +91,38 @@ class AdminController extends Controller
     public function users(Request $request)
     {
         visitor()->visit();
+        $sql = Tip::with('user')->orderBy('created_at', 'desc');
         if($request->email){
-            $users = User::where('email', $request->email)->orderBy('created_at', 'desc')->paginate(10);
-            return view('backend.auth.user.index', compact('users'));
+            $userTips = $sql->get()->groupBy('user_id');
+            return view('backend.auth.user.index', compact('userTips'));
         }
-        $users = User::orderBy('created_at', 'desc')->paginate(10);
-        return view('backend.auth.user.index', compact('users'));
+        if (isset($request->from)) {
+            $sql->whereDate('created_at', '>=', $request->from);
+        }
+        if (isset($request->to)) {
+            $sql->whereDate('created_at', '<=', $request->to);
+        }
+        $userTips = $sql->get()->groupBy('user_id');
+        return view('backend.auth.user.index', compact('userTips'));
+    }
+
+    public function allUsers (Request $request)
+    {
+        visitor()->visit();
+        if($request->email){
+            $users = User::where('email',$request->email)->Paginate(20);
+            return view('backend.auth.user.all-user', compact('users'));
+        }
+        else{
+            $users = User::Paginate(20);
+            return view('backend.auth.user.all-user', compact('users'));
+        }
     }
 
     public function active(User $user)
     {
         $user->status = 0;
+        $user->updated_at = Carbon::now()->toDateTimeString();
         $user->save();
         session()->flash('Success', 'User has been inactive.');
         return redirect()->back();
@@ -102,6 +131,7 @@ class AdminController extends Controller
     public function inactive(User $user)
     {
         $user->status = 1;
+        $user->updated_at = Carbon::now()->toDateTimeString();
         $user->save();
         session()->flash('Success', 'User has been active.');
         return redirect()->back();

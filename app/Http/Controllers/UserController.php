@@ -15,6 +15,7 @@ use App\Models\Notification;
 use App\Models\Deposit;
 use App\Models\Withdraw;
 use App\Models\MarqueeText;
+use App\Models\UserReport;
 use Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -203,11 +204,13 @@ class UserController extends Controller
         visitor()->visit();
         if(Auth::user()->status==1){
             $postDetail = Post::with('specificTasks', 'jobSubmit')->where('user_id','!=', Auth::user()->id)->find($id);
+            $is_reported = UserReport::where('reporter_id', Auth::user()->id)->where('user_id', $postDetail->user_id)
+            ->where('posted_job_id', $id)->count();
             if($postDetail){
                 $isPostSubmit = PostSubmit::where('user_id', auth()->user()->id)->where('status', '!=' ,'2')
                 ->orderBy('created_at','desc')->where('post_id', $postDetail->id)->first();
                 $totalPostSubmit = PostSubmit::where('post_id', $postDetail->id)->where('status','!=','2')->get()->count();
-                return view('frontend.auth.user.job.job-details', compact('postDetail', 'isPostSubmit', 'totalPostSubmit'));
+                return view('frontend.auth.user.job.job-details', compact('postDetail', 'isPostSubmit', 'totalPostSubmit', 'is_reported'));
             }
             else{
                 return redirect()->back()->with('Error','Not Found!!');
@@ -221,6 +224,107 @@ class UserController extends Controller
         visitor()->visit();
         $postReport = Post::with('specificTasks')->find($id);
         return view('frontend.auth.user.job.job-report', compact('postReport'));
+    }
+
+    public function showJobPosterReport($id)
+    {
+        visitor()->visit();
+        $userReport = Post::with('specificTasks','user')->find($id);
+        return view('frontend.auth.user.job.job-poster-report', compact('userReport'));
+    }
+
+    public function showFreelancerJobReport($id)
+    {
+        visitor()->visit();
+        $job_details = PostSubmit::where('id', $id)->with('post','user')->first();
+        //dd($job_details);
+        return view('frontend.auth.user.user-report', compact('job_details'));
+    }
+
+    public function storeFreelancerJobReport (Request $request)
+    {
+        $auth_user = Auth::user();
+        if($auth_user){
+            // $is_reported = UserReport::where('reporter_id', $auth_user->id)->where('user_id', $request->user_id)
+            // ->where('submitted_job_id', $request->submitted_job_id)->first();
+            $job_details = PostSubmit::where('id', $request->submitted_job_id)->first();
+            if($job_details->is_reported==false){
+                $user_report = new UserReport();
+                $user_report->reporter_id = $auth_user->id;
+                $user_report->user_id = $request->user_id;
+                $user_report->report_type = 1;
+                $user_report->submitted_job_id = $request->submitted_job_id;
+                $user_report->message = $request->message;
+                if($user_report->save()){
+                    $user = User::find($request->user_id);
+                    $user->job_submit_report = $user->job_submit_report+1;
+                    $user->save();
+                    $job_details->is_reported = true;
+                    $job_details->save();
+                    return redirect('/submitted/job/pending')->with('success', 'Report is submitted successfully!');
+                }
+                else{
+                    return redirect('/submitted/job/pending')->with('error', 'Technical error!!');
+                }
+
+                //Automatic block if report count is 5..
+                // if($user_report->save()){
+                //     $report_count = UserReport::where('user_id',$request->user_id)->count();
+                //     if($report_count>=5){
+                //         $user = User::find($request->user_id);
+                //         $user->status = false;
+                //         $user->save();
+                //         return redirect('/submitted/job/pending')->with('success', 'Report submitted successfully!');
+                //     }
+                //     else{
+                //         return redirect('/submitted/job/pending')->with('success', 'Report submitted successfully!');
+                //     }
+                // }
+                // else{
+                //     return redirect('/submitted/job/pending')->with('error', 'Technical error!!');
+                // }
+                //Automatic block if report count is 5..
+            }
+            else{
+                return redirect()->back()->with('error', 'Already reported!!');
+            }
+        }
+        else{
+            return redirect('/login');
+        }
+
+    }
+
+    public function storeJobPosterReport(Request $request)
+    {
+        $auth_user = Auth::user();
+        if($auth_user){
+            $is_reported = UserReport::where('reporter_id', $auth_user->id)->where('user_id', $request->user_id)
+            ->where('posted_job_id', $request->posted_job_id)->first();
+            if(!$is_reported){
+                $user_report = new UserReport();
+                $user_report->reporter_id = $auth_user->id;
+                $user_report->user_id = $request->user_id;
+                $user_report->report_type = 0;
+                $user_report->posted_job_id = $request->posted_job_id;
+                $user_report->message = $request->message;
+                if($user_report->save()){
+                    $user = User::find($request->user_id);
+                    $user->job_post_report = $user->job_post_report+1;
+                    $user->save();
+                    return redirect('/dashboard')->with('success', 'Report is submitted successfully!');
+                }
+                else{
+                    return redirect('/dashboard')->with('error', 'Technical error!!');
+                }
+            }
+            else{
+                return redirect()->back()->with('error', 'Already reported!!');
+            }
+        }
+        else{
+            return redirect('/login');
+        }
     }
 
     public function submitJobReport(Request $request, $id)
@@ -275,6 +379,36 @@ class UserController extends Controller
         visitor()->visit();
         $posts = Post::with('category')->orderBy('created_at', 'desc')->where('user_id', auth()->user()->id)->get();
         return view('frontend.auth.user.my-post', compact('posts'));
+    }
+
+    public function showAddWorker($id)
+    {
+        $job_details = Post::where('id', $id)->with('category')->first();
+        return view('frontend.auth.user.add-worker', compact('job_details'));
+    }
+
+    public function storeAddWorker(Request $request, $id)
+    {
+        $job_details = Post::where('id', $id)->with('category')->first();
+        $per_worker_earn = $job_details->category->worker_earning;
+        $job_cost = $request->worker_number * $per_worker_earn;
+        $user = User::where('id', auth()->user()->id)->first();
+
+        if($user->total_deposit >= $job_cost){
+             $job_details->worker_number = $job_details->worker_number+$request->worker_number;
+             if($job_details->save()){
+                $user->total_deposit = $user->total_deposit-$job_cost;
+                $user->save();
+                return redirect('my/post')->with('success', "Worker added successfully!");
+             }
+             else{
+                return redirect()->back()->with('error', 'Technical error!');
+             }
+        }
+        else{
+            return redirect()->back()->with('error', 'Insufficient balance');
+        }
+
     }
 
     public function postEdit($id)

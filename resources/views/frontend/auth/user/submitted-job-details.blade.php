@@ -25,6 +25,9 @@
                             <div class="nid-details-right-btn-outer">
                                 <a href="{{ url('/submitted/job/approve/'.$submitted_job->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-primary">Approve</a>
                                 <a href="{{ url('/submitted/job/reject/'.$submitted_job->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger">Reject</a>
+                                @if ($submitted_job->is_reported==false)
+                                <a href="{{ url('/submitted-job/report/'.$submitted_job->id) }}" class="btn btn-sm btn-warning">Report</a>
+                                @endif
                             </div>
                         </div>
                     </div>

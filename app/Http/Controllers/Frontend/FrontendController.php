@@ -74,4 +74,8 @@ class FrontendController extends Controller
         $privacy_policies = PrivacyPolicy::all();
         return view('frontend.setting.privacy-policy', compact('privacy_policies'));
     }
+
+    public function showForum(){
+        return view('frontend.forum.forum');
+    }
 }

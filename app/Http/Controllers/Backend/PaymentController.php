@@ -11,10 +11,17 @@ use App\Models\Notification;
 
 class PaymentController extends Controller
 {
-    public function showDepositRequest ()
+    public function showDepositRequest (Request $request)
     {
         visitor()->visit();
-        $deposits = Deposit::orderBy('created_at','desc')->Paginate(10);
+        $sql = Deposit::orderBy('created_at','desc');
+        if (isset($request->from)) {
+            $sql->whereDate('created_at', '>=', $request->from);
+        }
+        if (isset($request->to)) {
+            $sql->whereDate('created_at', '<=', $request->to);
+        }
+        $deposits = $sql->Paginate(10);
         return view('backend.payment.show-deposit', compact('deposits'));
     }
 
@@ -74,10 +81,17 @@ class PaymentController extends Controller
         }
     }
 
-    public function showWithdrawRequest ()
+    public function showWithdrawRequest (Request $request)
     {
         visitor()->visit();
-        $withdraws = Withdraw::orderBy('created_at','desc')->with('user')->Paginate(10);
+        $sql = Withdraw::orderBy('created_at','desc')->with('user');
+        if (isset($request->from)) {
+            $sql->whereDate('created_at', '>=', $request->from);
+        }
+        if (isset($request->to)) {
+            $sql->whereDate('created_at', '<=', $request->to);
+        }
+        $withdraws = $sql->Paginate(10);
         return view('backend.payment.show-withdraw', compact('withdraws'));
     }
 

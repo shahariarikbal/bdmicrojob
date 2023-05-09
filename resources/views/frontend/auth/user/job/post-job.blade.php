@@ -140,20 +140,10 @@
                         <hr>
                         <label for="title" class="mb-2">Select Category</label><span style="color: red; font-size: 16px;"> *</span><br>
                         <div class="category-items-wrap">
-                            <!-- <div class="row">
-                                @foreach($categories as $category)
-                                <div class="col-md-2 p-0">
-                                    <div class="category-item-outer">
-                                        <input type="radio" id="{{ 'cat'. $category->id }}" name="cat_id" value="{{ $category->id }}" onclick="categoryPrice(this)" class="category-item-radio">
-                                        <label for="{{ 'car'. $category->name }}" class="category-item-label">{{ ucfirst($category->name) }}</label>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div> -->
                             @foreach($categories as $category)
                                 <div class="category-item-outer">
                                     <input type="radio" id="{{ 'cat'. $category->id }}" name="cat_id" value="{{ $category->id }}" onclick="categoryPrice(this)" class="category-item-radio">
-                                    <label for="{{ 'car'. $category->name }}" class="category-item-label">{{ ucfirst($category->name) }}</label>
+                                    <label for="{{ 'cat'. $category->name }}" class="category-item-label">{{ ucfirst($category->name) }}</label>
                                 </div>
                             @endforeach
                         </div>

@@ -29,10 +29,14 @@
             <li class="nav-item-main">
                 <a class="nav-item-main-link" href="{{ url('/faq') }}">FAQ</a>
             </li>
-            </li>
             <li class="nav-item-main">
                 <a class="nav-item-main-link" href="{{ url('/contact') }}">
                   Contact Us
+                </a>
+            </li>
+            <li class="nav-item-main">
+                <a class="nav-item-main-link" href="{{ url('/forum') }}">
+                  Forum
                 </a>
             </li>
             <li class="nav-item-main">
