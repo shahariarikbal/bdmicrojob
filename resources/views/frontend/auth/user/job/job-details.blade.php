@@ -64,6 +64,8 @@
                                 </div>
                                 <div class="right">
                                     <a href="{{ url('/dashboard') }}" class="hide-btn-inner">Hide</a>
+                                    <a href="{{ url('/add/to/cart/'.$postDetail->user_id. '/'.$postDetail->id) }}" class="hide-btn-inner" style="background-color: red">Add To Cart</a>
+                                    <a href="{{ url('/user/details/'.$postDetail->user_id) }}" class="hide-btn-inner" style="background-color: deeppink">User Details</a>
                                 </div>
                             </div>
                             <img src="{{ asset('/thumbnail/'.$postDetail->avatar) }}" alt="image" class="top-image">

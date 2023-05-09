@@ -61,7 +61,7 @@ class User extends Authenticatable
 
     public function jobPost(): HasMany
     {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Post::class)->with('jobSubmit');
     }
 
     public function getTip(): HasMany
