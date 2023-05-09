@@ -383,7 +383,32 @@ class UserController extends Controller
 
     public function showAddWorker($id)
     {
-        return view('frontend.auth.user.add-worker');
+        $job_details = Post::where('id', $id)->with('category')->first();
+        return view('frontend.auth.user.add-worker', compact('job_details'));
+    }
+
+    public function storeAddWorker(Request $request, $id)
+    {
+        $job_details = Post::where('id', $id)->with('category')->first();
+        $per_worker_earn = $job_details->category->worker_earning;
+        $job_cost = $request->worker_number * $per_worker_earn;
+        $user = User::where('id', auth()->user()->id)->first();
+
+        if($user->total_deposit >= $job_cost){
+             $job_details->worker_number = $job_details->worker_number+$request->worker_number;
+             if($job_details->save()){
+                $user->total_deposit = $user->total_deposit-$job_cost;
+                $user->save();
+                return redirect('my/post')->with('success', "Worker added successfully!");
+             }
+             else{
+                return redirect()->back()->with('error', 'Technical error!');
+             }
+        }
+        else{
+            return redirect()->back()->with('error', 'Insufficient balance');
+        }
+
     }
 
     public function postEdit($id)

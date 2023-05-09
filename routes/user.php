@@ -41,6 +41,7 @@ Route::get('/submitted/job/pending', [\App\Http\Controllers\UserController::clas
 Route::get('/submitted/job/approved', [\App\Http\Controllers\UserController::class, 'showSubmittedApprovedJob']);
 Route::get('/submitted/job/rejected', [\App\Http\Controllers\UserController::class, 'showSubmittedRejectedJob']);
 Route::get('/post/add-worker/{id}', [\App\Http\Controllers\UserController::class, 'showAddWorker']);
+Route::post('/store/add-worker/{id}', [\App\Http\Controllers\UserController::class, 'storeAddWorker']);
 // Route::get('/post/delete/{id}', [\App\Http\Controllers\UserController::class, 'postDelete']);
 // Route::get('/post/edit/{id}', [\App\Http\Controllers\UserController::class, 'postEdit']);
 Route::get('/submitted/job', [\App\Http\Controllers\UserController::class, 'showSubmittedJob']);
