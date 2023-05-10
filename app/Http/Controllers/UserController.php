@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
@@ -209,7 +210,9 @@ class UserController extends Controller
             if($postDetail){
                 $isPostSubmit = PostSubmit::where('user_id', auth()->user()->id)->where('status', '!=' ,'2')
                 ->orderBy('created_at','desc')->where('post_id', $postDetail->id)->first();
-                $totalPostSubmit = PostSubmit::where('post_id', $postDetail->id)->where('status','!=','2')->get()->count();
+                $postSubmit = PostSubmit::where('post_id', $postDetail->id)->where('status','!=','2')->get()->count();
+                $userAddToCart = Cart::where('post_id', $id)->get()->count();
+                $totalPostSubmit = $postSubmit + $userAddToCart;
                 return view('frontend.auth.user.job.job-details', compact('postDetail', 'isPostSubmit', 'totalPostSubmit', 'is_reported'));
             }
             else{
@@ -383,7 +386,32 @@ class UserController extends Controller
 
     public function showAddWorker($id)
     {
-        return view('frontend.auth.user.add-worker');
+        $job_details = Post::where('id', $id)->with('category')->first();
+        return view('frontend.auth.user.add-worker', compact('job_details'));
+    }
+
+    public function storeAddWorker(Request $request, $id)
+    {
+        $job_details = Post::where('id', $id)->with('category')->first();
+        $per_worker_earn = $job_details->category->worker_earning;
+        $job_cost = $request->worker_number * $per_worker_earn;
+        $user = User::where('id', auth()->user()->id)->first();
+
+        if($user->total_deposit >= $job_cost){
+             $job_details->worker_number = $job_details->worker_number+$request->worker_number;
+             if($job_details->save()){
+                $user->total_deposit = $user->total_deposit-$job_cost;
+                $user->save();
+                return redirect('my/post')->with('success', "Worker added successfully!");
+             }
+             else{
+                return redirect()->back()->with('error', 'Technical error!');
+             }
+        }
+        else{
+            return redirect()->back()->with('error', 'Insufficient balance');
+        }
+
     }
 
     public function postEdit($id)
@@ -600,5 +628,23 @@ class UserController extends Controller
                 return redirect()->back()->with('error', 'Old Password does not Match!!');
             }
         }
+    }
+
+    public function addToCart($userId, $id)
+    {
+        $addToCart = new Cart();
+        $addToCart->user_id = $userId;
+        $addToCart->post_id = $id;
+        $addToCart->save();
+        return redirect()->back()->with('success', 'Post has been added to your favourite list');
+    }
+
+    public function userDetails($userId)
+    {
+        $user = User::with('jobPost')->where('id', $userId)->first();
+        $userPostCount = Post::with('jobPost')->where('user_id', $userId)->count();
+        $userApprovedPostCount = PostSubmit::where('job_owner_id', $userId)->where('status', 1)->count();
+        $userRejectPostCount = PostSubmit::where('job_owner_id', $userId)->where('status', 2)->count();
+        return view('frontend.auth.user.job.user-details', compact('user', 'userPostCount', 'userApprovedPostCount', 'userRejectPostCount'));
     }
 }

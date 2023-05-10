@@ -13,19 +13,19 @@
                     <div id="admission-loading" style="display: none" >
                         <i class="fa fa-spinner fa-pulse fa-5x fa-fw" aria-hidden="true"></i>
                     </div>
-                    <form action="{{ url('/post/job/job-information') }}" method="get">
+                    <form action="{{ url('/store/add-worker/'.$job_details->id) }}" method="post">
                         @csrf
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="left-content">
                                     <label for="title">Work Title</label><span style="color: red; font-size: 16px;"> *</span><br>
-                                    <input type="text" name="title" id="title" value="" readonly class="form-control">
+                                    <input type="text" name="title" id="title" value="{{ $job_details->title }}" readonly class="form-control">
                                     <label for="category">Work Category</label><span style="color: red; font-size: 16px;"> *</span><br>
-                                    <input type="text" name="category" id="category" value="" readonly class="form-control">
+                                    <input type="text" name="category" id="category" value="{{ $job_details->category->name }}" readonly class="form-control">
                                     <label for="worker_earn">Each worker Earn (tk)</label><span style="color: red; font-size: 16px;"> *</span><br>
-                                    <input type="text" name="worker_earn" id="worker_earn" value="" readonly class="form-control">
+                                    <input type="text" name="worker_earn" id="worker_earn" value="{{ $job_details->category->worker_earning }}" readonly class="form-control">
                                     <label for="worker_earn">Total Worker</label><span style="color: red; font-size: 16px;"> *</span><br>
-                                    <input type="text" name="total_worker" id="total_worker" value="" readonly class="form-control">
+                                    <input type="text" name="total_worker" id="total_worker" value="{{ $job_details->worker_number }}" readonly class="form-control">
                                     <label for="worker_number">Add Worker</label><span style="color: red; font-size: 16px;"> *</span><br>
                                     <input type="number" required name="worker_number" onkeyup="totalWorkerEarn()" id="worker_number" min="1" placeholder="Minimum 1" class="form-control">
                                     <label for="total_cost">Total Cost in Tk</label><span style="color: red; font-size: 16px;"> *</span><br>
@@ -119,31 +119,9 @@
         function totalWorkerEarn(){
             let totalWorker = document.getElementById('worker_number').value;
             let totalEarnCost = document.getElementById('worker_earn').value;
-            let commission = document.getElementById('price').value;
             let job_cost = parseInt(totalWorker) * parseFloat(totalEarnCost);
-            let job_commission = (parseFloat(commission)*job_cost)/100;
             let total_deposit = parseFloat(document.getElementById('total_deposit').value);
-            document.getElementById('total_cost').value = job_cost+job_commission;
-
-            /*if(job_cost<=total_deposit && totalWorker<=9 ){
-                var submitButton = document.createElement('button');
-                submitButton.type = 'submit';
-                submitButton.innerText = 'Next';
-
-                var container = document.getElementById('submit-button-container');
-                container.appendChild(submitButton);
-                container.style.display = "";
-
-            }*/
-
-            /*else if(job_cost>total_deposit){
-                var p = document.getElementById("my-p-tag");
-                p.textContent = "This is some new text for the p tag.";
-                p.style.display = "";
-                var div = document.getElementById("submit-button-container");
-                div.style.display = "none";
-
-            }*/
+            document.getElementById('total_cost').value = job_cost;
 
             if(job_cost<=total_deposit){
                 var button = document.getElementById("sub_btn");

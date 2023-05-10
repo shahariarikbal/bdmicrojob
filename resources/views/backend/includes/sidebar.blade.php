@@ -29,10 +29,16 @@
         <span>Advertisements</span>
         </a>
      </li>  --}}
+     <li class="nav-item {{ Request::url() == url('admin/all-users') ? 'active' : '' }} ">
+        <a class="nav-link" href="{{ url('/admin/all-users') }}">
+           <i class="fas fa-solid fa-dollar-sign"></i>
+        <span>Users</span>
+        </a>
+     </li>
     <li class="nav-item {{ Request::url() == url('admin/users') ? 'active' : '' }} ">
        <a class="nav-link" href="{{ url('/admin/users') }}">
           <i class="fas fa-solid fa-dollar-sign"></i>
-       <span>Users</span>
+       <span>User(Tips)</span>
        </a>
     </li>
     <li class="nav-item {{ Request::url() == url('admin/inactive/users/list') ? 'active' : '' }} ">
