@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="Askbootstrap" />
         <meta name="author" content="Askbootstrap" />
+        @stack('meta')
         <title>@yield('title', 'Dashboard')</title>
 
         <link rel="icon" type="image/png" href="{{ asset('backend') }}/img/favicon.png" />

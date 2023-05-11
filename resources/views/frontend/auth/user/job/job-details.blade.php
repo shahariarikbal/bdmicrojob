@@ -4,6 +4,10 @@
 	Job Details
 @endsection
 
+@push('meta')
+{{--    <meta http-equiv="refresh" content="10">--}}
+@endpush
+
 @push('page-css')
     <style>
     /* #wrapper #content-wrapper .container-fluid {
@@ -19,6 +23,9 @@
 
 @section('content')
     <section class="job-details-section">
+        <form action="{{ url('/cart/item/delete') }}" method="GET" id="cartItemDelete" class="d-none">
+            @csrf
+        </form>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-10 m-auto">
@@ -64,7 +71,7 @@
                                 </div>
                                 <div class="right">
                                     <a href="{{ url('/dashboard') }}" class="hide-btn-inner">Hide</a>
-                                    <a href="{{ url('/add/to/cart/'.$postDetail->user_id. '/'.$postDetail->id) }}" class="hide-btn-inner" style="background-color: red">Add To Cart</a>
+{{--                                    <a href="{{ url('/add/to/cart/'.$postDetail->user_id. '/'.$postDetail->id) }}" class="hide-btn-inner" style="background-color: red">Add To Cart</a>--}}
                                     <a href="{{ url('/user/details/'.$postDetail->user_id) }}" class="hide-btn-inner" style="background-color: deeppink">User Details</a>
                                 </div>
                             </div>
@@ -128,6 +135,8 @@
 
 @push('page-scripts')
     <script type="text/javascript">
-
+        // window.onload = function(){
+        //     document.getElementById('cartItemDelete').submit();
+        // }
     </script>
 @endpush

@@ -69,3 +69,4 @@ Route::get('/tip_notification_seen/{id}', [\App\Http\Controllers\UserController:
 //Add to cart
 Route::get('/add/to/cart/{userId}/{id}', [\App\Http\Controllers\UserController::class, 'addToCart']);
 Route::get('/user/details/{userId}', [\App\Http\Controllers\UserController::class, 'userDetails']);
+Route::get('/cart/item/delete', [\App\Http\Controllers\UserController::class, 'cartItemDelete']);

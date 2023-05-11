@@ -647,4 +647,15 @@ class UserController extends Controller
         $userRejectPostCount = PostSubmit::where('job_owner_id', $userId)->where('status', 2)->count();
         return view('frontend.auth.user.job.user-details', compact('user', 'userPostCount', 'userApprovedPostCount', 'userRejectPostCount'));
     }
+
+    public function cartItemDelete()
+    {
+        $currentTime = Carbon::now();
+        $currentDate = $currentTime->hour;
+        $carts = Cart::first();
+        $y = $carts->created_at;
+        $createDate = date('g', strtotime($y));
+
+        dd($createDate - $currentDate);
+    }
 }
