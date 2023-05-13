@@ -5,7 +5,7 @@
 @endsection
 
 @push('meta')
-{{--    <meta http-equiv="refresh" content="10">--}}
+    <meta http-equiv="refresh" content="10">
 @endpush
 
 @push('page-css')
@@ -71,7 +71,7 @@
                                 </div>
                                 <div class="right">
                                     <a href="{{ url('/dashboard') }}" class="hide-btn-inner">Hide</a>
-{{--                                    <a href="{{ url('/add/to/cart/'.$postDetail->user_id. '/'.$postDetail->id) }}" class="hide-btn-inner" style="background-color: red">Add To Cart</a>--}}
+                                    <a href="{{ url('/add/to/cart/'.$postDetail->user_id. '/'.$postDetail->id) }}" class="hide-btn-inner" style="background-color: red">Add Favourite</a>
                                     <a href="{{ url('/user/details/'.$postDetail->user_id) }}" class="hide-btn-inner" style="background-color: deeppink">User Details</a>
                                 </div>
                             </div>
@@ -135,6 +135,12 @@
 
 @push('page-scripts')
     <script type="text/javascript">
+        window.onload = function(){
+            setInterval(function(){
+                document.getElementById('cartItemDelete').submit();
+            }, 3600);
+        };
+
         // window.onload = function(){
         //     document.getElementById('cartItemDelete').submit();
         // }

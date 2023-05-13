@@ -653,9 +653,12 @@ class UserController extends Controller
         $currentTime = Carbon::now();
         $currentDate = $currentTime->hour;
         $carts = Cart::first();
-        $y = $carts->created_at;
+        $y = $carts?->created_at;
         $createDate = date('g', strtotime($y));
-
-        dd($createDate - $currentDate);
+        $date = $createDate - $currentDate;
+        if ($date <= 1){
+            $carts?->delete();
+        }
+        return redirect()->back();
     }
 }
