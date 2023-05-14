@@ -72,7 +72,7 @@
         <div class="login-register-btn-outer">
             @if(!Auth::check())
 
-              <button onclick="location.href='{{ url('user/register/form') }}'" class="login-register-btn" name="button" type="button" style="cursor: pointer;">Login / Registration</button>
+              <button onclick="location.href='{{ url('/login') }}'" class="login-register-btn" name="button" type="button" style="cursor: pointer;">Login / Registration</button>
 
             @else
             <a href="{{ url('/dashboard') }}" class="dashboard-btn-inner" style="cursor: pointer;">Dashboard</a>
