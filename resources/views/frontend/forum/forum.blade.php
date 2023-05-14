@@ -254,7 +254,11 @@
                         <label for="post_create">
                             Create Post
                         </label>
-                        <textarea name="post_create" class="form-control" cols="50" rows="4" placeholder="Write something ..."></textarea>
+                        <textarea name="post_create" class="form-control mb-3" cols="50" rows="4" placeholder="Write something ..."></textarea>
+                        <label for="image">
+                            Image
+                        </label>
+                        <input type="file" name="image" class="form-control">
                         <div class="post-btn-outer">
                             <button type="submit" class="post-btn-inner">
                                 Post
@@ -279,7 +283,7 @@
                             <div class="single-post-top-right cus-dropdown">
                                 <i class="fas fa-ellipsis-h"></i>
                                 <ul class="cus-dropdown-list">
-                                    <li class="cus-dropdown-list-item"> 
+                                    <li class="cus-dropdown-list-item">
                                         <a href="#" class="cus-dropdown-list-item-link">
                                             <i class="fas fa-trash-alt"></i>
                                             Delete
@@ -289,7 +293,8 @@
                             </div>
                         </div>
                         <div class="single-post-center">
-                            <p class="comment-text"> 
+                            <img src="{{ asset('/frontend') }}/assets/images/home-bg.png" class="img-fluid mb-3">
+                            <p class="comment-text">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                                 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                                 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
