@@ -29,6 +29,7 @@ Route::get('/account/varify/history', [\App\Http\Controllers\UserController::cla
 Route::get('/my/task', [\App\Http\Controllers\UserController::class, 'showMyTask']);
 Route::get('/accepted/task', [\App\Http\Controllers\UserController::class, 'showAcceptedTask']);
 Route::get('/job/details/{id}', [\App\Http\Controllers\UserController::class, 'showJobDetails']);
+Route::get('/user/activate/{id}', [\App\Http\Controllers\UserController::class, 'userActivate']);
 Route::get('/job/report/{id}', [\App\Http\Controllers\UserController::class, 'showJobReport']);
 Route::get('/job-poster/report/{id}', [\App\Http\Controllers\UserController::class, 'showJobPosterReport']);
 Route::post('/job-poster/report/store', [\App\Http\Controllers\UserController::class, 'storeJobPosterReport']);

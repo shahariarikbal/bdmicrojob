@@ -4,6 +4,10 @@
 	Dashboard
 @endsection
 
+@push('meta')
+    <meta http-equiv="refresh" content="10">
+@endpush
+
 @push('page-css')
     <style>
     /* #wrapper #content-wrapper .container-fluid {
@@ -331,6 +335,12 @@
 <div class="dashboard-section container-fluid">
     @php
         $auth_user = Auth::user();
+    @endphp
+    <form action="{{ url('/user/activate/'.$auth_user->id) }}" method="GET" id="userActivate" class="d-none">
+        @csrf
+    </form>
+    @php
+        $auth_user = Auth::user();
         $blockDateTime = $auth_user->updated_at;
         $unblockDateTime = $auth_user->updated_at->addHours(6);
         $totalDuration = Carbon\Carbon::now()->diff($unblockDateTime)->format('%H hour(s):%I minutes(s):%S second(s)');
@@ -393,6 +403,16 @@
    </div>
 </div>
 @endsection
+
+@push('page-scripts')
+    <script type="text/javascript">
+        window.onload = function(){
+            setInterval(function(){
+                document.getElementById('userActivate').submit();
+            }, 3600);
+        };
+    </script>
+@endpush
 
 @push('page-scripts')
     <script type="text/javascript">

@@ -222,6 +222,27 @@ class UserController extends Controller
         return redirect()->back()->with('danger','You are suspended for certain hours!!');
     }
 
+    public function userActivate ($id)
+    {
+        if(Auth::check()){
+            $auth_user = Auth::user();
+            $currentTime = Carbon::now();
+            $updatedTime = $auth_user->updated_at;
+            $diff_in_hours = $updatedTime->diffInHours($currentTime);
+            if ($diff_in_hours >= 6 && $auth_user->status == false){
+                $auth_user->status = true;
+                $auth_user->updated_at = Carbon::now();
+                $auth_user->save();
+                return redirect()->back();
+            }
+            return redirect()->back();
+        }
+
+        else{
+            return redirect('/login');
+        }
+    }
+
     public function showJobReport($id)
     {
         visitor()->visit();
