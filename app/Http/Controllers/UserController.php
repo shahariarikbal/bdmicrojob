@@ -682,4 +682,36 @@ class UserController extends Controller
         }
         return redirect()->back();
     }
+
+    public function instantUnblock()
+    {
+        if(Auth::check()){
+            $auth_user = Auth::user();
+            //dd($auth_user);
+            if($auth_user->status==false){
+                if($auth_user->total_income>=2 || $auth_user->total_deposit>=2){
+                    $auth_user->status = true;
+                    if($auth_user->total_income>=2){
+                        $auth_user->total_income = $auth_user->total_income-2;
+                        $auth_user->save();
+                        return redirect()->back()->with('success', 'Successfully Unblocked!!');
+                    }
+                    else{
+                        $auth_user->total_deposit = $auth_user->total_deposit-2;
+                        $auth_user->save();
+                        return redirect()->back()->with('success', 'Successfully Unblocked!!');
+                    }
+                }
+                else{
+                    return redirect()->back()->with('error', 'Insufficient balance!!');
+                }
+            }
+            else{
+                return redirect()->back()->with('error', 'Already unblocked!!');
+            }
+        }
+        else{
+            return redirect('/login');
+        }
+    }
 }

@@ -350,7 +350,7 @@
          @if ($auth_user->status==1)
          <marquee>{{ $marquee_text->marquee_text }}</marquee>
          @elseif ($auth_user->status==0)
-         <h4 style="color:red">You are temporarily blocked!!</h4>
+         <h4 style="color:red">You are temporarily blocked!! <a href="/unblock" class="btn btn-primary" onclick="return confirm('Are you sure? 2tk will taken as penalty!')">Instant Unblock</a></h4>
          <h5>You will be automatically unblocked after {{ $totalDuration  }}</h5>
          @endif
          <div class="job-items-wrapper">
