@@ -40,6 +40,11 @@
                 </a>
             </li>
             <li class="nav-item-main">
+                <a class="nav-item-main-link" href="{{ url('/blog') }}">
+                  Blog
+                </a>
+            </li>
+            <li class="nav-item-main">
                 @if(!Auth::check())
 
 

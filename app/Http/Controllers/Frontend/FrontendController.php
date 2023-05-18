@@ -78,4 +78,12 @@ class FrontendController extends Controller
     public function showForum(){
         return view('frontend.forum.forum');
     }
+
+    public function showBlog(){
+        return view('frontend.blog.blog');
+    }
+
+    public function showBlogDetails(){
+        return view('frontend.blog.blog-details');
+    }
 }
