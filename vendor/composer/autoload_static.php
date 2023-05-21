@@ -353,8 +353,8 @@ class ComposerStaticInitb7ac55ab5415fa32977021bd848f0336
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -611,6 +611,7 @@ class ComposerStaticInitb7ac55ab5415fa32977021bd848f0336
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\Payment\\DepositController' => __DIR__ . '/../..' . '/app/Http/Controllers/Payment/DepositController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
+        'App\\Http\\Controllers\\UserForumController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserForumController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Admin' => __DIR__ . '/../..' . '/app/Http/Middleware/Admin.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -627,6 +628,7 @@ class ComposerStaticInitb7ac55ab5415fa32977021bd848f0336
         'App\\Http\\Requests\\NidVerificationRequest' => __DIR__ . '/../..' . '/app/Http/Requests/NidVerificationRequest.php',
         'App\\Http\\Requests\\PostRequest' => __DIR__ . '/../..' . '/app/Http/Requests/PostRequest.php',
         'App\\Http\\Requests\\TipRequest' => __DIR__ . '/../..' . '/app/Http/Requests/TipRequest.php',
+        'App\\Http\\Requests\\UserForumRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UserForumRequest.php',
         'App\\Http\\Requests\\WithdrawRequest' => __DIR__ . '/../..' . '/app/Http/Requests/WithdrawRequest.php',
         'App\\Mail\\UserRegisterEmail' => __DIR__ . '/../..' . '/app/Mail/UserRegisterEmail.php',
         'App\\Models\\AboutUs' => __DIR__ . '/../..' . '/app/Models/AboutUs.php',
@@ -638,6 +640,7 @@ class ComposerStaticInitb7ac55ab5415fa32977021bd848f0336
         'App\\Models\\Faq' => __DIR__ . '/../..' . '/app/Models/Faq.php',
         'App\\Models\\HomePage' => __DIR__ . '/../..' . '/app/Models/HomePage.php',
         'App\\Models\\JobReport' => __DIR__ . '/../..' . '/app/Models/JobReport.php',
+        'App\\Models\\LikeComment' => __DIR__ . '/../..' . '/app/Models/LikeComment.php',
         'App\\Models\\MarqueeText' => __DIR__ . '/../..' . '/app/Models/MarqueeText.php',
         'App\\Models\\Membership' => __DIR__ . '/../..' . '/app/Models/Membership.php',
         'App\\Models\\NidVerification' => __DIR__ . '/../..' . '/app/Models/NidVerification.php',
@@ -650,6 +653,7 @@ class ComposerStaticInitb7ac55ab5415fa32977021bd848f0336
         'App\\Models\\TermCondition' => __DIR__ . '/../..' . '/app/Models/TermCondition.php',
         'App\\Models\\Tip' => __DIR__ . '/../..' . '/app/Models/Tip.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Models\\UserForum' => __DIR__ . '/../..' . '/app/Models/UserForum.php',
         'App\\Models\\UserReport' => __DIR__ . '/../..' . '/app/Models/UserReport.php',
         'App\\Models\\UserVideo' => __DIR__ . '/../..' . '/app/Models/UserVideo.php',
         'App\\Models\\Video' => __DIR__ . '/../..' . '/app/Models/Video.php',

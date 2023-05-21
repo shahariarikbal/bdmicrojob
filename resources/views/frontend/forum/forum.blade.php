@@ -250,6 +250,7 @@
         <div class="row">
             <div class="col-md-10 m-auto">
                 <div class="forum-info-wrapper">
+                    @if (Auth::check())
                     <form action="" method="" class="post-create-outer">
                         <label for="post_create">
                             Create Post
@@ -265,6 +266,7 @@
                             </button>
                         </div>
                     </form>
+                    @endif
                     <div class="single-post-wrap">
                         <div class="single-post-top">
                             <div class="single-post-top-left">
@@ -314,6 +316,7 @@
                                     Comments
                                 </div>
                             </div>
+                            @if (Auth::check())
                             <div class="like-comment-outer">
                                 <button class="like-comment-item">
                                     <i class="far fa-thumbs-up"></i>
@@ -324,6 +327,8 @@
                                     Comment
                                 </button>
                             </div>
+                            @endif
+                            @if (Auth::check())
                             <form action="" method="" class="comment-form form-group">
                                 <div class="d-flex gap-3">
                                     <input type="text" name="comment" class="form-control" placeholder="Write a comment..">
@@ -332,6 +337,7 @@
                                     </button>
                                 </div>
                             </form>
+                            @endif
                             <div class="comment-area">
                                 <div class="single-comment-area">
                                     <div class="parent-comment">

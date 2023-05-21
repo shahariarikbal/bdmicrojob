@@ -74,3 +74,7 @@ Route::get('/cart/item/delete', [\App\Http\Controllers\UserController::class, 'c
 
 //Instant Unblock...
 Route::get('/unblock', [\App\Http\Controllers\UserController::class, 'instantUnblock']);
+
+//Forum...
+Route::get('/my-forum', [\App\Http\Controllers\UserForumController::class, 'showForum']);
+Route::post('/my-forum/store', [\App\Http\Controllers\UserForumController::class, 'storeForum']);

@@ -5,6 +5,12 @@
        <span>Dashboard</span>
        </a>
     </li>
+    <li class="nav-item {{ Request::url() == url('/my-forum') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('/my-forum') }}">
+        <i class="far fa-credit-card"></i>
+        <span>My Forum</span>
+        </a>
+    </li>
     <li class="nav-item {{ Request::url() == url('/account/varify') ? 'active' : '' }}">
        <a class="nav-link" href="{{ url('/account/varify') }}">
           <i class="fas fa-check"></i>

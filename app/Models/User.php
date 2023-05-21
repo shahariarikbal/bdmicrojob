@@ -68,4 +68,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Tip::class);
     }
+
+    public function forum(): HasMany
+    {
+        return $this->hasMany(UserForum::class);
+    }
+
+    public function likeComment(): HasMany
+    {
+        return $this->hasMany(LikeComment::class);
+    }
 }
