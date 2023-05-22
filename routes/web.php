@@ -53,7 +53,7 @@ Route::post('/contact/store', [FrontendController::class, 'contactStore']);
 Route::get('/faq', [FrontendController::class, 'showFaq']);
 Route::get('/terms/conditions', [FrontendController::class, 'showTermsConditions']);
 Route::get('/privacy/policy', [FrontendController::class, 'showPrivacyPolicy']);
-Route::get('/forum', [FrontendController::class, 'showForum']);
+Route::get('/user-forum', [FrontendController::class, 'showForum']);
 Route::get('/blog', [FrontendController::class, 'showBlog']);
 Route::get('/blog/details', [FrontendController::class, 'showBlogDetails']);
 

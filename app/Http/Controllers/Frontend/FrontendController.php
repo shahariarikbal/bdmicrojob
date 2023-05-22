@@ -12,6 +12,7 @@ use App\Models\Post;
 use App\Models\AboutUs;
 use App\Models\TermCondition;
 use App\Models\PrivacyPolicy;
+use App\Models\UserForum;
 use DB;
 
 class FrontendController extends Controller
@@ -76,7 +77,8 @@ class FrontendController extends Controller
     }
 
     public function showForum(){
-        return view('frontend.forum.forum');
+        $forums = UserForum::orderBy('created_at', 'desc')->with('user')->get();
+        return view('frontend.forum.forum', compact('forums'));
     }
 
     public function showBlog(){

@@ -348,14 +348,14 @@ My Forum
                             </div>
                             @if (Auth::check())
                             <div class="like-comment-outer">
-                                <button class="like-comment-item">
+                                <a href="#" class="like-comment-item">
                                     <i class="far fa-thumbs-up"></i>
                                     Like
-                                </button>
-                                <button class="like-comment-item">
+                                </a>
+                                <a href="#" class="like-comment-item">
                                     <i class="far fa-comment-alt"></i>
                                     Comment
-                                </button>
+                                </a>
                             </div>
                             @endif
                             @if (Auth::check())

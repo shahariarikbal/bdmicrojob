@@ -17,6 +17,16 @@
                 <a class="nav-item-main-link active" href="{{ url('/') }}">Home</a>
             </li>
             <li class="nav-item-main">
+                <a class="nav-item-main-link" href="{{ url('/blog') }}">
+                  Blog
+                </a>
+            </li>
+            <li class="nav-item-main">
+                <a class="nav-item-main-link" href="{{ url('/user-forum') }}">
+                  Forum
+                </a>
+            </li>
+            <li class="nav-item-main">
                 <a class="nav-item-main-link" href="{{ url('/about') }}">
                     About us
                 </a>
@@ -32,16 +42,6 @@
             <li class="nav-item-main">
                 <a class="nav-item-main-link" href="{{ url('/contact') }}">
                   Contact Us
-                </a>
-            </li>
-            <li class="nav-item-main">
-                <a class="nav-item-main-link" href="{{ url('/forum') }}">
-                  Forum
-                </a>
-            </li>
-            <li class="nav-item-main">
-                <a class="nav-item-main-link" href="{{ url('/blog') }}">
-                  Blog
                 </a>
             </li>
             <li class="nav-item-main">
@@ -70,6 +70,11 @@
                 <li class="social-icon-list-item">
                     <a href="{{ $setting->instagram }}" class="social-icon-item-link">
                         <i class="fab fa-instagram"></i>
+                    </a>
+                </li>
+                <li class="social-icon-list-item">
+                    <a href="https://www.youtube.com/@bdmicrojob/" class="social-icon-item-link">
+                        <i class="fab fa-youtube"></i>
                     </a>
                 </li>
             </ul>
