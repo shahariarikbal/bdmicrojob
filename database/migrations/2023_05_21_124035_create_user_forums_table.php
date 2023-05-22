@@ -19,6 +19,7 @@ class CreateUserForumsTable extends Migration
             $table->string('title')->nullable();
             $table->longText('description');
             $table->string('image')->nullable();
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

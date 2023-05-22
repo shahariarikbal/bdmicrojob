@@ -19,6 +19,7 @@ class CreateLikeCommentsTable extends Migration
             $table->string('post_type');
             $table->unsignedBigInteger('user_id');
             $table->integer('action_type');
+            $table->longText('comments')->nullable();
             $table->timestamps();
         });
     }

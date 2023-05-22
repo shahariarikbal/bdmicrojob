@@ -355,60 +355,81 @@
                         </div>
                         <div class="single-post-bottom">
                             <div class="like-comment-count-outer">
+                                @php
+                                    $like_count = App\Models\LikeComment::where('post_id', $forum->id)->where('action_type', 2)->count();
+                                    $comment_count = App\Models\LikeComment::where('post_id', $forum->id)->where('action_type', 1)->count();
+                                @endphp
                                 <div class="like-comment-count-item">
-                                    <span class="count">10</span>
+                                    <span class="count">{{ $like_count }}</span>
                                     Like
                                 </div>
                                 <div class="like-comment-count-item">
-                                    <span class="count">2</span>
+                                    <span class="count">{{ $comment_count }}</span>
                                     Comments
                                 </div>
                             </div>
                             @if (Auth::check())
                             <div class="like-comment-outer">
-                                <a href="#" class="like-comment-item">
+                                @php
+                                    $like = App\Models\LikeComment::where('user_id',Auth::user()->id)->where('post_id', $forum->id)->where('action_type', 2)->first();
+                                @endphp
+
+                                @if($like)
+                                <a class="like-comment-item">
+                                    <i class="fas fa-thumbs-up"></i>
+                                    Like
+                                </a>
+                                @else
+                                <a href="{{ url('/forum/comment/like/'.$forum->id) }}" class="like-comment-item">
                                     <i class="far fa-thumbs-up"></i>
                                     Like
                                 </a>
+                                @endif
                                 <a href="#" class="like-comment-item">
                                     <i class="far fa-comment-alt"></i>
-                                    Comment
+                                    Comments
                                 </a>
                             </div>
                             @endif
                             @if (Auth::check())
-                            <form action="" method="" class="comment-form form-group">
+                            <form action="{{ url('/forum/comment/store/'.$forum->id) }}" method="post" class="comment-form form-group">
+                                @csrf
                                 <div class="d-flex gap-3">
-                                    <input type="text" name="comment" class="form-control"
-                                        placeholder="Write a comment..">
-                                    <button type="button" class="comment-btn-inner">
+                                    <input type="text" name="comments" class="form-control"
+                                        placeholder="Write a comment.." required>
+                                    <button type="submit" class="comment-btn-inner">
                                         <i class="far fa-comment-alt"></i>
                                     </button>
                                 </div>
                             </form>
                             @endif
                             <div class="comment-area">
+                                @php
+                                    $comment = App\Models\LikeComment::where('post_id', $forum->id)->where('action_type', 1)
+                                    ->orderBy('created_at', 'desc')->with('user')->first();
+                                @endphp
+                                @if($comment)
                                 <div class="single-comment-area">
                                     <div class="parent-comment">
                                         <div class="avatar-item">
                                             <img class="avatar-img"
-                                                src="{{ asset('/frontend') }}/assets/images/user.jpg" alt="avatar" />
+                                                src="{{ asset('/user/'.$comment->user->avatar) }}" alt="avatar" />
                                         </div>
                                         <div class="info-item active">
                                             <div class="top-area align-items-start justify-content-between">
                                                 <div class="title-area">
                                                     <h6>
-                                                        Lori Cortez
+                                                        {{ $comment->user->name }}
                                                     </h6>
                                                     <p class="mdtxt">
-                                                        The only way to solve the problem is to code for the hardware
-                                                        directly
+                                                        {{ $comment->comments }}
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                @endif
                             </div>
                         </div>
                     </div>
