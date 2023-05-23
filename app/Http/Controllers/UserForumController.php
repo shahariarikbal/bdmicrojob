@@ -23,6 +23,24 @@ class UserForumController extends Controller
         }
     }
 
+    public function showMyForumDetails ($id)
+    {
+        if(Auth::check()){
+            $forum = $forum = UserForum::where('id', $id)->where('user_id', Auth::user()->id)->with('user')->first();
+            return view ('frontend.auth.user.my_forum_details', compact('forum'));
+        }
+
+        else{
+            return redirect('/login');
+        }
+    }
+
+    public function showForumDetails ($id)
+    {
+        $forum = UserForum::where('id', $id)->with('user')->first();
+        return view('frontend.forum.forum-details', compact('forum'));
+    }
+
     public function storeForum (UserForumRequest $request)
     {
         if(Auth::check()){

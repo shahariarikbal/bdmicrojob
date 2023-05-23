@@ -333,7 +333,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="single-post-top-right cus-dropdown">
+                            {{--  <div class="single-post-top-right cus-dropdown">
                                 <i class="fas fa-ellipsis-h"></i>
                                 <ul class="cus-dropdown-list">
                                     <li class="cus-dropdown-list-item">
@@ -343,7 +343,7 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </div>
+                            </div>  --}}
                         </div>
                         <div class="single-post-center">
                             @if ($forum->image != null)
@@ -385,7 +385,7 @@
                                     Like
                                 </a>
                                 @endif
-                                <a href="#" class="like-comment-item">
+                                <a href="{{ url('/forum/details/comments/'.$forum->id) }}" class="like-comment-item">
                                     <i class="far fa-comment-alt"></i>
                                     Comments
                                 </a>

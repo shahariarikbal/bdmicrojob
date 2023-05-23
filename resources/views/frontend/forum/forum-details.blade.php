@@ -1,5 +1,6 @@
-@extends('frontend.auth.master')
-@push('page-css')
+@extends('frontend.master')
+
+@push('forum-css')
 <style>
     .forum-section {
         padding: 40px 0;
@@ -264,20 +265,37 @@
 </style>
 @endpush
 
-@section('title')
-My Forum
-@endsection
-
-@section('content')
+@section('contain')
+<section class="banner-section">
+    <div class="container">
+        <div class="banner-content-wrapper">
+            <h1 class="banner-title">Forum</h1>
+            <ul class="banner-item">
+                <li>
+                    <a href="{{ url('/') }}">
+                        <i class="fas fa-home"></i>
+                        Home
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="javascript:void(0)">
+                        forum
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
 <section class="forum-section">
     <div class="container">
         <div class="row">
             <div class="col-md-10 m-auto">
                 <div class="forum-info-wrapper">
-                    @if (Auth::check())
-                    <form action="{{ url('/my-forum/store') }}" method="post" class="post-create-outer" enctype="multipart/form-data">
+                    {{--  @if (Auth::check())
+                    <form action="{{ url('/my-forum/store') }}" method="post" class="post-create-outer"
+                        enctype="multipart/form-data">
                         @csrf
-                        <label for="description">
+                        <label for="post_create">
                             Create Post
                         </label>
                         <textarea name="description" class="form-control mb-3" cols="50" rows="4"
@@ -292,8 +310,7 @@ My Forum
                             </button>
                         </div>
                     </form>
-                    @endif
-                    @foreach ($forums as $forum )
+                    @endif  --}}
                     <div class="single-post-wrap">
                         <div class="single-post-top">
                             <div class="single-post-top-left">
@@ -315,7 +332,7 @@ My Forum
                                     </p>
                                 </div>
                             </div>
-                            <div class="single-post-top-right cus-dropdown">
+                            {{--  <div class="single-post-top-right cus-dropdown">
                                 <i class="fas fa-ellipsis-h"></i>
                                 <ul class="cus-dropdown-list">
                                     <li class="cus-dropdown-list-item">
@@ -325,7 +342,7 @@ My Forum
                                         </a>
                                     </li>
                                 </ul>
-                            </div>
+                            </div>  --}}
                         </div>
                         <div class="single-post-center">
                             @if ($forum->image != null)
@@ -367,7 +384,7 @@ My Forum
                                     Like
                                 </a>
                                 @endif
-                                <a href="{{ url('/my-forum/details/comments/'.$forum->id) }}" class="like-comment-item">
+                                <a href="{{ url('/forum/details/comments/'.$forum->id) }}" class="like-comment-item">
                                     <i class="far fa-comment-alt"></i>
                                     Comments
                                 </a>
@@ -387,10 +404,10 @@ My Forum
                             @endif
                             <div class="comment-area">
                                 @php
-                                    $comment = App\Models\LikeComment::where('post_id', $forum->id)->where('action_type', 1)
-                                    ->orderBy('created_at', 'desc')->with('user')->first();
+                                    $comments = App\Models\LikeComment::where('post_id', $forum->id)->where('action_type', 1)
+                                    ->orderBy('created_at', 'desc')->with('user')->get();
                                 @endphp
-                                @if($comment)
+                                @foreach ($comments as $comment )
                                 <div class="single-comment-area">
                                     <div class="parent-comment">
                                         <div class="avatar-item">
@@ -411,20 +428,13 @@ My Forum
                                         </div>
                                     </div>
                                 </div>
-                                @endif
+                                @endforeach
                             </div>
                         </div>
                     </div>
-                    @endforeach
                 </div>
             </div>
         </div>
     </div>
 </section>
 @endsection
-
-@push('page-scripts')
-<script type="text/javascript">
-
-</script>
-@endpush

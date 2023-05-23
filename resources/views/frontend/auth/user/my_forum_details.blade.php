@@ -274,7 +274,7 @@ My Forum
         <div class="row">
             <div class="col-md-10 m-auto">
                 <div class="forum-info-wrapper">
-                    @if (Auth::check())
+                    {{--  @if (Auth::check())
                     <form action="{{ url('/my-forum/store') }}" method="post" class="post-create-outer" enctype="multipart/form-data">
                         @csrf
                         <label for="description">
@@ -292,8 +292,7 @@ My Forum
                             </button>
                         </div>
                     </form>
-                    @endif
-                    @foreach ($forums as $forum )
+                    @endif  --}}
                     <div class="single-post-wrap">
                         <div class="single-post-top">
                             <div class="single-post-top-left">
@@ -387,10 +386,10 @@ My Forum
                             @endif
                             <div class="comment-area">
                                 @php
-                                    $comment = App\Models\LikeComment::where('post_id', $forum->id)->where('action_type', 1)
-                                    ->orderBy('created_at', 'desc')->with('user')->first();
+                                    $comments = App\Models\LikeComment::where('post_id', $forum->id)->where('action_type', 1)
+                                    ->orderBy('created_at', 'desc')->with('user')->get();
                                 @endphp
-                                @if($comment)
+                                @foreach ($comments as $comment )
                                 <div class="single-comment-area">
                                     <div class="parent-comment">
                                         <div class="avatar-item">
@@ -411,11 +410,10 @@ My Forum
                                         </div>
                                     </div>
                                 </div>
-                                @endif
+                                @endforeach
                             </div>
                         </div>
                     </div>
-                    @endforeach
                 </div>
             </div>
         </div>

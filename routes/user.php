@@ -77,6 +77,8 @@ Route::get('/unblock', [\App\Http\Controllers\UserController::class, 'instantUnb
 
 //Forum...
 Route::get('/my-forum', [\App\Http\Controllers\UserForumController::class, 'showForum']);
+Route::get('/forum/details/comments/{id}', [\App\Http\Controllers\UserForumController::class, 'showForumDetails']);
+Route::get('/my-forum/details/comments/{id}', [\App\Http\Controllers\UserForumController::class, 'showMyForumDetails']);
 Route::post('/my-forum/store', [\App\Http\Controllers\UserForumController::class, 'storeForum']);
 
 //Like Comment...
