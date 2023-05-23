@@ -5,7 +5,7 @@
 @endsection
 
 @push('meta')
-    <meta http-equiv="refresh" content="10">
+    {{--  <meta http-equiv="refresh" content="10">  --}}
 @endpush
 
 @push('page-css')
@@ -336,6 +336,7 @@
     @php
         $auth_user = Auth::user();
     @endphp
+    <input type="hidden" name="status" id="status" value="{{ $auth_user->status }}">
     <form action="{{ url('/user/activate/'.$auth_user->id) }}" method="GET" id="userActivate" class="d-none">
         @csrf
     </form>
@@ -406,11 +407,13 @@
 
 @push('page-scripts')
     <script type="text/javascript">
-        window.onload = function(){
-            setInterval(function(){
-                document.getElementById('userActivate').submit();
-            }, 3600);
-        };
+        let status = document.getElementById('status').value;
+        let c_status = parseInt(status);
+            if(c_status==0){
+                setInterval(function(){
+                    document.getElementById('userActivate').submit();
+                }, 10000);
+            }
     </script>
 @endpush
 

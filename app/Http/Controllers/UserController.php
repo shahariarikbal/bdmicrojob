@@ -229,6 +229,7 @@ class UserController extends Controller
             $currentTime = Carbon::now();
             $updatedTime = $auth_user->updated_at;
             $diff_in_hours = $updatedTime->diffInHours($currentTime);
+            //dd($diff_in_hours);
             if ($diff_in_hours >= 6 && $auth_user->status == false){
                 $auth_user->status = true;
                 $auth_user->updated_at = Carbon::now();
