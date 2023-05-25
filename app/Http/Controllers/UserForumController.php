@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UserForumRequest;
 use App\Models\UserForum;
 use Auth;
+use File;
 
 class UserForumController extends Controller
 {
@@ -60,5 +61,45 @@ class UserForumController extends Controller
             return redirect('/login');
         }
 
+    }
+
+    public function deleteForum ($id)
+    {
+        $forum = UserForum::find($id);
+        if(file_exists(public_path('forum/'.$forum->image))){
+            File::delete(public_path('forum/'.$forum->image));
+        }
+
+        $forum->delete();
+        return redirect()->back()->with('success','Deleted successfully!');
+    }
+
+    public function editForum ($id)
+    {
+        $forum = UserForum::find($id);
+        return view ('frontend.forum.forum-edit', compact('forum'));
+    }
+
+    public function updateForum (Request $request, $id)
+    {
+        $forum = UserForum::find($id);
+        if($request->hasFile('image')){
+            if(file_exists(public_path('forum/'.$forum->image))){
+                File::delete(public_path('forum/'.$forum->image));
+                $name = time() . '.' . $request->image->getClientOriginalExtension();
+                $request->image->move('forum/', $name);
+                $forum->image = $name;
+            }
+            else{
+                $name = time() . '.' . $request->image->getClientOriginalExtension();
+                $request->image->move('forum/', $name);
+                $forum->image = $name;
+            }
+
+        }
+
+        $forum->description = $request->description;
+        $forum->save();
+        return redirect()->back()->with('success', 'Updated successfully!');
     }
 }

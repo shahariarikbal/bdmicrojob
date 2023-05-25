@@ -319,9 +319,15 @@ My Forum
                                 <i class="fas fa-ellipsis-h"></i>
                                 <ul class="cus-dropdown-list">
                                     <li class="cus-dropdown-list-item">
-                                        <a href="#" class="cus-dropdown-list-item-link">
+                                        <a href="{{ url('/my-forum/delete/'.$forum->id) }}"  class="cus-dropdown-list-item-link" onclick="return confirm('Are you sure?')">
                                             <i class="fas fa-trash-alt"></i>
                                             Delete
+                                        </a>
+                                    </li>
+                                    <li class="cus-dropdown-list-item">
+                                        <a href="{{ url('/my-forum/edit/'.$forum->id) }}" class="cus-dropdown-list-item-link">
+                                            <i class="fas fa-trash-alt"></i>
+                                            Edit
                                         </a>
                                     </li>
                                 </ul>

@@ -80,6 +80,9 @@ Route::get('/my-forum', [\App\Http\Controllers\UserForumController::class, 'show
 Route::get('/forum/details/comments/{id}', [\App\Http\Controllers\UserForumController::class, 'showForumDetails']);
 Route::get('/my-forum/details/comments/{id}', [\App\Http\Controllers\UserForumController::class, 'showMyForumDetails']);
 Route::post('/my-forum/store', [\App\Http\Controllers\UserForumController::class, 'storeForum']);
+Route::get('/my-forum/delete/{id}', [\App\Http\Controllers\UserForumController::class, 'deleteForum']);
+Route::get('/my-forum/edit/{id}', [\App\Http\Controllers\UserForumController::class, 'editForum']);
+Route::post('/my-forum/update/{id}', [\App\Http\Controllers\UserForumController::class, 'updateForum']);
 
 //Like Comment...
 Route::post('/forum/comment/store/{id}', [\App\Http\Controllers\LikeCommentController::class, 'storeComment']);
