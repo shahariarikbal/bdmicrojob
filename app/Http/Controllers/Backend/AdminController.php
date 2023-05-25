@@ -14,6 +14,7 @@ use App\Models\Tip;
 use App\Models\HomePage;
 use App\Models\AboutUs;
 use App\Models\Post;
+use App\Models\UserForum;
 use App\Http\Requests\HomePageRequest;
 use App\Http\Requests\TipRequest;
 use Hash;
@@ -443,6 +444,20 @@ class AdminController extends Controller
             $admin->update();
             return redirect('/admin/dashboard')->with('success', 'Updated Successfully');
         }
+    }
+
+    public function showForum ()
+    {
+        visitor()->visit();
+        $forums = UserForum::with('user')->orderBy('created_at', 'desc')->get();
+        return view('backend.forum.show-forum', compact('forums'));
+    }
+
+    public function showForumDetails ($id)
+    {
+        visitor()->visit();
+        $forum = UserForum::where('id', $id)->with('user')->first();
+        return view('backend.forum.show-forum-details', compact('forum'));
     }
 
 }

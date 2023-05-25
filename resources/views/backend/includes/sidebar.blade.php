@@ -23,6 +23,12 @@
         <span>Pending Jobs</span>
         </a>
      </li>
+     <li class="nav-item {{ Request::url() == url('admin/all-forum') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('/admin/all-forum') }}">
+        <i class="fa fa-tasks"></i>
+        <span>Forum</span>
+        </a>
+     </li>
      {{--  <li class="nav-item {{ Request::url() == url('admin/advertisements') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('/admin/advertisements') }}">
         <i class="fa fa-tasks"></i>

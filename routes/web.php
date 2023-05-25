@@ -190,4 +190,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
     Route::get('/edit/marque-text/{id}', [MarqueeController::class, 'editMarqueeText']);
     Route::post('/update/marque-text/{id}', [MarqueeController::class, 'updateMarqueeText']);
 
+    //Forum....
+    Route::get('/all-forum', [AdminController::class, 'showForum']);
+    Route::get('/forum/details/comments/{id}', [AdminController::class, 'showForumDetails']);
+
 });
