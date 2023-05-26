@@ -20,7 +20,7 @@ class FrontendController extends Controller
     public function index()
     {
         visitor()->visit();
-        $job_posts = Post::where('is_approved', 1)->with('user','category')->orderBy('created_at', 'desc')->Paginate(5);
+        $job_posts = Post::where('is_approved', 1)->where('is_paused', 0)->with('user','category')->orderBy('created_at', 'desc')->Paginate(5);
         $homepage = HomePage::first();
         $visitorCount = DB::table('shetabit_visits')->count();
         $userCount = User::count();

@@ -64,6 +64,7 @@
                                     </td>
                                     <td>
                                         <a href="{{ url('/post/add-worker/'.$post->id) }}" class="btn btn-sm btn-warning">Add Worker</a>
+                                        <a href="{{ url('/post/pause/'.$post->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger">Pause</a>
                                         {{--  <a href="{{ url('/post/edit/'.$post->id) }}" class="btn btn-sm btn-warning">Edit</a>  --}}
                                         {{--  <a href="{{ url('/post/delete/'.$post->id) }}" onclick="return confirm('Are you sure delete this post ?')" class="btn btn-sm btn-danger">Delete</a>  --}}
                                     </td>

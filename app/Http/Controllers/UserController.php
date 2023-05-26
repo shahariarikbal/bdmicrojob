@@ -451,6 +451,17 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'Post has been deleted');
     }
 
+    public function pausePost ($id)
+    {
+        if(Auth::check()){
+            $post = Post::where('id', $id)->with('category')->first();
+            $job_cost = $post->worker_number*$post->category->worker_earning;
+        }
+        else{
+            return redirect('/login');
+        }
+    }
+
     public function showSubmittedPendingJob()
     {
         visitor()->visit();
