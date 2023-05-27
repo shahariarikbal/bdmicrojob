@@ -110,10 +110,16 @@ class UserController extends Controller
 
     public function showPostJob()
     {
-        visitor()->visit();
-        $categories = Category::select(['id', 'name', 'status', 'price', 'worker_earning'])->orderBy('created_at', 'desc')->where('status', 1)->get();
-        $form_step = 'one';
-        return view('frontend.auth.user.job.post-job', compact('categories', 'form_step'));
+        if(Auth::check()){
+            visitor()->visit();
+            $categories = Category::select(['id', 'name', 'status', 'price', 'worker_earning'])->orderBy('created_at', 'desc')->where('status', 1)->get();
+            $form_step = 'one';
+            return view('frontend.auth.user.job.post-job', compact('categories', 'form_step'));
+        }
+
+        else{
+            return redirect('/login');
+        }
     }
 
     public function postStoreCategoryDetails (Request $request)
@@ -179,47 +185,67 @@ class UserController extends Controller
 
     public function historyAccountVerify ()
     {
-        visitor()->visit();
-        $nid_verifications = NidVerification::where('user_id', Auth::user()->id)->paginate(5);
-        return view('frontend.auth.user.account-varify-history', compact('nid_verifications'));
+        if(Auth::check()){
+            visitor()->visit();
+            $nid_verifications = NidVerification::where('user_id', Auth::user()->id)->paginate(5);
+            return view('frontend.auth.user.account-varify-history', compact('nid_verifications'));
+        }
+        else{
+            return redirect('/login');
+        }
     }
 
     public function showMyTask()
     {
-        visitor()->visit();
-        $marquee_text = MarqueeText::where('page_name','may_task')->first();
-        $post_submits = PostSubmit::where('user_id',Auth::user()->id)->with('post')->orderBy('created_at', 'desc')->Paginate(10);
-        return view('frontend.auth.user.my-task', compact('post_submits', 'marquee_text'));
+        if(Auth::check()){
+            visitor()->visit();
+            $marquee_text = MarqueeText::where('page_name','may_task')->first();
+            $post_submits = PostSubmit::where('user_id',Auth::user()->id)->with('post')->orderBy('created_at', 'desc')->Paginate(10);
+            return view('frontend.auth.user.my-task', compact('post_submits', 'marquee_text'));
+        }
+        else{
+            return redirect('/login');
+        }
     }
 
     public function showAcceptedTask()
     {
-        visitor()->visit();
-        $marquee_text = MarqueeText::where('page_name','accepted_task')->first();
-        $accepted_tasks = PostSubmit::where('user_id',Auth::user()->id)->where('status', '1')->with('post')->Paginate(10);
-        return view('frontend.auth.user.accepted-task', compact('accepted_tasks', 'marquee_text'));
+        if(Auth::check()){
+            visitor()->visit();
+            $marquee_text = MarqueeText::where('page_name','accepted_task')->first();
+            $accepted_tasks = PostSubmit::where('user_id',Auth::user()->id)->where('status', '1')->with('post')->Paginate(10);
+            return view('frontend.auth.user.accepted-task', compact('accepted_tasks', 'marquee_text'));
+        }
+        else{
+            return redirect('/login');
+        }
     }
 
     public function showJobDetails($id)
     {
-        visitor()->visit();
-        if(Auth::user()->status==1){
-            $postDetail = Post::with('specificTasks', 'jobSubmit')->where('user_id','!=', Auth::user()->id)->find($id);
-            $is_reported = UserReport::where('reporter_id', Auth::user()->id)->where('user_id', $postDetail->user_id)
-            ->where('posted_job_id', $id)->count();
-            if($postDetail){
-                $isPostSubmit = PostSubmit::where('user_id', auth()->user()->id)->where('status', '!=' ,'2')
-                ->orderBy('created_at','desc')->where('post_id', $postDetail->id)->first();
-                $postSubmit = PostSubmit::where('post_id', $postDetail->id)->where('status','!=','2')->get()->count();
-                $userAddToCart = Cart::where('post_id', $id)->get()->count();
-                $totalPostSubmit = $postSubmit + $userAddToCart;
-                return view('frontend.auth.user.job.job-details', compact('postDetail', 'isPostSubmit', 'totalPostSubmit', 'is_reported'));
+        if(Auth::check()){
+            visitor()->visit();
+            if(Auth::user()->status==1){
+                $postDetail = Post::with('specificTasks', 'jobSubmit')->where('user_id','!=', Auth::user()->id)->find($id);
+                $is_reported = UserReport::where('reporter_id', Auth::user()->id)->where('user_id', $postDetail->user_id)
+                ->where('posted_job_id', $id)->count();
+                if($postDetail){
+                    $isPostSubmit = PostSubmit::where('user_id', auth()->user()->id)->where('status', '!=' ,'2')
+                    ->orderBy('created_at','desc')->where('post_id', $postDetail->id)->first();
+                    $postSubmit = PostSubmit::where('post_id', $postDetail->id)->where('status','!=','2')->get()->count();
+                    $userAddToCart = Cart::where('post_id', $id)->get()->count();
+                    $totalPostSubmit = $postSubmit + $userAddToCart;
+                    return view('frontend.auth.user.job.job-details', compact('postDetail', 'isPostSubmit', 'totalPostSubmit', 'is_reported'));
+                }
+                else{
+                    return redirect()->back()->with('Error','Not Found!!');
+                }
             }
-            else{
-                return redirect()->back()->with('Error','Not Found!!');
-            }
+            return redirect()->back()->with('danger','You are suspended for certain hours!!');
         }
-        return redirect()->back()->with('danger','You are suspended for certain hours!!');
+        else{
+            return redirect('/login');
+        }
     }
 
     public function userActivate ($id)
@@ -401,9 +427,14 @@ class UserController extends Controller
 
     public function showMyPost()
     {
-        visitor()->visit();
-        $posts = Post::with('category')->orderBy('created_at', 'desc')->where('user_id', auth()->user()->id)->get();
-        return view('frontend.auth.user.my-post', compact('posts'));
+        if(Auth::check()){
+            visitor()->visit();
+            $posts = Post::with('category')->orderBy('created_at', 'desc')->where('user_id', auth()->user()->id)->get();
+            return view('frontend.auth.user.my-post', compact('posts'));
+        }
+        else{
+            return redirect('/login');
+        }
     }
 
     public function showAddWorker($id)
@@ -464,23 +495,38 @@ class UserController extends Controller
 
     public function showSubmittedPendingJob()
     {
-        visitor()->visit();
-        $submitted_jobs = PostSubmit::where('job_owner_id', Auth::user()->id)->where('status','0')->with('user','post')->orderBy('created_at', 'desc')->Paginate(10);
-        return view('frontend.auth.user.submitted-job', compact('submitted_jobs'));
+        if(Auth::check()){
+            visitor()->visit();
+            $submitted_jobs = PostSubmit::where('job_owner_id', Auth::user()->id)->where('status','0')->with('user','post')->orderBy('created_at', 'desc')->Paginate(10);
+            return view('frontend.auth.user.submitted-job', compact('submitted_jobs'));
+        }
+        else{
+            return redirect('/login');
+        }
     }
 
     public function showSubmittedApprovedJob ()
     {
-        visitor()->visit();
-        $submitted_jobs = PostSubmit::where('job_owner_id', Auth::user()->id)->where('status','1')->with('user','post')->orderBy('created_at', 'desc')->Paginate(10);
-        return view('frontend.auth.user.submitted-job', compact('submitted_jobs'));
+        if(Auth::check()){
+            visitor()->visit();
+            $submitted_jobs = PostSubmit::where('job_owner_id', Auth::user()->id)->where('status','1')->with('user','post')->orderBy('created_at', 'desc')->Paginate(10);
+            return view('frontend.auth.user.submitted-job', compact('submitted_jobs'));
+        }
+        else{
+            return redirect('/login');
+        }
     }
 
     public function showSubmittedRejectedJob ()
     {
-        visitor()->visit();
-        $submitted_jobs = PostSubmit::where('job_owner_id', Auth::user()->id)->where('status','2')->with('user','post')->orderBy('created_at', 'desc')->Paginate(10);
-        return view('frontend.auth.user.submitted-job', compact('submitted_jobs'));
+        if(Auth::check()){
+            visitor()->visit();
+            $submitted_jobs = PostSubmit::where('job_owner_id', Auth::user()->id)->where('status','2')->with('user','post')->orderBy('created_at', 'desc')->Paginate(10);
+            return view('frontend.auth.user.submitted-job', compact('submitted_jobs'));
+        }
+        else{
+            return redirect('/login');
+        }
     }
 
     public function showSubmittedJobDetails ($id)
