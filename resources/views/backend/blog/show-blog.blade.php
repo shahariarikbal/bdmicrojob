@@ -46,8 +46,8 @@
                                         <img src="{{ asset('blog/'.$blog->image) }}" alt="" height="50px">
                                     </td>
                                     <td>
-                                        <a href="#" class="btn btn-sm btn-success">Edit</a>
-                                        <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                        <a href="{{ url('/admin/edit/blog/'.$blog->id) }}" class="btn btn-sm btn-success">Edit</a>
+                                        <a href="{{ url('/admin/delete/blog/'.$blog->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger">Delete</a>
                                     </td>
                                 </tr>
                                 @endforeach

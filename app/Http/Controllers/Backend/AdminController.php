@@ -492,4 +492,44 @@ class AdminController extends Controller
         return redirect('/admin/all-blog')->with('success','Created Successfully!');
     }
 
+    public function editBlog ($id)
+    {
+        visitor()->visit();
+        $blog = Blog::find($id);
+        return view ('backend.blog.edit-blog', compact('blog'));
+    }
+
+    public function updateBlog (Request $request, $id)
+    {
+        $blog = Blog::find($id);
+        $blog->short_title = $request->short_title;
+        $blog->slug = Str::slug($request->short_title);
+        $blog->long_title = $request->long_title;
+        $blog->short_description = $request->short_description;
+        $blog->long_description = $request->long_description;
+
+        if($request->hasFile('image')){
+            if ($blog->image && file_exists(public_path('blog/'.$blog->image))){
+                unlink(public_path('blog/'.$blog->image));
+            }
+            $name = rand(0,1000) . '.' . $request->image->getClientOriginalExtension();
+            $request->image->move('blog/', $name);
+            $blog->image = $name;
+        }
+
+        $blog->save();
+        return redirect('/admin/all-blog')->with('success','Updated Successfully!');
+    }
+
+    public function deleteBlog ($id)
+    {
+        $blog = Blog::find($id);
+        if ($blog->image && file_exists(public_path('blog/'.$blog->image))){
+            unlink(public_path('blog/'.$blog->image));
+        }
+
+        $blog->delete();
+        return redirect()->back()->with('success','Deleted Successfully!');
+    }
+
 }

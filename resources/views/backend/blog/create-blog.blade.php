@@ -1,7 +1,7 @@
 @extends('backend.master')
 
 @section('title')
-    About Us
+    Create Blog
 @endsection
 
 @push('page-css')
