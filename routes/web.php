@@ -54,8 +54,8 @@ Route::get('/faq', [FrontendController::class, 'showFaq']);
 Route::get('/terms/conditions', [FrontendController::class, 'showTermsConditions']);
 Route::get('/privacy/policy', [FrontendController::class, 'showPrivacyPolicy']);
 Route::get('/user-forum', [FrontendController::class, 'showForum']);
-Route::get('/blog', [FrontendController::class, 'showBlog']);
-Route::get('/blog/details', [FrontendController::class, 'showBlogDetails']);
+Route::get('/all-blog', [FrontendController::class, 'showBlog']);
+Route::get('/blog/details/{id}', [FrontendController::class, 'showBlogDetails']);
 
 Auth::routes();
 
@@ -193,5 +193,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
     //Forum....
     Route::get('/all-forum', [AdminController::class, 'showForum']);
     Route::get('/forum/details/comments/{id}', [AdminController::class, 'showForumDetails']);
+
+    //Blog....
+    Route::get('/all-blog', [AdminController::class, 'showBlog']);
+    Route::get('/blog/details/{id}', [AdminController::class, 'showBlogDetails']);
+    Route::get('create/blog', [AdminController::class, 'createBlog']);
+    Route::post('/store/blog', [AdminController::class, 'storeBlog']);
+    Route::get('/edit/blog/{id}', [AdminController::class, 'editBlog']);
+    Route::post('/update/blog/{id}', [AdminController::class, 'updateBlog']);
+    Route::get('/delete/blog/{id}', [AdminController::class, 'deleteBlog']);
 
 });

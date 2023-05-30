@@ -17,7 +17,7 @@
                 <a class="nav-item-main-link active" href="{{ url('/') }}">Home</a>
             </li>
             <li class="nav-item-main">
-                <a class="nav-item-main-link" href="{{ url('/blog') }}">
+                <a class="nav-item-main-link" href="{{ url('/all-blog') }}">
                   Blog
                 </a>
             </li>

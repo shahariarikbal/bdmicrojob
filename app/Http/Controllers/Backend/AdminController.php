@@ -15,6 +15,7 @@ use App\Models\HomePage;
 use App\Models\AboutUs;
 use App\Models\Post;
 use App\Models\UserForum;
+use App\Models\Blog;
 use App\Http\Requests\HomePageRequest;
 use App\Http\Requests\TipRequest;
 use Hash;
@@ -458,6 +459,37 @@ class AdminController extends Controller
         visitor()->visit();
         $forum = UserForum::where('id', $id)->with('user')->first();
         return view('backend.forum.show-forum-details', compact('forum'));
+    }
+
+    public function showBlog ()
+    {
+        visitor()->visit();
+        $blogs = Blog::orderBy('created_at', 'desc')->get();
+        return view('backend.blog.show-blog', compact('blogs'));
+    }
+
+    public function createBlog ()
+    {
+        visitor()->visit();
+        return view('backend.blog.create-blog');
+    }
+
+    public function storeBlog (Request $request)
+    {
+        $blog = new Blog();
+        $blog->short_title = $request->short_title;
+        $blog->slug = Str::slug($request->short_title);
+        $blog->long_title = $request->long_title;
+        $blog->short_description = $request->short_description;
+        $blog->long_description = $request->long_description;
+        if($request->hasFile('image')){
+            $name = rand(0,1000) . '.' . $request->image->getClientOriginalExtension();
+            $request->image->move('blog/', $name);
+            $blog->image = $name;
+        }
+
+        $blog->save();
+        return redirect('/admin/all-blog')->with('success','Created Successfully!');
     }
 
 }

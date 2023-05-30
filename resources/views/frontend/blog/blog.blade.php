@@ -179,13 +179,14 @@
 </section>
 <section class="blog-section">
     <div class="container">
+        @foreach ($blogs as $blog )
         <div class="row">
             <div class="col-md-8 col-sm-12">
                 <div class="blog-items-wrapper">
                     <div class="blog-item-outer">
                         <div class="blog-item-image">
-                            <a href="{{ url('/blog/details') }}">
-                                <img src="{{ asset('frontend') }}/assets/images/blog.webp" alt="Blog Image">
+                            <a href="{{ url('/blog/details/'.$blog->id) }}">
+                                <img src="{{ asset('blog/'.$blog->image) }}" alt="Blog Image">
                             </a>
                         </div>
                         <ul class="blog-meta-list">
@@ -193,16 +194,16 @@
                                 Admin
                             </li>
                             <li>
-                                2023-Apr-08
+                                {{ $blog->created_at }}
                             </li>
                         </ul>
-                        <a href="#" class="blog-item-title">                            
-                            Artificial will take all human job next year                            
+                        <a href="{{ url('/blog/details/'.$blog->id) }}" class="blog-item-title">
+                            {{ $blog->long_title }}
                         </a>
                         <p class="blog-item-text">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis veniam consequuntur voluptates dolores atque laudantium maiores nobis.
+                            {{ $blog->short_description }}
                         </p>
-                        <a href="{{ url('/blog/details') }}" target="_blank" class="blog-see-more-link">
+                        <a href="{{ url('/blog/details/'.$blog->id) }}" target="_blank" class="blog-see-more-link">
                             Read More <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
@@ -215,20 +216,21 @@
                     </h2>
                     <div class="recent-blog-outer">
                         <a href="{{ url('/blog/details') }}" class="recent-blog-image">
-                            <img src="{{ asset('frontend') }}/assets/images/blog.webp" alt="Blog Image">
+                            <img src="{{ asset('blog/'.$blog->image) }}" alt="Blog Image">
                         </a>
                         <div class="recent-blog-content">
                             <a href="{{ url('/blog/details') }}" target="_blank" class="recent-blog-title">
-                                Artificial will take 
+                                {{ $blog->short_title }}
                             </a>
                             <p class="recent-blog-post-date">
-                                2023-Apr-08
+                                {{ $blog->created_at }}
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        @endforeach
     </div>
 </section>
 @endsection

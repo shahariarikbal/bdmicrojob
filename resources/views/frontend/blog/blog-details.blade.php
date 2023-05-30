@@ -184,21 +184,21 @@
                 <div class="blog-items-wrapper">
                     <div class="blog-item-outer">
                         <div class="blog-item-image">
-                            <img src="{{ asset('frontend') }}/assets/images/blog.webp" alt="Blog Image">
+                            <img src="{{ asset('blog/'.$blog->image) }}" alt="Blog Image">
                         </div>
                         <ul class="blog-meta-list">
                             <li class="blog-meta-list-item">
                                 Admin
                             </li>
                             <li>
-                                2023-Apr-08
+                                {{ $blog->created_at }}
                             </li>
                         </ul>
                         <h2 class="blog-item-title">
-                            Artificial will take all human job next year 
+                            {{ $blog->long_title }}
                         </h2>
                         <div>
-                            Laboratories used for scientific research take many forms because of the differing requirements of specialists in the various fields of science and engineering. A physics laboratory Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, aperiam ipsquae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+                            {!! $blog->long_description !!}
                         </div>
                     </div>
                 </div>
@@ -209,15 +209,15 @@
                         Recent Post
                     </h2>
                     <div class="recent-blog-outer">
-                        <a href="{{ url('/blog/details') }}" class="recent-blog-image">
-                            <img src="{{ asset('frontend') }}/assets/images/blog.webp" alt="Blog Image">
+                        <a href="{{ url('/blog/details/'.$blog->id) }}" class="recent-blog-image">
+                            <img src="{{ asset('blog/'.$blog->image) }}" alt="Blog Image">
                         </a>
                         <div class="recent-blog-content">
-                            <a href="{{ url('/blog/details') }}" target="_blank" class="recent-blog-title">
-                                Artificial will take 
+                            <a href="{{ url('/blog/details/'.$blog->id) }}" target="_blank" class="recent-blog-title">
+                                {{ $blog->short_title }}
                             </a>
                             <p class="recent-blog-post-date">
-                                2023-Apr-08
+                                {{ $blog->created_at }}
                             </p>
                         </div>
                     </div>

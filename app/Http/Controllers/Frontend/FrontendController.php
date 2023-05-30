@@ -13,6 +13,7 @@ use App\Models\AboutUs;
 use App\Models\TermCondition;
 use App\Models\PrivacyPolicy;
 use App\Models\UserForum;
+use App\Models\Blog;
 use DB;
 
 class FrontendController extends Controller
@@ -82,10 +83,12 @@ class FrontendController extends Controller
     }
 
     public function showBlog(){
-        return view('frontend.blog.blog');
+        $blogs = Blog::orderBy('created_at','desc')->get();
+        return view('frontend.blog.blog', compact('blogs'));
     }
 
-    public function showBlogDetails(){
-        return view('frontend.blog.blog-details');
+    public function showBlogDetails($id){
+        $blog = Blog::find($id);
+        return view('frontend.blog.blog-details', compact('blog'));
     }
 }
