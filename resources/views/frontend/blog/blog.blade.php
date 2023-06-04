@@ -215,11 +215,11 @@
                         Recent Post
                     </h2>
                     <div class="recent-blog-outer">
-                        <a href="{{ url('/blog/details') }}" class="recent-blog-image">
+                        <a href="{{ url('/blog/details/'.$blog->id) }}" class="recent-blog-image">
                             <img src="{{ asset('blog/'.$blog->image) }}" alt="Blog Image">
                         </a>
                         <div class="recent-blog-content">
-                            <a href="{{ url('/blog/details') }}" target="_blank" class="recent-blog-title">
+                            <a href="{{ url('/blog/details/'.$blog->id) }}" target="_blank" class="recent-blog-title">
                                 {{ $blog->short_title }}
                             </a>
                             <p class="recent-blog-post-date">

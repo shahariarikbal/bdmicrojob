@@ -729,16 +729,23 @@ class UserController extends Controller
 
     public function cartItemDelete()
     {
+        // $currentTime = Carbon::now();
+        // $currentDate = $currentTime->hour;
+        // $carts = Cart::first();
+        // $y = $carts?->created_at;
+        // $createDate = date('g', strtotime($y));
+        // $date = $createDate - $currentDate;
+        $cart = Cart::first();
         $currentTime = Carbon::now();
-        $currentDate = $currentTime->hour;
-        $carts = Cart::first();
-        $y = $carts?->created_at;
-        $createDate = date('g', strtotime($y));
-        $date = $createDate - $currentDate;
-        if ($date <= 1){
-            $carts?->delete();
+        $updatedTime = $cart->updated_at;
+        $diff_in_hours = $updatedTime->diffInHours($currentTime);
+        //dd($diff_in_hours);
+        if ($diff_in_hours >= 1){
+            $cart?->delete();
+            return redirect('/dashboard');
         }
-        return redirect()->back();
+        // return redirect()->back();
+        return redirect('/dashboard');
     }
 
     public function instantUnblock()

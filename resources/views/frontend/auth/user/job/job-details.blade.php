@@ -5,7 +5,7 @@
 @endsection
 
 @push('meta')
-    <meta http-equiv="refresh" content="10">
+    {{--  <meta http-equiv="refresh" content="10">  --}}
 @endpush
 
 @push('page-css')
@@ -135,12 +135,9 @@
 
 @push('page-scripts')
     <script type="text/javascript">
-        window.onload = function(){
-            setInterval(function(){
+            {{--  setInterval(function(){
                 document.getElementById('cartItemDelete').submit();
-            }, 3600);
-        };
-
+            }, 3600);  --}}
         // window.onload = function(){
         //     document.getElementById('cartItemDelete').submit();
         // }

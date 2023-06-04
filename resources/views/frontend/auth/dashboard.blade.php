@@ -336,6 +336,11 @@
     @php
         $auth_user = Auth::user();
     @endphp
+    <input type="hidden" name="cart_count" id="cart_count" value="{{ $cart_count }}">
+    <input type="hidden" name="add_to_cart_hours" id="add_to_cart_hours" value="{{ $add_to_cart_hours }}">
+    <form action="{{ url('/cart/item/delete') }}" method="GET" id="cartItemDelete" class="d-none">
+        @csrf
+    </form>
     <input type="hidden" name="status" id="status" value="{{ $auth_user->status }}">
     <form action="{{ url('/user/activate/'.$auth_user->id) }}" method="GET" id="userActivate" class="d-none">
         @csrf
@@ -409,6 +414,16 @@
     <script type="text/javascript">
         let status = document.getElementById('status').value;
         let c_status = parseInt(status);
+        let cart_count = document.getElementById('cart_count').value;
+        let c_cart_count = parseInt(cart_count);
+        let add_to_cart_hours = document.getElementById('add_to_cart_hours').value;
+        let c_add_to_cart_hours = parseInt(add_to_cart_hours);
+            if(c_cart_count>0 && c_add_to_cart_hours>=1){
+                setInterval(function(){
+                        document.getElementById('cartItemDelete').submit();
+                }, 1000);
+            }
+
             if(c_status==0){
                 setInterval(function(){
                     document.getElementById('userActivate').submit();
