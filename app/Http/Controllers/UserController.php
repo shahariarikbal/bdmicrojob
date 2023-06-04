@@ -208,6 +208,28 @@ class UserController extends Controller
         }
     }
 
+    public function showMyFavouriteTask ()
+    {
+        if(Auth::check()){
+            visitor()->visit();
+            $auth_user = Auth::user();
+            $marquee_text = MarqueeText::where('page_name','may_task')->first();
+            $carts = Cart::where('user_id',$auth_user->id)->with('post')->Paginate(10);
+            //dd($carts);
+            return view('frontend.auth.user.my-favourite-task', compact('carts', 'marquee_text'));
+        }
+        else{
+            return redirect('/login');
+        }
+    }
+
+    public function deleteMyFavouriteTask ($id)
+    {
+        $cart = Cart::find($id);
+        $cart->delete();
+        return redirect()->back()->with('success', 'Deleted Successfully!!');
+    }
+
     public function showAcceptedTask()
     {
         if(Auth::check()){
@@ -229,13 +251,15 @@ class UserController extends Controller
                 $postDetail = Post::with('specificTasks', 'jobSubmit')->where('user_id','!=', Auth::user()->id)->find($id);
                 $is_reported = UserReport::where('reporter_id', Auth::user()->id)->where('user_id', $postDetail->user_id)
                 ->where('posted_job_id', $id)->count();
+                $cart_count = Cart::where('user_id',Auth::user()->id)->where('post_id',$id)->count();
                 if($postDetail){
                     $isPostSubmit = PostSubmit::where('user_id', auth()->user()->id)->where('status', '!=' ,'2')
                     ->orderBy('created_at','desc')->where('post_id', $postDetail->id)->first();
                     $postSubmit = PostSubmit::where('post_id', $postDetail->id)->where('status','!=','2')->get()->count();
                     $userAddToCart = Cart::where('post_id', $id)->get()->count();
-                    $totalPostSubmit = $postSubmit + $userAddToCart;
-                    return view('frontend.auth.user.job.job-details', compact('postDetail', 'isPostSubmit', 'totalPostSubmit', 'is_reported'));
+                    // $totalPostSubmit = $postSubmit + $userAddToCart;
+                    $totalPostSubmit = $postSubmit;
+                    return view('frontend.auth.user.job.job-details', compact('postDetail', 'isPostSubmit', 'totalPostSubmit', 'userAddToCart', 'is_reported','cart_count'));
                 }
                 else{
                     return redirect()->back()->with('Error','Not Found!!');
@@ -414,14 +438,22 @@ class UserController extends Controller
          $job_owner = User::find($job_post->user_id);
          //Get Job Post with ID for job owner...
 
+         //Get Cart....
+         $cart = Cart::where('user_id',Auth::user()->id)->where('post_id',$id)->first();
+         //Get Cart....
+
          $submitPost = new PostSubmit();
          $submitPost->job_owner_id = $job_owner->id;
          $submitPost->user_id = auth()->user()->id;
          $submitPost->post_id = $id;
          $submitPost->work_prove = $request->work_prove;
          $submitPost->images = json_encode($data);
-         $submitPost->save();
-        visitor()->visit();
+         if($submitPost->save()){
+            if($cart){
+                $cart->delete();
+                return redirect()->back()->with('success', 'Post has been submitted');
+            }
+         }
          return redirect()->back()->with('success', 'Post has been submitted');
     }
 
@@ -736,15 +768,17 @@ class UserController extends Controller
         // $createDate = date('g', strtotime($y));
         // $date = $createDate - $currentDate;
         $cart = Cart::first();
-        $currentTime = Carbon::now();
-        $updatedTime = $cart->updated_at;
-        $diff_in_hours = $updatedTime->diffInHours($currentTime);
-        //dd($diff_in_hours);
-        if ($diff_in_hours >= 1){
-            $cart?->delete();
+        if($cart){
+            $currentTime = Carbon::now();
+            $updatedTime = $cart->updated_at;
+            $diff_in_hours = $updatedTime->diffInHours($currentTime);
+            //dd($diff_in_hours);
+            if ($diff_in_hours >= 1){
+                $cart?->delete();
+                return redirect('/dashboard');
+            }
             return redirect('/dashboard');
         }
-        // return redirect()->back();
         return redirect('/dashboard');
     }
 

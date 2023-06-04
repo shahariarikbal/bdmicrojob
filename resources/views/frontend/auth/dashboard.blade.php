@@ -375,8 +375,10 @@
              @foreach($posts as $post)
             @php
             $worker = \App\Models\PostSubmit::where('post_id', $post->id)->where('status','!=','2')->get()->count();
+            $job_cart = \App\Models\Cart::where('post_id', $post->id)->count();
+            $total_count = $worker+$job_cart;
             @endphp
-            @if ($worker<$post->worker_number)
+            @if ($total_count<$post->worker_number)
                 <a href="{{ url('/job/details/'.$post->id) }}" class="job-item-outer">
                     <div class="job-item-left">
                         <h5 class="job-title">
@@ -385,9 +387,9 @@
                     </div>
                     <div class="job-item-center">
                         <div class="progress-label">
-                            {{ $worker }} OF {{ $post->worker_number }}
+                            {{ $total_count }} OF {{ $post->worker_number }}
                         </div>
-                        <progress value="{{ $worker }}" max="{{ $post->worker_number }}"></progress>
+                        <progress value="{{ $total_count }}" max="{{ $post->worker_number }}"></progress>
                         <!-- <div class="progress">
                             @if ($worker >= 100)
                             <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="{{ $worker }}" aria-valuemin="0" aria-valuemax="{{ $post->worker_number }}"></div>

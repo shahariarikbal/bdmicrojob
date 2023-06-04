@@ -35,8 +35,8 @@
                                 <div class="done-job-outer">
                                     <div class="done-job-left">
                                         <h5 class="title">DONE</h5>
-                                        <h3 class="number">{{ $totalPostSubmit }} of {{ $postDetail->worker_number }}</h3>
-                                        <progress value="{{ $totalPostSubmit }}" max="{{ $postDetail->worker_number }}"></progress>
+                                        <h3 class="number">{{ $totalPostSubmit+$userAddToCart }} of {{ $postDetail->worker_number }}</h3>
+                                        <progress value="{{ $totalPostSubmit+$userAddToCart }}" max="{{ $postDetail->worker_number }}"></progress>
                                         <!-- <div class="progress">
                                             @if ($totalPostSubmit >= 100)
                                             <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="{{ $totalPostSubmit }}" aria-valuemin="0" aria-valuemax="{{ $postDetail->worker_number }}"></div>
@@ -70,8 +70,13 @@
                                     </h4>
                                 </div>
                                 <div class="right">
+                                    @php
+                                        $auth_user = Auth::user();
+                                    @endphp
                                     <a href="{{ url('/dashboard') }}" class="hide-btn-inner">Hide</a>
-                                    <a href="{{ url('/add/to/cart/'.$postDetail->user_id. '/'.$postDetail->id) }}" class="hide-btn-inner" style="background-color: red">Add Favourite</a>
+                                    @if ($cart_count==0)
+                                    <a href="{{ url('/add/to/cart/'.$auth_user->id. '/'.$postDetail->id) }}" class="hide-btn-inner" style="background-color: red">Add Favourite</a>
+                                    @endif
                                     <a href="{{ url('/user/details/'.$postDetail->user_id) }}" class="hide-btn-inner" style="background-color: deeppink">User Details</a>
                                 </div>
                             </div>

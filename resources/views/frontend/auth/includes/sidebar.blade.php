@@ -53,6 +53,12 @@
         <span>My Post</span>
         </a>
     </li>
+    <li class="nav-item {{ Request::url() == url('/my/favourite/task') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('/my/favourite/task') }}">
+         <i class="fas fa-tasks"></i>
+        <span>Favourite Tasks</span>
+        </a>
+     </li>
     <li class="nav-item {{ Request::url() == url('/my/task') ? 'active' : '' }}">
        <a class="nav-link" href="{{ url('/my/task') }}">
         <i class="fas fa-tasks"></i>

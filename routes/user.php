@@ -27,6 +27,8 @@ Route::get('/account/varify', [\App\Http\Controllers\UserController::class, 'sho
 Route::post('/account/varify/store', [\App\Http\Controllers\UserController::class, 'storeAccountVerify']);
 Route::get('/account/varify/history', [\App\Http\Controllers\UserController::class, 'historyAccountVerify']);
 Route::get('/my/task', [\App\Http\Controllers\UserController::class, 'showMyTask']);
+Route::get('/my/favourite/task', [\App\Http\Controllers\UserController::class, 'showMyFavouriteTask']);
+Route::get('/my/favourite/task/delete/{id}', [\App\Http\Controllers\UserController::class, 'deleteMyFavouriteTask']);
 Route::get('/accepted/task', [\App\Http\Controllers\UserController::class, 'showAcceptedTask']);
 Route::get('/job/details/{id}', [\App\Http\Controllers\UserController::class, 'showJobDetails']);
 Route::get('/user/activate/{id}', [\App\Http\Controllers\UserController::class, 'userActivate']);
