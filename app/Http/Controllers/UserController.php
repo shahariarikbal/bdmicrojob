@@ -175,7 +175,7 @@ class UserController extends Controller
             $nid_verification->card_number = $request->card_number;
 
             $nid_verification->save();
-            return redirect()->back()->with('Success','Documents Submission done');
+            return redirect('/dashboard')->with('Success','Documents Submission done');
         }
 
         else{

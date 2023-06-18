@@ -63,9 +63,79 @@
           <div class="col-xl-3 col-md-4 col-sm-6 mb-4">
             <div class="card radius-10" style="background: linear-gradient(131.26deg,#5E44C9 26.64%,#2448D6 214.9%)">
                 <div class="card-body text-center">
+                    <p class="mb-1 text-white" style="font-size: 17px;font-weight: 600;">NID Request</p>
+                    <h3 class="text-white">
+                        {{ $nid_request }}
+                    </h3>
+                </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-4 col-sm-6 mb-4">
+            <div class="card radius-10" style="background: linear-gradient(131.26deg,#5E44C9 26.64%,#2448D6 214.9%)">
+                <div class="card-body text-center">
+                    <p class="mb-1 text-white" style="font-size: 17px;font-weight: 600;">Deposit Request</p>
+                    <h3 class="text-white">
+                        {{ $deposit_request }}
+                    </h3>
+                </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-4 col-sm-6 mb-4">
+            <div class="card radius-10" style="background: linear-gradient(131.26deg,#5E44C9 26.64%,#2448D6 214.9%)">
+                <div class="card-body text-center">
+                    <p class="mb-1 text-white" style="font-size: 17px;font-weight: 600;">Withdraw Request</p>
+                    <h3 class="text-white">
+                        {{ $withdraw_request }}
+                    </h3>
+                </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-4 col-sm-6 mb-4">
+            <div class="card radius-10" style="background: linear-gradient(131.26deg,#5E44C9 26.64%,#2448D6 214.9%)">
+                <div class="card-body text-center">
                     <p class="mb-1 text-white" style="font-size: 17px;font-weight: 600;">Total users</p>
                     <h3 class="text-white">
                         {{ $user_count }}
+                    </h3>
+                </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-4 col-sm-6 mb-4">
+            <div class="card radius-10" style="background: linear-gradient(131.26deg,#5E44C9 26.64%,#2448D6 214.9%)">
+                <div class="card-body text-center">
+                    <p class="mb-1 text-white" style="font-size: 17px;font-weight: 600;">Total Deposit</p>
+                    <h3 class="text-white">
+                        {{ $total_deposit }}
+                    </h3>
+                </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-4 col-sm-6 mb-4">
+            <div class="card radius-10" style="background: linear-gradient(131.26deg,#5E44C9 26.64%,#2448D6 214.9%)">
+                <div class="card-body text-center">
+                    <p class="mb-1 text-white" style="font-size: 17px;font-weight: 600;">Total Earning</p>
+                    <h3 class="text-white">
+                        {{ $total_income }}
+                    </h3>
+                </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-4 col-sm-6 mb-4">
+            <div class="card radius-10" style="background: linear-gradient(131.26deg,#5E44C9 26.64%,#2448D6 214.9%)">
+                <div class="card-body text-center">
+                    <p class="mb-1 text-white" style="font-size: 17px;font-weight: 600;">Total Withdraw</p>
+                    <h3 class="text-white">
+                        {{ $total_withdraw }}
+                    </h3>
+                </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-4 col-sm-6 mb-4">
+            <div class="card radius-10" style="background: linear-gradient(131.26deg,#5E44C9 26.64%,#2448D6 214.9%)">
+                <div class="card-body text-center">
+                    <p class="mb-1 text-white" style="font-size: 17px;font-weight: 600;">Total Tips</p>
+                    <h3 class="text-white">
+                        {{ $total_tips }}
                     </h3>
                 </div>
             </div>

@@ -5,6 +5,7 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Schema;
 use App\Models\User;
 use App\Models\PostSubmit;
+use App\Models\NidVerification;
 use Auth;
 use DB;
 
@@ -35,6 +36,8 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*', function($view){
             if(Auth::check()){
                 $view->with('total_deposit',User::where('id',Auth::user()->id)->first(['total_deposit']));
+                $view->with('verification',NidVerification::where('user_id',Auth::user()->id)->orderBy('created_at', 'desc')->first());
+                $view->with('verification_requested',NidVerification::where('user_id',Auth::user()->id)->count());
             }
         });
 

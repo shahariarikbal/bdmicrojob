@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\User;
+use App\Models\Withdraw;
+use App\Models\Deposit;
 use App\Models\UserVideo;
 use App\Models\Video;
 use App\Models\NidVerification;
@@ -79,7 +81,14 @@ class AdminController extends Controller
         $user_count = User::count();
         $pending_job_count = Post::where('is_approved',0)->count();
         $approved_job_count = Post::where('is_approved',1)->count();
-    	return view('backend.dashboard', compact('visitors', 'user_count', 'pending_job_count', 'approved_job_count'));
+        $total_deposit = User::sum('total_deposit');
+        $total_income = User::sum('total_income');
+        $total_withdraw = Withdraw::where('is_approved', 1)->sum('withdraw_amount');
+        $total_tips = Tip::sum('tips_amount');
+        $nid_request = NidVerification::where('status',0)->count();
+        $deposit_request = Deposit::where('is_approved',0)->count();
+        $withdraw_request = Withdraw::where('is_approved',0)->count();
+    	return view('backend.dashboard', compact('visitors', 'user_count', 'pending_job_count', 'approved_job_count', 'total_deposit', 'total_income', 'total_withdraw', 'total_tips', 'nid_request', 'deposit_request', 'withdraw_request'));
     }
 
     public function visitorView($id)
