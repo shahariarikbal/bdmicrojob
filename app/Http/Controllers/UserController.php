@@ -518,7 +518,36 @@ class UserController extends Controller
     {
         if(Auth::check()){
             $post = Post::where('id', $id)->with('category')->first();
-            $job_cost = $post->worker_number*$post->category->worker_earning;
+            if($post->is_paused == 0){
+                $job_cost = $post->worker_number*$post->category->worker_earning;
+                $penalty_commission = (5/100)*$job_cost;
+                //Inser Into Commission Table....
+
+                //Inser Into Commission Table....
+
+                //Work Completed and remaining money....
+                $post_submit = PostSubmit::where('post_id', $post->id)->where('status', '1')->count();
+                $remaining_job = $post->worker_number-$post_submit;
+                $remaining_money = $remaining_job*$post->category->worker_earning;
+                $return_money = $remaining_money-$penalty_commission;
+
+                $user = User::where('id', Auth::user()->id)->first();
+                $user->total_deposit = $user->total_deposit+$return_money;
+                if($user->save()){
+                    $post->is_paused = true;
+                    $post->save();
+
+                    //Remove all images....
+
+                    //Remove all images....
+
+                    return redirect()->back()->with('success', 'Job is Paused!!');
+                }
+                //Work Completed and remaining money....
+            }
+            else{
+                return redirect()->back()->with('error', 'Already Paused');
+            }
         }
         else{
             return redirect('/login');
