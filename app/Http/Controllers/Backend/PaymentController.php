@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Deposit;
+use App\Models\Setting;
+use App\Models\Commission;
 use App\Models\Withdraw;
 use App\Models\User;
 use App\Models\Notification;
@@ -119,6 +121,15 @@ class PaymentController extends Controller
                     $notification->notification_for = "user";
                     $withdraw->withdraw()->save($notification);
                     //Notification....
+
+                    //Admin Commission Entry....
+                    $withdraw_info = Setting::first();
+                    $commission = new Commission();
+                    $commission->type = 'withdraw';
+                    $commission->amount = (($withdraw_info->withdraw_commission*$withdraw->withdraw_amount)/100);
+                    $commission->save();
+                    //Admin Commission Entry....
+
                     return redirect()->back()->with('Success',"Approved Successfully!");
                 }
                 return redirect()->back()->with('Error',"Technical Error!!");

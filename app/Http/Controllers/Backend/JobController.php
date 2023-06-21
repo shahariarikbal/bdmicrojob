@@ -9,6 +9,7 @@ use App\Models\Deposit;
 use App\Models\Post;
 use App\Models\SpecificTask;
 use App\Models\User;
+use App\Models\Commission;
 use Illuminate\Http\Request;
 
 class JobController extends Controller
@@ -98,6 +99,13 @@ class JobController extends Controller
                 $specificTask->save();
             }
             // return view ('frontend.auth.user.job.job-post-success', compact('job_cost', 'job_commission', 'postPriceEarnPrice', 'per_worker_earn', 'admin_commission'));
+
+            //Admin Commission Entry....
+            $commission = new Commission();
+            $commission->type = 'job';
+            $commission->amount = $job_commission;
+            $commission->save();
+            //Admin Commission Entry....
             return redirect('/my/post')->withSuccess('Your post has been submitted');
         }
 
