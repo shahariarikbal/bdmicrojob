@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Deposit;
 use App\Models\Withdraw;
 use App\Models\MarqueeText;
+use App\Models\Setting;
 use Auth;
 
 class DepositController extends Controller
@@ -95,8 +96,9 @@ class DepositController extends Controller
     {
         if(Auth::check()){
             visitor()->visit();
+            $withdraw_info = Setting::first();
             $user = Auth::user();
-            $total_amount = ((15*$request->withdraw_amount)/100)+($request->withdraw_amount);
+            $total_amount = (($withdraw_info->withdraw_commission*$request->withdraw_amount)/100)+($request->withdraw_amount);
             $withdraw = new Withdraw();
 
             $withdraw->user_id = $user->id;

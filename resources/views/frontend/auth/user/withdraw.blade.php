@@ -94,13 +94,17 @@
                                         @endif
                                     </div>
                                 </div>
-                                @if ($auth_user->nid_verified==1 && $auth_user->total_income>=115)
+                                @php
+                                    $withdraw_amnt = (($setting->withdraw_commission/100)*$setting->min_withdraw_amnt)+$setting->min_withdraw_amnt;
+                                @endphp
+                                {{--  <input type="text" value="{{ $withdraw_amnt }}">  --}}
+                                @if ($auth_user->nid_verified==1 && $auth_user->total_income>=$withdraw_amnt)
                                 <button type="submit" class="deposit-form-btn">Continue to payment</button>
-                                @elseif ($auth_user->nid_verified!=1 && $auth_user->total_income>=115)
+                                @elseif ($auth_user->nid_verified!=1 && $auth_user->total_income>=$withdraw_amnt)
                                 <div><h1 class="text-danger">Your NID/Birth Certificate is not verified yet!!</h1></div>
-                                @elseif ($auth_user->nid_verified==1 && $auth_user->total_income<115)
+                                @elseif ($auth_user->nid_verified==1 && $auth_user->total_income<$withdraw_amnt)
                                 <div><h1 class="text-danger">Insufficient Earning Balance!!</h1></div>
-                                @elseif ($auth_user->nid_verified!=1 && $auth_user->total_income<115)
+                                @elseif ($auth_user->nid_verified!=1 && $auth_user->total_income<$withdraw_amnt)
                                 <div><h1 class="text-danger">NID is not Verified & Insufficient Earning Balance!!</h1></div>
                                 @endif
                             </div>

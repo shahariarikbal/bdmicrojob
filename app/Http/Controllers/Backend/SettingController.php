@@ -40,6 +40,8 @@ class SettingController extends Controller
         $setting->instagram = $request->instagram;
         $setting->address = $request->address;
         $setting->adsense_code = $request->adsense_code;
+        $setting->withdraw_commission = $request->withdraw_commission;
+        $setting->min_withdraw_amnt = $request->min_withdraw_amnt;
         $setting->save();
         return redirect()->back()->with('Success','Settings are updated successfully!!');
     }
