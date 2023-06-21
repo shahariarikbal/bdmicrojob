@@ -179,8 +179,38 @@
 </section>
 <section class="blog-section">
     <div class="container">
-        @foreach ($blogs as $blog )
+
         <div class="row">
+            <h2 class="category-title">
+                Recent Posts
+            </h2>
+            @foreach ($recent_blogs as $recent_blog )
+            <div class="col-md-12 col-sm-12">
+                <div class="recent-blogs-wrapper">
+                    <div class="recent-blog-outer">
+                        <a href="" class="recent-blog-image">
+                            <img src="{{ asset('blog/'.$recent_blog->image) }}" alt="Blog Image">
+                        </a>
+                        <div class="recent-blog-content">
+                            <a href="{{ url('/blog/details/'.$recent_blog->id) }}" target="_blank" class="recent-blog-title">
+                                {{ $recent_blog->short_title }}
+                            </a>
+                            <p class="recent-blog-post-date">
+                                {{ $recent_blog->created_at }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+
+            <hr>
+            <h2 class="category-title">
+                All Blogs
+            </h2>
+            <hr>
+
+            @foreach ($blogs as $blog )
             <div class="col-md-8 col-sm-12">
                 <div class="blog-items-wrapper">
                     <div class="blog-item-outer">
@@ -209,28 +239,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-12">
-                <div class="recent-blogs-wrapper">
-                    <h2 class="category-title">
-                        Recent Post
-                    </h2>
-                    <div class="recent-blog-outer">
-                        <a href="{{ url('/blog/details/'.$blog->id) }}" class="recent-blog-image">
-                            <img src="{{ asset('blog/'.$blog->image) }}" alt="Blog Image">
-                        </a>
-                        <div class="recent-blog-content">
-                            <a href="{{ url('/blog/details/'.$blog->id) }}" target="_blank" class="recent-blog-title">
-                                {{ $blog->short_title }}
-                            </a>
-                            <p class="recent-blog-post-date">
-                                {{ $blog->created_at }}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
-        @endforeach
     </div>
 </section>
 @endsection

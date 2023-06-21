@@ -180,7 +180,7 @@
 <section class="blog-section">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-sm-12">
+            <div class="col-md-12 col-sm-12">
                 <div class="blog-items-wrapper">
                     <div class="blog-item-outer">
                         <div class="blog-item-image">
@@ -203,7 +203,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-12">
+            {{--  <div class="col-md-4 col-sm-12">
                 <div class="recent-blogs-wrapper">
                     <h2 class="category-title">
                         Recent Post
@@ -222,7 +222,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>  --}}
         </div>
     </div>
 </section>

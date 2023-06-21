@@ -83,8 +83,9 @@ class FrontendController extends Controller
     }
 
     public function showBlog(){
+        $recent_blogs = Blog::orderBy('created_at', 'desc')->paginate(2);
         $blogs = Blog::orderBy('created_at','desc')->get();
-        return view('frontend.blog.blog', compact('blogs'));
+        return view('frontend.blog.blog', compact('blogs', 'recent_blogs'));
     }
 
     public function showBlogDetails($id){
