@@ -23,6 +23,18 @@
         <span>Pending Jobs</span>
         </a>
      </li>
+     <li class="nav-item {{ Request::url() == url('admin/pending-task') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('/admin/pending-task') }}">
+        <i class="fa fa-tasks"></i>
+        <span>Pending Task</span>
+        </a>
+     </li>
+     <li class="nav-item {{ Request::url() == url('admin/rejected-task') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('/admin/rejected-task') }}">
+        <i class="fa fa-tasks"></i>
+        <span>Rejected Task</span>
+        </a>
+     </li>
      <li class="nav-item {{ Request::url() == url('admin/all-forum') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('/admin/all-forum') }}">
         <i class="fa fa-tasks"></i>

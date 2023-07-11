@@ -203,4 +203,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
     Route::post('/update/blog/{id}', [AdminController::class, 'updateBlog']);
     Route::get('/delete/blog/{id}', [AdminController::class, 'deleteBlog']);
 
+    //User Tasks...
+    Route::get('/pending-task', [AdminController::class, 'pendingTask']);
+    Route::get('/details/pending_task/{id}', [AdminController::class, 'pendingTaskDetails']);
+    Route::get('/rejected-task', [AdminController::class, 'rejectedTask']);
+
 });

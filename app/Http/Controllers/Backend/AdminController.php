@@ -19,6 +19,7 @@ use App\Models\AboutUs;
 use App\Models\Post;
 use App\Models\UserForum;
 use App\Models\Blog;
+use App\Models\PostSubmit;
 use App\Http\Requests\HomePageRequest;
 use App\Http\Requests\TipRequest;
 use Hash;
@@ -541,6 +542,20 @@ class AdminController extends Controller
 
         $blog->delete();
         return redirect()->back()->with('success','Deleted Successfully!');
+    }
+
+    public function pendingTask ()
+    {
+        visitor()->visit();
+        $pending_tasks = PostSubmit::where('status','0')->with('user','post')->orderBy('created_at', 'asc')->Paginate(10);
+        return view ('backend.task.list', compact('pending_tasks'));
+    }
+
+    public function pendingTaskDetails ($id)
+    {
+        visitor()->visit();
+        $pending_task = PostSubmit::where('id', $id)->with('user', 'post')->first();
+        return view ('backend.task.details', compact('pending_task'));
     }
 
 }
