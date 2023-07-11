@@ -22,6 +22,12 @@
                                 <i class="fab fa-instagram"></i>
                             </a>
                         </li>
+                        </li>
+                        <li class="footer-social-icon-list-item">
+                            <a href="{{ $setting->instagram }}" class="footer-social-icon-item-link" target="_blank">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

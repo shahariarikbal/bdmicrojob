@@ -140,6 +140,11 @@
         margin-bottom: 30px;
     }
 
+    .single-post-center img {
+        height: 400px;
+        object-fit: contain;
+    }
+
     .single-post-center .comment-text {
         font-size: 16px;
         font-weight: 400;

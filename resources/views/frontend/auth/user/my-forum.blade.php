@@ -138,6 +138,12 @@
 
     .single-post-center {
         margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .single-post-center img {
+        height: 400px;
+        object-fit: contain;
     }
 
     .single-post-center .comment-text {
