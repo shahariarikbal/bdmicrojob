@@ -206,6 +206,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
     //User Tasks...
     Route::get('/pending-task', [AdminController::class, 'pendingTask']);
     Route::get('/details/pending_task/{id}', [AdminController::class, 'pendingTaskDetails']);
+    Route::get('/pending-task/approve/{id}', [AdminController::class, 'pendingTaskApprove']);
     Route::get('/rejected-task', [AdminController::class, 'rejectedTask']);
 
 });

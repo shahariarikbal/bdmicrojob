@@ -558,4 +558,25 @@ class AdminController extends Controller
         return view ('backend.task.details', compact('pending_task'));
     }
 
+    public function pendingTaskApprove ($id)
+    {
+        $submitted_job = PostSubmit::where('id',$id)->with('post')->first();
+        $job_post = Post::where('id', $submitted_job->post_id)->with('category')->first();
+
+        if($submitted_job->status != '1'){
+            $submitted_job->status = '1';
+            if($submitted_job->save()){
+                $worker = User::find($submitted_job->user_id);
+                $previous_income=$worker->total_income;
+                $worker->total_income = $previous_income+$job_post->category->worker_earning;
+                $worker->save();
+
+                return redirect()->back()->with('Success','Approved Successfully!');
+                }
+            }
+            else{
+                return redirect()->back()->with('Error','Already Approved!');
+            }
+    }
+
 }

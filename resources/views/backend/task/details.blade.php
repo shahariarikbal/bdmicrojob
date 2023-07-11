@@ -23,8 +23,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="nid-details-right-btn-outer">
-                                <a href="{{ url('/submitted/job/approve/'.$pending_task->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-primary">Approve</a>
-                                <a href="{{ url('/submitted/job/reject/'.$pending_task->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger">Reject</a>
+                                <a href="{{ url('/admin/pending-task/approve/'.$pending_task->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-primary">Approve</a>
+                                {{--  <a href="{{ url('/submitted/job/reject/'.$pending_task->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger">Reject</a>  --}}
                             </div>
                         </div>
                     </div>
