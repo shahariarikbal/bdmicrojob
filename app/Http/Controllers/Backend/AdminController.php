@@ -544,9 +544,14 @@ class AdminController extends Controller
         return redirect()->back()->with('success','Deleted Successfully!');
     }
 
-    public function pendingTask ()
+    public function pendingTask (Request $request)
     {
         visitor()->visit();
+        if($request->job_title){
+            $job = Post::where('title', $request->job_title)->first();
+            $pending_tasks = PostSubmit::where('status','0')->where('post_id', $job->id)->with('user','post')->orderBy('created_at', 'asc')->Paginate(100);
+            return view ('backend.task.list', compact('pending_tasks'));
+        }
         $pending_tasks = PostSubmit::where('status','0')->with('user','post')->orderBy('created_at', 'asc')->Paginate(10);
         return view ('backend.task.list', compact('pending_tasks'));
     }

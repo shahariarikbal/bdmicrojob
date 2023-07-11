@@ -14,9 +14,24 @@
         <div class="card">
             <div class="card-header">
             	<div class="row">
-            		<div class="col-md-6">
+            		<div class="col-md-4">
                 		<h2>Pending Tasks</h2>
             		</div>
+                    <div class="col-md-8">
+                        <form action="{{ url('/admin/pending-task') }}" method="get">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <input type="text" name="job_title" class="form-control" placeholder="Job Title" style="height: 40px;margin-bottom: 10px;">
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="input-group">
+                                        <button type="submit" class="input-group-text text-white btn btn-primary" style="margin-right: 5px">Search</button>
+                                        <a href="{{ url('/admin/pending-task') }}" class="input-group-text text-white btn btn-danger">Clear</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
             	</div>
 
             </div>
