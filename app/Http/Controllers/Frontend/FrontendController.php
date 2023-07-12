@@ -78,17 +78,20 @@ class FrontendController extends Controller
     }
 
     public function showForum(){
+        visitor()->visit();
         $forums = UserForum::orderBy('created_at', 'desc')->with('user')->get();
         return view('frontend.forum.forum', compact('forums'));
     }
 
     public function showBlog(){
+        visitor()->visit();
         $recent_blogs = Blog::orderBy('created_at', 'desc')->paginate(2);
         $blogs = Blog::orderBy('created_at','desc')->get();
         return view('frontend.blog.blog', compact('blogs', 'recent_blogs'));
     }
 
     public function showBlogDetails($id){
+        visitor()->visit();
         $blog = Blog::find($id);
         return view('frontend.blog.blog-details', compact('blog'));
     }
