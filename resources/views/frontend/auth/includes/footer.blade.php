@@ -3,6 +3,11 @@
         <div class="row">
             <div class="col-lg-9 col-md-8 col-sm-12">
                 <ul class="footer-policies-list">
+                    <li class="footer-policies-list-item">
+                		<a href="{{ url('/user-forum') }}" class="footer-policies-list-item-link">
+                			Forum
+                		</a>
+                	</li>
                 	<li class="footer-policies-list-item">
                 		<a href="{{ url('/about') }}" class="footer-policies-list-item-link">
                 			About Us
@@ -46,7 +51,12 @@
             			<a href="{{ $setting->instagram }}" class="footer-social-list-item-link" target="_blank">
             				<i class="fab fa-instagram"></i>
             			</a>
-            		</li>            		
+            		</li>
+                    <li class="footer-social-list-item">
+            			<a href="https://www.youtube.com/@bdmicrojob/" class="footer-social-list-item-link" target="_blank">
+            				<i class="fab fa-youtube"></i>
+            			</a>
+            		</li>
             	</ul>
             </div>
         </div>

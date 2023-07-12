@@ -24,6 +24,8 @@ class CreateSettingsTable extends Migration
             $table->string('email');
             $table->string('address');
             $table->longText('adsense_code');
+            $table->double('withdraw_commission');
+            $table->double('min_withdraw_amnt');
             $table->timestamps();
         });
     }

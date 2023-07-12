@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\User;
+use App\Models\Withdraw;
+use App\Models\Deposit;
+use App\Models\Commission;
 use App\Models\UserVideo;
 use App\Models\Video;
 use App\Models\NidVerification;
@@ -14,6 +17,9 @@ use App\Models\Tip;
 use App\Models\HomePage;
 use App\Models\AboutUs;
 use App\Models\Post;
+use App\Models\UserForum;
+use App\Models\Blog;
+use App\Models\PostSubmit;
 use App\Http\Requests\HomePageRequest;
 use App\Http\Requests\TipRequest;
 use Hash;
@@ -77,7 +83,15 @@ class AdminController extends Controller
         $user_count = User::count();
         $pending_job_count = Post::where('is_approved',0)->count();
         $approved_job_count = Post::where('is_approved',1)->count();
-    	return view('backend.dashboard', compact('visitors', 'user_count', 'pending_job_count', 'approved_job_count'));
+        $total_deposit = User::sum('total_deposit');
+        $total_income = User::sum('total_income');
+        $total_withdraw = Withdraw::where('is_approved', 1)->sum('withdraw_amount');
+        $total_tips = Tip::sum('tips_amount');
+        $nid_request = NidVerification::where('status',0)->count();
+        $deposit_request = Deposit::where('is_approved',0)->count();
+        $withdraw_request = Withdraw::where('is_approved',0)->count();
+        $total_commissions = Commission::sum('amount');
+    	return view('backend.dashboard', compact('visitors', 'user_count', 'pending_job_count', 'approved_job_count', 'total_deposit', 'total_income', 'total_withdraw', 'total_tips', 'nid_request', 'deposit_request', 'withdraw_request', 'total_commissions'));
     }
 
     public function visitorView($id)
@@ -443,6 +457,143 @@ class AdminController extends Controller
             $admin->update();
             return redirect('/admin/dashboard')->with('success', 'Updated Successfully');
         }
+    }
+
+    public function showForum ()
+    {
+        visitor()->visit();
+        $forums = UserForum::with('user')->orderBy('created_at', 'desc')->get();
+        return view('backend.forum.show-forum', compact('forums'));
+    }
+
+    public function showForumDetails ($id)
+    {
+        visitor()->visit();
+        $forum = UserForum::where('id', $id)->with('user')->first();
+        return view('backend.forum.show-forum-details', compact('forum'));
+    }
+
+    public function showBlog ()
+    {
+        visitor()->visit();
+        $blogs = Blog::orderBy('created_at', 'desc')->get();
+        return view('backend.blog.show-blog', compact('blogs'));
+    }
+
+    public function createBlog ()
+    {
+        visitor()->visit();
+        return view('backend.blog.create-blog');
+    }
+
+    public function storeBlog (Request $request)
+    {
+        $blog = new Blog();
+        $blog->short_title = $request->short_title;
+        $blog->slug = Str::slug($request->short_title);
+        $blog->long_title = $request->long_title;
+        $blog->short_description = $request->short_description;
+        $blog->long_description = $request->long_description;
+        if($request->hasFile('image')){
+            $name = rand(0,1000) . '.' . $request->image->getClientOriginalExtension();
+            $request->image->move('blog/', $name);
+            $blog->image = $name;
+        }
+
+        $blog->save();
+        return redirect('/admin/all-blog')->with('success','Created Successfully!');
+    }
+
+    public function editBlog ($id)
+    {
+        visitor()->visit();
+        $blog = Blog::find($id);
+        return view ('backend.blog.edit-blog', compact('blog'));
+    }
+
+    public function updateBlog (Request $request, $id)
+    {
+        $blog = Blog::find($id);
+        $blog->short_title = $request->short_title;
+        $blog->slug = Str::slug($request->short_title);
+        $blog->long_title = $request->long_title;
+        $blog->short_description = $request->short_description;
+        $blog->long_description = $request->long_description;
+
+        if($request->hasFile('image')){
+            if ($blog->image && file_exists(public_path('blog/'.$blog->image))){
+                unlink(public_path('blog/'.$blog->image));
+            }
+            $name = rand(0,1000) . '.' . $request->image->getClientOriginalExtension();
+            $request->image->move('blog/', $name);
+            $blog->image = $name;
+        }
+
+        $blog->save();
+        return redirect('/admin/all-blog')->with('success','Updated Successfully!');
+    }
+
+    public function deleteBlog ($id)
+    {
+        $blog = Blog::find($id);
+        if ($blog->image && file_exists(public_path('blog/'.$blog->image))){
+            unlink(public_path('blog/'.$blog->image));
+        }
+
+        $blog->delete();
+        return redirect()->back()->with('success','Deleted Successfully!');
+    }
+
+    public function pendingTask (Request $request)
+    {
+        visitor()->visit();
+        if($request->job_title){
+            $job = Post::where('title', $request->job_title)->first();
+            $pending_tasks = PostSubmit::where('status','0')->where('post_id', $job->id)->with('user','post')->orderBy('created_at', 'asc')->Paginate(100);
+            return view ('backend.task.list', compact('pending_tasks'));
+        }
+        $pending_tasks = PostSubmit::where('status','0')->with('user','post')->orderBy('created_at', 'asc')->Paginate(10);
+        return view ('backend.task.list', compact('pending_tasks'));
+    }
+
+    public function pendingTaskDetails ($id)
+    {
+        visitor()->visit();
+        $pending_task = PostSubmit::where('id', $id)->with('user', 'post')->first();
+        return view ('backend.task.details', compact('pending_task'));
+    }
+
+    public function pendingTaskApprove ($id)
+    {
+        $submitted_job = PostSubmit::where('id',$id)->with('post')->first();
+        $job_post = Post::where('id', $submitted_job->post_id)->with('category')->first();
+
+        if($submitted_job->status != '1'){
+            $submitted_job->status = '1';
+            if($submitted_job->save()){
+                $worker = User::find($submitted_job->user_id);
+                $previous_income=$worker->total_income;
+                $worker->total_income = $previous_income+$job_post->category->worker_earning;
+                $worker->save();
+
+                return redirect()->back()->with('Success','Approved Successfully!');
+                }
+            }
+            else{
+                return redirect()->back()->with('Error','Already Approved!');
+            }
+    }
+
+    public function rejectedTask (Request $request)
+    {
+        visitor()->visit();
+        if($request->job_title){
+            $job = Post::where('title', $request->job_title)->first();
+            $rejected_tasks = PostSubmit::where('status','2')->where('post_id', $job->id)->with('user','post')->orderBy('created_at', 'asc')->Paginate(100);
+            return view ('backend.task.rejected_list', compact('rejected_tasks'));
+        }
+        $rejected_tasks = PostSubmit::where('status','2')->with('user','post')->orderBy('created_at', 'asc')->Paginate(10);
+        return view ('backend.task.rejected_list', compact('rejected_tasks'));
     }
 
 }

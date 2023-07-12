@@ -20,6 +20,7 @@
                                 <th scope="col" class="sort">Catrgory Name</th>
                                 <th scope="col" class="sort">Title</th>
                                 <th scope="col" class="sort">Total Worker</th>
+                                <th scope="col" class="sort">Job Done</th>
                                 <th scope="col" class="sort">Per job Earn</th>
                                 <th scope="col" class="sort">Status</th>
                                 <th scope="col" class="sort">Action</th>
@@ -27,47 +28,65 @@
                         </thead>
                         <tbody class="list">
                             @foreach ($posts as $post)
-                                <tr class="my-task-valued">
-                                    <td>
-                                        <h6 class="task-name-text">
-                                            {{ $loop->index+1 }}
-                                        </h6>
-                                    </td>
-                                    <td>
-                                        <h6 class="task-earned-text">
-                                            {{ $post->category->name ?? 'No name found' }}
-                                        </h6>
-                                    </td>
-                                    <td>
-                                        {{ $post->title }}
-                                    </td>
-                                    <td>
-                                        <h6 class="task-date-text">
-                                            {{ $post->worker_number }}
-                                        </h6>
-                                    </td>
-                                    <td>
-                                        <h6 class="task-date-text">
-                                            {{ $post->category->worker_earning }}
-                                        </h6>
-                                    </td>
-                                    <td>
-                                        <h6 class="task-date-text">
-                                            @if ($post->is_approved==1)
-                                                Approved
-                                            @elseif ($post->is_approved==2)
-                                                Rejected
-                                            @else
-                                                Pending
-                                            @endif
-                                        </h6>
-                                    </td>
-                                    <td>
-                                        <a href="{{ url('/post/add-worker/'.$post->id) }}" class="btn btn-sm btn-warning">Add Worker</a>
-                                        {{--  <a href="{{ url('/post/edit/'.$post->id) }}" class="btn btn-sm btn-warning">Edit</a>  --}}
-                                        {{--  <a href="{{ url('/post/delete/'.$post->id) }}" onclick="return confirm('Are you sure delete this post ?')" class="btn btn-sm btn-danger">Delete</a>  --}}
-                                    </td>
-                                </tr>
+                            @php
+                            $worker = \App\Models\PostSubmit::where('post_id', $post->id)->where('status','!=','2')->get()->count();
+                            $job_cart = \App\Models\Cart::where('post_id', $post->id)->count();
+                            $total_count = $worker+$job_cart;
+                            @endphp
+                            <tr class="my-task-valued">
+                                <td>
+                                    <h6 class="task-name-text">
+                                        {{ $loop->index+1 }}
+                                    </h6>
+                                </td>
+                                <td>
+                                    <h6 class="task-earned-text">
+                                        {{ $post->category->name ?? 'No name found' }}
+                                    </h6>
+                                </td>
+                                <td>
+                                    {{ $post->title }}
+                                </td>
+                                <td>
+                                    <h6 class="task-date-text">
+                                        {{ $post->worker_number }}
+                                    </h6>
+                                </td>
+                                <td>
+                                    <h6 class="task-date-text">
+                                        {{ $total_count }}
+                                    </h6>
+                                </td>
+                                <td>
+                                    <h6 class="task-date-text">
+                                        {{ $post->category->worker_earning }}
+                                    </h6>
+                                </td>
+                                <td>
+                                    <h6 class="task-date-text">
+                                        @if ($post->is_approved==1)
+                                        Approved
+                                        @elseif ($post->is_approved==2)
+                                        Rejected
+                                        @else
+                                        Pending
+                                        @endif
+                                    </h6>
+                                </td>
+                                <td>
+                                    <a href="{{ url('/post/add-worker/'.$post->id) }}" class="btn btn-sm btn-warning">Add Worker</a>
+                                    @if ($post->is_paused==0 && $post->is_approved != 0 && $post->is_approved != 2)
+                                    <a href="{{ url('/post/pause/'.$post->id) }}" onclick="return confirm('Are you sure?')"
+                                        class="btn btn-sm btn-danger">Delete</a>
+                                    @else
+                                    <a class="btn btn-sm btn-info">Deleted</a>
+                                    @endif
+                                    {{-- <a href="{{ url('/post/edit/'.$post->id) }}" class="btn btn-sm btn-warning">Edit</a> --}}
+                                    {{-- <a href="{{ url('/post/delete/'.$post->id) }}"
+                                        onclick="return confirm('Are you sure delete this post ?')" class="btn btn-sm btn-danger">Delete</a>
+                                    --}}
+                                </td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>

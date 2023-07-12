@@ -27,8 +27,11 @@ Route::get('/account/varify', [\App\Http\Controllers\UserController::class, 'sho
 Route::post('/account/varify/store', [\App\Http\Controllers\UserController::class, 'storeAccountVerify']);
 Route::get('/account/varify/history', [\App\Http\Controllers\UserController::class, 'historyAccountVerify']);
 Route::get('/my/task', [\App\Http\Controllers\UserController::class, 'showMyTask']);
+Route::get('/my/favourite/task', [\App\Http\Controllers\UserController::class, 'showMyFavouriteTask']);
+Route::get('/my/favourite/task/delete/{id}', [\App\Http\Controllers\UserController::class, 'deleteMyFavouriteTask']);
 Route::get('/accepted/task', [\App\Http\Controllers\UserController::class, 'showAcceptedTask']);
 Route::get('/job/details/{id}', [\App\Http\Controllers\UserController::class, 'showJobDetails']);
+Route::get('/user/activate/{id}', [\App\Http\Controllers\UserController::class, 'userActivate']);
 Route::get('/job/report/{id}', [\App\Http\Controllers\UserController::class, 'showJobReport']);
 Route::get('/job-poster/report/{id}', [\App\Http\Controllers\UserController::class, 'showJobPosterReport']);
 Route::post('/job-poster/report/store', [\App\Http\Controllers\UserController::class, 'storeJobPosterReport']);
@@ -41,6 +44,7 @@ Route::get('/submitted/job/pending', [\App\Http\Controllers\UserController::clas
 Route::get('/submitted/job/approved', [\App\Http\Controllers\UserController::class, 'showSubmittedApprovedJob']);
 Route::get('/submitted/job/rejected', [\App\Http\Controllers\UserController::class, 'showSubmittedRejectedJob']);
 Route::get('/post/add-worker/{id}', [\App\Http\Controllers\UserController::class, 'showAddWorker']);
+Route::get('/post/pause/{id}', [\App\Http\Controllers\UserController::class, 'pausePost']);
 Route::post('/store/add-worker/{id}', [\App\Http\Controllers\UserController::class, 'storeAddWorker']);
 // Route::get('/post/delete/{id}', [\App\Http\Controllers\UserController::class, 'postDelete']);
 // Route::get('/post/edit/{id}', [\App\Http\Controllers\UserController::class, 'postEdit']);
@@ -69,3 +73,20 @@ Route::get('/tip_notification_seen/{id}', [\App\Http\Controllers\UserController:
 //Add to cart
 Route::get('/add/to/cart/{userId}/{id}', [\App\Http\Controllers\UserController::class, 'addToCart']);
 Route::get('/user/details/{userId}', [\App\Http\Controllers\UserController::class, 'userDetails']);
+Route::get('/cart/item/delete', [\App\Http\Controllers\UserController::class, 'cartItemDelete']);
+
+//Instant Unblock...
+Route::get('/unblock', [\App\Http\Controllers\UserController::class, 'instantUnblock']);
+
+//Forum...
+Route::get('/my-forum', [\App\Http\Controllers\UserForumController::class, 'showForum']);
+Route::get('/forum/details/comments/{id}', [\App\Http\Controllers\UserForumController::class, 'showForumDetails']);
+Route::get('/my-forum/details/comments/{id}', [\App\Http\Controllers\UserForumController::class, 'showMyForumDetails']);
+Route::post('/my-forum/store', [\App\Http\Controllers\UserForumController::class, 'storeForum']);
+Route::get('/my-forum/delete/{id}', [\App\Http\Controllers\UserForumController::class, 'deleteForum']);
+Route::get('/my-forum/edit/{id}', [\App\Http\Controllers\UserForumController::class, 'editForum']);
+Route::post('/my-forum/update/{id}', [\App\Http\Controllers\UserForumController::class, 'updateForum']);
+
+//Like Comment...
+Route::post('/forum/comment/store/{id}', [\App\Http\Controllers\LikeCommentController::class, 'storeComment']);
+Route::get('/forum/comment/like/{id}', [\App\Http\Controllers\LikeCommentController::class, 'storeLike']);

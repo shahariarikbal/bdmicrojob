@@ -2931,6 +2931,7 @@ button.account-varify-btn-inner:hover {
     height: 300px;
     border-radius: 10px;
     margin-bottom: 25px;
+    object-fit: contain;
 }
 
 .job-details-text-title {

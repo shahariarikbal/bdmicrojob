@@ -4,6 +4,10 @@
 	Dashboard
 @endsection
 
+@push('meta')
+    {{--  <meta http-equiv="refresh" content="10">  --}}
+@endpush
+
 @push('page-css')
     <style>
     /* #wrapper #content-wrapper .container-fluid {
@@ -331,6 +335,18 @@
 <div class="dashboard-section container-fluid">
     @php
         $auth_user = Auth::user();
+    @endphp
+    <input type="hidden" name="cart_count" id="cart_count" value="{{ $cart_count }}">
+    <input type="hidden" name="add_to_cart_hours" id="add_to_cart_hours" value="{{ $add_to_cart_hours }}">
+    <form action="{{ url('/cart/item/delete') }}" method="GET" id="cartItemDelete" class="d-none">
+        @csrf
+    </form>
+    <input type="hidden" name="status" id="status" value="{{ $auth_user->status }}">
+    <form action="{{ url('/user/activate/'.$auth_user->id) }}" method="GET" id="userActivate" class="d-none">
+        @csrf
+    </form>
+    @php
+        $auth_user = Auth::user();
         $blockDateTime = $auth_user->updated_at;
         $unblockDateTime = $auth_user->updated_at->addHours(6);
         $totalDuration = Carbon\Carbon::now()->diff($unblockDateTime)->format('%H hour(s):%I minutes(s):%S second(s)');
@@ -340,7 +356,7 @@
          @if ($auth_user->status==1)
          <marquee>{{ $marquee_text->marquee_text }}</marquee>
          @elseif ($auth_user->status==0)
-         <h4 style="color:red">You are temporarily blocked!!</h4>
+         <h4 style="color:red">You are temporarily blocked!! <a href="/unblock" class="btn btn-primary" onclick="return confirm('Are you sure? 2tk will taken as penalty!')">Instant Unblock</a></h4>
          <h5>You will be automatically unblocked after {{ $totalDuration  }}</h5>
          @endif
          <div class="job-items-wrapper">
@@ -359,8 +375,10 @@
              @foreach($posts as $post)
             @php
             $worker = \App\Models\PostSubmit::where('post_id', $post->id)->where('status','!=','2')->get()->count();
+            $job_cart = \App\Models\Cart::where('post_id', $post->id)->count();
+            $total_count = $worker+$job_cart;
             @endphp
-            @if ($worker<$post->worker_number)
+            @if ($total_count<$post->worker_number)
                 <a href="{{ url('/job/details/'.$post->id) }}" class="job-item-outer">
                     <div class="job-item-left">
                         <h5 class="job-title">
@@ -369,9 +387,9 @@
                     </div>
                     <div class="job-item-center">
                         <div class="progress-label">
-                            {{ $worker }} OF {{ $post->worker_number }}
+                            {{ $total_count }} OF {{ $post->worker_number }}
                         </div>
-                        <progress value="{{ $worker }}" max="{{ $post->worker_number }}"></progress>
+                        <progress value="{{ $total_count }}" max="{{ $post->worker_number }}"></progress>
                         <!-- <div class="progress">
                             @if ($worker >= 100)
                             <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="{{ $worker }}" aria-valuemin="0" aria-valuemax="{{ $post->worker_number }}"></div>
@@ -393,6 +411,28 @@
    </div>
 </div>
 @endsection
+
+@push('page-scripts')
+    <script type="text/javascript">
+        let status = document.getElementById('status').value;
+        let c_status = parseInt(status);
+        let cart_count = document.getElementById('cart_count').value;
+        let c_cart_count = parseInt(cart_count);
+        let add_to_cart_hours = document.getElementById('add_to_cart_hours').value;
+        let c_add_to_cart_hours = parseInt(add_to_cart_hours);
+            if(c_cart_count>0 && c_add_to_cart_hours>=1){
+                setInterval(function(){
+                        document.getElementById('cartItemDelete').submit();
+                }, 1000);
+            }
+
+            if(c_status==0){
+                setInterval(function(){
+                    document.getElementById('userActivate').submit();
+                }, 10000);
+            }
+    </script>
+@endpush
 
 @push('page-scripts')
     <script type="text/javascript">

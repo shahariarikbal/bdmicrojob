@@ -53,7 +53,9 @@ Route::post('/contact/store', [FrontendController::class, 'contactStore']);
 Route::get('/faq', [FrontendController::class, 'showFaq']);
 Route::get('/terms/conditions', [FrontendController::class, 'showTermsConditions']);
 Route::get('/privacy/policy', [FrontendController::class, 'showPrivacyPolicy']);
-Route::get('/forum', [FrontendController::class, 'showForum']);
+Route::get('/user-forum', [FrontendController::class, 'showForum']);
+Route::get('/all-blog', [FrontendController::class, 'showBlog']);
+Route::get('/blog/details/{id}', [FrontendController::class, 'showBlogDetails']);
 
 Auth::routes();
 
@@ -187,5 +189,24 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
     Route::get('/marque-text', [MarqueeController::class, 'showMarqueeText']);
     Route::get('/edit/marque-text/{id}', [MarqueeController::class, 'editMarqueeText']);
     Route::post('/update/marque-text/{id}', [MarqueeController::class, 'updateMarqueeText']);
+
+    //Forum....
+    Route::get('/all-forum', [AdminController::class, 'showForum']);
+    Route::get('/forum/details/comments/{id}', [AdminController::class, 'showForumDetails']);
+
+    //Blog....
+    Route::get('/all-blog', [AdminController::class, 'showBlog']);
+    Route::get('/blog/details/{id}', [AdminController::class, 'showBlogDetails']);
+    Route::get('create/blog', [AdminController::class, 'createBlog']);
+    Route::post('/store/blog', [AdminController::class, 'storeBlog']);
+    Route::get('/edit/blog/{id}', [AdminController::class, 'editBlog']);
+    Route::post('/update/blog/{id}', [AdminController::class, 'updateBlog']);
+    Route::get('/delete/blog/{id}', [AdminController::class, 'deleteBlog']);
+
+    //User Tasks...
+    Route::get('/pending-task', [AdminController::class, 'pendingTask']);
+    Route::get('/details/pending_task/{id}', [AdminController::class, 'pendingTaskDetails']);
+    Route::get('/pending-task/approve/{id}', [AdminController::class, 'pendingTaskApprove']);
+    Route::get('/rejected-task', [AdminController::class, 'rejectedTask']);
 
 });

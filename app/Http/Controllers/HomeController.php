@@ -8,12 +8,14 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\UserVideo;
 use App\Models\Video;
+use App\Models\Cart;
 use App\Models\MarqueeText;
 use App\Rules\MatchOldPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -40,14 +42,28 @@ class HomeController extends Controller
     {
         $auth_user = Auth::user();
         // if($auth_user->email_verified_at != null){
+            //Add to cart check start....
+            $cart_count = Cart::count();
+            if($cart_count>0){
+                $cart = Cart::first();
+                $currentTime = Carbon::now();
+                $updatedTime = $cart->updated_at;
+                $add_to_cart_hours = $updatedTime->diffInHours($currentTime);
+            }
+            else{
+                $add_to_cart_hours = 0;
+            }
+            //dd($add_to_cart_hours);
+            //Add to cart check end....
+            $cart_count = Cart::count();
             $marquee_text = MarqueeText::where('page_name','dashboard')->first();
             $categories = Category::select(['id', 'name', 'status', 'price'])->orderBy('created_at', 'desc')->where('status', 1)->get();
-            $sql = Post::with('specificTasks','category')->where('user_id','!=',Auth::user()->id)->where('is_approved', 1)->orderBy('created_at', 'desc');
+            $sql = Post::with('specificTasks','category')->where('user_id','!=',Auth::user()->id)->where('is_approved', 1)->where('is_paused', 0)->orderBy('created_at', 'desc');
             if(isset(request()->cat_id)){
                 $sql->where('cat_id', request()->cat_id)->get();
             }
             $posts = $sql->get();
-            return view('frontend.auth.dashboard', compact('categories', 'posts', 'marquee_text'));
+            return view('frontend.auth.dashboard', compact('categories', 'posts', 'marquee_text', 'cart_count', 'add_to_cart_hours'));
         // }
 
         // else{

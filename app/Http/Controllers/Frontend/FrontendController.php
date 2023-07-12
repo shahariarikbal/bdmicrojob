@@ -12,6 +12,8 @@ use App\Models\Post;
 use App\Models\AboutUs;
 use App\Models\TermCondition;
 use App\Models\PrivacyPolicy;
+use App\Models\UserForum;
+use App\Models\Blog;
 use DB;
 
 class FrontendController extends Controller
@@ -19,7 +21,7 @@ class FrontendController extends Controller
     public function index()
     {
         visitor()->visit();
-        $job_posts = Post::where('is_approved', 1)->with('user','category')->orderBy('created_at', 'desc')->Paginate(5);
+        $job_posts = Post::where('is_approved', 1)->where('is_paused', 0)->with('user','category')->orderBy('created_at', 'desc')->Paginate(5);
         $homepage = HomePage::first();
         $visitorCount = DB::table('shetabit_visits')->count();
         $userCount = User::count();
@@ -76,6 +78,21 @@ class FrontendController extends Controller
     }
 
     public function showForum(){
-        return view('frontend.forum.forum');
+        visitor()->visit();
+        $forums = UserForum::orderBy('created_at', 'desc')->with('user')->get();
+        return view('frontend.forum.forum', compact('forums'));
+    }
+
+    public function showBlog(){
+        visitor()->visit();
+        $recent_blogs = Blog::orderBy('created_at', 'desc')->paginate(2);
+        $blogs = Blog::orderBy('created_at','desc')->get();
+        return view('frontend.blog.blog', compact('blogs', 'recent_blogs'));
+    }
+
+    public function showBlogDetails($id){
+        visitor()->visit();
+        $blog = Blog::find($id);
+        return view('frontend.blog.blog-details', compact('blog'));
     }
 }

@@ -5,12 +5,27 @@
        <span>Dashboard</span>
        </a>
     </li>
-    <li class="nav-item {{ Request::url() == url('/account/varify') ? 'active' : '' }}">
-       <a class="nav-link" href="{{ url('/account/varify') }}">
-          <i class="fas fa-check"></i>
-       <span>Verify Now</span>
-       </a>
+    <li class="nav-item {{ Request::url() == url('/my-forum') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('/my-forum') }}">
+        <i class="far fa-credit-card"></i>
+        <span>My Forum</span>
+        </a>
     </li>
+    @if ($verification_requested==0)
+    <li class="nav-item {{ Request::url() == url('/account/varify') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('/account/varify') }}">
+           <i class="fas fa-check"></i>
+        <span>Verify Now</span>
+        </a>
+     </li>
+     @elseif ($verification->status==2)
+     <li class="nav-item {{ Request::url() == url('/account/varify') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('/account/varify') }}">
+           <i class="fas fa-check"></i>
+        <span>Verify Now</span>
+        </a>
+     </li>
+    @endif
     <li class="nav-item {{ Request::url() == url('/account/varify/history') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('/account/varify/history') }}">
            <i class="fas fa-check"></i>
@@ -47,6 +62,12 @@
         <span>My Post</span>
         </a>
     </li>
+    <li class="nav-item {{ Request::url() == url('/my/favourite/task') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('/my/favourite/task') }}">
+         <i class="fas fa-tasks"></i>
+        <span>Favourite Tasks</span>
+        </a>
+     </li>
     <li class="nav-item {{ Request::url() == url('/my/task') ? 'active' : '' }}">
        <a class="nav-link" href="{{ url('/my/task') }}">
         <i class="fas fa-tasks"></i>
@@ -65,12 +86,21 @@
        <span>Deposit</span>
        </a>
     </li>
+    @if ($withdraw_requested==0)
     <li class="nav-item {{ Request::url() == url('/instant/withdraw') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('/instant/withdraw') }}">
         <i class="far fa-credit-card"></i>
         <span>Withdraw</span>
         </a>
     </li>
+    @elseif ($withdraw->is_approved != 0)
+    <li class="nav-item {{ Request::url() == url('/instant/withdraw') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('/instant/withdraw') }}">
+        <i class="far fa-credit-card"></i>
+        <span>Withdraw</span>
+        </a>
+    </li>
+    @endif
     <li class="nav-item {{ Request::url() == url('/instant/deposit/history') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('/instant/deposit/history') }}">
         <i class="far fa-credit-card"></i>
