@@ -584,4 +584,16 @@ class AdminController extends Controller
             }
     }
 
+    public function rejectedTask (Request $request)
+    {
+        visitor()->visit();
+        if($request->job_title){
+            $job = Post::where('title', $request->job_title)->first();
+            $rejected_tasks = PostSubmit::where('status','2')->where('post_id', $job->id)->with('user','post')->orderBy('created_at', 'asc')->Paginate(100);
+            return view ('backend.task.rejected_list', compact('rejected_tasks'));
+        }
+        $rejected_tasks = PostSubmit::where('status','2')->with('user','post')->orderBy('created_at', 'asc')->Paginate(10);
+        return view ('backend.task.rejected_list', compact('rejected_tasks'));
+    }
+
 }
