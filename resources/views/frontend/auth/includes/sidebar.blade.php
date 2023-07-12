@@ -86,12 +86,21 @@
        <span>Deposit</span>
        </a>
     </li>
+    @if ($withdraw_requested==0)
     <li class="nav-item {{ Request::url() == url('/instant/withdraw') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('/instant/withdraw') }}">
         <i class="far fa-credit-card"></i>
         <span>Withdraw</span>
         </a>
     </li>
+    @elseif ($withdraw->is_approved != 0)
+    <li class="nav-item {{ Request::url() == url('/instant/withdraw') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('/instant/withdraw') }}">
+        <i class="far fa-credit-card"></i>
+        <span>Withdraw</span>
+        </a>
+    </li>
+    @endif
     <li class="nav-item {{ Request::url() == url('/instant/deposit/history') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('/instant/deposit/history') }}">
         <i class="far fa-credit-card"></i>

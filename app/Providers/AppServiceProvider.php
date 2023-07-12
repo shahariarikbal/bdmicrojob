@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 use App\Models\User;
 use App\Models\PostSubmit;
 use App\Models\NidVerification;
+use App\Models\Withdraw;
 use Auth;
 use DB;
 
@@ -38,6 +39,8 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('total_deposit',User::where('id',Auth::user()->id)->first(['total_deposit']));
                 $view->with('verification',NidVerification::where('user_id',Auth::user()->id)->orderBy('created_at', 'desc')->first());
                 $view->with('verification_requested',NidVerification::where('user_id',Auth::user()->id)->count());
+                $view->with('withdraw', Withdraw::where('user_id',Auth::user()->id)->orderBy('created_at', 'desc')->first());
+                $view->with('withdraw_requested', Withdraw::where('user_id',Auth::user()->id)->count());
             }
         });
 
