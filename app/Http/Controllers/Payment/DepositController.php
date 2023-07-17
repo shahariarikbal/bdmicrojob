@@ -118,7 +118,7 @@ class DepositController extends Controller
                 //withdraw Mail to Admin...
                 //Email
 
-            return redirect()->back()->with('Success','withdraw will be approved soon!!');
+            return redirect('/instant/withdraw/history')->with('Success','withdraw will be approved soon!!');
             }
 
             else{
