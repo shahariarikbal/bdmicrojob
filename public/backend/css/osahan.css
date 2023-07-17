@@ -2912,13 +2912,15 @@ button.account-varify-btn-inner:hover {
 
 .hide-btn-inner {
     border: 1px solid #6908ac;
-    padding: 8px 20px;
+    padding: 5px 12px;
     border-radius: 5px;
     font-size: 16px;
     font-weight: 600;
     background: #6908ac;
     color: #fff;
     transition: all .3s ease;
+    display: inline-block;
+    margin-bottom: 10px;
 }
 
 .hide-btn-inner:hover {
@@ -3209,7 +3211,7 @@ button.account-varify-btn-inner:hover {
     .earning-btn-outer {
         display: inline-block;
     }
-    
+
     .footer-policies-list {
         display: inline-block;
         text-align: start;
