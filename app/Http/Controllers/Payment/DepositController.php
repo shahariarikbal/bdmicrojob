@@ -81,9 +81,15 @@ class DepositController extends Controller
             visitor()->visit();
             $user = Auth::user();
             if($user->status == 1){
-                $marquee_text = MarqueeText::where('page_name','withdraw')->first();
-                $auth_user = User::select(['name', 'email', 'phone', 'nid_verified', 'total_income'])->where('id',$user->id)->first();
-                return view('frontend.auth.user.withdraw', compact('auth_user', 'marquee_text'));
+                $withdraw_history = Withdraw::where('user_id',Auth::user()->id)->orderBy('created_at', 'desc')->first();
+                if(($withdraw_history && $withdraw_history->is_approved != 0) || !$withdraw_history){
+                    $marquee_text = MarqueeText::where('page_name','withdraw')->first();
+                    $auth_user = User::select(['name', 'email', 'phone', 'nid_verified', 'total_income'])->where('id',$user->id)->first();
+                    return view('frontend.auth.user.withdraw', compact('auth_user', 'marquee_text'));
+                }
+                else{
+                    return redirect()->back();
+                }
             }
             else{
                 return redirect()->back()->with('error', 'You are suspended for certain hours!!');
